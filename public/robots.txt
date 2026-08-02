@@ -1,0 +1,52 @@
+# RaphaAtlas.com - Sovereign Journal of Clinical Medicine, Human Performance & Artificial Intelligence
+# Production Crawling & AI Scraping Permissions
+
+User-agent: *
+Allow: /
+Allow: /lifestyle
+Allow: /fitness
+Allow: /medical
+Allow: /ai-tools
+Allow: /llms.txt
+Allow: /llm.txt
+Allow: /sitemap.xml
+
+# Direct AI Crawler Access Rules (ChatGPT, Claude, Perplexity, Gemini, Apple Intelligence, etc.)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: diffbot
+Allow: /
+
+Sitemap: https://raphaatlas.com/sitemap.xml
+LLM-Documentation: https://raphaatlas.com/llms.txt

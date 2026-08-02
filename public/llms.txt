@@ -1,0 +1,69 @@
+# RaphaAtlas.com — The Complete Map of Healing & Health AI
+
+> RaphaAtlas.com is the sovereign digital journal and clinical AI platform dedicated to human performance, longevity, evidence-based fitness, medical lab science, and generative AI tools.
+
+## Executive System Overview
+RaphaAtlas unifies evidence-based medical research, biohacking protocols, functional fitness prehab, and real-time generative AI context engines into a single accessible portal.
+
+- **Platform URL**: https://raphaatlas.com
+- **API Spec**: https://raphaatlas.com/api/health
+- **LLM Context Map**: https://raphaatlas.com/llms.txt
+- **Primary Model Integration**: Google Gemini 3.6 Flash Server-Side API
+
+---
+
+## 1. Primary Pillars & Content Taxonomy
+
+### Pillar A: Lifestyle & Longevity
+*Focus*: Circadian biology, sleep architecture, light exposure timing, metabolic nutrition, and stress reduction.
+- **Sleep Hygiene & Adenosine Clearance**: Understanding sleep pressure, caffeine half-life (5.7 hrs), and blue light filtering.
+- **Continuous Glucose Monitoring (CGM)**: Postprandial glucose spike buffering with soluble fiber and 10-minute post-meal walks.
+- **Stress & Parasympathetic Reset**: Diaphragmatic physiological sighs and HRV biofeedback protocols.
+- **Internal Links**:
+  - Sleep Optimization Guide: https://raphaatlas.com/article/circadian-light-sleep-hygiene-adenosine
+  - Metabolic Energy Protocol: https://raphaatlas.com/article/continuous-glucose-monitoring-metabolic-flexibility
+
+### Pillar B: Fitness & Mobility
+*Focus*: Gymnastic bodyweight mastery, joint prehab, thoracic mobility, Zone 2 aerobic base, and VO2 Max intervals.
+- **Shoulder & Joint Prehab**: Ring dip technique, scapular depression, and rotator cuff stability to prevent impingement.
+- **Cardiovascular Longevity**: 180+ weekly minutes in Zone 2 lactate threshold combined with 4x4 VO2 Max intervals.
+- **Thoracic & Spinal Extension**: Spine decompression for desk workers and overhead mobility.
+- **Internal Links**:
+  - Ring Dip Mobility & Prehab: https://raphaatlas.com/article/ring-dips-shoulder-mobility-prehab
+  - VO2 Max & Zone 2 Base: https://raphaatlas.com/article/zone-2-aerobic-base-vo2max-mitochondrial-longevity
+
+### Pillar C: Medical & Clinical Lab Science
+*Focus*: Plain-English lab result decoding, biomarker reference ranges, preventive screening schedules, and doctor visit preparation.
+- **ApoB vs LDL-C**: Why Apolipoprotein B measures atherogenic particle count directly compared to traditional lipid panels.
+- **hs-CRP & Inflammation**: High-sensitivity C-reactive protein thresholds for cardiovascular safety.
+- **OPQRST Symptom Triage**: Methodical symptom documentation (Onset, Palliative, Quality, Region, Severity, Timing) for clinical consultations.
+- **Internal Links**:
+  - ApoB & Lipid Panel Guide: https://raphaatlas.com/article/apob-lipids-cardiovascular-prevention
+  - OPQRST Medical Triage Guide: https://raphaatlas.com/article/opqrst-symptom-triage-doctor-visit-guide
+
+### Pillar D: Live AI Health Utilities
+*Focus*: Real-time generative AI tools powered by server-side Gemini 3.6.
+- **AI Medical Jargon Simplifier**: Decodes lab results and pathology terms into non-expert summary reports.
+- **AI Symptom Contextualizer**: Evaluates symptom descriptions for educational context and triage urgency.
+- **AI Lifestyle Routine Planner**: Constructs circadian sleep, meal timing, and stress protocols.
+- **AI Workout & Mobility Coach**: Generates joint warm-ups, ring dip progressions, and cardio interval targets.
+- **Internal Links**:
+  - Live AI Tool Suite: https://raphaatlas.com/ai-tools
+
+---
+
+## 2. Server API Routes for AI Agents
+
+For autonomous agents interacting with RaphaAtlas services:
+
+- `GET /api/health` — Platform status check and system uptime.
+- `POST /api/ai/tool-demo` — Live execution of AI health utilities.
+  - Body: `{ "toolType": "jargon_simplifier" | "symptom_contextualizer" | "lifestyle_habit_planner" | "workout_mobility_coach", "query": "string" }`
+- `POST /api/ai/assistant` — Interactive clinical conversation model.
+  - Body: `{ "message": "string" }`
+- `POST /api/ai/categorize-content` — Automated content classification into RaphaAtlas taxonomy.
+
+---
+
+## 3. Medical Safety & Compliance Disclaimers
+All AI tool outputs and clinical articles provided on RaphaAtlas.com are intended strictly for educational and informational purposes. RaphaAtlas does not provide formal clinical diagnosis or treatment advice. Acute medical symptoms require immediate emergency evaluation (911 / Emergency Department).

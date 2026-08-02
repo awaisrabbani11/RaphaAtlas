@@ -1,0 +1,6 @@
+{
+  "name": "RaphaAtlas - Health Platform Blueprint",
+  "description": "Comprehensive architecture blueprint, UX design framework, content categorization matrix, and interactive AI health tools suite for RaphaAtlas.com.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
