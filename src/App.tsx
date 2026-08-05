@@ -12,6 +12,7 @@ import { BlueprintExportModal } from './components/BlueprintExportModal';
 import { FEATURED_ARTICLES } from './data/articlesData';
 import { PillarCategory } from './types';
 import { Compass, ShieldAlert } from 'lucide-react';
+import { AutoHeadManager } from './components/AutoHeadManager';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('journal');
@@ -30,6 +31,13 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 flex flex-col font-['Plus_Jakarta_Sans',sans-serif]">
+      {/* Automated Dynamic HTML Head Tag & Metadata Manager */}
+      <AutoHeadManager
+        activeTab={activeTab}
+        selectedArticle={selectedArticle}
+        selectedPillar={selectedPillar}
+      />
+
       {/* Top Header & Masthead */}
       <Header
         searchQuery={searchQuery}

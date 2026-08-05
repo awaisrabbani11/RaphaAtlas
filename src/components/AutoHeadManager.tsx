@@ -1,0 +1,141 @@
+import React, { useEffect } from 'react';
+import { Article } from '../types';
+
+declare global {
+  interface Window {
+    dataLayer?: any[];
+    gtag?: (...args: any[]) => void;
+  }
+}
+
+interface AutoHeadManagerProps {
+  activeTab: string;
+  selectedArticle?: Article | null;
+  selectedPillar?: string;
+}
+
+export const AutoHeadManager: React.FC<AutoHeadManagerProps> = ({
+  activeTab,
+  selectedArticle,
+  selectedPillar = 'ALL',
+}) => {
+  useEffect(() => {
+    // 0. Guarantee Google Tag (gtag.js) script is injected automatically if absent
+    const TRACKING_ID = 'G-VFCC4DF80F';
+    let gtagScript = document.querySelector(`script[src*="${TRACKING_ID}"]`) as HTMLScriptElement | null;
+    if (!gtagScript) {
+      gtagScript = document.createElement('script');
+      gtagScript.async = true;
+      gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`;
+      document.head.appendChild(gtagScript);
+
+      const inlineScript = document.createElement('script');
+      inlineScript.text = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', '${TRACKING_ID}');
+      `;
+      document.head.appendChild(inlineScript);
+    }
+
+    // 1. Ensure Sitemap & LLM discovery tags are dynamically maintained in <head>
+    let sitemapLink = document.querySelector('link[rel="sitemap"]') as HTMLLinkElement | null;
+    if (!sitemapLink) {
+      sitemapLink = document.createElement('link');
+      sitemapLink.rel = 'sitemap';
+      sitemapLink.type = 'application/xml';
+      sitemapLink.title = 'Sitemap';
+      sitemapLink.href = '/sitemap.xml';
+      document.head.appendChild(sitemapLink);
+    }
+
+    let llmLink = document.querySelector('link[rel="alternate"][href="/llms.txt"]') as HTMLLinkElement | null;
+    if (!llmLink) {
+      llmLink = document.createElement('link');
+      llmLink.rel = 'alternate';
+      llmLink.type = 'text/plain';
+      llmLink.title = 'LLM Documentation';
+      llmLink.href = '/llms.txt';
+      document.head.appendChild(llmLink);
+    }
+
+    // 2. Determine page title, description, and canonical path
+    let title = 'RaphaAtlas.com — Map of Healing & Health AI';
+    let description = 'The Sovereign Journal & Architecture of Clinical Medicine, Human Performance, and Health AI.';
+    let canonicalUrl = 'https://raphaatlas.com/';
+
+    if (selectedArticle) {
+      title = `${selectedArticle.title} — RaphaAtlas Journal`;
+      description = selectedArticle.subtitle || selectedArticle.excerpt;
+      canonicalUrl = `https://raphaatlas.com/article/${selectedArticle.id}`;
+    } else if (activeTab === 'ai_tools') {
+      title = 'AI Health Engine Sandbox — RaphaAtlas.com';
+      description = 'Interactive AI Clinical Triage, Symptom Assessment, and Diagnostic Logic Engines.';
+      canonicalUrl = 'https://raphaatlas.com/ai-tools';
+    } else if (activeTab === 'content') {
+      title = 'Content & Category Matrix — RaphaAtlas.com';
+      description = 'Complete taxonomy across Lifestyle, Fitness, Medical Science, and AI Engineering.';
+      canonicalUrl = 'https://raphaatlas.com/content-matrix';
+    } else if (activeTab === 'architecture') {
+      title = 'System Architecture & Data Flows — RaphaAtlas.com';
+      description = 'Full-stack platform technical architecture, security, and integration specifications.';
+      canonicalUrl = 'https://raphaatlas.com/architecture';
+    } else if (activeTab === 'tech') {
+      title = 'Tech Stack Integration Matrix — RaphaAtlas.com';
+      description = 'Specifications for React, Vite, Tailwind CSS, TypeScript, and AI integrations.';
+      canonicalUrl = 'https://raphaatlas.com/tech-integration';
+    } else if (activeTab === 'ux') {
+      title = 'User Journeys & Clinical Workflows — RaphaAtlas.com';
+      description = 'Clinical user journeys from acute triage to longitudinal health optimization.';
+      canonicalUrl = 'https://raphaatlas.com/user-journeys';
+    } else if (selectedPillar && selectedPillar !== 'ALL') {
+      const formattedPillar = selectedPillar.charAt(0).toUpperCase() + selectedPillar.slice(1).toLowerCase();
+      title = `${formattedPillar} & Performance — RaphaAtlas.com`;
+      description = `Clinical research and evidence-based protocols in ${formattedPillar}.`;
+      canonicalUrl = `https://raphaatlas.com/${selectedPillar.toLowerCase()}`;
+    }
+
+    // 3. Update document title
+    document.title = title;
+
+    // 4. Update Meta Description tag
+    let metaDesc = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.name = 'description';
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.content = description;
+
+    // 5. Update Canonical link tag
+    let canonicalTag = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!canonicalTag) {
+      canonicalTag = document.createElement('link');
+      canonicalTag.rel = 'canonical';
+      document.head.appendChild(canonicalTag);
+    }
+    canonicalTag.href = canonicalUrl;
+
+    // 6. Update OpenGraph Title & Description
+    let ogTitle = document.querySelector('meta[property="og:title"]') as HTMLMetaElement | null;
+    if (ogTitle) ogTitle.content = title;
+
+    let ogDesc = document.querySelector('meta[property="og:description"]') as HTMLMetaElement | null;
+    if (ogDesc) ogDesc.content = description;
+
+    let ogUrl = document.querySelector('meta[property="og:url"]') as HTMLMetaElement | null;
+    if (ogUrl) ogUrl.content = canonicalUrl;
+
+    // 7. Track Virtual Pageview in Google Analytics
+    if (typeof window.gtag === 'function') {
+      window.gtag('config', TRACKING_ID, {
+        page_title: title,
+        page_location: canonicalUrl,
+      });
+    }
+  }, [activeTab, selectedArticle, selectedPillar]);
+
+  return null; // Silent automated head controller
+};
