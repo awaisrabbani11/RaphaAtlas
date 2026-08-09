@@ -474,8 +474,22 @@ export const BacCalculatorView: React.FC<BacCalculatorViewProps> = ({ onBackToCa
             BAC Calculator: Know Before You Drive
           </h2>
           <h3 className="text-lg font-semibold text-slate-600 mt-1">
-            Blood Alcohol Concentration (BAC) Calculator
+            Blood Alcohol Concentration (BAC) Calculator &amp; Widmark Engine Guide
           </h3>
+        </div>
+
+        {/* Feature Image */}
+        <div className="rounded-2xl overflow-hidden border border-slate-200/80 shadow-xs">
+          <img
+            src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1200&q=80"
+            alt="Blood Alcohol Concentration metabolism and safety awareness guide"
+            className="w-full h-64 sm:h-80 object-cover"
+            referrerPolicy="no-referrer"
+          />
+          <div className="p-3 bg-slate-50 border-t border-slate-100 text-xs text-slate-500 flex justify-between items-center">
+            <span>Widmark Formula &amp; Alcohol Metabolism Clinical Guide</span>
+            <span className="font-semibold text-teal-700">RaphaAtlas Health Engine</span>
+          </div>
         </div>
 
         <div className="space-y-4 text-sm text-slate-700 leading-relaxed">

@@ -658,10 +658,29 @@ export const BodyTypeCalculatorView: React.FC<BodyTypeCalculatorViewProps> = ({ 
 
       {/* Complete Educational Guide Article (Verbatim exact text provided) */}
       <div className="bg-white p-6 sm:p-10 rounded-3xl border border-slate-200/80 shadow-2xs space-y-6 text-slate-800 leading-relaxed font-sans">
-        <div className="border-b border-slate-200 pb-4 mb-6">
-          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight font-sans">
-            Body Type Calculator: Discover Your Shape
-          </h1>
+        <div className="border-b border-slate-200 pb-4 mb-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight font-sans">
+              Body Type Calculator: Discover Your Shape
+            </h2>
+            <p className="text-sm text-slate-500 mt-1">
+              Anthropometric proportion research, waist-to-hip science &amp; health risk assessment
+            </p>
+          </div>
+        </div>
+
+        {/* Feature Image */}
+        <div className="rounded-2xl overflow-hidden border border-slate-200/80 my-6 shadow-xs">
+          <img
+            src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80"
+            alt="Body shape and fitness proportion measurement guide"
+            className="w-full h-64 sm:h-80 object-cover"
+            referrerPolicy="no-referrer"
+          />
+          <div className="p-3 bg-slate-50 border-t border-slate-100 text-xs text-slate-500 flex justify-between items-center">
+            <span>Clinical Anthropometrics &amp; Body Classification Guide</span>
+            <span className="font-semibold text-teal-700">RaphaAtlas Health Engine</span>
+          </div>
         </div>
 
         <section className="space-y-4 text-sm text-slate-700 leading-relaxed">

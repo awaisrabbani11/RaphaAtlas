@@ -61,15 +61,19 @@ export const AutoHeadManager: React.FC<AutoHeadManagerProps> = ({
       document.head.appendChild(llmLink);
     }
 
-    // 2. Determine page title, description, and canonical path
+    // 2. Determine page title, description, image, and canonical path
     let title = 'RaphaAtlas.com — Map of Healing & Health AI';
     let description = 'The Sovereign Journal & Architecture of Clinical Medicine, Human Performance, and Health AI.';
     let canonicalUrl = 'https://www.raphaatlas.com/';
+    let ogImage = 'https://www.raphaatlas.com/logo.svg';
+    let ogType = 'website';
 
     if (selectedArticle) {
       title = `${selectedArticle.title} — RaphaAtlas Journal`;
       description = selectedArticle.subtitle || selectedArticle.excerpt;
       canonicalUrl = `https://www.raphaatlas.com/article/${selectedArticle.id}`;
+      ogImage = selectedArticle.heroImage || ogImage;
+      ogType = 'article';
     } else if (activeTab === 'about') {
       title = 'About Us — Project of Growth Partners Global LLC | RaphaAtlas.com';
       description = 'RaphaAtlas is a clinical health calculator hub developed under Growth Partners Global LLC and guided by Dr. Muhammad Awais Rabbani and Dr. Ahmed Humayon.';
@@ -86,14 +90,17 @@ export const AutoHeadManager: React.FC<AutoHeadManagerProps> = ({
       title = 'Body Type Calculator: Shape & Waist-to-Hip Ratio — RaphaAtlas.com';
       description = 'Calculate your female or male body shape classification (Hourglass, Pear, Rectangle, Inverted Triangle, etc.) and waist-to-hip ratio.';
       canonicalUrl = 'https://www.raphaatlas.com/body-type-calculator';
+      ogImage = 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80';
     } else if (activeTab === 'bac_calculator') {
       title = 'Blood Alcohol Concentration (BAC) Calculator — RaphaAtlas.com';
       description = 'Free evidence-based BAC calculator estimating blood alcohol levels, driving limit thresholds, and time to sobriety using the Widmark equation.';
       canonicalUrl = 'https://www.raphaatlas.com/bac-calculator';
+      ogImage = 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1200&q=80';
     } else if (activeTab === 'macro_calculator') {
       title = 'Free Macro Calculator: Accurate Protein, Fat & Carbs — RaphaAtlas.com';
       description = 'Calculate your personalized daily macronutrients and calories for weight loss, maintenance, or muscle gain.';
       canonicalUrl = 'https://www.raphaatlas.com/macro-calculator';
+      ogImage = 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80';
     } else if (activeTab === 'content') {
       title = 'Content & Category Matrix — RaphaAtlas.com';
       description = 'Complete taxonomy across Lifestyle, Fitness, Medical Science, and AI Engineering.';
@@ -120,14 +127,19 @@ export const AutoHeadManager: React.FC<AutoHeadManagerProps> = ({
     // 3. Update document title
     document.title = title;
 
+    // Helper to ensure meta tag exists and sets content
+    const setMetaTag = (selector: string, attrName: string, attrValue: string, content: string) => {
+      let tag = document.querySelector(selector) as HTMLMetaElement | null;
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute(attrName, attrValue);
+        document.head.appendChild(tag);
+      }
+      tag.content = content;
+    };
+
     // 4. Update Meta Description tag
-    let metaDesc = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
-    if (!metaDesc) {
-      metaDesc = document.createElement('meta');
-      metaDesc.name = 'description';
-      document.head.appendChild(metaDesc);
-    }
-    metaDesc.content = description;
+    setMetaTag('meta[name="description"]', 'name', 'description', description);
 
     // 5. Update Canonical link tag
     let canonicalTag = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
@@ -138,15 +150,18 @@ export const AutoHeadManager: React.FC<AutoHeadManagerProps> = ({
     }
     canonicalTag.href = canonicalUrl;
 
-    // 6. Update OpenGraph Title & Description
-    let ogTitle = document.querySelector('meta[property="og:title"]') as HTMLMetaElement | null;
-    if (ogTitle) ogTitle.content = title;
+    // 6. Complete OpenGraph & Twitter Social Sharing Tags
+    setMetaTag('meta[property="og:site_name"]', 'property', 'og:site_name', 'RaphaAtlas.com');
+    setMetaTag('meta[property="og:type"]', 'property', 'og:type', ogType);
+    setMetaTag('meta[property="og:title"]', 'property', 'og:title', title);
+    setMetaTag('meta[property="og:description"]', 'property', 'og:description', description);
+    setMetaTag('meta[property="og:url"]', 'property', 'og:url', canonicalUrl);
+    setMetaTag('meta[property="og:image"]', 'property', 'og:image', ogImage);
 
-    let ogDesc = document.querySelector('meta[property="og:description"]') as HTMLMetaElement | null;
-    if (ogDesc) ogDesc.content = description;
-
-    let ogUrl = document.querySelector('meta[property="og:url"]') as HTMLMetaElement | null;
-    if (ogUrl) ogUrl.content = canonicalUrl;
+    setMetaTag('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image');
+    setMetaTag('meta[name="twitter:title"]', 'name', 'twitter:title', title);
+    setMetaTag('meta[name="twitter:description"]', 'name', 'twitter:description', description);
+    setMetaTag('meta[name="twitter:image"]', 'name', 'twitter:image', ogImage);
 
     // 7. Track Virtual Pageview in Google Analytics
     if (typeof window.gtag === 'function') {

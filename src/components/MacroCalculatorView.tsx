@@ -1039,6 +1039,23 @@ export const MacroCalculatorView: React.FC<MacroCalculatorViewProps> = ({ onBack
           <p className="text-xl sm:text-2xl font-bold text-slate-900">
             Free Macro Calculator: Accurate in Seconds
           </p>
+          <p className="text-sm text-slate-500 mt-1">
+            Clinical Macronutrient Partitioning, BMR Equations &amp; Energy Balance Guide
+          </p>
+        </div>
+
+        {/* Feature Image */}
+        <div className="rounded-2xl overflow-hidden border border-slate-200/80 shadow-xs my-6">
+          <img
+            src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80"
+            alt="Balanced macronutrients, proteins, carbs, and healthy fats nutrition guide"
+            className="w-full h-64 sm:h-80 object-cover"
+            referrerPolicy="no-referrer"
+          />
+          <div className="p-3 bg-slate-50 border-t border-slate-100 text-xs text-slate-500 flex justify-between items-center">
+            <span>Evidence-Based Clinical Macronutrient Partitioning Guide</span>
+            <span className="font-semibold text-teal-700">RaphaAtlas Health Engine</span>
+          </div>
         </div>
 
         <div className="space-y-6 text-slate-700 text-sm sm:text-base">

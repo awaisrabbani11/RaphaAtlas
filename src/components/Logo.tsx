@@ -52,10 +52,10 @@ export const Logo: React.FC<LogoProps> = ({
         {/* Brand Text Block */}
         <div className="logo-text text-center sm:text-left">
           <div className="flex items-baseline justify-center sm:justify-start gap-1.5">
-            <h1 className={`company-name font-['Playfair_Display',serif] ${titleSizes} font-black tracking-tight uppercase`}>
+            <div className={`company-name font-['Playfair_Display',serif] ${titleSizes} font-black tracking-tight uppercase`}>
               <span className="text-[#2d4a5c]">RAPHA</span>
               <span className="text-[#638c4c]">ATLAS</span>
-            </h1>
+            </div>
             <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-[#2d4a5c] text-white font-sans tracking-normal shadow-xs">
               .com
             </span>
