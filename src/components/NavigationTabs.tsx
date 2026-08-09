@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Article, PillarCategory } from '../types';
 import { 
-  BookOpen, Moon, Activity, Stethoscope, Cpu, ChevronDown, 
-  Sparkles, ArrowRight, Clock, Layers, FolderTree, ShieldCheck, Users, X
+  BookOpen, Moon, Activity, Stethoscope, Calculator, ChevronDown, 
+  Sparkles, ArrowRight, Clock, Layers, FolderTree, ShieldCheck, Users, X, Home
 } from 'lucide-react';
 
 interface NavigationTabsProps {
@@ -22,7 +22,7 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
   articles,
   onSelectArticle,
 }) => {
-  const [megaMenuCategory, setMegaMenuCategory] = useState<PillarCategory | 'AI_TOOLS' | 'BLUEPRINT' | null>(null);
+  const [megaMenuCategory, setMegaMenuCategory] = useState<PillarCategory | 'ALL' | 'AI_TOOLS' | 'BLUEPRINT' | null>(null);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState<boolean>(false);
   const megaMenuRef = useRef<HTMLDivElement>(null);
 
@@ -40,11 +40,13 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
   const navCategories = [
     {
       id: 'ALL',
-      label: 'Front Page',
-      subtitle: 'All Publications',
-      icon: BookOpen,
+      label: 'HOME PAGE',
+      subtitle: 'Main Publications & Stories',
+      icon: Home,
       pillar: 'ALL' as const,
-      subTopics: ['Cover Stories', 'Trending Research', 'Medically Reviewed', 'Latest AI Reports'],
+      subTopics: ['Cover Stories & Research', 'Latest Medically Reviewed Articles', 'Interactive Health Calculators', 'Clinical AI Assistant'],
+      aiToolName: 'Direct Main Hub',
+      aiToolDesc: 'Return immediately to the RaphaAtlas HOME PAGE and featured stories.',
     },
     {
       id: 'LIFESTYLE',
@@ -52,9 +54,9 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
       subtitle: 'Sleep, Light & Metabolism',
       icon: Moon,
       pillar: 'LIFESTYLE' as const,
-      subTopics: ['Sleep Hygiene & Adenosine', 'Circadian Light Timing', 'Metabolic Nutrition & CGM', 'Stress & Breathwork'],
-      aiToolName: 'AI Sleep & Circadian Routine Planner',
-      aiToolDesc: 'Generate custom sunlight exposure, caffeine cutoffs, and evening wind-down protocols.',
+      subTopics: ['Sleep Hygiene & Adenosine Protocol', 'Circadian Light Timing Calculator', 'Metabolic Nutrition & CGM', 'Stress & Breathwork Science'],
+      aiToolName: 'Circadian Sleep Calculator',
+      aiToolDesc: 'Calculate sunlight exposure, caffeine cutoff, and optimal wind-down sleep onset times.',
     },
     {
       id: 'FITNESS',
@@ -62,9 +64,9 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
       subtitle: 'Strength, Prehab & Cardio',
       icon: Activity,
       pillar: 'FITNESS' as const,
-      subTopics: ['Gymnastics Strength & Dips', 'Shoulder & Joint Prehab', 'Zone 2 & VO2 Max Base', 'Thoracic Mobility'],
-      aiToolName: 'AI Joint Mobility & Workout Coach',
-      aiToolDesc: 'Personalized joint warm-ups, ring dip prehab, and stroke volume cardio planning.',
+      subTopics: ['Gymnastics Strength & Ring Dips', 'Shoulder & Joint Prehab', 'Zone 2 & VO2 Max Base', 'Thoracic Spine Mobility'],
+      aiToolName: 'VO2 Max & Heart Rate Zone Calculator',
+      aiToolDesc: 'Calculate Zone 2 stroke volume heart rates and maximum aerobic endurance targets.',
     },
     {
       id: 'MEDICAL',
@@ -73,18 +75,18 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
       icon: Stethoscope,
       pillar: 'MEDICAL' as const,
       subTopics: ['ApoB & Lipid Panels', 'hs-CRP & Vascular Risk', 'Symptom OPQRST Triage', 'Doctor Visit Question Preparation'],
-      aiToolName: 'AI Biomarker & Lab Jargon Decoder',
-      aiToolDesc: 'Paste blood test results or physician notes for immediate plain-English analysis.',
+      aiToolName: 'ApoB Cardiovascular Risk Estimator',
+      aiToolDesc: 'Calculate vascular atherogenic risk percentiles and evidence-based clinical steps.',
     },
     {
       id: 'AI_TOOLS',
-      label: 'AI Health Suite',
-      subtitle: 'Live Gemini Utilities',
-      icon: Cpu,
+      label: 'Calculators & Tools',
+      subtitle: 'Interactive Health Calculators',
+      icon: Calculator,
       pillar: 'AI_TOOLS' as const,
-      subTopics: ['Lab Jargon Decoder', 'Symptom Contextualizer', 'Lifestyle Routine Planner', 'Workout & Mobility Coach'],
-      aiToolName: 'Gemini 3.6 Multimodal AI Engine',
-      aiToolDesc: 'Interactive clinical AI suite powered by server-side Google Gemini models.',
+      subTopics: ['ApoB & Lipid Risk Estimator', 'VO2 Max & Heart Rate Calculator', 'Circadian Sleep Window Calculator', 'Daily Protein & Macro Optimizer', 'AI Clinical Lab Jargon Decoder'],
+      aiToolName: 'Interactive Clinical Calculators & AI',
+      aiToolDesc: 'Instant health calculators and server-side Gemini 3.6 AI lab decoder.',
     },
     {
       id: 'BLUEPRINT',
@@ -100,7 +102,7 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
 
   const currentCategoryData = navCategories.find(
     (c) => c.pillar === megaMenuCategory
-  ) || navCategories[1];
+  ) || navCategories[0];
 
   // Articles filtered for the mega menu category preview
   const categoryArticlesPreview = articles.filter((a) => {
@@ -110,6 +112,12 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
   }).slice(0, 3);
 
   const handleCategoryClick = (cat: typeof navCategories[0]) => {
+    if (cat.pillar === 'ALL') {
+      setSelectedPillar('ALL');
+      setActiveTab('journal');
+      setIsMegaMenuOpen(false);
+      return;
+    }
     if (cat.pillar === 'AI_TOOLS') {
       setActiveTab('ai_tools');
       setIsMegaMenuOpen(false);

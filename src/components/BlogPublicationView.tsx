@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Article, PillarCategory } from '../types';
 import { 
   BookOpen, Sparkles, Clock, ShieldCheck, ArrowRight, Search, 
-  Flame, ChevronRight, Stethoscope, Moon, Activity, Award
+  Flame, ChevronRight, Stethoscope, Moon, Activity, Award, Calculator
 } from 'lucide-react';
 
 interface BlogPublicationViewProps {
@@ -72,8 +72,8 @@ export const BlogPublicationView: React.FC<BlogPublicationViewProps> = ({
               onClick={onOpenAiToolsSandbox}
               className="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl text-xs transition-all flex items-center gap-2 shadow-sm"
             >
-              <Sparkles className="h-4 w-4 text-indigo-300" />
-              <span>Launch Interactive AI Suite</span>
+              <Calculator className="h-4 w-4 text-teal-300" />
+              <span>Launch Health Calculators &amp; AI</span>
             </button>
           </div>
         </div>

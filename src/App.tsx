@@ -116,9 +116,9 @@ export default function App() {
                   setSelectedPillar('ALL');
                   setActiveTab('journal');
                 }}
-                className="hover:text-teal-700 transition-colors"
+                className="hover:text-teal-700 font-bold text-teal-900 transition-colors"
               >
-                Front Page
+                HOME PAGE
               </button>
               <button
                 onClick={() => {
@@ -151,7 +151,7 @@ export default function App() {
                 Medical &amp; Lab Science
               </button>
               <button onClick={() => setActiveTab('ai_tools')} className="hover:text-teal-700 transition-colors">
-                AI Suite
+                Calculators &amp; Tools
               </button>
               <a href="/robots.txt" target="_blank" rel="noreferrer" className="hover:text-teal-700 transition-colors font-mono text-[11px]">
                 robots.txt
