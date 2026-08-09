@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { NavigationTabs } from './components/NavigationTabs';
 import { BlogPublicationView } from './components/BlogPublicationView';
@@ -16,21 +16,108 @@ import { UserJourneysView } from './components/UserJourneysView';
 import { BlueprintExportModal } from './components/BlueprintExportModal';
 import { FEATURED_ARTICLES } from './data/articlesData';
 import { PillarCategory } from './types';
-import { Compass, ShieldAlert } from 'lucide-react';
+import { ShieldAlert } from 'lucide-react';
 import { AutoHeadManager } from './components/AutoHeadManager';
 
+function parseRoute(pathname: string): { activeTab: string; selectedPillar: PillarCategory | 'ALL'; selectedArticleId: string | null } {
+  const cleanPath = pathname.replace(/\/$/, '') || '/';
+
+  if (cleanPath.startsWith('/article/')) {
+    const articleId = cleanPath.replace('/article/', '');
+    return { activeTab: 'journal', selectedPillar: 'ALL', selectedArticleId: articleId };
+  }
+
+  switch (cleanPath) {
+    case '/body-type-calculator':
+      return { activeTab: 'body_type_calculator', selectedPillar: 'ALL', selectedArticleId: null };
+    case '/macro-calculator':
+      return { activeTab: 'macro_calculator', selectedPillar: 'ALL', selectedArticleId: null };
+    case '/bac-calculator':
+      return { activeTab: 'bac_calculator', selectedPillar: 'ALL', selectedArticleId: null };
+    case '/calculators':
+    case '/ai-tools':
+      return { activeTab: 'ai_tools', selectedPillar: 'ALL', selectedArticleId: null };
+    case '/about':
+      return { activeTab: 'about', selectedPillar: 'ALL', selectedArticleId: null };
+    case '/contact':
+      return { activeTab: 'contact', selectedPillar: 'ALL', selectedArticleId: null };
+    case '/lifestyle':
+      return { activeTab: 'journal', selectedPillar: 'LIFESTYLE', selectedArticleId: null };
+    case '/fitness':
+      return { activeTab: 'journal', selectedPillar: 'FITNESS', selectedArticleId: null };
+    case '/medical':
+      return { activeTab: 'journal', selectedPillar: 'MEDICAL', selectedArticleId: null };
+    case '/content-matrix':
+      return { activeTab: 'content', selectedPillar: 'ALL', selectedArticleId: null };
+    case '/architecture':
+      return { activeTab: 'architecture', selectedPillar: 'ALL', selectedArticleId: null };
+    case '/tech-integration':
+      return { activeTab: 'tech', selectedPillar: 'ALL', selectedArticleId: null };
+    case '/user-journeys':
+      return { activeTab: 'ux', selectedPillar: 'ALL', selectedArticleId: null };
+    default:
+      return { activeTab: 'journal', selectedPillar: 'ALL', selectedArticleId: null };
+  }
+}
+
+function getPathForState(activeTab: string, selectedPillar: PillarCategory | 'ALL', selectedArticleId: string | null): string {
+  if (selectedArticleId) {
+    return `/article/${selectedArticleId}`;
+  }
+  if (activeTab === 'body_type_calculator') return '/body-type-calculator';
+  if (activeTab === 'macro_calculator') return '/macro-calculator';
+  if (activeTab === 'bac_calculator') return '/bac-calculator';
+  if (activeTab === 'ai_tools') return '/calculators';
+  if (activeTab === 'about') return '/about';
+  if (activeTab === 'contact') return '/contact';
+  if (activeTab === 'content') return '/content-matrix';
+  if (activeTab === 'architecture') return '/architecture';
+  if (activeTab === 'tech') return '/tech-integration';
+  if (activeTab === 'ux') return '/user-journeys';
+
+  if (selectedPillar === 'LIFESTYLE') return '/lifestyle';
+  if (selectedPillar === 'FITNESS') return '/fitness';
+  if (selectedPillar === 'MEDICAL') return '/medical';
+
+  return '/';
+}
+
 export default function App() {
-  const [activeTab, setActiveTab] = useState<string>('journal');
-  const [selectedPillar, setSelectedPillar] = useState<PillarCategory | 'ALL'>('ALL');
-  const [selectedArticleId, setSelectedArticleId] = useState<string | null>(null);
+  const initialRoute = parseRoute(window.location.pathname);
+  const [activeTab, setActiveTab] = useState<string>(initialRoute.activeTab);
+  const [selectedPillar, setSelectedPillar] = useState<PillarCategory | 'ALL'>(initialRoute.selectedPillar);
+  const [selectedArticleId, setSelectedArticleId] = useState<string | null>(initialRoute.selectedArticleId);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isExportOpen, setIsExportOpen] = useState<boolean>(false);
+
+  // Sync state to URL and respond to popstate (browser back/forward)
+  const navigateTo = (newTab: string, newPillar: PillarCategory | 'ALL' = 'ALL', newArticleId: string | null = null) => {
+    setActiveTab(newTab);
+    setSelectedPillar(newPillar);
+    setSelectedArticleId(newArticleId);
+
+    const targetPath = getPathForState(newTab, newPillar, newArticleId);
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({ activeTab: newTab, selectedPillar: newPillar, selectedArticleId: newArticleId }, '', targetPath);
+    }
+  };
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const route = parseRoute(window.location.pathname);
+      setActiveTab(route.activeTab);
+      setSelectedPillar(route.selectedPillar);
+      setSelectedArticleId(route.selectedArticleId);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   const selectedArticle = FEATURED_ARTICLES.find((a) => a.id === selectedArticleId);
 
   const handleSelectArticle = (articleId: string) => {
-    setSelectedArticleId(articleId);
-    setActiveTab('journal');
+    navigateTo('journal', 'ALL', articleId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -47,33 +134,24 @@ export default function App() {
       <Header
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
-        onNavigateAbout={() => {
-          setSelectedArticleId(null);
-          setActiveTab('about');
-        }}
-        onNavigateContact={() => {
-          setSelectedArticleId(null);
-          setActiveTab('contact');
-        }}
-        onNavigateCalculators={() => {
-          setSelectedArticleId(null);
-          setActiveTab('ai_tools');
-        }}
+        onNavigateAbout={() => navigateTo('about')}
+        onNavigateContact={() => navigateTo('contact')}
+        onNavigateCalculators={() => navigateTo('ai_tools')}
       />
 
       {/* Newspaper Mega Menu Navigation Bar */}
       <NavigationTabs
         activeTab={activeTab}
         setActiveTab={(tab) => {
-          setActiveTab(tab);
-          if (tab !== 'journal') {
-            setSelectedArticleId(null);
+          if (tab === 'journal') {
+            navigateTo('journal', selectedPillar, null);
+          } else {
+            navigateTo(tab, 'ALL', null);
           }
         }}
         selectedPillar={selectedPillar}
         setSelectedPillar={(pillar) => {
-          setSelectedPillar(pillar);
-          setSelectedArticleId(null);
+          navigateTo('journal', pillar, null);
         }}
         articles={FEATURED_ARTICLES}
         onSelectArticle={handleSelectArticle}
@@ -85,7 +163,7 @@ export default function App() {
           selectedArticle ? (
             <ArticleDetailView
               article={selectedArticle}
-              onBack={() => setSelectedArticleId(null)}
+              onBack={() => navigateTo('journal', selectedPillar, null)}
               onSelectArticle={handleSelectArticle}
               allArticles={FEATURED_ARTICLES}
             />
@@ -93,35 +171,35 @@ export default function App() {
             <BlogPublicationView
               articles={FEATURED_ARTICLES}
               onSelectArticle={handleSelectArticle}
-              onOpenAiToolsSandbox={() => setActiveTab('ai_tools')}
+              onOpenAiToolsSandbox={() => navigateTo('ai_tools')}
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
               selectedPillar={selectedPillar}
-              setSelectedPillar={setSelectedPillar}
+              setSelectedPillar={(pillar) => navigateTo('journal', pillar, null)}
             />
           )
         )}
 
         {activeTab === 'ai_tools' && (
           <AiToolsSandbox
-            onOpenMacroCalculator={() => setActiveTab('macro_calculator')}
-            onOpenBacCalculator={() => setActiveTab('bac_calculator')}
-            onOpenBodyTypeCalculator={() => setActiveTab('body_type_calculator')}
+            onOpenMacroCalculator={() => navigateTo('macro_calculator')}
+            onOpenBacCalculator={() => navigateTo('bac_calculator')}
+            onOpenBodyTypeCalculator={() => navigateTo('body_type_calculator')}
           />
         )}
         {activeTab === 'body_type_calculator' && (
-          <BodyTypeCalculatorView onBackToCalculators={() => setActiveTab('ai_tools')} />
+          <BodyTypeCalculatorView onBackToCalculators={() => navigateTo('ai_tools')} />
         )}
         {activeTab === 'macro_calculator' && (
-          <MacroCalculatorView onBackToCalculators={() => setActiveTab('ai_tools')} />
+          <MacroCalculatorView onBackToCalculators={() => navigateTo('ai_tools')} />
         )}
         {activeTab === 'bac_calculator' && (
-          <BacCalculatorView onBackToCalculators={() => setActiveTab('ai_tools')} />
+          <BacCalculatorView onBackToCalculators={() => navigateTo('ai_tools')} />
         )}
         {activeTab === 'about' && (
           <AboutView
-            onNavigateContact={() => setActiveTab('contact')}
-            onNavigateCalculators={() => setActiveTab('ai_tools')}
+            onNavigateContact={() => navigateTo('contact')}
+            onNavigateCalculators={() => navigateTo('ai_tools')}
           />
         )}
         {activeTab === 'contact' && <ContactView />}
@@ -150,52 +228,36 @@ export default function App() {
 
             <div className="flex flex-wrap items-center gap-6 text-xs text-slate-600 font-medium">
               <button
-                onClick={() => {
-                  setSelectedArticleId(null);
-                  setSelectedPillar('ALL');
-                  setActiveTab('journal');
-                }}
+                onClick={() => navigateTo('journal', 'ALL', null)}
                 className="hover:text-teal-700 font-bold text-teal-900 transition-colors"
               >
                 HOME PAGE
               </button>
               <button
-                onClick={() => {
-                  setSelectedPillar('LIFESTYLE');
-                  setSelectedArticleId(null);
-                  setActiveTab('journal');
-                }}
+                onClick={() => navigateTo('journal', 'LIFESTYLE', null)}
                 className="hover:text-teal-700 transition-colors"
               >
                 Lifestyle &amp; Longevity
               </button>
               <button
-                onClick={() => {
-                  setSelectedPillar('FITNESS');
-                  setSelectedArticleId(null);
-                  setActiveTab('journal');
-                }}
+                onClick={() => navigateTo('journal', 'FITNESS', null)}
                 className="hover:text-teal-700 transition-colors"
               >
                 Fitness &amp; Mobility
               </button>
               <button
-                onClick={() => {
-                  setSelectedPillar('MEDICAL');
-                  setSelectedArticleId(null);
-                  setActiveTab('journal');
-                }}
+                onClick={() => navigateTo('journal', 'MEDICAL', null)}
                 className="hover:text-teal-700 transition-colors"
               >
                 Medical &amp; Lab Science
               </button>
-              <button onClick={() => setActiveTab('ai_tools')} className="hover:text-teal-700 transition-colors">
+              <button onClick={() => navigateTo('ai_tools')} className="hover:text-teal-700 transition-colors">
                 Calculators &amp; Tools
               </button>
-              <button onClick={() => setActiveTab('about')} className="hover:text-teal-700 transition-colors font-bold text-slate-800">
+              <button onClick={() => navigateTo('about')} className="hover:text-teal-700 transition-colors font-bold text-slate-800">
                 About Us
               </button>
-              <button onClick={() => setActiveTab('contact')} className="hover:text-teal-700 transition-colors font-bold text-slate-800">
+              <button onClick={() => navigateTo('contact')} className="hover:text-teal-700 transition-colors font-bold text-slate-800">
                 Contact Us
               </button>
             </div>
