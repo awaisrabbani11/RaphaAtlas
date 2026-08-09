@@ -186,22 +186,51 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
             })}
           </div>
 
-          {/* Persistent Mega Menu Drawer Toggle */}
-          <button
-            onClick={() => {
-              if (!megaMenuCategory) setMegaMenuCategory('LIFESTYLE');
-              setIsMegaMenuOpen(!isMegaMenuOpen);
-            }}
-            className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all border shrink-0 ${
-              isMegaMenuOpen
-                ? 'bg-white text-slate-900 border-white'
-                : 'bg-slate-800 text-teal-300 border-slate-700 hover:bg-slate-700'
-            }`}
-          >
-            <Layers className="h-3.5 w-3.5 text-teal-400" />
-            <span>Mega Menu</span>
-            <ChevronDown className={`h-3.5 w-3.5 transition-transform ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
-          </button>
+          {/* Persistent Navigation Buttons & Mega Menu Drawer Toggle */}
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              onClick={() => {
+                setActiveTab('about');
+                setIsMegaMenuOpen(false);
+              }}
+              className={`px-3 py-2 rounded-xl text-xs font-semibold transition-all border ${
+                activeTab === 'about'
+                  ? 'bg-teal-700 text-white border-teal-500 shadow-sm'
+                  : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 hover:text-white'
+              }`}
+            >
+              About Us
+            </button>
+            <button
+              onClick={() => {
+                setActiveTab('contact');
+                setIsMegaMenuOpen(false);
+              }}
+              className={`px-3 py-2 rounded-xl text-xs font-semibold transition-all border ${
+                activeTab === 'contact'
+                  ? 'bg-teal-700 text-white border-teal-500 shadow-sm'
+                  : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 hover:text-white'
+              }`}
+            >
+              Contact Us
+            </button>
+
+            <button
+              onClick={() => {
+                if (!megaMenuCategory) setMegaMenuCategory('LIFESTYLE');
+                setIsMegaMenuOpen(!isMegaMenuOpen);
+              }}
+              className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all border shrink-0 ${
+                isMegaMenuOpen
+                  ? 'bg-white text-slate-900 border-white'
+                  : 'bg-slate-800 text-teal-300 border-slate-700 hover:bg-slate-700'
+              }`}
+            >
+              <Layers className="h-3.5 w-3.5 text-teal-400" />
+              <span>Mega Menu</span>
+              <ChevronDown className={`h-3.5 w-3.5 transition-transform ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
+            </button>
+          </div>
         </div>
       </div>
 

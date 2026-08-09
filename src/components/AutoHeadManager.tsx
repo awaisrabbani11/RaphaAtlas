@@ -70,6 +70,14 @@ export const AutoHeadManager: React.FC<AutoHeadManagerProps> = ({
       title = `${selectedArticle.title} — RaphaAtlas Journal`;
       description = selectedArticle.subtitle || selectedArticle.excerpt;
       canonicalUrl = `https://raphaatlas.com/article/${selectedArticle.id}`;
+    } else if (activeTab === 'about') {
+      title = 'About Us — Project of Growth Partners Global LLC | RaphaAtlas.com';
+      description = 'RaphaAtlas is a clinical health calculator hub developed under Growth Partners Global LLC and guided by Dr. Muhammad Awais Rabbani (MBBS) and Dr. Ahmed Humayon (MBBS).';
+      canonicalUrl = 'https://raphaatlas.com/about';
+    } else if (activeTab === 'contact') {
+      title = 'Contact Medical Team — RaphaAtlas.com';
+      description = 'Contact the medical and engineering team at RaphaAtlas. Emails: dr.awais@growthpartnersgloballlc.com & dr.ahmed@growthpartnergloballlc.com.';
+      canonicalUrl = 'https://raphaatlas.com/contact';
     } else if (activeTab === 'ai_tools') {
       title = 'AI Health Engine Sandbox — RaphaAtlas.com';
       description = 'Interactive AI Clinical Triage, Symptom Assessment, and Diagnostic Logic Engines.';

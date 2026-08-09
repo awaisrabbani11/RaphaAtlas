@@ -6,6 +6,8 @@ import { ArticleDetailView } from './components/ArticleDetailView';
 import { ArchitectureView } from './components/ArchitectureView';
 import { ContentCategoryMatrix } from './components/ContentCategoryMatrix';
 import { AiToolsSandbox } from './components/AiToolsSandbox';
+import { AboutView } from './components/AboutView';
+import { ContactView } from './components/ContactView';
 import { TechIntegrationView } from './components/TechIntegrationView';
 import { UserJourneysView } from './components/UserJourneysView';
 import { BlueprintExportModal } from './components/BlueprintExportModal';
@@ -86,6 +88,13 @@ export default function App() {
         )}
 
         {activeTab === 'ai_tools' && <AiToolsSandbox />}
+        {activeTab === 'about' && (
+          <AboutView
+            onNavigateContact={() => setActiveTab('contact')}
+            onNavigateCalculators={() => setActiveTab('ai_tools')}
+          />
+        )}
+        {activeTab === 'contact' && <ContactView />}
         {activeTab === 'content' && <ContentCategoryMatrix searchQuery={searchQuery} />}
         {activeTab === 'architecture' && <ArchitectureView searchQuery={searchQuery} />}
         {activeTab === 'tech' && <TechIntegrationView />}
@@ -152,6 +161,12 @@ export default function App() {
               </button>
               <button onClick={() => setActiveTab('ai_tools')} className="hover:text-teal-700 transition-colors">
                 Calculators &amp; Tools
+              </button>
+              <button onClick={() => setActiveTab('about')} className="hover:text-teal-700 transition-colors font-bold text-slate-800">
+                About Us
+              </button>
+              <button onClick={() => setActiveTab('contact')} className="hover:text-teal-700 transition-colors font-bold text-slate-800">
+                Contact Us
               </button>
               <a href="/robots.txt" target="_blank" rel="noreferrer" className="hover:text-teal-700 transition-colors font-mono text-[11px]">
                 robots.txt
