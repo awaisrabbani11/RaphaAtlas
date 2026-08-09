@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { ShieldCheck, Stethoscope, HeartPulse, ArrowLeft } from 'lucide-react';
+import { ShieldCheck, Stethoscope, HeartPulse, ArrowLeft, AlertTriangle } from 'lucide-react';
 
 interface MacroCalculatorViewProps {
   onBackToCalculators?: () => void;
@@ -507,9 +507,9 @@ export const MacroCalculatorView: React.FC<MacroCalculatorViewProps> = ({ onBack
   return (
     <div className="max-w-5xl mx-auto space-y-6 pb-12 font-sans">
       {/* Header bar */}
-      <div className="flex items-center justify-between bg-white p-4 sm:p-6 rounded-2xl border border-slate-200/80 shadow-2xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 sm:p-6 rounded-2xl border border-slate-200/80 shadow-2xs">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 bg-teal-50 text-teal-700 rounded-xl border border-teal-100">
+          <div className="p-2.5 bg-teal-50 text-teal-700 rounded-xl border border-teal-100 shrink-0">
             <HeartPulse className="h-5 w-5" />
           </div>
           <div>
@@ -522,15 +522,22 @@ export const MacroCalculatorView: React.FC<MacroCalculatorViewProps> = ({ onBack
           </div>
         </div>
 
-        {onBackToCalculators && (
-          <button
-            onClick={onBackToCalculators}
-            className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition-all flex items-center gap-1.5"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            <span>All Calculators</span>
-          </button>
-        )}
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="flex items-center gap-2 bg-teal-50 border border-teal-200/80 px-3 py-1.5 rounded-xl text-teal-800 text-xs font-semibold shrink-0">
+            <ShieldCheck className="h-4 w-4 text-teal-700" />
+            <span>Medically Reviewed &amp; Contributed by Dr. Muhammad Awais Rabbani (MBBS) &amp; Dr. Ahmed Humayon</span>
+          </div>
+
+          {onBackToCalculators && (
+            <button
+              onClick={onBackToCalculators}
+              className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 shrink-0"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              <span>All Calculators</span>
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Widget container holding exact HTML and CSS */}
@@ -1019,6 +1026,14 @@ export const MacroCalculatorView: React.FC<MacroCalculatorViewProps> = ({ onBack
             Copied
           </div>
         </div>
+      </div>
+
+      {/* Educational Caution Notice below tool */}
+      <div className="p-4 rounded-2xl bg-amber-50/90 border border-amber-200/80 text-xs text-amber-950 leading-relaxed flex items-start gap-3 shadow-2xs font-sans">
+        <AlertTriangle className="h-4 w-4 text-amber-700 shrink-0 mt-0.5" />
+        <span>
+          Caution: This tool is provided solely for educational and learning purposes. It is not intended as medical, legal, or professional advice. User does not have to interact with it; it is provided for legal purposes.
+        </span>
       </div>
 
       {/* Complete Educational Guide Article */}

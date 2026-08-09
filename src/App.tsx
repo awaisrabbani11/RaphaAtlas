@@ -7,6 +7,7 @@ import { ArchitectureView } from './components/ArchitectureView';
 import { ContentCategoryMatrix } from './components/ContentCategoryMatrix';
 import { AiToolsSandbox } from './components/AiToolsSandbox';
 import { MacroCalculatorView } from './components/MacroCalculatorView';
+import { BacCalculatorView } from './components/BacCalculatorView';
 import { AboutView } from './components/AboutView';
 import { ContactView } from './components/ContactView';
 import { TechIntegrationView } from './components/TechIntegrationView';
@@ -100,9 +101,17 @@ export default function App() {
           )
         )}
 
-        {activeTab === 'ai_tools' && <AiToolsSandbox onOpenMacroCalculator={() => setActiveTab('macro_calculator')} />}
+        {activeTab === 'ai_tools' && (
+          <AiToolsSandbox
+            onOpenMacroCalculator={() => setActiveTab('macro_calculator')}
+            onOpenBacCalculator={() => setActiveTab('bac_calculator')}
+          />
+        )}
         {activeTab === 'macro_calculator' && (
           <MacroCalculatorView onBackToCalculators={() => setActiveTab('ai_tools')} />
+        )}
+        {activeTab === 'bac_calculator' && (
+          <BacCalculatorView onBackToCalculators={() => setActiveTab('ai_tools')} />
         )}
         {activeTab === 'about' && (
           <AboutView
@@ -184,12 +193,6 @@ export default function App() {
               <button onClick={() => setActiveTab('contact')} className="hover:text-teal-700 transition-colors font-bold text-slate-800">
                 Contact Us
               </button>
-              <a href="/robots.txt" target="_blank" rel="noreferrer" className="hover:text-teal-700 transition-colors font-mono text-[11px]">
-                robots.txt
-              </a>
-              <a href="/llms.txt" target="_blank" rel="noreferrer" className="hover:text-teal-700 transition-colors font-mono text-[11px] font-bold text-teal-700">
-                llms.txt
-              </a>
             </div>
           </div>
 

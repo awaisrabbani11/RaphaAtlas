@@ -35,6 +35,13 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
 
   const calculatorItems = [
     {
+      id: 'bac_calculator',
+      name: 'BAC Calculator',
+      badge: 'POPULAR',
+      description: 'Blood alcohol concentration, time to limit & time to sober',
+      icon: Activity,
+    },
+    {
       id: 'macro_calculator',
       name: 'Macro Calculator',
       badge: 'NEW',
@@ -127,7 +134,7 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
             const Icon = cat.icon;
             const isPillarSelected = selectedPillar === cat.pillar && activeTab === 'journal';
             const isTabSelected =
-              (cat.id === 'AI_TOOLS' && (activeTab === 'ai_tools' || activeTab === 'macro_calculator')) ||
+              (cat.id === 'AI_TOOLS' && (activeTab === 'ai_tools' || activeTab === 'macro_calculator' || activeTab === 'bac_calculator')) ||
               (cat.id === 'ABOUT' && activeTab === 'about') ||
               (cat.id === 'CONTACT' && activeTab === 'contact') ||
               (cat.id === 'ALL' && activeTab === 'journal' && selectedPillar === 'ALL');

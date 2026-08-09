@@ -82,6 +82,14 @@ export const AutoHeadManager: React.FC<AutoHeadManagerProps> = ({
       title = 'AI Health Engine Sandbox — RaphaAtlas.com';
       description = 'Interactive AI Clinical Triage, Symptom Assessment, and Diagnostic Logic Engines.';
       canonicalUrl = 'https://raphaatlas.com/ai-tools';
+    } else if (activeTab === 'bac_calculator') {
+      title = 'Blood Alcohol Concentration (BAC) Calculator — RaphaAtlas.com';
+      description = 'Free evidence-based BAC calculator estimating blood alcohol levels, driving limit thresholds, and time to sobriety using the Widmark equation.';
+      canonicalUrl = 'https://raphaatlas.com/bac-calculator';
+    } else if (activeTab === 'macro_calculator') {
+      title = 'Free Macro Calculator: Accurate Protein, Fat & Carbs — RaphaAtlas.com';
+      description = 'Calculate your personalized daily macronutrients and calories for weight loss, maintenance, or muscle gain.';
+      canonicalUrl = 'https://raphaatlas.com/macro-calculator';
     } else if (activeTab === 'content') {
       title = 'Content & Category Matrix — RaphaAtlas.com';
       description = 'Complete taxonomy across Lifestyle, Fitness, Medical Science, and AI Engineering.';
