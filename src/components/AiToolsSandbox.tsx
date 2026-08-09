@@ -6,7 +6,11 @@ import {
   RefreshCw, Copy, Check, Activity, Moon, Heart, Stethoscope, Scale, ArrowRight 
 } from 'lucide-react';
 
-export const AiToolsSandbox: React.FC = () => {
+interface AiToolsSandboxProps {
+  onOpenMacroCalculator?: () => void;
+}
+
+export const AiToolsSandbox: React.FC<AiToolsSandboxProps> = ({ onOpenMacroCalculator }) => {
   const [viewMode, setViewMode] = useState<'CALCULATORS' | 'AI_SUITE'>('CALCULATORS');
   const [activeCalc, setActiveCalc] = useState<'APOB' | 'VO2' | 'SLEEP' | 'PROTEIN'>('APOB');
 
@@ -229,6 +233,31 @@ export const AiToolsSandbox: React.FC = () => {
       {/* ==================================================================== */}
       {viewMode === 'CALCULATORS' && (
         <div className="space-y-6">
+          {/* Featured Dedicated Macro Calculator Banner */}
+          {onOpenMacroCalculator && (
+            <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-teal-950 text-white rounded-3xl p-6 sm:p-8 border border-slate-700 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+              <div className="space-y-2 max-w-2xl">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30 font-mono">
+                  <span>SPECIALIZED NUTRITION ENGINE</span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold font-sans">
+                  Comprehensive Clinical Macro Calculator
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Calculates body mass protein anchors, Mifflin-St Jeor / Katch-McArdle BMR, desired rate of weight change, and YMYL safety calorie floors.
+                </p>
+              </div>
+
+              <button
+                onClick={onOpenMacroCalculator}
+                className="px-6 py-3 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-xl text-xs transition-all flex items-center gap-2 shrink-0 shadow-sm"
+              >
+                <span>Launch Macro Calculator</span>
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
+          )}
+
           {/* Calculator Selector Tabs */}
           <div className="flex flex-wrap items-center gap-2">
             {[

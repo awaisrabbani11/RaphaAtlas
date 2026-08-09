@@ -6,6 +6,7 @@ import { ArticleDetailView } from './components/ArticleDetailView';
 import { ArchitectureView } from './components/ArchitectureView';
 import { ContentCategoryMatrix } from './components/ContentCategoryMatrix';
 import { AiToolsSandbox } from './components/AiToolsSandbox';
+import { MacroCalculatorView } from './components/MacroCalculatorView';
 import { AboutView } from './components/AboutView';
 import { ContactView } from './components/ContactView';
 import { TechIntegrationView } from './components/TechIntegrationView';
@@ -99,7 +100,10 @@ export default function App() {
           )
         )}
 
-        {activeTab === 'ai_tools' && <AiToolsSandbox />}
+        {activeTab === 'ai_tools' && <AiToolsSandbox onOpenMacroCalculator={() => setActiveTab('macro_calculator')} />}
+        {activeTab === 'macro_calculator' && (
+          <MacroCalculatorView onBackToCalculators={() => setActiveTab('ai_tools')} />
+        )}
         {activeTab === 'about' && (
           <AboutView
             onNavigateContact={() => setActiveTab('contact')}
