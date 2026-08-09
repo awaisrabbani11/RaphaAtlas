@@ -255,13 +255,17 @@ export const AiToolsSandbox: React.FC<AiToolsSandboxProps> = ({
                   </p>
                 </div>
 
-                <button
-                  onClick={onOpenBodyTypeCalculator}
+                <a
+                  href="/body-type-calculator"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onOpenBodyTypeCalculator();
+                  }}
                   className="px-5 py-2.5 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-2 shadow-sm self-start"
                 >
                   <span>Launch Body Type Calculator</span>
                   <ArrowRight className="h-4 w-4" />
-                </button>
+                </a>
               </div>
             )}
 
@@ -279,13 +283,17 @@ export const AiToolsSandbox: React.FC<AiToolsSandboxProps> = ({
                   </p>
                 </div>
 
-                <button
-                  onClick={onOpenBacCalculator}
+                <a
+                  href="/bac-calculator"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onOpenBacCalculator();
+                  }}
                   className="px-5 py-2.5 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-2 shadow-sm self-start"
                 >
                   <span>Launch BAC Calculator</span>
                   <ArrowRight className="h-4 w-4" />
-                </button>
+                </a>
               </div>
             )}
 
@@ -303,13 +311,17 @@ export const AiToolsSandbox: React.FC<AiToolsSandboxProps> = ({
                   </p>
                 </div>
 
-                <button
-                  onClick={onOpenMacroCalculator}
+                <a
+                  href="/macro-calculator"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onOpenMacroCalculator();
+                  }}
                   className="px-5 py-2.5 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-2 shadow-sm self-start"
                 >
                   <span>Launch Macro Calculator</span>
                   <ArrowRight className="h-4 w-4" />
-                </button>
+                </a>
               </div>
             )}
           </div>

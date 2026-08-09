@@ -40,6 +40,7 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
       badge: 'NEW',
       description: 'Waist-to-hip ratio & body shape classification',
       icon: Scale,
+      href: '/body-type-calculator',
     },
     {
       id: 'bac_calculator',
@@ -47,6 +48,7 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
       badge: 'POPULAR',
       description: 'Blood alcohol concentration, time to limit & time to sober',
       icon: Activity,
+      href: '/bac-calculator',
     },
     {
       id: 'macro_calculator',
@@ -54,6 +56,7 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
       badge: 'NEW',
       description: 'Daily protein, carbs, fat & calorie deficit/surplus targets',
       icon: Flame,
+      href: '/macro-calculator',
     },
     {
       id: 'ai_tools',
@@ -61,6 +64,7 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
       badge: 'AI ENGINE',
       description: 'ApoB risk, VO2 Max, BAC, Body Type & Lab Decoder',
       icon: Calculator,
+      href: '/calculators',
     },
   ];
 
@@ -70,6 +74,7 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
       label: 'Home & Articles',
       icon: Home,
       pillar: 'ALL' as const,
+      href: '/',
     },
     {
       id: 'AI_TOOLS',
@@ -77,36 +82,42 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
       icon: Calculator,
       pillar: 'AI_TOOLS' as const,
       hasDropdown: true,
+      href: '/calculators',
     },
     {
       id: 'LIFESTYLE',
       label: 'Lifestyle & Sleep',
       icon: Moon,
       pillar: 'LIFESTYLE' as const,
+      href: '/lifestyle',
     },
     {
       id: 'FITNESS',
       label: 'Fitness & Mobility',
       icon: Activity,
       pillar: 'FITNESS' as const,
+      href: '/fitness',
     },
     {
       id: 'MEDICAL',
       label: 'Medical & Biomarkers',
       icon: Stethoscope,
       pillar: 'MEDICAL' as const,
+      href: '/medical',
     },
     {
       id: 'ABOUT',
       label: 'About Us',
       icon: BookOpen,
       pillar: 'ABOUT' as const,
+      href: '/about',
     },
     {
       id: 'CONTACT',
       label: 'Contact',
       icon: Sparkles,
       pillar: 'CONTACT' as const,
+      href: '/contact',
     },
   ];
 
@@ -182,9 +193,11 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
                       {calculatorItems.map((item) => {
                         const ItemIcon = item.icon;
                         return (
-                          <button
+                          <a
                             key={item.id}
-                            onClick={() => {
+                            href={item.href}
+                            onClick={(e) => {
+                              e.preventDefault();
                               setActiveTab(item.id);
                               setCalcDropdownOpen(false);
                             }}
@@ -208,7 +221,7 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
                                 {item.description}
                               </p>
                             </div>
-                          </button>
+                          </a>
                         );
                       })}
                     </div>
@@ -218,9 +231,13 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
             }
 
             return (
-              <button
+              <a
                 key={cat.id}
-                onClick={() => handleCategoryClick(cat)}
+                href={cat.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleCategoryClick(cat);
+                }}
                 className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
                   isActive
                     ? 'bg-teal-700 text-white shadow-2xs'
@@ -229,7 +246,7 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
               >
                 <Icon className={`h-3.5 w-3.5 ${isActive ? 'text-white' : 'text-slate-500'}`} />
                 <span>{cat.label}</span>
-              </button>
+              </a>
             );
           })}
         </nav>
