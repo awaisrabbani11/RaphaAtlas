@@ -44,6 +44,18 @@ export default function App() {
       <Header
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
+        onNavigateAbout={() => {
+          setSelectedArticleId(null);
+          setActiveTab('about');
+        }}
+        onNavigateContact={() => {
+          setSelectedArticleId(null);
+          setActiveTab('contact');
+        }}
+        onNavigateCalculators={() => {
+          setSelectedArticleId(null);
+          setActiveTab('ai_tools');
+        }}
       />
 
       {/* Newspaper Mega Menu Navigation Bar */}

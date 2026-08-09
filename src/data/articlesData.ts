@@ -108,7 +108,7 @@ When ApoB particles penetrate the sub-endothelial layer of arterial walls, macro
     },
     publishedAt: 'July 28, 2026',
     readTime: '6 min read',
-    coverImage: 'https://images.unsplash.com/photo-1511295742362-92c96b124e52?w=800&auto=format&fit=crop&q=80',
+    coverImage: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=800&auto=format&fit=crop&q=80',
     featured: true,
     trending: true,
     executiveSummary: 'Deep Stage 3/4 slow-wave sleep and REM sleep are governed by two distinct biological mechanisms: System 1 (Adenosine sleep pressure) and System 2 (Circadian circadian pacemaker in the suprachiasmatic nucleus). Master light timing and temperature drops to dramatically improve your sleep score.',

@@ -173,6 +173,9 @@ export const ArticleDetailView = ({
         <img
           src={article.coverImage}
           alt={article.title}
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&auto=format&fit=crop&q=80';
+          }}
           className="w-full h-full object-cover"
         />
       </div>

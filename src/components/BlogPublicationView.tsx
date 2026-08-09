@@ -41,41 +41,36 @@ export const BlogPublicationView: React.FC<BlogPublicationViewProps> = ({
 
   return (
     <div className="space-y-10 animate-fadeIn pb-12">
-      {/* Editorial Header Banner - Apple / Google Health Standard */}
-      <div className="relative rounded-3xl bg-white border border-slate-200/80 p-8 sm:p-10 shadow-sm overflow-hidden">
-        <div className="absolute -top-12 -right-12 w-80 h-80 rounded-full bg-teal-500/5 blur-3xl pointer-events-none" />
+      {/* Clean Healthline-Style Hero Banner */}
+      <div className="rounded-3xl bg-white border border-slate-200/80 p-8 sm:p-10 shadow-2xs space-y-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-teal-50 text-teal-800 border border-teal-200/80 font-sans">
+          <ShieldCheck className="h-3.5 w-3.5 text-teal-600" />
+          <span>EVIDENCE-BASED HEALTH CALCULATORS &amp; JOURNAL</span>
+        </div>
 
-        <div className="relative z-10 max-w-3xl space-y-5">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-teal-50 text-teal-700 border border-teal-200/80">
-            <Award className="h-3.5 w-3.5 text-teal-600" />
-            <span>CLINICAL EDITORIAL JOURNAL & AI ENGINE</span>
-          </div>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight font-sans">
+          Health Calculators &amp; Medically Reviewed Guidance
+        </h1>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-['Playfair_Display',serif] text-slate-900 tracking-tight leading-tight">
-            Evidence-Based Health & Fitness — Amplified by Clinical AI
-          </h1>
+        <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-sans max-w-3xl">
+          RaphaAtlas translates physiological formulas and medical literature into clear, single-purpose health calculators and articles — supervised by licensed physicians.
+        </p>
 
-          <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-sans font-normal max-w-2xl">
-            Every publication in RaphaAtlas combines rigorously peer-reviewed clinical research with an <strong>embedded interactive AI assistant</strong> — allowing you to decode laboratory results, optimize sleep architecture, and personalize longevity protocols in real time.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-3 pt-3">
-            <button
-              onClick={() => onSelectArticle(featuredArticle.id)}
-              className="px-6 py-3 bg-teal-700 hover:bg-teal-800 text-white font-semibold rounded-xl text-xs transition-all flex items-center gap-2 shadow-sm"
-            >
-              <BookOpen className="h-4 w-4" />
-              <span>Read Featured Cover Story ({featuredArticle.readTime})</span>
-            </button>
-
-            <button
-              onClick={onOpenAiToolsSandbox}
-              className="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl text-xs transition-all flex items-center gap-2 shadow-sm"
-            >
-              <Calculator className="h-4 w-4 text-teal-300" />
-              <span>Launch Health Calculators &amp; AI</span>
-            </button>
-          </div>
+        <div className="flex flex-wrap items-center gap-3 pt-2">
+          <button
+            onClick={onOpenAiToolsSandbox}
+            className="px-5 py-2.5 bg-teal-700 hover:bg-teal-800 text-white font-bold rounded-xl text-xs transition-all flex items-center gap-2 shadow-2xs"
+          >
+            <Calculator className="h-4 w-4" />
+            <span>Open Health Calculators Hub</span>
+          </button>
+          <button
+            onClick={() => onSelectArticle(featuredArticle.id)}
+            className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-xl text-xs transition-all flex items-center gap-2"
+          >
+            <BookOpen className="h-4 w-4 text-slate-600" />
+            <span>Read Featured Cover Story</span>
+          </button>
         </div>
       </div>
 
@@ -152,6 +147,9 @@ export const BlogPublicationView: React.FC<BlogPublicationViewProps> = ({
               <img
                 src={featuredArticle.coverImage}
                 alt={featuredArticle.title}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&auto=format&fit=crop&q=80';
+                }}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
@@ -215,6 +213,9 @@ export const BlogPublicationView: React.FC<BlogPublicationViewProps> = ({
                   <img
                     src={art.coverImage}
                     alt={art.title}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&auto=format&fit=crop&q=80';
+                    }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-white/90 text-teal-800 border border-teal-200 backdrop-blur-md shadow-xs">
