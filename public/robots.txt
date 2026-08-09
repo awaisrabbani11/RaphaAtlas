@@ -72,4 +72,4 @@ Allow: /
 # Disallow: /*?*        # blocks URL params — only if you have no useful param'd pages
 
 # --- Sitemap (required — this is how crawlers discover your calculator pages) ---
-Sitemap: https://raphaatlas.com/sitemap.xml
+Sitemap: https://www.raphaatlas.com/sitemap.xml
