@@ -9,11 +9,13 @@ import {
 interface AiToolsSandboxProps {
   onOpenMacroCalculator?: () => void;
   onOpenBacCalculator?: () => void;
+  onOpenBodyTypeCalculator?: () => void;
 }
 
 export const AiToolsSandbox: React.FC<AiToolsSandboxProps> = ({
   onOpenMacroCalculator,
   onOpenBacCalculator,
+  onOpenBodyTypeCalculator,
 }) => {
   const [viewMode, setViewMode] = useState<'CALCULATORS' | 'AI_SUITE'>('CALCULATORS');
   const [activeCalc, setActiveCalc] = useState<'APOB' | 'VO2' | 'SLEEP' | 'PROTEIN'>('APOB');
@@ -238,7 +240,31 @@ export const AiToolsSandbox: React.FC<AiToolsSandboxProps> = ({
       {viewMode === 'CALCULATORS' && (
         <div className="space-y-6">
           {/* Featured Standalone Calculators Grid */}
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {onOpenBodyTypeCalculator && (
+              <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-teal-950 text-white rounded-3xl p-6 border border-slate-700 shadow-md flex flex-col justify-between gap-4">
+                <div className="space-y-2">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30 font-mono">
+                    <span>ANTHROPOMETRIC ENGINE</span>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold font-sans">
+                    Body Type &amp; Shape Calculator
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    Find your body shape (Hourglass, Pear, Rectangle, Inverted Triangle, etc.) and waist-to-hip ratio using apparel research science.
+                  </p>
+                </div>
+
+                <button
+                  onClick={onOpenBodyTypeCalculator}
+                  className="px-5 py-2.5 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-2 shadow-sm self-start"
+                >
+                  <span>Launch Body Type Calculator</span>
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              </div>
+            )}
+
             {onOpenBacCalculator && (
               <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-teal-950 text-white rounded-3xl p-6 border border-slate-700 shadow-md flex flex-col justify-between gap-4">
                 <div className="space-y-2">

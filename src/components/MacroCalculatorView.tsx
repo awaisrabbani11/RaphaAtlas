@@ -522,21 +522,53 @@ export const MacroCalculatorView: React.FC<MacroCalculatorViewProps> = ({ onBack
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-2 bg-teal-50 border border-teal-200/80 px-3 py-1.5 rounded-xl text-teal-800 text-xs font-semibold shrink-0">
-            <ShieldCheck className="h-4 w-4 text-teal-700" />
-            <span>Medically Reviewed &amp; Contributed by Dr. Muhammad Awais Rabbani (MBBS) &amp; Dr. Ahmed Humayon</span>
+        {onBackToCalculators && (
+          <button
+            onClick={onBackToCalculators}
+            className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 shrink-0 self-start sm:self-auto"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            <span>All Calculators</span>
+          </button>
+        )}
+      </div>
+
+      {/* Omni Calculator Style Creators & Reviewers Metadata Box */}
+      <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-sans">
+        <div className="flex items-start sm:items-center gap-4">
+          <div className="relative shrink-0">
+            <div className="w-11 h-11 rounded-full bg-slate-900 text-teal-400 flex items-center justify-center font-bold text-xs ring-2 ring-teal-500/30 border border-slate-800 shadow-2xs">
+              <Stethoscope className="h-5 w-5" />
+            </div>
+            <div className="absolute -bottom-1 -right-1 bg-teal-600 text-white rounded-full p-0.5 border border-white">
+              <ShieldCheck className="h-3 w-3" />
+            </div>
           </div>
 
-          {onBackToCalculators && (
-            <button
-              onClick={onBackToCalculators}
-              className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 shrink-0"
-            >
-              <ArrowLeft className="h-3.5 w-3.5" />
-              <span>All Calculators</span>
-            </button>
-          )}
+          <div className="space-y-1 text-xs">
+            <div className="flex flex-wrap items-baseline gap-1.5">
+              <span className="font-semibold text-slate-400 text-[11px] uppercase tracking-wider">Creators</span>
+              <span className="font-bold text-teal-700 hover:underline cursor-default">
+                Dr. Muhammad Awais Rabbani <span className="text-[10px] text-slate-500 font-semibold">(MBBS)</span>
+              </span>
+              <span className="text-slate-400">,</span>
+              <span className="font-bold text-teal-700 hover:underline cursor-default">
+                Dr. Ahmed Humayon
+              </span>
+            </div>
+
+            <div className="flex flex-wrap items-baseline gap-1.5">
+              <span className="font-semibold text-slate-400 text-[11px] uppercase tracking-wider">Reviewers</span>
+              <span className="font-bold text-slate-700 hover:underline cursor-default">
+                Dr. Muhammad Awais Rabbani <span className="text-[10px] text-slate-500 font-semibold">(MBBS)</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 text-[11px] text-slate-500 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200/60 shrink-0 self-start sm:self-auto">
+          <ShieldCheck className="h-3.5 w-3.5 text-teal-600 shrink-0" />
+          <span>Evidence-Based &amp; Medically Verified</span>
         </div>
       </div>
 
@@ -1032,7 +1064,7 @@ export const MacroCalculatorView: React.FC<MacroCalculatorViewProps> = ({ onBack
       <div className="p-4 rounded-2xl bg-amber-50/90 border border-amber-200/80 text-xs text-amber-950 leading-relaxed flex items-start gap-3 shadow-2xs font-sans">
         <AlertTriangle className="h-4 w-4 text-amber-700 shrink-0 mt-0.5" />
         <span>
-          Caution: This tool is provided solely for educational and learning purposes. It is not intended as medical, legal, or professional advice. User does not have to interact with it; it is provided for legal purposes.
+          Caution: This tool is provided solely for educational and learning purposes. It is not intended as medical, legal, or professional advice.
         </span>
       </div>
 

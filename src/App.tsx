@@ -8,6 +8,7 @@ import { ContentCategoryMatrix } from './components/ContentCategoryMatrix';
 import { AiToolsSandbox } from './components/AiToolsSandbox';
 import { MacroCalculatorView } from './components/MacroCalculatorView';
 import { BacCalculatorView } from './components/BacCalculatorView';
+import { BodyTypeCalculatorView } from './components/BodyTypeCalculatorView';
 import { AboutView } from './components/AboutView';
 import { ContactView } from './components/ContactView';
 import { TechIntegrationView } from './components/TechIntegrationView';
@@ -105,7 +106,11 @@ export default function App() {
           <AiToolsSandbox
             onOpenMacroCalculator={() => setActiveTab('macro_calculator')}
             onOpenBacCalculator={() => setActiveTab('bac_calculator')}
+            onOpenBodyTypeCalculator={() => setActiveTab('body_type_calculator')}
           />
+        )}
+        {activeTab === 'body_type_calculator' && (
+          <BodyTypeCalculatorView onBackToCalculators={() => setActiveTab('ai_tools')} />
         )}
         {activeTab === 'macro_calculator' && (
           <MacroCalculatorView onBackToCalculators={() => setActiveTab('ai_tools')} />

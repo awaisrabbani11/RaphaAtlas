@@ -82,6 +82,10 @@ export const AutoHeadManager: React.FC<AutoHeadManagerProps> = ({
       title = 'AI Health Engine Sandbox — RaphaAtlas.com';
       description = 'Interactive AI Clinical Triage, Symptom Assessment, and Diagnostic Logic Engines.';
       canonicalUrl = 'https://raphaatlas.com/ai-tools';
+    } else if (activeTab === 'body_type_calculator') {
+      title = 'Body Type Calculator: Shape & Waist-to-Hip Ratio — RaphaAtlas.com';
+      description = 'Calculate your female or male body shape classification (Hourglass, Pear, Rectangle, Inverted Triangle, etc.) and waist-to-hip ratio.';
+      canonicalUrl = 'https://raphaatlas.com/body-type-calculator';
     } else if (activeTab === 'bac_calculator') {
       title = 'Blood Alcohol Concentration (BAC) Calculator — RaphaAtlas.com';
       description = 'Free evidence-based BAC calculator estimating blood alcohol levels, driving limit thresholds, and time to sobriety using the Widmark equation.';

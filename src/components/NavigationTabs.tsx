@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Article, PillarCategory } from '../types';
 import { 
-  BookOpen, Moon, Activity, Stethoscope, Calculator, Sparkles, Home, ChevronDown, Flame
+  BookOpen, Moon, Activity, Stethoscope, Calculator, Sparkles, Home, ChevronDown, Flame, Scale
 } from 'lucide-react';
 
 interface NavigationTabsProps {
@@ -34,6 +34,13 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
   }, []);
 
   const calculatorItems = [
+    {
+      id: 'body_type_calculator',
+      name: 'Body Type Calculator',
+      badge: 'NEW',
+      description: 'Waist-to-hip ratio & body shape classification',
+      icon: Scale,
+    },
     {
       id: 'bac_calculator',
       name: 'BAC Calculator',
@@ -134,7 +141,7 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
             const Icon = cat.icon;
             const isPillarSelected = selectedPillar === cat.pillar && activeTab === 'journal';
             const isTabSelected =
-              (cat.id === 'AI_TOOLS' && (activeTab === 'ai_tools' || activeTab === 'macro_calculator' || activeTab === 'bac_calculator')) ||
+              (cat.id === 'AI_TOOLS' && (activeTab === 'ai_tools' || activeTab === 'macro_calculator' || activeTab === 'bac_calculator' || activeTab === 'body_type_calculator')) ||
               (cat.id === 'ABOUT' && activeTab === 'about') ||
               (cat.id === 'CONTACT' && activeTab === 'contact') ||
               (cat.id === 'ALL' && activeTab === 'journal' && selectedPillar === 'ALL');
