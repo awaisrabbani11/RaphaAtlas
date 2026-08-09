@@ -72,7 +72,7 @@ export const AutoHeadManager: React.FC<AutoHeadManagerProps> = ({
       canonicalUrl = `https://raphaatlas.com/article/${selectedArticle.id}`;
     } else if (activeTab === 'about') {
       title = 'About Us — Project of Growth Partners Global LLC | RaphaAtlas.com';
-      description = 'RaphaAtlas is a clinical health calculator hub developed under Growth Partners Global LLC and guided by Dr. Muhammad Awais Rabbani (MBBS) and Dr. Ahmed Humayon (MBBS).';
+      description = 'RaphaAtlas is a clinical health calculator hub developed under Growth Partners Global LLC and guided by Dr. Muhammad Awais Rabbani and Dr. Ahmed Humayon.';
       canonicalUrl = 'https://raphaatlas.com/about';
     } else if (activeTab === 'contact') {
       title = 'Contact Medical Team — RaphaAtlas.com';

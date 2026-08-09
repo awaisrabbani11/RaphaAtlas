@@ -51,7 +51,7 @@ export const ContactView: React.FC = () => {
             <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
               <div className="flex items-center gap-2">
                 <Stethoscope className="h-4 w-4 text-teal-700" />
-                <span className="text-xs font-bold text-slate-900">Dr. Muhammad Awais Rabbani (MBBS)</span>
+                <span className="text-xs font-bold text-slate-900">Dr. Muhammad Awais Rabbani</span>
               </div>
               <p className="text-[11px] text-slate-500">Clinical Lead &amp; Medical Content Director</p>
               <a
@@ -67,7 +67,7 @@ export const ContactView: React.FC = () => {
             <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
               <div className="flex items-center gap-2">
                 <Stethoscope className="h-4 w-4 text-teal-700" />
-                <span className="text-xs font-bold text-slate-900">Dr. Ahmed Humayon (MBBS)</span>
+                <span className="text-xs font-bold text-slate-900">Dr. Ahmed Humayon</span>
               </div>
               <p className="text-[11px] text-slate-500">Co-Clinical Director &amp; Medical Informatics</p>
               <a
@@ -112,7 +112,7 @@ export const ContactView: React.FC = () => {
                 Message Received
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                Thank you for contacting RaphaAtlas. Your inquiry has been dispatched to Dr. Muhammad Awais Rabbani (MBBS) and Dr. Ahmed Humayon (MBBS). We will respond to <strong className="text-slate-900">{formData.email}</strong> as quickly as possible.
+                Thank you for contacting RaphaAtlas. Your inquiry has been dispatched to Dr. Muhammad Awais Rabbani and Dr. Ahmed Humayon. We will respond to <strong className="text-slate-900">{formData.email}</strong> as quickly as possible.
               </p>
               <button
                 onClick={() => {

@@ -109,10 +109,10 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigateContact, onNavig
             {/* Dr. Awais */}
             <div className="p-4 bg-teal-50/60 rounded-2xl border border-teal-200/80 flex items-start gap-3">
               <div className="p-2 bg-teal-700 text-white rounded-xl text-xs font-bold shrink-0">
-                MBBS
+                Dr.
               </div>
               <div className="space-y-0.5">
-                <h4 className="text-sm font-bold text-slate-900">Dr. Muhammad Awais Rabbani (MBBS)</h4>
+                <h4 className="text-sm font-bold text-slate-900">Dr. Muhammad Awais Rabbani</h4>
                 <p className="text-xs text-slate-600">Clinical Lead &amp; Medical Content Editor</p>
                 <a
                   href="mailto:dr.awais@growthpartnersgloballlc.com"
@@ -126,10 +126,10 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigateContact, onNavig
             {/* Dr. Ahmed */}
             <div className="p-4 bg-teal-50/60 rounded-2xl border border-teal-200/80 flex items-start gap-3">
               <div className="p-2 bg-teal-700 text-white rounded-xl text-xs font-bold shrink-0">
-                MBBS
+                Dr.
               </div>
               <div className="space-y-0.5">
-                <h4 className="text-sm font-bold text-slate-900">Dr. Ahmed Humayon (MBBS)</h4>
+                <h4 className="text-sm font-bold text-slate-900">Dr. Ahmed Humayon</h4>
                 <p className="text-xs text-slate-600">Co-Clinical Director &amp; Medical Informatics</p>
                 <a
                   href="mailto:dr.ahmed@growthpartnergloballlc.com"
@@ -170,7 +170,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigateContact, onNavig
           <div className="space-y-2 p-4 bg-slate-800/60 rounded-2xl border border-slate-700">
             <span className="font-bold text-white block">Physician Oversight</span>
             <p className="text-slate-400 text-xs leading-relaxed">
-              Maintained under the direct guidance of Dr. Muhammad Awais Rabbani (MBBS) and Dr. Ahmed Humayon (MBBS).
+              Maintained under the direct guidance of Dr. Muhammad Awais Rabbani and Dr. Ahmed Humayon.
             </p>
           </div>
         </div>
