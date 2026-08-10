@@ -953,46 +953,52 @@ export const BacCalculatorView: React.FC<BacCalculatorViewProps> = ({ onBackToCa
           </p>
         </div>
 
-        <div className="space-y-4 pt-4 border-t border-slate-100">
-          <h4 className="text-xl font-bold text-slate-900">FAQ: What Does BAC Stand For?</h4>
-          <p className="text-sm text-slate-700 leading-relaxed">
-            Most assume a breathalyzer just says how drunk you are. Wrong. BAC — blood alcohol concentration — quantifies the percentage of alcohol in blood. Every test, whether a breath test or lab chemical tests, exists to measure exactly that.
-          </p>
-        </div>
+        <div className="space-y-4 pt-6 border-t border-slate-200 mt-6">
+          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">BAC Calculator: FAQs</h3>
+          
+          <div className="space-y-4">
+            <div className="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-1">
+              <h4 className="text-base font-bold text-slate-900">FAQ: What Does BAC Stand For?</h4>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                Most assume a breathalyzer just says how drunk you are. Wrong. BAC — blood alcohol concentration — quantifies the percentage of alcohol in blood. Every test, whether a breath test or lab chemical tests, exists to measure exactly that.
+              </p>
+            </div>
 
-        <div className="space-y-4 pt-4 border-t border-slate-100">
-          <h4 className="text-xl font-bold text-slate-900">FAQ: How Can I Calculate BAC?</h4>
-          <p className="text-sm text-slate-700 leading-relaxed">
-            Skip the apps. Widmark&apos;s formula does it: BAC = A/(bw × Wt) × 100% − mr × t. Here A = amount of alcohol in grams, Wt = body weight in kilograms, bw = ratio of body water to total weight, t = time in hours, and mr = metabolism rate at 0.017% per hour.
-          </p>
-        </div>
+            <div className="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-1">
+              <h4 className="text-base font-bold text-slate-900">FAQ: How Can I Calculate BAC?</h4>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                Skip the apps. Widmark&apos;s formula does it: BAC = A/(bw × Wt) × 100% − mr × t. Here A = amount of alcohol in grams, Wt = body weight in kilograms, bw = ratio of body water to total weight, t = time in hours, and mr = metabolism rate at 0.017% per hour.
+              </p>
+            </div>
 
-        <div className="space-y-4 pt-4 border-t border-slate-100">
-          <h4 className="text-xl font-bold text-slate-900">FAQ: Which Factor Is the Only Way to Lower BAC?</h4>
-          <p className="text-sm text-slate-700 leading-relaxed">
-            Here&apos;s what nobody wants to hear: nothing speeds it up. Coffee, a cold shower, a glass of water — every trick to sober up fast is a myth, not true. Only spending time without drinking lets your system finish what it absorbs and get rid of alcohol.
-          </p>
-        </div>
+            <div className="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-1">
+              <h4 className="text-base font-bold text-slate-900">FAQ: Which Factor Is the Only Way to Lower BAC?</h4>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                Here&apos;s what nobody wants to hear: nothing speeds it up. Coffee, a cold shower, a glass of water — every trick to sober up fast is a myth, not true. Only spending time without drinking lets your system finish what it absorbs and get rid of alcohol.
+              </p>
+            </div>
 
-        <div className="space-y-4 pt-4 border-t border-slate-100">
-          <h4 className="text-xl font-bold text-slate-900">FAQ: What BAC Means That I Am Drunk?</h4>
-          <p className="text-sm text-slate-700 leading-relaxed">
-            Legally, 0.08% BAC marks where you can&apos;t drive under the influence across the United States — though Utah sets it lower. But effects of being drunk begin earlier: mild impairment of speech, vision, coordination, and reaction times.
-          </p>
-        </div>
+            <div className="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-1">
+              <h4 className="text-base font-bold text-slate-900">FAQ: What BAC Means That I Am Drunk?</h4>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                Legally, 0.08% BAC marks where you can&apos;t drive under the influence across the United States — though Utah sets it lower. But effects of being drunk begin earlier: mild impairment of speech, vision, coordination, and reaction times.
+              </p>
+            </div>
 
-        <div className="space-y-4 pt-4 border-t border-slate-100">
-          <h4 className="text-xl font-bold text-slate-900">FAQ: Which Factors Affect BAC Levels?</h4>
-          <p className="text-sm text-slate-700 leading-relaxed">
-            It&apos;s not only the number of standard drinks. Weight matters — a heavier person gets a lower BAC. Sex too: men metabolize faster than women. Add medications, drugs, liver health, speed of sipping, and food — an empty stomach speeds alcohol absorption and intoxication.
-          </p>
-        </div>
+            <div className="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-1">
+              <h4 className="text-base font-bold text-slate-900">FAQ: Which Factors Affect BAC Levels?</h4>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                It&apos;s not only the number of standard drinks. Weight matters — a heavier person gets a lower BAC. Sex too: men metabolize faster than women. Add medications, drugs, liver health, speed of sipping, and food — an empty stomach speeds alcohol absorption and intoxication.
+              </p>
+            </div>
 
-        <div className="space-y-4 pt-4 border-t border-slate-100">
-          <h4 className="text-xl font-bold text-slate-900">FAQ: What Is My BAC After 2 Beers?</h4>
-          <p className="text-sm text-slate-700 leading-relaxed">
-            Take a US man at 180 lbs drinking two large beers — roughly 50 grams of raw alcohol. After about 4 hours to metabolize, his reading lands near 0.06%, or 0.6‰.
-          </p>
+            <div className="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-1">
+              <h4 className="text-base font-bold text-slate-900">FAQ: What Is My BAC After 2 Beers?</h4>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                Take a US man at 180 lbs drinking two large beers — roughly 50 grams of raw alcohol. After about 4 hours to metabolize, his reading lands near 0.06%, or 0.6‰.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

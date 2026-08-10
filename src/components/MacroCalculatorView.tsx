@@ -1587,8 +1587,12 @@ export const MacroCalculatorView: React.FC<MacroCalculatorViewProps> = ({ onBack
             Micronutrient density is the quiet tiebreaker. A serving might carry only 100 milligrams of a key mineral, yet across a day those trace amounts compound into the difference between adequate and merely sufficient eating.
           </p>
 
+          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 border-t border-slate-200 pt-6 mt-6">
+            Macro Calculator: FAQs
+          </h3>
+
           <h4 className="text-lg sm:text-xl font-bold text-slate-900 border-l-4 border-teal-600 pl-3 py-0.5 pt-4">
-            How Do I Calculate My Macronutrient Needs?
+            FAQ: How Do I Calculate My Macronutrient Needs?
           </h4>
 
           <p>
@@ -1596,7 +1600,7 @@ export const MacroCalculatorView: React.FC<MacroCalculatorViewProps> = ({ onBack
           </p>
 
           <h4 className="text-lg sm:text-xl font-bold text-slate-900 border-l-4 border-teal-600 pl-3 py-0.5 pt-4">
-            How Do You Calculate The Macros In Your Food?
+            FAQ: How Do You Calculate The Macros In Your Food?
           </h4>
 
           <p>
@@ -1604,7 +1608,7 @@ export const MacroCalculatorView: React.FC<MacroCalculatorViewProps> = ({ onBack
           </p>
 
           <h4 className="text-lg sm:text-xl font-bold text-slate-900 border-l-4 border-teal-600 pl-3 py-0.5 pt-4">
-            How Do You Calculate Macros For Special Diets?
+            FAQ: How Do You Calculate Macros For Special Diets?
           </h4>
 
           <p>
@@ -1612,7 +1616,7 @@ export const MacroCalculatorView: React.FC<MacroCalculatorViewProps> = ({ onBack
           </p>
 
           <h4 className="text-lg sm:text-xl font-bold text-slate-900 border-l-4 border-teal-600 pl-3 py-0.5 pt-4">
-            Can I Use The Macro Calculator If I Have A Medical Condition?
+            FAQ: Can I Use The Macro Calculator If I Have A Medical Condition?
           </h4>
 
           <p>
@@ -1620,7 +1624,7 @@ export const MacroCalculatorView: React.FC<MacroCalculatorViewProps> = ({ onBack
           </p>
 
           <h4 className="text-lg sm:text-xl font-bold text-slate-900 border-l-4 border-teal-600 pl-3 py-0.5 pt-4">
-            Can The Macro Calculator Help Me Lose Weight?
+            FAQ: Can The Macro Calculator Help Me Lose Weight?
           </h4>
 
           <p>
@@ -1628,7 +1632,7 @@ export const MacroCalculatorView: React.FC<MacroCalculatorViewProps> = ({ onBack
           </p>
 
           <h4 className="text-lg sm:text-xl font-bold text-slate-900 border-l-4 border-teal-600 pl-3 py-0.5 pt-4">
-            What Is A Good Macro Ratio For Fat Loss Or Muscle Gain?
+            FAQ: What Is A Good Macro Ratio For Fat Loss Or Muscle Gain?
           </h4>
 
           <p>
@@ -1636,7 +1640,7 @@ export const MacroCalculatorView: React.FC<MacroCalculatorViewProps> = ({ onBack
           </p>
 
           <h4 className="text-lg sm:text-xl font-bold text-slate-900 border-l-4 border-teal-600 pl-3 py-0.5 pt-4">
-            What Are The Downsides Of Counting Macros?
+            FAQ: What Are The Downsides Of Counting Macros?
           </h4>
 
           <p>
@@ -1644,7 +1648,7 @@ export const MacroCalculatorView: React.FC<MacroCalculatorViewProps> = ({ onBack
           </p>
 
           <h4 className="text-lg sm:text-xl font-bold text-slate-900 border-l-4 border-teal-600 pl-3 py-0.5 pt-4">
-            Does This Calculator Work And Why Should I Trust It?
+            FAQ: Does This Calculator Work And Why Should I Trust It?
           </h4>
 
           <p>
@@ -1652,7 +1656,7 @@ export const MacroCalculatorView: React.FC<MacroCalculatorViewProps> = ({ onBack
           </p>
 
           <h4 className="text-lg sm:text-xl font-bold text-slate-900 border-l-4 border-teal-600 pl-3 py-0.5 pt-4">
-            Is It Better To Focus On Macros Or Calories?
+            FAQ: Is It Better To Focus On Macros Or Calories?
           </h4>
 
           <p>

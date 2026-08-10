@@ -86,6 +86,11 @@ export const AutoHeadManager: React.FC<AutoHeadManagerProps> = ({
       title = 'AI Health Engine Sandbox — RaphaAtlas.com';
       description = 'Interactive AI Clinical Triage, Symptom Assessment, and Diagnostic Logic Engines.';
       canonicalUrl = 'https://www.raphaatlas.com/ai-tools';
+    } else if (activeTab === 'conception_calculator') {
+      title = 'Conception Calculator — Find Your Conception Date, Fertile Window & Due Date | RaphaAtlas.com';
+      description = 'Free conception calculator. Estimate the most likely date you conceived, your fertile window, gestational age, and due date from your due date, last period, ultrasound, IVF transfer, or a known conception date.';
+      canonicalUrl = 'https://www.raphaatlas.com/conception-calculator';
+      ogImage = 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=80';
     } else if (activeTab === 'body_type_calculator') {
       title = 'Body Type Calculator: Shape & Waist-to-Hip Ratio — RaphaAtlas.com';
       description = 'Calculate your female or male body shape classification (Hourglass, Pear, Rectangle, Inverted Triangle, etc.) and waist-to-hip ratio.';

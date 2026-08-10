@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Article, PillarCategory } from '../types';
 import { 
-  BookOpen, Moon, Activity, Stethoscope, Calculator, Sparkles, Home, ChevronDown, Flame, Scale
+  BookOpen, Moon, Activity, Stethoscope, Calculator, Sparkles, Home, ChevronDown, Flame, Scale, Heart
 } from 'lucide-react';
 
 interface NavigationTabsProps {
@@ -34,6 +34,14 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
   }, []);
 
   const calculatorItems = [
+    {
+      id: 'conception_calculator',
+      name: 'Conception Calculator',
+      badge: 'NEW',
+      description: 'Conception date, fertile window, gestational age & EDD',
+      icon: Heart,
+      href: '/conception-calculator',
+    },
     {
       id: 'body_type_calculator',
       name: 'Body Type Calculator',

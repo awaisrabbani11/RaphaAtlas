@@ -9,6 +9,7 @@ import { AiToolsSandbox } from './components/AiToolsSandbox';
 import { MacroCalculatorView } from './components/MacroCalculatorView';
 import { BacCalculatorView } from './components/BacCalculatorView';
 import { BodyTypeCalculatorView } from './components/BodyTypeCalculatorView';
+import { ConceptionCalculatorView } from './components/ConceptionCalculatorView';
 import { AboutView } from './components/AboutView';
 import { ContactView } from './components/ContactView';
 import { TechIntegrationView } from './components/TechIntegrationView';
@@ -28,6 +29,8 @@ function parseRoute(pathname: string): { activeTab: string; selectedPillar: Pill
   }
 
   switch (cleanPath) {
+    case '/conception-calculator':
+      return { activeTab: 'conception_calculator', selectedPillar: 'ALL', selectedArticleId: null };
     case '/body-type-calculator':
       return { activeTab: 'body_type_calculator', selectedPillar: 'ALL', selectedArticleId: null };
     case '/macro-calculator':
@@ -64,6 +67,7 @@ function getPathForState(activeTab: string, selectedPillar: PillarCategory | 'AL
   if (selectedArticleId) {
     return `/article/${selectedArticleId}`;
   }
+  if (activeTab === 'conception_calculator') return '/conception-calculator';
   if (activeTab === 'body_type_calculator') return '/body-type-calculator';
   if (activeTab === 'macro_calculator') return '/macro-calculator';
   if (activeTab === 'bac_calculator') return '/bac-calculator';
@@ -185,7 +189,11 @@ export default function App() {
             onOpenMacroCalculator={() => navigateTo('macro_calculator')}
             onOpenBacCalculator={() => navigateTo('bac_calculator')}
             onOpenBodyTypeCalculator={() => navigateTo('body_type_calculator')}
+            onOpenConceptionCalculator={() => navigateTo('conception_calculator')}
           />
+        )}
+        {activeTab === 'conception_calculator' && (
+          <ConceptionCalculatorView onBackToCalculators={() => navigateTo('ai_tools')} />
         )}
         {activeTab === 'body_type_calculator' && (
           <BodyTypeCalculatorView onBackToCalculators={() => navigateTo('ai_tools')} />

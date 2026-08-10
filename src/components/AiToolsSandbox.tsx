@@ -10,12 +10,14 @@ interface AiToolsSandboxProps {
   onOpenMacroCalculator?: () => void;
   onOpenBacCalculator?: () => void;
   onOpenBodyTypeCalculator?: () => void;
+  onOpenConceptionCalculator?: () => void;
 }
 
 export const AiToolsSandbox: React.FC<AiToolsSandboxProps> = ({
   onOpenMacroCalculator,
   onOpenBacCalculator,
   onOpenBodyTypeCalculator,
+  onOpenConceptionCalculator,
 }) => {
   const [viewMode, setViewMode] = useState<'CALCULATORS' | 'AI_SUITE'>('CALCULATORS');
   const [activeCalc, setActiveCalc] = useState<'APOB' | 'VO2' | 'SLEEP' | 'PROTEIN'>('APOB');
@@ -241,6 +243,34 @@ export const AiToolsSandbox: React.FC<AiToolsSandboxProps> = ({
         <div className="space-y-6">
           {/* Featured Standalone Calculators Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {onOpenConceptionCalculator && (
+              <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-rose-950 text-white rounded-3xl p-6 border border-slate-700 shadow-md flex flex-col justify-between gap-4">
+                <div className="space-y-2">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30 font-mono">
+                    <span>FERTILITY &amp; OBSTETRIC ENGINE</span>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold font-sans">
+                    Pregnancy Conception Calculator
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    Estimate your conception date, fertile window, gestational age, and due date from due date, LMP, scan, or IVF transfer.
+                  </p>
+                </div>
+
+                <a
+                  href="/conception-calculator"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onOpenConceptionCalculator();
+                  }}
+                  className="px-5 py-2.5 bg-rose-500 hover:bg-rose-400 text-slate-950 font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-2 shadow-sm self-start"
+                >
+                  <span>Launch Conception Calculator</span>
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
+            )}
+
             {onOpenBodyTypeCalculator && (
               <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-teal-950 text-white rounded-3xl p-6 border border-slate-700 shadow-md flex flex-col justify-between gap-4">
                 <div className="space-y-2">

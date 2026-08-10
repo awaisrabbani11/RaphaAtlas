@@ -1164,7 +1164,7 @@ export const BodyTypeCalculatorView: React.FC<BodyTypeCalculatorViewProps> = ({ 
           <p>Clinically, I would never counsel anyone to chase a ratio hoping for conception. Address ovulation, thyroid function, insulin sensitivity, and underlying disease instead. Measurements describe distribution; they diagnose nothing about reproductive capacity on their own.</p>
           <p>The honest takeaway resists every headline. Ratio sits among dozens of weak signals, useful for population research, nearly useless for predicting one person's path. Treat it as trivia, never as a substitute for proper testing.</p>
 
-          <h2 className="text-xl font-bold text-slate-900 pt-4">Why is it Important to Know Our Body Shape?</h2>
+          <h2 className="text-xl font-bold text-slate-900 pt-4">Why It Is Important to Know Your Body Shape</h2>
           <p>Knowing your shape barely matters for style, honestly. Its real value sits inside health assessment. Where fat distributes signals metabolic health risks that a bathroom scale, obsessed only with weight, completely misses every single morning.</p>
           <p>Personalized fitness plans collapse when built on generic templates copied online. A frame carrying weight centrally needs different programming than one storing it peripherally. Matching exercise to distribution beats mimicking whatever influencer routine trends weekly.</p>
           <p>Boosting confidence gets marketed as the headline benefit, though I rank it dead last. Confidence follows competence. Understanding your proportions lets you dress and train deliberately, and the self-assurance simply arrives quietly afterward as byproduct.</p>
@@ -1224,152 +1224,152 @@ export const BodyTypeCalculatorView: React.FC<BodyTypeCalculatorViewProps> = ({ 
 
           <div className="space-y-4 pt-2">
             <div>
-              <h3 className="font-bold text-slate-900 text-base">What Are The 5 Body Types?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: What Are The 5 Body Types?</h3>
               <p className="mt-1">Forget rigid categories. The hourglass, pear, apple, rectangle, and inverted triangle are common female groups used to describe proportion, not health — labels for silhouette, never a verdict on your body.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">How Do I Measure My Body Correctly?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: How Do I Measure My Body Correctly?</h3>
               <p className="mt-1">Precision beats guesswork. Stand naturally, keep the flexible tape level, and wrap it all the way around each point — bust, shoulders, narrowest waist, high hip, then widest hips — without sucking in or pulling tight.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">Can Body Type Change Over Time?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: Can Body Type Change Over Time?</h3>
               <p className="mt-1">Your basic frame stays stable, but visible body shape can shift with age, hormones, pregnancy, resistance training, or weight change. When clothing fit suddenly feels off, that's your cue to remeasure.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">What's The Difference Between Body Type And Body Shape?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: What's The Difference Between Body Type And Body Shape?</h3>
               <p className="mt-1">People blur these terms daily. Body shape tracks visible proportions — what everyday style content actually cares about. Body type, or somatotype, reads your frame and build more strictly, so they're rarely the same way.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">Is This Calculator Accurate?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: Is This Calculator Accurate?</h3>
               <p className="mt-1">Define accurate first. With careful measurements, this tool gives a strong first read on proportion — a practical guide for tailoring, not professional fitting or medical advice.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">How Is The Hourglass Body Type Defined?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: How Is The Hourglass Body Type Defined?</h3>
               <p className="mt-1">Curves aren't the criterion — ratio is. An hourglass shows bust and hips close in size, a waist visibly defined and smaller by a clear margin, keeping upper body and lower body balanced around the middle.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">What Body Type Do I Have If My Waist Is Bigger Than My Hips?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: What Body Type Do I Have If My Waist Is Bigger Than My Hips?</h3>
               <p className="mt-1">Bigger waist doesn't guarantee one label. In female mode, that upper-body measurement against hips flags apple; the male mode reads oval. Neither final result stays narrow or close — the mode decides.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">Body Type Calculator For Men – How Does It Work?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: Body Type Calculator For Men – How Does It Work?</h3>
               <p className="mt-1">Forget needing a dozen inputs. The male version reads shoulders, chest, waist, hips, distilling them into three numbers whose pattern sorts you into rectangle, trapezoid, oval, triangle, or inverted triangle.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">What Body Type Is Most Common?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: What Body Type Is Most Common?</h3>
               <p className="mt-1">There's no universal answer, despite confident charts. Frequency shifts by age, region, and group measured. Rectangle and pear dominate common results across most body shape guides, but no single population yields one most common verdict.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">Does Body Type Affect Clothing Size?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: Does Body Type Affect Clothing Size?</h3>
               <p className="mt-1">Yes, and here's what trips people: two people wear the same size label yet need different cuts. Size measures volume; body type decides where volume sits. Shape matters as much as size on any rack.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">What Is The Most Common Body Shape?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: What Is The Most Common Body Shape?</h3>
               <p className="mt-1">Skip the vague hedging — the numbers exist. Across the female population, rectangle leads at 46%, spoons near 20%, inverted triangles around 14%, hourglasses roughly 8%. So rectangle is the most common shape most women carry.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">Does A Woman's Body Shape Change With Age?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: Does A Woman's Body Shape Change With Age?</h3>
               <p className="mt-1">Genetics set the frame, but hormonal changes keep rewriting it. Puberty brings estrogen, hips widen, breasts develop. Pregnancy and menopause later redistribute fat stored across thighs, buttocks, abdomen — shifting your hip-waist ratio for good.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">Can You Change Your Body Shape?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: Can You Change Your Body Shape?</h3>
               <p className="mt-1">Forget the myth it's impossible to change shape after puberty. Bone structure stays mostly defined, but losing fat from thighs, buttocks, abdomen, plus targeting muscle groups—glutes, hamstrings, shoulders—builds muscle mass for longer-looking legs.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">What Is My Body Type?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: What Is My Body Type?</h3>
               <p className="mt-1">Nobody is a pure category. The three primary somatotypes—ectomorph, endomorph, mesomorph—describe tendencies, not verdicts. Lean, long types find building muscle challenging; others hold weight, find it difficult to lose fat. Most mix.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">What Are The 3 Main Body Types?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: What Are The 3 Main Body Types?</h3>
               <p className="mt-1">These aren't destiny. A tall, slight of build frame finds gaining weight hard—a basketball player with high metabolism eats freely, no problem. Strong athletes carry dense muscle; other bodies hold fat, showing different proportions.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">What Are The 5 Female Body Types?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: What Are The 5 Female Body Types?</h3>
               <p className="mt-1">Five labels rarely fit cleanly. A rectangle or ruler body reads straight, not particularly curvy. The pear shows hips much larger than bust; inverted triangle flips it—wider shoulders, narrow waist; hourglass stays nearly equal.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">What Is The Meaning Of 36 24 36 Figure?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: What Is The Meaning Of 36 24 36 Figure?</h3>
               <p className="mt-1">That famous ratio isn't a beauty ideal—it's plain measurement. Three numbers map bust, waist, hips: 36 24 36 inches, or 90 60 90 centimeters. Read the fullest point of chest, then your narrowest part.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">What Is A Healthy Waist Size?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: What Is A Healthy Waist Size?</h3>
               <p className="mt-1">Forget aesthetics—this is a health marker. The WHO warns a woman past 31.5 inches (80 cm), a man past 37 inches (94 cm). Beyond 40 inches (102 cm), obesity, diabetes, asthma, Alzheimer's risks rise.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">Does Your Body Shape Change When You Lose Weight?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: Does Your Body Shape Change When You Lose Weight?</h3>
               <p className="mt-1">Shedding pounds rarely rebuilds you. Lose weight and a female body still store weight through estrogen; male fat drifts to the stomach, the beer belly. Body shape grows slimmer, doesn't fundamentally change.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">What Is A Zero Figure?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: What Is A Zero Figure?</h3>
               <p className="mt-1">Chasing a zero figure isn't glamour — it's often underweight territory. Size zero in the US clothing sizes system maps to roughly 30 22 32 inches. Near anorexia? Consult a doctor, ignore vanity sizing.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">What Is My Body Shape?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: What Is My Body Shape?</h3>
               <p className="mt-1">Forget guessing in the mirror. Your body shape comes from ratio — bust, waist, hip measurements, plus high hip. Women land in common female shapes like apple or spoon; men, common male shapes: oval, trapezoid.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">What Is A Body Shape Calculator?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: What Is A Body Shape Calculator?</h3>
               <p className="mt-1">It's not magic. A body shape calculator is simply a tool taking your body measurements — waist, hip, high hip — comparing ratios to estimate where you sit among standard body shape categories.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">How Do I Find Out What Body Shape I Am?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: How Do I Find Out What Body Shape I Am?</h3>
               <p className="mt-1">Skip the eyeballing. Grab a soft tape measure, measure bust, waist, hips and high hip, then enter those into a calculator. That's how you actually pin down your body shape — numbers, not vibes.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">What Measurements Do I Need For This Body Shape Calculator?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: What Measurements Do I Need For This Body Shape Calculator?</h3>
               <p className="mt-1">Four numbers, not twenty. Need four measurements: fullest part of chest, narrowest part of torso, high hip at 3–4 inches below waist, and hip — fullest part of hips and seat. Optional shoulder measurement improves accuracy.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">Can Men Use This Body Shape Calculator?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: Can Men Use This Body Shape Calculator?</h3>
               <p className="mt-1">Skip the assumption that this only serves women. Yes, men benefit equally—just select gender first, and the measurement-based method maps your ratios onto male body shapes rather than defaulting to female silhouettes.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">Can I Use Centimeters Instead Of Inches?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: Can I Use Centimeters Instead Of Inches?</h3>
               <p className="mt-1">Consistency beats conversion. Use your preferred unit, but apply the same unit to every field—mixing units silently produces an incorrect result the calculator can't flag, since it never sees which system you intended.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">What Is The Difference Between Body Shape And Body Type?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: What Is The Difference Between Body Shape And Body Type?</h3>
               <p className="mt-1">Most people treat these as synonyms; they aren't. Body shape reads your visual silhouette and proportions from measurements, while body type describes overall build, metabolism, and fat tendency—qualities estimated, not directly measured.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">How Accurate Is This Body Shape Calculator?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: How Accurate Is This Body Shape Calculator?</h3>
               <p className="mt-1">Accuracy is the wrong lens. Free body shape tools run proportion rules over basic inputs, staying accurate as estimates—3-measurement tools with an optional shoulder measurement act as a helpful guide, not definitive label.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">What Is A High Hip Measurement And Why Does It Matter?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: What Is A High Hip Measurement And Why Does It Matter?</h3>
               <p className="mt-1">It's the measurement most people skip. Taken 3–4 inches below natural waist, the high hip captures your curve or hip shelf—that's what lets a 3-measurement calculator distinguish similar shapes and stay more accurate.</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-slate-900 text-base">What Body Shape Is Most Common?</h3>
+              <h3 className="font-bold text-slate-900 text-base">FAQ: What Body Shape Is Most Common?</h3>
               <p className="mt-1">There's no universal answer. The most common result shows similar bust waist hips, though it's relatively specific—rectangle dominates broadly, while hips wider than bust stay common particularly among women.</p>
             </div>
           </div>
