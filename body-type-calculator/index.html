@@ -4,106 +4,237 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Body Type Calculator — Find Your Somatotype | RaphaAtlas</title>
-<meta name="description" content="Free body type calculator. Find whether you are an ectomorph, mesomorph, or endomorph and how it shapes training and nutrition.">
+<meta name="description" content="Free body type calculator. Find whether you are an ectomorph, mesomorph, or endomorph and what it means for training and nutrition.">
 <link rel="canonical" href="https://www.raphaatlas.com/body-type-calculator/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="RaphaAtlas">
 <meta property="og:title" content="Body Type Calculator — Find Your Somatotype | RaphaAtlas">
-<meta property="og:description" content="Free body type calculator. Find whether you are an ectomorph, mesomorph, or endomorph and how it shapes training and nutrition.">
+<meta property="og:description" content="Free body type calculator. Find whether you are an ectomorph, mesomorph, or endomorph and what it means for training and nutrition.">
 <meta property="og:url" content="https://www.raphaatlas.com/body-type-calculator/">
 <meta property="og:image" content="https://www.raphaatlas.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Body Type Calculator — Find Your Somatotype | RaphaAtlas">
-<meta name="twitter:description" content="Free body type calculator. Find whether you are an ectomorph, mesomorph, or endomorph and how it shapes training and nutrition.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+
 </head>
 <body>
 <header class="site-header">
   <div class="wrap bar">
-    <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>RaphaAtlas</a>
-    <nav class="mainnav" aria-label="Primary">
-      <a href="/calculators/" aria-current="page">Calculators</a>
-      <a href="/fitness/">Fitness</a>
-      <a href="/nutrition/">Nutrition</a>
-      <a href="/health/">Health</a>
+    <a class="logo" href="/"><span class="dot"></span>RaphaAtlas</a>
+    <button class="hamburger" aria-label="Menu" aria-expanded="false">&#9776;</button>
+    <nav class="nav" aria-label="Primary">
+      <div class="item" aria-open="false">
+        <button aria-haspopup="true" aria-expanded="false">Calculators <span class="caret"></span></button>
+        <div class="menu">
+          <a href="/body-type-calculator/">Body Type Calculator</a>
+          <a href="/macro-calculator/">Macro Calculator</a>
+          <a href="/bac-calculator/">BAC Calculator</a>
+          <a href="/conception-calculator/">Conception Calculator</a>
+          <div class="sep"></div>
+          <a href="/calculators/">All calculators</a>
+        </div>
+      </div>
+      <div class="item" aria-open="false">
+        <button aria-haspopup="true" aria-expanded="false">Fitness <span class="caret"></span></button>
+        <div class="menu">
+          <a href="/fitness/">All Fitness</a>
+          <a href="/fitness/">Strength &amp; Training</a>
+          <a href="/fitness/">Cardio &amp; Conditioning</a>
+          <a href="/fitness/">Recovery</a>
+        </div>
+      </div>
+      <div class="item" aria-open="false">
+        <button aria-haspopup="true" aria-expanded="false">Nutrition <span class="caret"></span></button>
+        <div class="menu">
+          <a href="/nutrition/">All Nutrition</a>
+          <a href="/nutrition/">Macros &amp; Diets</a>
+          <a href="/nutrition/">Supplements</a>
+          <a href="/nutrition/">Weight Management</a>
+        </div>
+      </div>
+      <div class="item" aria-open="false">
+        <button aria-haspopup="true" aria-expanded="false">Health <span class="caret"></span></button>
+        <div class="menu">
+          <a href="/health/">All Health</a>
+          <a href="/health/">Conditions</a>
+          <a href="/health/">Biomarkers</a>
+          <a href="/health/">Preventive Care</a>
+        </div>
+      </div>
+      <div class="item"><a href="/about/">About</a></div>
+      <a class="btn nav-cta" href="/calculators/">Calculators</a>
     </nav>
   </div>
 </header>
-
-<nav class="wrap crumbs" aria-label="Breadcrumb">
-  <a href="/">Home</a><span>/</span><a href="/calculators/">Calculators</a><span>/</span>Body Type Calculator
-</nav>
-
+<nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/calculators/">Calculators</a><span>/</span>Body Type Calculator</nav>
 <main class="article">
   <h1>Body Type Calculator</h1>
-  <p class="lede">Find your somatotype in seconds and learn how ectomorph, mesomorph, and endomorph tendencies influence how you should train and eat.</p>
+  <p style="font-size:19px;color:var(--ink-soft)">Find your dominant somatotype and learn how it shapes the way you should train and eat.</p>
+
+  <div class="tool-hero">
+    <!-- Replace with a real image: <img src="/images/body-type-calculator.jpg" alt="Body Type Calculator"> -->
+    <span class="ph">Add tool image &rarr; /images/body-type-calculator.jpg</span>
+  </div>
 
   <!-- ============================================================
-       PASTE YOUR EXISTING CALCULATOR CODE INSIDE THIS SLOT.
-       Everything between the two markers can be replaced with the
-       full HTML/CSS/JS of your Body Type Calculator. Keep it self-contained.
+       PASTE YOUR EXISTING Body Type Calculator CODE BETWEEN THESE MARKERS.
+       Keep the surrounding page, header, footer, and schema intact.
        ============================================================ -->
   <div class="calc-slot" id="calculator">
     <!-- >>> CALCULATOR START <<< -->
-    <p style="color:var(--muted)">Your Body Type Calculator loads here. Replace this block with your calculator's HTML and inline &lt;script&gt;.</p>
+    <style>
+      .calc-form { display: flex; flex-direction: column; gap: 20px; max-width: 500px; margin: 0 auto; }
+      .calc-form .field { display: flex; flex-direction: column; gap: 8px; }
+      .calc-form label { font-weight: 600; font-size: 15px; }
+      .calc-form select, .calc-form input { padding: 12px; border: 1px solid var(--line); border-radius: 8px; font-family: inherit; font-size: 16px; background: #fff; }
+      .calc-form select:focus, .calc-form input:focus { outline: 2px solid var(--brand); outline-offset: 1px; }
+      .calc-btn { background: var(--brand); color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: 700; font-size: 16px; cursor: pointer; transition: opacity 0.2s; }
+      .calc-btn:hover { opacity: 0.9; }
+      .calc-result { display: none; margin-top: 24px; padding: 24px; background: var(--brand-tint); border-radius: 12px; text-align: center; }
+      .calc-result h3 { margin: 0 0 10px; font-size: 22px; color: var(--brand-deep); }
+      .calc-result p { margin: 0; font-size: 16px; line-height: 1.5; color: var(--ink); }
+    </style>
+    <form id="bodyTypeForm" class="calc-form">
+      <div class="field">
+        <label for="bt_shoulders">1. My shoulders are...</label>
+        <select id="bt_shoulders" required>
+          <option value="" disabled selected>Select an option...</option>
+          <option value="ecto">Narrower than my hips</option>
+          <option value="meso">Wider than my hips</option>
+          <option value="endo">About the same width as my hips</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="bt_wrist">2. When I grab my opposite wrist with my thumb and middle finger...</label>
+        <select id="bt_wrist" required>
+          <option value="" disabled selected>Select an option...</option>
+          <option value="ecto">My fingers overlap easily</option>
+          <option value="meso">My fingers just barely touch</option>
+          <option value="endo">My fingers do not touch at all</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="bt_weight">3. When it comes to weight gain, I...</label>
+        <select id="bt_weight" required>
+          <option value="" disabled selected>Select an option...</option>
+          <option value="ecto">Struggle to gain weight or muscle (fast metabolism)</option>
+          <option value="meso">Gain muscle and lose fat relatively easily</option>
+          <option value="endo">Gain weight easily, but struggle to lose fat</option>
+        </select>
+      </div>
+      <button type="submit" class="calc-btn">Calculate Body Type</button>
+    </form>
+    <div id="bt_result" class="calc-result">
+      <h3 id="bt_type"></h3>
+      <p id="bt_desc"></p>
+    </div>
+    <script>
+      document.getElementById('bodyTypeForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const v1 = document.getElementById('bt_shoulders').value;
+        const v2 = document.getElementById('bt_wrist').value;
+        const v3 = document.getElementById('bt_weight').value;
+        
+        let scores = { ecto: 0, meso: 0, endo: 0 };
+        scores[v1]++;
+        scores[v2]++;
+        scores[v3]++;
+        
+        let max = 'ecto';
+        if (scores.meso > scores[max]) max = 'meso';
+        if (scores.endo > scores[max]) max = 'endo';
+        if (scores.ecto === 1 && scores.meso === 1 && scores.endo === 1) max = 'meso'; // Tie breaker
+        
+        const types = {
+          ecto: { title: "Ectomorph", desc: "You typically have a leaner, slighter frame and a fast metabolism. You likely excel at endurance activities but may need to eat in a caloric surplus and focus on heavy compound lifts to build significant muscle mass." },
+          meso: { title: "Mesomorph", desc: "You naturally have a more athletic, v-tapered or hourglass frame. You tend to respond very well to a balanced mix of strength training and cardio, gaining muscle and shedding fat with moderate dietary adjustments." },
+          endo: { title: "Endomorph", desc: "You have a solid, wider or stockier frame and may gain both muscle and fat easily. You generally benefit from a higher frequency of metabolic conditioning or cardio, alongside a carefully managed diet to stay lean." }
+        };
+        
+        document.getElementById('bt_type').innerText = "Your Body Type: " + types[max].title;
+        document.getElementById('bt_desc').innerText = types[max].desc;
+        document.getElementById('bt_result').style.display = 'block';
+      });
+    </script>
     <!-- >>> CALCULATOR END <<< -->
   </div>
 
-  <div class="med-disclaimer">
-    This tool provides general estimates for educational purposes only and is not a substitute for professional medical advice. Consult a qualified healthcare provider for decisions about your health.
-  </div>
+  <div class="med-note">This tool provides general estimates for educational purposes only and is not a substitute for professional medical advice.</div>
 
   <h2>How this calculator works</h2>
-  <p>The calculator estimates your dominant somatotype from your measurements and frame, then maps that tendency to practical training and nutrition guidance.</p>
+  <p>This tool estimates your dominant body type from your frame and measurements, then maps that tendency to practical training and nutrition guidance.</p>
+
+  <section class="aff">
+    <h2>Recommended products</h2>
+    <div class="aff-grid"><div class="aff-card"><div class="thumb">Product image</div><h4>Resistance Bands Set</h4><p>Progressive resistance for any body type.</p><a class="btn ghost" href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">View on Amazon</a></div><div class="aff-card"><div class="thumb">Product image</div><h4>Adjustable Dumbbells</h4><p>Scale load as you build strength.</p><a class="btn ghost" href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">View on Amazon</a></div><div class="aff-card"><div class="thumb">Product image</div><h4>Body Tape Measure</h4><p>Track measurements accurately.</p><a class="btn ghost" href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">View on Amazon</a></div></div>
+    <p class="aff-disclosure">As an Amazon Associate, RaphaAtlas earns from qualifying purchases. Links are affiliate links; replace PRODUCT-ID and YOUR-AFFILIATE-TAG with your Amazon Associates tag.</p>
+  </section>
 
   <h2>Frequently asked questions</h2>
-  <h3>What are the three body types?</h3>
-  <p>The three somatotypes are ectomorph (lean, narrow frame), mesomorph (muscular, athletic build), and endomorph (softer, wider frame). Most people are a blend.</p>
-  <h3>Can my body type change?</h3>
-  <p>Your underlying frame is largely fixed, but body composition changes with training and nutrition, so your appearance and performance can shift substantially over time.</p>
+  <h3>What are the three body types?</h3><p>The three somatotypes are ectomorph (lean, narrow frame), mesomorph (muscular build), and endomorph (softer, wider frame). Most people are a blend of two.</p><h3>Can my body type change?</h3><p>Your underlying frame is largely fixed, but body composition changes with training and nutrition, so your appearance and performance can shift substantially.</p>
 </main>
 
 <footer class="site-footer">
   <div class="wrap">
-    <div class="foot-cols">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="logo" href="/"><span class="dot"></span>RaphaAtlas</a>
+        <p>Evidence-based health, fitness, and nutrition — with free clinical calculators. A project of Growth Partners Global LLC.</p>
+        <p><a href="mailto:dr.awais@growthpartnersgloballlc.com">dr.awais@growthpartnersgloballlc.com</a><a href="mailto:dr.ahmed@growthpartnersgloballlc.com">dr.ahmed@growthpartnersgloballlc.com</a></p>
+      </div>
       <div>
-        <a class="brand dark" href="/"><span class="mark" aria-hidden="true"></span>RaphaAtlas</a>
+        <h5>Calculators</h5>
+        <a href="/body-type-calculator/">Body Type</a>
+        <a href="/macro-calculator/">Macros</a>
+        <a href="/bac-calculator/">BAC</a>
+        <a href="/conception-calculator/">Conception</a>
       </div>
-      <div><h5>Calculators</h5>
-        <a href="/body-type-calculator/">Body Type</a><a href="/macro-calculator/">Macros</a><a href="/bac-calculator/">BAC</a><a href="/conception-calculator/">Conception</a>
+      <div>
+        <h5>Explore</h5>
+        <a href="/fitness/">Fitness</a>
+        <a href="/nutrition/">Nutrition</a>
+        <a href="/health/">Health</a>
+        <a href="/calculators/">All calculators</a>
       </div>
-      <div><h5>Explore</h5>
-        <a href="/fitness/">Fitness</a><a href="/nutrition/">Nutrition</a><a href="/health/">Health</a>
-      </div>
-      <div><h5>About</h5>
-        <a href="/about/">About</a><a href="/editorial-policy/">Editorial policy</a><a href="/medical-review-board/">Medical review board</a>
+      <div>
+        <h5>Company</h5>
+        <a href="/about/">About</a>
+        <a href="/medical-review-board/">Medical review board</a>
+        <a href="/editorial-policy/">Editorial policy</a>
+        <a href="/contact/">Contact</a>
+        <a href="/privacy/">Privacy</a>
       </div>
     </div>
-    <p class="foot-legal">RaphaAtlas provides general educational information and estimates only. It is not a medical device and does not provide medical advice, diagnosis, or treatment. &copy; <span id="yr"></span> RaphaAtlas.</p>
+
+    <div class="foot-aff">
+      <h5>Recommended products</h5>
+      <div class="foot-aff-row">
+        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Digital Food Scale</a>
+        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Whey Protein</a>
+        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Resistance Bands</a>
+        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Smart Scale</a>
+      </div>
+      <p class="aff-disclosure" style="color:#8AA0A9">As an Amazon Associate, RaphaAtlas earns from qualifying purchases. Replace PRODUCT-ID and YOUR-AFFILIATE-TAG with your Amazon Associates tag.</p>
+    </div>
+
+    <p class="foot-legal">RaphaAtlas provides general educational information and estimates only. It is not a medical device and does not provide medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional for decisions about your health. &copy; <span id="yr"></span> RaphaAtlas — a project of Growth Partners Global LLC.</p>
   </div>
 </footer>
-<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
-    {"@type":"WebApplication","name":"Body Type Calculator","url":"https://www.raphaatlas.com/body-type-calculator/","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.raphaatlas.com/#org"}},
-    {"@type":"BreadcrumbList","itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Home","item":"https://www.raphaatlas.com/"},
-      {"@type":"ListItem","position":2,"name":"Calculators","item":"https://www.raphaatlas.com/calculators/"},
-      {"@type":"ListItem","position":3,"name":"Body Type Calculator","item":"https://www.raphaatlas.com/body-type-calculator/"}
-    ]},
-    {"@type":"FAQPage","mainEntity":[
-      {"@type":"Question","name":"What are the three body types?","acceptedAnswer":{"@type":"Answer","text":"The three somatotypes are ectomorph (lean, narrow frame), mesomorph (muscular, athletic build), and endomorph (softer, wider frame). Most people are a blend."}},
-      {"@type":"Question","name":"Can my body type change?","acceptedAnswer":{"@type":"Answer","text":"Your underlying frame is largely fixed, but body composition changes with training and nutrition, so your appearance and performance can shift substantially over time."}}
-    ]}
-  ]
-}
-</script>
+<script src="/site.js" defer></script>
 </body>
 </html>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebApplication","name":"Body Type Calculator","url":"https://www.raphaatlas.com/body-type-calculator/","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},
+ {"@type":"BreadcrumbList","itemListElement":[
+   {"@type":"ListItem","position":1,"name":"Home","item":"https://www.raphaatlas.com/"},
+   {"@type":"ListItem","position":2,"name":"Calculators","item":"https://www.raphaatlas.com/calculators/"},
+   {"@type":"ListItem","position":3,"name":"Body Type Calculator","item":"https://www.raphaatlas.com/body-type-calculator/"}
+ ]},
+ {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the three body types?","acceptedAnswer":{"@type":"Answer","text":"The three somatotypes are ectomorph (lean, narrow frame), mesomorph (muscular build), and endomorph (softer, wider frame). Most people are a blend of two."}},{"@type":"Question","name":"Can my body type change?","acceptedAnswer":{"@type":"Answer","text":"Your underlying frame is largely fixed, but body composition changes with training and nutrition, so your appearance and performance can shift substantially."}}]}
+]}
+</script>

@@ -4,106 +4,255 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BAC Calculator — Estimate Blood Alcohol Concentration | RaphaAtlas</title>
-<meta name="description" content="Free BAC calculator. Estimate your blood alcohol concentration from drinks, body weight, sex, and time, with clear safety context.">
+<meta name="description" content="Free BAC calculator. Estimate blood alcohol concentration from drinks, body weight, sex, and time, with clear safety context.">
 <link rel="canonical" href="https://www.raphaatlas.com/bac-calculator/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="RaphaAtlas">
 <meta property="og:title" content="BAC Calculator — Estimate Blood Alcohol Concentration | RaphaAtlas">
-<meta property="og:description" content="Free BAC calculator. Estimate your blood alcohol concentration from drinks, body weight, sex, and time, with clear safety context.">
+<meta property="og:description" content="Free BAC calculator. Estimate blood alcohol concentration from drinks, body weight, sex, and time, with clear safety context.">
 <meta property="og:url" content="https://www.raphaatlas.com/bac-calculator/">
 <meta property="og:image" content="https://www.raphaatlas.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="BAC Calculator — Estimate Blood Alcohol Concentration | RaphaAtlas">
-<meta name="twitter:description" content="Free BAC calculator. Estimate your blood alcohol concentration from drinks, body weight, sex, and time, with clear safety context.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+
 </head>
 <body>
 <header class="site-header">
   <div class="wrap bar">
-    <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>RaphaAtlas</a>
-    <nav class="mainnav" aria-label="Primary">
-      <a href="/calculators/" aria-current="page">Calculators</a>
-      <a href="/fitness/">Fitness</a>
-      <a href="/nutrition/">Nutrition</a>
-      <a href="/health/">Health</a>
+    <a class="logo" href="/"><span class="dot"></span>RaphaAtlas</a>
+    <button class="hamburger" aria-label="Menu" aria-expanded="false">&#9776;</button>
+    <nav class="nav" aria-label="Primary">
+      <div class="item" aria-open="false">
+        <button aria-haspopup="true" aria-expanded="false">Calculators <span class="caret"></span></button>
+        <div class="menu">
+          <a href="/body-type-calculator/">Body Type Calculator</a>
+          <a href="/macro-calculator/">Macro Calculator</a>
+          <a href="/bac-calculator/">BAC Calculator</a>
+          <a href="/conception-calculator/">Conception Calculator</a>
+          <div class="sep"></div>
+          <a href="/calculators/">All calculators</a>
+        </div>
+      </div>
+      <div class="item" aria-open="false">
+        <button aria-haspopup="true" aria-expanded="false">Fitness <span class="caret"></span></button>
+        <div class="menu">
+          <a href="/fitness/">All Fitness</a>
+          <a href="/fitness/">Strength &amp; Training</a>
+          <a href="/fitness/">Cardio &amp; Conditioning</a>
+          <a href="/fitness/">Recovery</a>
+        </div>
+      </div>
+      <div class="item" aria-open="false">
+        <button aria-haspopup="true" aria-expanded="false">Nutrition <span class="caret"></span></button>
+        <div class="menu">
+          <a href="/nutrition/">All Nutrition</a>
+          <a href="/nutrition/">Macros &amp; Diets</a>
+          <a href="/nutrition/">Supplements</a>
+          <a href="/nutrition/">Weight Management</a>
+        </div>
+      </div>
+      <div class="item" aria-open="false">
+        <button aria-haspopup="true" aria-expanded="false">Health <span class="caret"></span></button>
+        <div class="menu">
+          <a href="/health/">All Health</a>
+          <a href="/health/">Conditions</a>
+          <a href="/health/">Biomarkers</a>
+          <a href="/health/">Preventive Care</a>
+        </div>
+      </div>
+      <div class="item"><a href="/about/">About</a></div>
+      <a class="btn nav-cta" href="/calculators/">Calculators</a>
     </nav>
   </div>
 </header>
-
-<nav class="wrap crumbs" aria-label="Breadcrumb">
-  <a href="/">Home</a><span>/</span><a href="/calculators/">Calculators</a><span>/</span>BAC Calculator
-</nav>
-
+<nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/calculators/">Calculators</a><span>/</span>BAC Calculator</nav>
 <main class="article">
   <h1>BAC Calculator</h1>
-  <p class="lede">Estimate your blood alcohol concentration from the drinks you have had, your body weight, sex, and elapsed time — with plain safety context.</p>
+  <p style="font-size:19px;color:var(--ink-soft)">Estimate your blood alcohol concentration from the drinks you have had, your body weight, sex, and elapsed time.</p>
+
+  <div class="tool-hero">
+    <!-- Replace with a real image: <img src="/images/bac-calculator.jpg" alt="BAC Calculator"> -->
+    <span class="ph">Add tool image &rarr; /images/bac-calculator.jpg</span>
+  </div>
 
   <!-- ============================================================
-       PASTE YOUR EXISTING CALCULATOR CODE INSIDE THIS SLOT.
-       Everything between the two markers can be replaced with the
-       full HTML/CSS/JS of your BAC Calculator. Keep it self-contained.
+       PASTE YOUR EXISTING BAC Calculator CODE BETWEEN THESE MARKERS.
+       Keep the surrounding page, header, footer, and schema intact.
        ============================================================ -->
   <div class="calc-slot" id="calculator">
     <!-- >>> CALCULATOR START <<< -->
-    <p style="color:var(--muted)">Your BAC Calculator loads here. Replace this block with your calculator's HTML and inline &lt;script&gt;.</p>
+    <style>
+      .calc-form { display: flex; flex-direction: column; gap: 20px; max-width: 500px; margin: 0 auto; }
+      .calc-form .field { display: flex; flex-direction: column; gap: 8px; }
+      .calc-form label { font-weight: 600; font-size: 15px; }
+      .calc-form select, .calc-form input { padding: 12px; border: 1px solid var(--line); border-radius: 8px; font-family: inherit; font-size: 16px; background: #fff; }
+      .calc-form select:focus, .calc-form input:focus { outline: 2px solid var(--brand); outline-offset: 1px; }
+      .calc-btn { background: var(--brand); color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: 700; font-size: 16px; cursor: pointer; transition: opacity 0.2s; margin-top: 8px; }
+      .calc-btn:hover { opacity: 0.9; }
+      .calc-result { display: none; margin-top: 24px; padding: 32px 24px; background: #fff; border: 2px solid var(--line); border-radius: 12px; text-align: center; }
+      .calc-result h3 { margin: 0 0 10px; font-size: 18px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.05em; }
+      .calc-result .bac-value { font-size: 48px; font-weight: 800; color: var(--ink); line-height: 1; margin: 0 0 16px; font-family: var(--head); }
+      .calc-result .bac-desc { margin: 0; font-size: 16px; line-height: 1.5; color: var(--ink); padding: 12px; border-radius: 8px; font-weight: 600; }
+      
+      .safe-zone { background: #E3FCEF; color: #006644; }
+      .warn-zone { background: #FFF0B3; color: #8A6100; }
+      .danger-zone { background: #FFEBE6; color: #BF2600; }
+    </style>
+    <form id="bacForm" class="calc-form">
+      <div class="field">
+        <label for="bac_gender">Biological Sex</label>
+        <select id="bac_gender" required>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="bac_weight">Body Weight (lbs)</label>
+        <input type="number" id="bac_weight" min="50" max="500" required placeholder="e.g. 150">
+      </div>
+      <div class="field">
+        <label for="bac_drinks">Number of Standard Drinks</label>
+        <input type="number" id="bac_drinks" step="0.5" min="0" max="30" required placeholder="1 drink = 12oz beer, 5oz wine, 1.5oz liquor">
+      </div>
+      <div class="field">
+        <label for="bac_hours">Hours since first drink</label>
+        <input type="number" id="bac_hours" step="0.5" min="0" max="48" required placeholder="e.g. 2.5">
+      </div>
+      <button type="submit" class="calc-btn">Estimate BAC</button>
+    </form>
+    <div id="bac_result" class="calc-result">
+      <h3>Estimated BAC</h3>
+      <p class="bac-value" id="bac_value">0.00%</p>
+      <p class="bac-desc" id="bac_desc"></p>
+    </div>
+    <script>
+      document.getElementById('bacForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const gender = document.getElementById('bac_gender').value;
+        const weightLbs = parseFloat(document.getElementById('bac_weight').value);
+        const drinks = parseFloat(document.getElementById('bac_drinks').value);
+        const hours = parseFloat(document.getElementById('bac_hours').value);
+
+        // Widmark Formula Variables
+        // Standard US drink = 14 grams of pure alcohol
+        const alcoholGrams = drinks * 14; 
+        const weightGrams = weightLbs * 453.592;
+        const r = (gender === 'male') ? 0.68 : 0.55;
+
+        // Widmark Formula: BAC = [Alcohol consumed in grams / (Body weight in grams * r)] * 100 - (0.015 * hours)
+        let bac = ((alcoholGrams / (weightGrams * r)) * 100) - (0.015 * hours);
+        
+        if (bac < 0) bac = 0;
+
+        const bacStr = bac.toFixed(3) + "%";
+        document.getElementById('bac_value').innerText = bacStr;
+
+        const descEl = document.getElementById('bac_desc');
+        descEl.className = 'bac-desc'; // reset
+
+        if (bac === 0) {
+          descEl.innerText = "Sober. Zero alcohol detected.";
+          descEl.classList.add('safe-zone');
+        } else if (bac < 0.04) {
+          descEl.innerText = "Mild impairment. Lightheadedness and relaxation.";
+          descEl.classList.add('safe-zone');
+        } else if (bac < 0.08) {
+          descEl.innerText = "Impairment. Lowered inhibitions, reasoning, and depth perception. Driving is unsafe.";
+          descEl.classList.add('warn-zone');
+        } else if (bac < 0.20) {
+          descEl.innerText = "Legally intoxicated (>= 0.08%). Significant impairment of motor coordination and judgement. Do not drive.";
+          descEl.classList.add('danger-zone');
+        } else if (bac < 0.30) {
+          descEl.innerText = "Severe intoxication. Confusion, nausea, and potential blackouts.";
+          descEl.classList.add('danger-zone');
+        } else {
+          descEl.innerText = "Medical emergency. High risk of alcohol poisoning, loss of consciousness, and death.";
+          descEl.classList.add('danger-zone');
+        }
+
+        document.getElementById('bac_result').style.display = 'block';
+      });
+    </script>
     <!-- >>> CALCULATOR END <<< -->
   </div>
 
-  <div class="med-disclaimer">
-    This tool provides general estimates for educational purposes only and is not a substitute for professional medical advice. Consult a qualified healthcare provider for decisions about your health.
-  </div>
+  <div class="med-note">This tool provides general estimates for educational purposes only and is not a substitute for professional medical advice.</div>
 
   <h2>How this calculator works</h2>
-  <p>The calculator applies the Widmark method, combining the alcohol consumed with your body water estimate and the time elapsed to approximate your current BAC.</p>
+  <p>The calculator applies the Widmark method, combining alcohol consumed with your estimated body water and time elapsed to approximate current BAC.</p>
+
+  <section class="aff">
+    <h2>Recommended products</h2>
+    <div class="aff-grid"><div class="aff-card"><div class="thumb">Product image</div><h4>Personal Breathalyzer</h4><p>A device gives a real reading.</p><a class="btn ghost" href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">View on Amazon</a></div><div class="aff-card"><div class="thumb">Product image</div><h4>Electrolyte Hydration</h4><p>Rehydrate responsibly.</p><a class="btn ghost" href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">View on Amazon</a></div><div class="aff-card"><div class="thumb">Product image</div><h4>Water Bottle</h4><p>Pace drinks with water.</p><a class="btn ghost" href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">View on Amazon</a></div></div>
+    <p class="aff-disclosure">As an Amazon Associate, RaphaAtlas earns from qualifying purchases. Links are affiliate links; replace PRODUCT-ID and YOUR-AFFILIATE-TAG with your Amazon Associates tag.</p>
+  </section>
 
   <h2>Frequently asked questions</h2>
-  <h3>How accurate is a BAC calculator?</h3>
-  <p>It gives an estimate only. Real BAC varies with food, medication, metabolism, and hydration, so never use a calculator to decide whether it is safe to drive.</p>
-  <h3>How long does alcohol stay in your system?</h3>
-  <p>The body clears roughly one standard drink per hour on average, but this varies by individual. Only time reduces BAC — coffee and water do not speed it up.</p>
+  <h3>How accurate is a BAC calculator?</h3><p>It gives an estimate only. Real BAC varies with food, medication, metabolism, and hydration — never use a calculator to decide whether it is safe to drive.</p><h3>How long does alcohol stay in your system?</h3><p>The body clears roughly one standard drink per hour on average, but this varies. Only time lowers BAC; coffee and water do not speed it up.</p>
 </main>
 
 <footer class="site-footer">
   <div class="wrap">
-    <div class="foot-cols">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="logo" href="/"><span class="dot"></span>RaphaAtlas</a>
+        <p>Evidence-based health, fitness, and nutrition — with free clinical calculators. A project of Growth Partners Global LLC.</p>
+        <p><a href="mailto:dr.awais@growthpartnersgloballlc.com">dr.awais@growthpartnersgloballlc.com</a><a href="mailto:dr.ahmed@growthpartnersgloballlc.com">dr.ahmed@growthpartnersgloballlc.com</a></p>
+      </div>
       <div>
-        <a class="brand dark" href="/"><span class="mark" aria-hidden="true"></span>RaphaAtlas</a>
+        <h5>Calculators</h5>
+        <a href="/body-type-calculator/">Body Type</a>
+        <a href="/macro-calculator/">Macros</a>
+        <a href="/bac-calculator/">BAC</a>
+        <a href="/conception-calculator/">Conception</a>
       </div>
-      <div><h5>Calculators</h5>
-        <a href="/body-type-calculator/">Body Type</a><a href="/macro-calculator/">Macros</a><a href="/bac-calculator/">BAC</a><a href="/conception-calculator/">Conception</a>
+      <div>
+        <h5>Explore</h5>
+        <a href="/fitness/">Fitness</a>
+        <a href="/nutrition/">Nutrition</a>
+        <a href="/health/">Health</a>
+        <a href="/calculators/">All calculators</a>
       </div>
-      <div><h5>Explore</h5>
-        <a href="/fitness/">Fitness</a><a href="/nutrition/">Nutrition</a><a href="/health/">Health</a>
-      </div>
-      <div><h5>About</h5>
-        <a href="/about/">About</a><a href="/editorial-policy/">Editorial policy</a><a href="/medical-review-board/">Medical review board</a>
+      <div>
+        <h5>Company</h5>
+        <a href="/about/">About</a>
+        <a href="/medical-review-board/">Medical review board</a>
+        <a href="/editorial-policy/">Editorial policy</a>
+        <a href="/contact/">Contact</a>
+        <a href="/privacy/">Privacy</a>
       </div>
     </div>
-    <p class="foot-legal">RaphaAtlas provides general educational information and estimates only. It is not a medical device and does not provide medical advice, diagnosis, or treatment. &copy; <span id="yr"></span> RaphaAtlas.</p>
+
+    <div class="foot-aff">
+      <h5>Recommended products</h5>
+      <div class="foot-aff-row">
+        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Digital Food Scale</a>
+        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Whey Protein</a>
+        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Resistance Bands</a>
+        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Smart Scale</a>
+      </div>
+      <p class="aff-disclosure" style="color:#8AA0A9">As an Amazon Associate, RaphaAtlas earns from qualifying purchases. Replace PRODUCT-ID and YOUR-AFFILIATE-TAG with your Amazon Associates tag.</p>
+    </div>
+
+    <p class="foot-legal">RaphaAtlas provides general educational information and estimates only. It is not a medical device and does not provide medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional for decisions about your health. &copy; <span id="yr"></span> RaphaAtlas — a project of Growth Partners Global LLC.</p>
   </div>
 </footer>
-<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
-    {"@type":"WebApplication","name":"BAC Calculator","url":"https://www.raphaatlas.com/bac-calculator/","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://www.raphaatlas.com/#org"}},
-    {"@type":"BreadcrumbList","itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Home","item":"https://www.raphaatlas.com/"},
-      {"@type":"ListItem","position":2,"name":"Calculators","item":"https://www.raphaatlas.com/calculators/"},
-      {"@type":"ListItem","position":3,"name":"BAC Calculator","item":"https://www.raphaatlas.com/bac-calculator/"}
-    ]},
-    {"@type":"FAQPage","mainEntity":[
-      {"@type":"Question","name":"How accurate is a BAC calculator?","acceptedAnswer":{"@type":"Answer","text":"It gives an estimate only. Real BAC varies with food, medication, metabolism, and hydration, so never use a calculator to decide whether it is safe to drive."}},
-      {"@type":"Question","name":"How long does alcohol stay in your system?","acceptedAnswer":{"@type":"Answer","text":"The body clears roughly one standard drink per hour on average, but this varies by individual. Only time reduces BAC — coffee and water do not speed it up."}}
-    ]}
-  ]
-}
-</script>
+<script src="/site.js" defer></script>
 </body>
 </html>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebApplication","name":"BAC Calculator","url":"https://www.raphaatlas.com/bac-calculator/","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},
+ {"@type":"BreadcrumbList","itemListElement":[
+   {"@type":"ListItem","position":1,"name":"Home","item":"https://www.raphaatlas.com/"},
+   {"@type":"ListItem","position":2,"name":"Calculators","item":"https://www.raphaatlas.com/calculators/"},
+   {"@type":"ListItem","position":3,"name":"BAC Calculator","item":"https://www.raphaatlas.com/bac-calculator/"}
+ ]},
+ {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How accurate is a BAC calculator?","acceptedAnswer":{"@type":"Answer","text":"It gives an estimate only. Real BAC varies with food, medication, metabolism, and hydration — never use a calculator to decide whether it is safe to drive."}},{"@type":"Question","name":"How long does alcohol stay in your system?","acceptedAnswer":{"@type":"Answer","text":"The body clears roughly one standard drink per hour on average, but this varies. Only time lowers BAC; coffee and water do not speed it up."}}]}
+]}
+</script>

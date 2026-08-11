@@ -3,37 +3,130 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Health &amp; Medicine — RaphaAtlas</title>
-<meta name="description" content="Evidence-based health and medical articles on conditions, biomarkers, and treatments.">
+<title>Health — RaphaAtlas</title>
+<meta name="description" content="Evidence-based health articles reviewed by practicing physicians.">
 <link rel="canonical" href="https://www.raphaatlas.com/health/">
 <meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RaphaAtlas">
+<meta property="og:title" content="Health — RaphaAtlas">
+<meta property="og:description" content="Evidence-based health articles reviewed by practicing physicians.">
+<meta property="og:url" content="https://www.raphaatlas.com/health/">
+<meta property="og:image" content="https://www.raphaatlas.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 </head>
-<body><div class="grid-bg" aria-hidden="true"></div>
-<header class="site-header layer">
+<body>
+<header class="site-header">
   <div class="wrap bar">
-    <a class="brand" href="/"><span class="mark" aria-hidden="true"></span>RaphaAtlas</a>
-    <nav class="mainnav" aria-label="Primary">
-      <a href="/calculators/">Calculators</a>
-      <a href="/fitness/">Fitness</a>
-      <a href="/nutrition/">Nutrition</a>
-      <a href="/health/" aria-current="page">Health</a>
+    <a class="logo" href="/"><span class="dot"></span>RaphaAtlas</a>
+    <button class="hamburger" aria-label="Menu" aria-expanded="false">&#9776;</button>
+    <nav class="nav" aria-label="Primary">
+      <div class="item" aria-open="false">
+        <button aria-haspopup="true" aria-expanded="false">Calculators <span class="caret"></span></button>
+        <div class="menu">
+          <a href="/body-type-calculator/">Body Type Calculator</a>
+          <a href="/macro-calculator/">Macro Calculator</a>
+          <a href="/bac-calculator/">BAC Calculator</a>
+          <a href="/conception-calculator/">Conception Calculator</a>
+          <div class="sep"></div>
+          <a href="/calculators/">All calculators</a>
+        </div>
+      </div>
+      <div class="item" aria-open="false">
+        <button aria-haspopup="true" aria-expanded="false">Fitness <span class="caret"></span></button>
+        <div class="menu">
+          <a href="/fitness/">All Fitness</a>
+          <a href="/fitness/">Strength &amp; Training</a>
+          <a href="/fitness/">Cardio &amp; Conditioning</a>
+          <a href="/fitness/">Recovery</a>
+        </div>
+      </div>
+      <div class="item" aria-open="false">
+        <button aria-haspopup="true" aria-expanded="false">Nutrition <span class="caret"></span></button>
+        <div class="menu">
+          <a href="/nutrition/">All Nutrition</a>
+          <a href="/nutrition/">Macros &amp; Diets</a>
+          <a href="/nutrition/">Supplements</a>
+          <a href="/nutrition/">Weight Management</a>
+        </div>
+      </div>
+      <div class="item" aria-open="false">
+        <button aria-haspopup="true" aria-expanded="false">Health <span class="caret"></span></button>
+        <div class="menu">
+          <a href="/health/">All Health</a>
+          <a href="/health/">Conditions</a>
+          <a href="/health/">Biomarkers</a>
+          <a href="/health/">Preventive Care</a>
+        </div>
+      </div>
+      <div class="item"><a href="/about/">About</a></div>
+      <a class="btn nav-cta" href="/calculators/">Calculators</a>
     </nav>
   </div>
-</header><main class="wrap layer"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span>Health &amp; Medicine</nav><section class="hero"><p class="eyebrow">Health &amp; Medicine</p><h1>Clinical clarity.</h1><p class="lede">Conditions, biomarkers, and treatments written to inform, not alarm.</p></section><div class="section-head"><h2>Latest</h2></div><div class="card-grid"><a class="card" href="#"><p class="kicker">Guide</p><h3>Articles coming soon</h3><p>Publish posts into /health/article-slug/ using the article template.</p></a></div></main>
-<footer class="site-footer layer">
+</header>
+<nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span>Health</nav>
+<section class="section">
   <div class="wrap">
-    <div class="foot-cols">
-      <div><a class="brand dark" href="/"><span class="mark" aria-hidden="true"></span>RaphaAtlas</a></div>
-      <div><h5>Calculators</h5><a href="/body-type-calculator/">Body Type</a><a href="/macro-calculator/">Macros</a><a href="/bac-calculator/">BAC</a><a href="/conception-calculator/">Conception</a></div>
-      <div><h5>Explore</h5><a href="/fitness/">Fitness</a><a href="/nutrition/">Nutrition</a><a href="/health/">Health</a></div>
-      <div><h5>About</h5><a href="/about/">About</a><a href="/editorial-policy/">Editorial policy</a><a href="/medical-review-board/">Medical review board</a></div>
+    <div class="section-head left"><h2 style="font-size:clamp(30px,5vw,44px)">Clinical clarity, not alarm.</h2><p>Conditions, biomarkers, and treatments written to inform.</p></div>
+    <div class="grid cols-3">
+      <a class="card" href="#"><div class="ic">&#8250;</div><h3>Article title goes here</h3><p>One-line summary. Duplicate this card per published article.</p><span class="arrow">Read &rarr;</span></a>
+      <a class="card" href="#"><div class="ic">&#8250;</div><h3>Article title goes here</h3><p>Publish posts into /health/article-slug/ using the article template.</p><span class="arrow">Read &rarr;</span></a>
+      <a class="card" href="#"><div class="ic">&#8250;</div><h3>Article title goes here</h3><p>Each article is one folder with one index.html.</p><span class="arrow">Read &rarr;</span></a>
     </div>
-    <p class="foot-legal">RaphaAtlas provides general educational information and estimates only. It is not a medical device and does not provide medical advice, diagnosis, or treatment. &copy; <span id="yr"></span> RaphaAtlas.</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="logo" href="/"><span class="dot"></span>RaphaAtlas</a>
+        <p>Evidence-based health, fitness, and nutrition — with free clinical calculators. A project of Growth Partners Global LLC.</p>
+        <p><a href="mailto:dr.awais@growthpartnersgloballlc.com">dr.awais@growthpartnersgloballlc.com</a><a href="mailto:dr.ahmed@growthpartnersgloballlc.com">dr.ahmed@growthpartnersgloballlc.com</a></p>
+      </div>
+      <div>
+        <h5>Calculators</h5>
+        <a href="/body-type-calculator/">Body Type</a>
+        <a href="/macro-calculator/">Macros</a>
+        <a href="/bac-calculator/">BAC</a>
+        <a href="/conception-calculator/">Conception</a>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="/fitness/">Fitness</a>
+        <a href="/nutrition/">Nutrition</a>
+        <a href="/health/">Health</a>
+        <a href="/calculators/">All calculators</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about/">About</a>
+        <a href="/medical-review-board/">Medical review board</a>
+        <a href="/editorial-policy/">Editorial policy</a>
+        <a href="/contact/">Contact</a>
+        <a href="/privacy/">Privacy</a>
+      </div>
+    </div>
+
+    <div class="foot-aff">
+      <h5>Recommended products</h5>
+      <div class="foot-aff-row">
+        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Digital Food Scale</a>
+        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Whey Protein</a>
+        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Resistance Bands</a>
+        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Smart Scale</a>
+      </div>
+      <p class="aff-disclosure" style="color:#8AA0A9">As an Amazon Associate, RaphaAtlas earns from qualifying purchases. Replace PRODUCT-ID and YOUR-AFFILIATE-TAG with your Amazon Associates tag.</p>
+    </div>
+
+    <p class="foot-legal">RaphaAtlas provides general educational information and estimates only. It is not a medical device and does not provide medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional for decisions about your health. &copy; <span id="yr"></span> RaphaAtlas — a project of Growth Partners Global LLC.</p>
   </div>
 </footer>
-<script>document.getElementById('yr').textContent=new Date().getFullYear();</script></body></html>
+<script src="/site.js" defer></script>
+</body>
+</html>
