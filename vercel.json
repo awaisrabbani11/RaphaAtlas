@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "trailingSlash": true,
+  "trailingSlash": false,
   "redirects": [
     { "source": "/", "has": [{ "type": "host", "value": "raphaatlas.com" }], "destination": "https://www.raphaatlas.com/", "permanent": true }
   ],
