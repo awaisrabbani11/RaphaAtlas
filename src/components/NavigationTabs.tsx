@@ -205,9 +205,11 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
                             key={item.id}
                             href={item.href}
                             onClick={(e) => {
-                              e.preventDefault();
-                              setActiveTab(item.id);
-                              setCalcDropdownOpen(false);
+                              if (!e.ctrlKey && !e.metaKey && !e.shiftKey) {
+                                e.preventDefault();
+                                setActiveTab(item.id);
+                                setCalcDropdownOpen(false);
+                              }
                             }}
                             className="w-full text-left p-2.5 rounded-xl hover:bg-teal-50/60 transition-all flex items-start gap-3 group"
                           >
@@ -243,8 +245,10 @@ export const NavigationTabs: React.FC<NavigationTabsProps> = ({
                 key={cat.id}
                 href={cat.href}
                 onClick={(e) => {
-                  e.preventDefault();
-                  handleCategoryClick(cat);
+                  if (!e.ctrlKey && !e.metaKey && !e.shiftKey) {
+                    e.preventDefault();
+                    handleCategoryClick(cat);
+                  }
                 }}
                 className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
                   isActive

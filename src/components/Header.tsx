@@ -23,7 +23,19 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-3.5 flex flex-col md:flex-row items-center justify-between gap-4">
         {/* Brand Logo */}
         <div className="flex items-center justify-between w-full md:w-auto">
-          <Logo size="sm" showSubtitle={false} layout="horizontal" />
+          <a
+            href="/"
+            onClick={(e) => {
+              if (!e.ctrlKey && !e.metaKey && !e.shiftKey) {
+                e.preventDefault();
+                window.history.pushState({}, '', '/');
+                window.dispatchEvent(new PopStateEvent('popstate'));
+              }
+            }}
+            className="cursor-pointer"
+          >
+            <Logo size="sm" showSubtitle={false} layout="horizontal" />
+          </a>
         </div>
 
         {/* Central Search Bar */}
