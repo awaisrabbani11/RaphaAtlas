@@ -71,11 +71,11 @@ export const ContactView: React.FC = () => {
               </div>
               <p className="text-[11px] text-slate-500">Co-Clinical Director &amp; Medical Informatics</p>
               <a
-                href="mailto:dr.ahmed@growthpartnergloballlc.com"
+                href="mailto:dr.ahmed@growthpartnersgloballlc.com"
                 className="inline-flex items-center gap-2 text-xs font-mono font-bold text-teal-800 hover:text-teal-900 hover:underline pt-1"
               >
                 <Mail className="h-3.5 w-3.5 text-teal-600" />
-                <span>dr.ahmed@growthpartnergloballlc.com</span>
+                <span>dr.ahmed@growthpartnersgloballlc.com</span>
               </a>
             </div>
 

@@ -1,159 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  RaphaAtlas sitemap — CORRECTED
+  Changes vs original:
+   1. Article URLs now use the REAL article IDs from src/data/articlesData.ts
+      (old slugs like /article/apob-cholesterol-lipid-biomarkers-decoded did NOT
+      match any article and silently rendered the homepage journal).
+   2. Removed non-page utility files (/llms.txt, /llm.txt) — never belong in a sitemap.
+   3. Removed developer-facing / thin internal views (/architecture, /tech-integration,
+      /content-matrix, /user-journeys) — off-topic noise that dilutes a YMYL health domain.
+   4. Removed /ai-tools (duplicate of /calculators — the app treats both as the same view).
+      Pick ONE canonical hub URL. This sitemap keeps /calculators; make AutoHeadManager's
+      canonical for the ai_tools tab match (it currently says /ai-tools — fix it).
+   5. All <loc> use the www host to match your canonical tags. Ensure the non-www host
+      301-redirects to www at the DNS/host level.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- Core Pages & Primary Pillars -->
+  <!-- Home -->
   <url>
     <loc>https://www.raphaatlas.com/</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Calculators hub (single canonical URL — do NOT also list /ai-tools) -->
   <url>
     <loc>https://www.raphaatlas.com/calculators</loc>
-    <lastmod>2026-08-09</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
+
+  <!-- Individual calculators (your money pages) -->
   <url>
     <loc>https://www.raphaatlas.com/conception-calculator</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.raphaatlas.com/body-type-calculator</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://www.raphaatlas.com/macro-calculator</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://www.raphaatlas.com/bac-calculator</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
-  <url>
-    <loc>https://www.raphaatlas.com/ai-tools</loc>
-    <lastmod>2026-08-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-  </url>
+
+  <!-- Pillar / category pages -->
   <url>
     <loc>https://www.raphaatlas.com/lifestyle</loc>
-    <lastmod>2026-08-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.raphaatlas.com/fitness</loc>
-    <lastmod>2026-08-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.raphaatlas.com/medical</loc>
-    <lastmod>2026-08-09</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
   </url>
 
-  <!-- About & Contact Pages -->
+  <!-- About & Contact -->
   <url>
     <loc>https://www.raphaatlas.com/about</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-11</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.70</priority>
   </url>
   <url>
     <loc>https://www.raphaatlas.com/contact</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <!-- Articles — REAL IDs from articlesData.ts -->
+  <url>
+    <loc>https://www.raphaatlas.com/article/art-apob-lipids</loc>
+    <lastmod>2026-08-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
-
-  <!-- Interactive System & Architecture Views -->
   <url>
-    <loc>https://www.raphaatlas.com/content-matrix</loc>
-    <lastmod>2026-08-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://www.raphaatlas.com/architecture</loc>
-    <lastmod>2026-08-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://www.raphaatlas.com/tech-integration</loc>
-    <lastmod>2026-08-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://www.raphaatlas.com/user-journeys</loc>
-    <lastmod>2026-08-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <!-- AI Discovery Documentation -->
-  <url>
-    <loc>https://www.raphaatlas.com/llms.txt</loc>
-    <lastmod>2026-08-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://www.raphaatlas.com/llm.txt</loc>
-    <lastmod>2026-08-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <!-- Clinical & Evidence-Based Publications -->
-  <url>
-    <loc>https://www.raphaatlas.com/article/apob-cholesterol-lipid-biomarkers-decoded</loc>
-    <lastmod>2026-08-09</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.raphaatlas.com/article/art-sleep-circadian</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.raphaatlas.com/article/circadian-light-adenosine-deep-sleep-protocol</loc>
-    <lastmod>2026-08-09</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.raphaatlas.com/article/art-ring-dips-mobility</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.raphaatlas.com/article/shoulder-extension-thoracic-mobility-ring-dips</loc>
-    <lastmod>2026-08-09</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.raphaatlas.com/article/art-symptom-triage-guide</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.raphaatlas.com/article/symptom-triage-red-flags-doctor-questions-guide</loc>
-    <lastmod>2026-08-09</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.raphaatlas.com/article/art-metabolic-nutrition-glucose</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.raphaatlas.com/article/continuous-glucose-monitoring-metabolic-flexibility</loc>
-    <lastmod>2026-08-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://www.raphaatlas.com/article/zone-2-aerobic-base-vo2max-mitochondrial-longevity</loc>
-    <lastmod>2026-08-09</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.raphaatlas.com/article/art-vo2max-zone2-longevity</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 

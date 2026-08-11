@@ -80,12 +80,12 @@ export const AutoHeadManager: React.FC<AutoHeadManagerProps> = ({
       canonicalUrl = 'https://www.raphaatlas.com/about';
     } else if (activeTab === 'contact') {
       title = 'Contact Medical Team — RaphaAtlas.com';
-      description = 'Contact the medical and engineering team at RaphaAtlas. Emails: dr.awais@growthpartnersgloballlc.com & dr.ahmed@growthpartnergloballlc.com.';
+      description = 'Contact the medical and engineering team at RaphaAtlas. Emails: dr.awais@growthpartnersgloballlc.com & dr.ahmed@growthpartnersgloballlc.com.';
       canonicalUrl = 'https://www.raphaatlas.com/contact';
     } else if (activeTab === 'ai_tools') {
       title = 'AI Health Engine Sandbox — RaphaAtlas.com';
       description = 'Interactive AI Clinical Triage, Symptom Assessment, and Diagnostic Logic Engines.';
-      canonicalUrl = 'https://www.raphaatlas.com/ai-tools';
+      canonicalUrl = 'https://www.raphaatlas.com/calculators';
     } else if (activeTab === 'conception_calculator') {
       title = 'Conception Calculator — Find Your Conception Date, Fertile Window & Due Date | RaphaAtlas.com';
       description = 'Free conception calculator. Estimate the most likely date you conceived, your fertile window, gestational age, and due date from your due date, last period, ultrasound, IVF transfer, or a known conception date.';

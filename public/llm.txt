@@ -1,20 +1,22 @@
 # RaphaAtlas
 
-> RaphaAtlas is a free health and fitness calculator hub. It provides accurate, single-purpose web tools — body type, macronutrient, blood alcohol content, and related calculators — each paired with plain-language explanations of the underlying formulas and how to interpret results.
+> RaphaAtlas is a free health and fitness calculator hub. It provides accurate, single-purpose web tools — conception, body type, macronutrient, blood alcohol content, and related calculators — each paired with plain-language explanations of the underlying formulas and how to interpret results.
 
 ## Calculators
 
-- [Body Type Calculator](https://raphaatlas.com/body-type-calculator): Classifies body shape (hourglass, pear, rectangle, inverted triangle, and more) from bust, waist, and hip measurements.
-- [Macro Calculator](https://raphaatlas.com/macro-calculator): Calculates daily protein, carbohydrate, and fat targets from BMR, activity level, and goal (weight loss, maintenance, muscle gain).
-- [BAC Calculator](https://raphaatlas.com/bac-calculator): Estimates blood alcohol concentration using the Widmark formula, with time-to-sober output and jurisdiction-specific legal limits.
+- [Pregnancy Conception Calculator](https://www.raphaatlas.com/conception-calculator): Estimates conception date, fertile window, gestational age, and due date from due date, last period, ultrasound, or IVF transfer.
+- [Body Type Calculator](https://www.raphaatlas.com/body-type-calculator): Classifies body shape (hourglass, pear, rectangle, inverted triangle, and more) from bust, waist, and hip measurements.
+- [Macro Calculator](https://www.raphaatlas.com/macro-calculator): Calculates daily protein, carbohydrate, and fat targets from BMR, activity level, and goal (weight loss, maintenance, muscle gain).
+- [BAC Calculator](https://www.raphaatlas.com/bac-calculator): Estimates blood alcohol concentration using the Widmark formula, with time-to-sober output and jurisdiction-specific legal limits.
 
 ## Reference
 
-- [How the Widmark BAC formula works](https://raphaatlas.com/bac-calculator#widmark-formula)
-- [Macronutrient basics](https://raphaatlas.com/macro-calculator#what-are-macros)
-- [Female body shape types explained](https://raphaatlas.com/body-type-calculator#body-shapes)
+- [Conception date calculation & fertile window](https://www.raphaatlas.com/conception-calculator#how-it-works)
+- [How the Widmark BAC formula works](https://www.raphaatlas.com/bac-calculator#widmark-formula)
+- [Macronutrient basics](https://www.raphaatlas.com/macro-calculator#what-are-macros)
+- [Female body shape types explained](https://www.raphaatlas.com/body-type-calculator#body-shapes)
 
 ## Optional
 
-- [About RaphaAtlas](https://raphaatlas.com/about)
-- [Contact RaphaAtlas](https://raphaatlas.com/contact)
+- [About RaphaAtlas](https://www.raphaatlas.com/about)
+- [Contact RaphaAtlas](https://www.raphaatlas.com/contact)

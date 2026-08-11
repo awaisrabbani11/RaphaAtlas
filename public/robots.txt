@@ -1,4 +1,4 @@
-# robots.txt for https://raphaatlas.com
+# robots.txt for https://www.raphaatlas.com
 # Policy: welcome all legitimate search + AI crawlers. Nothing of value is disallowed.
 
 # --- Default: everything allowed ---

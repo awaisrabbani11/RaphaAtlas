@@ -16,7 +16,7 @@ export const CONTRIBUTORS_LIST: Contributor[] = [
     id: 'ahmed-humayon',
     name: 'Dr. Ahmed Humayon',
     title: 'Co-Clinical Director & Medical Informatics',
-    email: 'dr.ahmed@growthpartnergloballlc.com',
+    email: 'dr.ahmed@growthpartnersgloballlc.com',
   },
 ];
 
