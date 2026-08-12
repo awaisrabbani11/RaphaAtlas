@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Macro Calculator - RaphaAtlas</title>
-<meta name="description" content="Free macro calculator. Get personalized daily protein, carbohydrate, and fat targets based on your goals, activity, and body metrics.">
+<title>Macro Calculator | RaphaAtlas</title>
+<meta name="description" content="Free BAC calculator. Estimate blood alcohol concentration from drinks, body weight, sex, and time, with clear safety context.">
 
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -135,155 +135,889 @@
 <link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
+
+
+
+
+
+
+
 </head>
 <body class="bg-surface-lowest text-on-surface font-body-md min-h-screen flex flex-col antialiased">
-<header class="bg-header-black border-b border-black docked full-width top-0 z-50 sticky transition-all duration-300">
-<div class="flex justify-between items-center px-4 md:px-8 py-2 w-full max-w-7xl mx-auto">
-<a href="/" aria-label="RaphaAtlas home" class="flex items-center">
-  <img src="/raphaatlas-mark.svg" alt="RaphaAtlas Logo" height="40" width="40" class="h-10 w-10">
-  <span style="font-family: 'Inter', sans-serif; font-size: 32px; font-weight: 900; letter-spacing: -1px; color: white; margin-left: 12px; transform: translateY(2px);">RaphaAtlas</span>
-</a>
-<nav class="hidden lg:flex items-center space-x-6">
-<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/nutrition">Nutrition</a>
-<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/health">Health</a>
-<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/calculators">Calculators</a>
-<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/fitness">Fitness</a>
-<div class="relative group">
-<button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors py-2" style="font-family: 'Inter', sans-serif;">
-<span>More</span>
-<span class="material-symbols-outlined text-sm">expand_more</span>
-</button>
-<div class="absolute left-0 mt-2 w-56 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg">
-<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/about">About Us</a>
-<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/editorial-policy">Editorial Policy</a>
-<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/medical-review-board">Medical Review Board</a>
-<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/privacy">Privacy Policy</a>
-<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all" href="/contact">Contact Us</a>
-</div>
-</div>
-</nav>
-<div class="flex items-center space-x-4">
-<button class="text-on-primary hover:text-vitality-teal transition-colors"><span class="material-symbols-outlined">search</span></button>
-<button class="lg:hidden text-on-primary"><span class="material-symbols-outlined text-2xl">menu</span></button>
-</div>
-</div>
-</header>
-
-<nav class="hidden lg:flex items-center space-x-6">
-<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link" href="/nutrition">Nutrition</a>
-<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link" href="/health">Health</a>
-<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link" href="/calculators">Calculators</a>
-<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link" href="/fitness">Fitness</a>
-<div class="relative group">
-<button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link py-2">
-<span>More</span>
-<span class="material-symbols-outlined text-sm">expand_more</span>
-</button>
-<div class="absolute left-0 mt-2 w-48 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg">
-<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all font-body-md text-body-md border-b border-border-subtle" href="/about">About Us</a>
-<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all font-body-md text-body-md" href="/contact">Contact Us</a>
-</div>
-</div>
-</nav>
-  
+<header class="bg-header-black border-b border-black docked full-width top-0 z-50 sticky transition-all duration-300" id="main-header"><div class="flex justify-between items-center px-4 md:px-8 py-2 w-full max-w-7xl mx-auto">  <a href="/" aria-label="RaphaAtlas home" class="flex items-center">    <img src="/raphaatlas-mark.svg" alt="RaphaAtlas Logo" height="40" width="40" class="h-10 w-10">    <span style="font-family: 'Inter', sans-serif; font-size: 32px; font-weight: 900; letter-spacing: -1px; color: white; margin-left: 12px; transform: translateY(2px);">RaphaAtlas</span>  </a>  <nav class="hidden lg:flex items-center space-x-6">    <a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/nutrition">Nutrition</a>    <a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/health">Health</a>        <div class="relative group">      <button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors py-2" style="font-family: 'Inter', sans-serif;" aria-expanded="false">        <span>Calculators</span><span class="material-symbols-outlined text-sm">expand_more</span>      </button>      <div class="absolute left-0 mt-2 w-56 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg">        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/bac-calculator">BAC Calculator</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/body-type-calculator">Body Type Calculator</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/macro-calculator">Macro Calculator</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/conception-calculator">Conception Calculator</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all" href="/calculators">All Calculators</a>      </div>    </div>        <a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/fitness">Fitness</a>        <div class="relative group">      <button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors py-2" style="font-family: 'Inter', sans-serif;" aria-expanded="false">        <span>More</span><span class="material-symbols-outlined text-sm">expand_more</span>      </button>      <div class="absolute left-0 mt-2 w-56 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg">        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/about">About Us</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/editorial-policy">Editorial Policy</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/medical-review-board">Medical Review Board</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/privacy">Privacy Policy</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all" href="/contact">Contact Us</a>      </div>    </div>  </nav>  <div class="flex items-center space-x-4">    <button class="lg:hidden text-on-primary" id="mobile-menu-btn" aria-label="Toggle mobile menu">      <span class="material-symbols-outlined text-2xl">menu</span>    </button>  </div></div><!-- Mobile Menu Slide-out --><div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-surface-container-lowest shadow-2xl z-[100] transform translate-x-full transition-transform duration-300 lg:hidden overflow-y-auto border-l border-border-subtle">  <div class="p-4 border-b border-border-subtle flex justify-end">    <button id="mobile-menu-close" class="text-on-surface hover:text-primary p-2">      <span class="material-symbols-outlined">close</span>    </button>  </div>  <nav class="p-4 flex flex-col space-y-2">    <a href="/nutrition" class="block py-2 text-primary font-bold border-b border-border-subtle">Nutrition</a>    <a href="/health" class="block py-2 text-primary font-bold border-b border-border-subtle">Health</a>        <div class="py-2 border-b border-border-subtle">      <button class="flex items-center justify-between w-full text-primary font-bold mb-2 mobile-dropdown-btn">        <span>Calculators</span>        <span class="material-symbols-outlined text-sm transition-transform duration-200">expand_more</span>      </button>      <div class="pl-4 space-y-2 mobile-dropdown-content overflow-hidden max-h-0 transition-all duration-300">        <a href="/bac-calculator" class="block text-on-surface-variant hover:text-primary py-1">BAC Calculator</a>        <a href="/body-type-calculator" class="block text-on-surface-variant hover:text-primary py-1">Body Type Calculator</a>        <a href="/macro-calculator" class="block text-on-surface-variant hover:text-primary py-1">Macro Calculator</a>        <a href="/conception-calculator" class="block text-on-surface-variant hover:text-primary py-1">Conception Calculator</a>        <a href="/calculators" class="block text-on-surface-variant hover:text-primary py-1">All Calculators</a>      </div>    </div>        <a href="/fitness" class="block py-2 text-primary font-bold border-b border-border-subtle">Fitness</a>        <div class="py-2 border-b border-border-subtle">      <button class="flex items-center justify-between w-full text-primary font-bold mb-2 mobile-dropdown-btn">        <span>More</span>        <span class="material-symbols-outlined text-sm transition-transform duration-200">expand_more</span>      </button>      <div class="pl-4 space-y-2 mobile-dropdown-content overflow-hidden max-h-0 transition-all duration-300">        <a href="/about" class="block text-on-surface-variant hover:text-primary py-1">About Us</a>        <a href="/editorial-policy" class="block text-on-surface-variant hover:text-primary py-1">Editorial Policy</a>        <a href="/medical-review-board" class="block text-on-surface-variant hover:text-primary py-1">Medical Review Board</a>        <a href="/privacy" class="block text-on-surface-variant hover:text-primary py-1">Privacy Policy</a>        <a href="/contact" class="block text-on-surface-variant hover:text-primary py-1">Contact Us</a>      </div>    </div>  </nav></div><!-- Mobile Menu Overlay --><div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-[90] hidden lg:hidden"></div><script>  (function() {    const btn = document.getElementById('mobile-menu-btn');    const closeBtn = document.getElementById('mobile-menu-close');    const menu = document.getElementById('mobile-menu');    const overlay = document.getElementById('mobile-overlay');    function openMenu() {      if(menu) menu.classList.remove('translate-x-full');      if(overlay) overlay.classList.remove('hidden');    }    function closeMenu() {      if(menu) menu.classList.add('translate-x-full');      if(overlay) overlay.classList.add('hidden');    }    if (btn) btn.addEventListener('click', openMenu);    if (closeBtn) closeBtn.addEventListener('click', closeMenu);    if (overlay) overlay.addEventListener('click', closeMenu);    /* Mobile dropdown toggle logic */    const dropdownBtns = document.querySelectorAll('.mobile-dropdown-btn');    dropdownBtns.forEach(btn => {      btn.addEventListener('click', () => {        const content = btn.nextElementSibling;        const icon = btn.querySelector('.material-symbols-outlined');        if (content.classList.contains('max-h-0')) {          content.classList.remove('max-h-0');          content.classList.add('max-h-screen');          icon.style.transform = 'rotate(180deg)';        } else {          content.classList.add('max-h-0');          content.classList.remove('max-h-screen');          icon.style.transform = 'rotate(0deg)';        }      });    });  })();</script></header>
 <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-gutter py-12 md:py-section-gap">
-  <div class="max-w-3xl mx-auto">
-    
-<div class="mb-12 text-center">
-  <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-    <span class="material-symbols-outlined text-on-primary text-3xl" data-icon="restaurant_menu">restaurant_menu</span>
-  </div>
-  <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">Macro Calculator</h1>
-  <p class="font-body-lg text-body-lg text-on-surface-variant">Get daily protein, carbohydrate, and fat targets tailored to your goal — losing fat, maintaining, or building muscle.</p>
+<!-- RaphaAtlas Macro Calculator — self-contained, zero external dependencies -->
+<!-- Superiority thesis: protein anchored to body mass (not % of calories), -->
+<!-- calorie target derived from desired rate of change (not a flat 500 kcal), -->
+<!-- multi-formula BMR with disclosure, YMYL safety floors, shareable results. -->
+<div id="ra-macro-root">
+<style>
+  #ra-macro-root *{box-sizing:border-box;margin:0;padding:0}
+  #ra-macro-root{
+    --bg:#0f1419; --panel:#161c24; --panel-2:#1d2530; --line:#2a3542;
+    --ink:#eef2f6; --muted:#9aa7b6; --faint:#66748399;
+    --pro:#ff6b6b; --carb:#ffb020; --fat:#37d29a; --accent:#5ec8ff;
+    --radius:14px;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Code","JetBrains Mono",Menlo,Consolas,monospace;
+    font-family:var(--sans); color:var(--ink); line-height:1.5;
+    background:var(--bg);
+    max-width:960px; margin:0 auto; padding:clamp(16px,3vw,32px);
+    border-radius:calc(var(--radius) + 6px);
+  }
+  #ra-macro-root .rc-head{margin-bottom:22px}
+  #ra-macro-root .rc-eyebrow{
+    font:600 11px/1 var(--mono); letter-spacing:.22em; text-transform:uppercase;
+    color:var(--accent); display:inline-block; margin-bottom:10px;
+  }
+  #ra-macro-root h2.rc-title{
+    font-weight:700; font-size:clamp(24px,4vw,34px); letter-spacing:-.02em; line-height:1.08;
+  }
+  #ra-macro-root .rc-sub{color:var(--muted); font-size:14.5px; max-width:60ch; margin-top:8px}
+
+  #ra-macro-root .rc-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media(max-width:760px){#ra-macro-root .rc-grid{grid-template-columns:1fr}}
+
+  #ra-macro-root .rc-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:18px;
+  }
+  #ra-macro-root .rc-card h3{
+    font:600 12px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
+    margin-bottom:14px; display:flex; align-items:center; gap:8px;
+  }
+  #ra-macro-root .rc-card h3 .rc-dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+
+  #ra-macro-root .rc-field{margin-bottom:14px}
+  #ra-macro-root .rc-field:last-child{margin-bottom:0}
+  #ra-macro-root label.rc-lab{display:block; font-size:12.5px; color:var(--muted); margin-bottom:6px; font-weight:500}
+  #ra-macro-root .rc-hint{font-size:11.5px; color:var(--faint); margin-top:5px; line-height:1.4}
+
+  #ra-macro-root input[type=number], #ra-macro-root select{
+    width:100%; background:var(--panel-2); border:1px solid var(--line); color:var(--ink);
+    border-radius:9px; padding:10px 12px; font:500 15px var(--sans); appearance:none;
+  }
+  #ra-macro-root input[type=number]:focus, #ra-macro-root select:focus{
+    outline:2px solid var(--accent); outline-offset:1px; border-color:transparent;
+  }
+  #ra-macro-root select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239aa7b6' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:34px}
+
+  #ra-macro-root .rc-dual{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+
+  /* segmented toggles */
+  #ra-macro-root .rc-seg{display:flex; background:var(--panel-2); border:1px solid var(--line); border-radius:9px; padding:3px; gap:3px}
+  #ra-macro-root .rc-seg button{
+    flex:1; border:0; background:transparent; color:var(--muted); font:600 13px var(--sans);
+    padding:8px 4px; border-radius:7px; cursor:pointer; transition:background .15s,color .15s;
+  }
+  #ra-macro-root .rc-seg button[aria-pressed=true]{background:var(--accent); color:#062230}
+  #ra-macro-root .rc-seg button:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+  #ra-macro-root input[type=range]{width:100%; accent-color:var(--accent); height:22px}
+  #ra-macro-root .rc-rangerow{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:2px}
+  #ra-macro-root .rc-rangeval{font:600 14px var(--mono); color:var(--ink)}
+
+  #ra-macro-root .rc-cta{
+    width:100%; margin-top:16px; border:0; cursor:pointer;
+    background:var(--accent); color:#062230; font:700 15px var(--sans); letter-spacing:.01em;
+    padding:14px; border-radius:11px; transition:filter .15s;
+  }
+  #ra-macro-root .rc-cta:hover{filter:brightness(1.08)}
+  #ra-macro-root .rc-cta:focus-visible{outline:2px solid #fff; outline-offset:2px}
+
+  /* results */
+  #ra-macro-root .rc-results{margin-top:16px; display:none}
+  #ra-macro-root .rc-results.is-on{display:block}
+  #ra-macro-root .rc-resgrid{display:grid; grid-template-columns:280px 1fr; gap:14px}
+  @media(max-width:760px){#ra-macro-root .rc-resgrid{grid-template-columns:1fr}}
+
+  #ra-macro-root .rc-ringwrap{display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center}
+  #ra-macro-root .rc-ring{position:relative; width:200px; height:200px}
+  #ra-macro-root .rc-ring svg{transform:rotate(-90deg)}
+  #ra-macro-root .rc-ringcenter{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center}
+  #ra-macro-root .rc-kcal{font:700 40px/1 var(--mono); letter-spacing:-.02em}
+  #ra-macro-root .rc-kcal-lab{font:600 11px var(--mono); letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-top:4px}
+  #ra-macro-root .rc-maint{font-size:12px; color:var(--muted); margin-top:10px}
+  #ra-macro-root .rc-maint b{color:var(--ink); font-family:var(--mono)}
+
+  #ra-macro-root .rc-macros{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
+  @media(max-width:460px){#ra-macro-root .rc-macros{grid-template-columns:1fr}}
+  #ra-macro-root .rc-mcard{background:var(--panel-2); border:1px solid var(--line); border-radius:12px; padding:14px; border-top:3px solid var(--line)}
+  #ra-macro-root .rc-mcard.pro{border-top-color:var(--pro)}
+  #ra-macro-root .rc-mcard.carb{border-top-color:var(--carb)}
+  #ra-macro-root .rc-mcard.fat{border-top-color:var(--fat)}
+  #ra-macro-root .rc-mname{font:600 12px var(--mono); letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+  #ra-macro-root .rc-mgram{font:700 30px/1.1 var(--mono); margin-top:8px}
+  #ra-macro-root .rc-mmeta{font-size:12px; color:var(--muted); margin-top:4px; font-family:var(--mono)}
+
+  #ra-macro-root .rc-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:12px}
+  @media(max-width:460px){#ra-macro-root .rc-stats{grid-template-columns:1fr 1fr}}
+  #ra-macro-root .rc-stat{background:var(--panel-2); border:1px solid var(--line); border-radius:10px; padding:11px 13px}
+  #ra-macro-root .rc-stat .k{font-size:11px; color:var(--muted); font-weight:500}
+  #ra-macro-root .rc-stat .v{font:600 16px var(--mono); margin-top:3px}
+
+  /* adjust panel */
+  #ra-macro-root .rc-presets{display:flex; flex-wrap:wrap; gap:7px; margin-bottom:14px}
+  #ra-macro-root .rc-preset{
+    border:1px solid var(--line); background:var(--panel-2); color:var(--muted);
+    font:600 12.5px var(--sans); padding:7px 12px; border-radius:20px; cursor:pointer; transition:.15s;
+  }
+  #ra-macro-root .rc-preset[aria-pressed=true]{border-color:var(--accent); color:var(--ink); background:#5ec8ff1a}
+  #ra-macro-root .rc-preset:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+  #ra-macro-root .rc-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+  #ra-macro-root .rc-ghost{
+    flex:1; min-width:130px; border:1px solid var(--line); background:transparent; color:var(--ink);
+    font:600 13.5px var(--sans); padding:11px; border-radius:10px; cursor:pointer; transition:.15s;
+  }
+  #ra-macro-root .rc-ghost:hover{border-color:var(--accent)}
+  #ra-macro-root .rc-ghost:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+  #ra-macro-root .rc-method{margin-top:14px; font-size:12.5px; color:var(--muted); line-height:1.6}
+  #ra-macro-root .rc-method b{color:var(--ink)}
+  #ra-macro-root details.rc-more{margin-top:12px; border-top:1px solid var(--line); padding-top:12px}
+  #ra-macro-root details.rc-more summary{cursor:pointer; font:600 13px var(--sans); color:var(--accent); list-style:none}
+  #ra-macro-root details.rc-more summary::-webkit-details-marker{display:none}
+  #ra-macro-root details.rc-more p{font-size:12.5px; color:var(--muted); margin-top:10px; line-height:1.6}
+
+  #ra-macro-root .rc-warn{
+    background:#ffb0200f; border:1px solid #ffb02040; color:#ffca6b;
+    font-size:12.5px; padding:11px 13px; border-radius:10px; margin-top:12px; line-height:1.5; display:none;
+  }
+  #ra-macro-root .rc-warn.is-on{display:block}
+
+  #ra-macro-root .rc-disc{font-size:11px; color:var(--faint); margin-top:18px; line-height:1.6; border-top:1px solid var(--line); padding-top:14px}
+  #ra-macro-root a.rc-link{color:var(--accent); text-decoration:none}
+  #ra-macro-root a.rc-link:hover{text-decoration:underline}
+  #ra-macro-root .rc-toast{position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(20px);
+    background:var(--ink); color:#0f1419; font:600 13px var(--sans); padding:10px 18px; border-radius:24px;
+    opacity:0; pointer-events:none; transition:.25s; z-index:50}
+  #ra-macro-root .rc-toast.is-on{opacity:1; transform:translateX(-50%) translateY(0)}
+  @media(prefers-reduced-motion:reduce){#ra-macro-root *{transition:none!important}}
+</style>
+
+<div class="rc-head">
+  <span class="rc-eyebrow">RaphaAtlas · Nutrition</span>
+  <h2 class="rc-title">Macro Calculator</h2>
+  <p class="rc-sub">Protein set by your body mass and fat-loss goal — not a lazy percentage of calories. Your calorie target is built from how fast you actually want to change, with safety floors that most calculators ignore.</p>
 </div>
 
-<div class="bg-surface-cream rounded-xl p-8 md:p-12 border border-border-subtle shadow-sm mb-12">
-  <form id="macroForm" class="space-y-6">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div>
-        <label class="block font-label-bold text-label-bold text-primary mb-2" for="mac_gender">Gender</label>
-        <select id="mac_gender" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal appearance-none" required>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
+<div class="rc-grid">
+  <!-- ABOUT YOU -->
+  <div class="rc-card">
+    <h3><span class="rc-dot"></span>About You</h3>
+
+    <div class="rc-field">
+      <label class="rc-lab">Units</label>
+      <div class="rc-seg" id="rc-units" role="group" aria-label="Units">
+        <button type="button" data-u="metric" aria-pressed="true">Metric (kg / cm)</button>
+        <button type="button" data-u="imperial" aria-pressed="false">Imperial (lb / in)</button>
       </div>
-      <div>
-        <label class="block font-label-bold text-label-bold text-primary mb-2" for="mac_age">Age (Years)</label>
-        <input type="number" id="mac_age" min="15" max="100" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal" required placeholder="e.g. 30">
+    </div>
+
+    <div class="rc-field">
+      <label class="rc-lab">Biological sex <span class="rc-hint" style="display:inline">(affects BMR equation)</span></label>
+      <div class="rc-seg" id="rc-sex" role="group" aria-label="Sex">
+        <button type="button" data-s="male" aria-pressed="true">Male</button>
+        <button type="button" data-s="female" aria-pressed="false">Female</button>
       </div>
-      <div>
-        <label class="block font-label-bold text-label-bold text-primary mb-2" for="mac_weight">Weight (lbs)</label>
-        <input type="number" id="mac_weight" min="50" max="500" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal" required placeholder="e.g. 165">
+    </div>
+
+    <div class="rc-dual">
+      <div class="rc-field">
+        <label class="rc-lab" for="rc-age">Age</label>
+        <input type="number" id="rc-age" min="14" max="100" value="27" inputmode="numeric">
       </div>
-      <div class="grid grid-cols-2 gap-4">
-        <div>
-          <label class="block font-label-bold text-label-bold text-primary mb-2" for="mac_ft">Height (ft)</label>
-          <input type="number" id="mac_ft" min="4" max="8" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal" required placeholder="e.g. 5">
+      <div class="rc-field">
+        <label class="rc-lab" for="rc-height"><span data-unit="height">Height (cm)</span></label>
+        <input type="number" id="rc-height" min="120" max="230" value="175" inputmode="decimal">
+      </div>
+    </div>
+
+    <div class="rc-dual">
+      <div class="rc-field">
+        <label class="rc-lab" for="rc-weight"><span data-unit="weight">Weight (kg)</span></label>
+        <input type="number" id="rc-weight" min="35" max="300" value="80" inputmode="decimal">
+      </div>
+      <div class="rc-field">
+        <label class="rc-lab" for="rc-bf">Body fat % <span class="rc-hint" style="display:inline">(optional)</span></label>
+        <input type="number" id="rc-bf" min="3" max="65" placeholder="e.g. 18" inputmode="decimal">
+      </div>
+    </div>
+    <p class="rc-hint">Enter body fat % if you know it — the calculator switches to the Katch-McArdle equation and sets protein from lean mass, which is far more accurate for lean or higher-fat individuals.</p>
+  </div>
+
+  <!-- GOAL & ACTIVITY -->
+  <div class="rc-card">
+    <h3><span class="rc-dot"></span>Activity &amp; Goal</h3>
+
+    <div class="rc-field">
+      <label class="rc-lab" for="rc-activity">Activity level</label>
+      <select id="rc-activity">
+        <option value="1.2">Sedentary — desk job, &lt;5k steps, no training</option>
+        <option value="1.375" selected>Light — light exercise / 1–3 sessions per week</option>
+        <option value="1.55">Moderate — training 3–5 days per week</option>
+        <option value="1.725">Very active — hard training 6–7 days per week</option>
+        <option value="1.9">Extreme — physical job + daily training</option>
+      </select>
+    </div>
+
+    <div class="rc-field">
+      <label class="rc-lab">Goal</label>
+      <div class="rc-seg" id="rc-goal" role="group" aria-label="Goal">
+        <button type="button" data-g="lose" aria-pressed="true">Lose fat</button>
+        <button type="button" data-g="maintain" aria-pressed="false">Maintain</button>
+        <button type="button" data-g="gain" aria-pressed="false">Gain muscle</button>
+      </div>
+    </div>
+
+    <div class="rc-field" id="rc-rate-field">
+      <div class="rc-rangerow">
+        <label class="rc-lab" for="rc-rate" style="margin:0">Target rate of change</label>
+        <span class="rc-rangeval" id="rc-rate-val">0.5 kg/wk</span>
+      </div>
+      <input type="range" id="rc-rate" min="0.25" max="1" step="0.05" value="0.5">
+      <p class="rc-hint" id="rc-rate-hint">Sustainable fat loss is ~0.5–1% of body weight per week. Faster costs muscle and adherence.</p>
+    </div>
+
+    <div class="rc-field">
+      <label class="rc-lab" for="rc-target">Goal weight <span class="rc-hint" style="display:inline">(optional — enables timeline)</span></label>
+      <input type="number" id="rc-target" min="35" max="300" placeholder="e.g. 74" inputmode="decimal">
+    </div>
+
+    <div class="rc-field">
+      <label class="rc-lab" for="rc-formula">BMR formula</label>
+      <select id="rc-formula">
+        <option value="auto" selected>Auto — best available for your inputs</option>
+        <option value="mifflin">Mifflin-St Jeor</option>
+        <option value="katch">Katch-McArdle (needs body fat %)</option>
+        <option value="harris">Harris-Benedict (revised)</option>
+      </select>
+    </div>
+
+    <button type="button" class="rc-cta" id="rc-calc">Calculate my macros</button>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div class="rc-results" id="rc-results" aria-live="polite">
+  <div class="rc-warn" id="rc-warn"></div>
+
+  <div class="rc-card" style="margin-top:14px">
+    <h3><span class="rc-dot"></span>Your Daily Targets</h3>
+    <div class="rc-resgrid">
+      <div class="rc-ringwrap">
+        <div class="rc-ring">
+          <svg viewBox="0 0 200 200" width="200" height="200" aria-hidden="true">
+            <circle cx="100" cy="100" r="82" fill="none" stroke="var(--line)" stroke-width="16"/>
+            <circle id="rc-arc-pro"  cx="100" cy="100" r="82" fill="none" stroke="var(--pro)"  stroke-width="16" stroke-linecap="butt"/>
+            <circle id="rc-arc-carb" cx="100" cy="100" r="82" fill="none" stroke="var(--carb)" stroke-width="16" stroke-linecap="butt"/>
+            <circle id="rc-arc-fat"  cx="100" cy="100" r="82" fill="none" stroke="var(--fat)"  stroke-width="16" stroke-linecap="butt"/>
+          </svg>
+          <div class="rc-ringcenter">
+            <div class="rc-kcal" id="rc-kcal">0</div>
+            <div class="rc-kcal-lab">kcal / day</div>
+          </div>
         </div>
-        <div>
-          <label class="block font-label-bold text-label-bold text-primary mb-2" for="mac_in">Height (in)</label>
-          <input type="number" id="mac_in" min="0" max="11" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal" required placeholder="e.g. 10">
+        <div class="rc-maint">Maintenance: <b id="rc-maint">0</b> kcal · <span id="rc-deltalab">deficit</span> <b id="rc-delta">0</b> kcal</div>
+      </div>
+
+      <div>
+        <div class="rc-macros">
+          <div class="rc-mcard pro">
+            <div class="rc-mname">Protein</div>
+            <div class="rc-mgram"><span id="rc-p-g">0</span>g</div>
+            <div class="rc-mmeta"><span id="rc-p-pct">0</span>% · <span id="rc-p-kcal">0</span> kcal</div>
+          </div>
+          <div class="rc-mcard carb">
+            <div class="rc-mname">Carbs</div>
+            <div class="rc-mgram"><span id="rc-c-g">0</span>g</div>
+            <div class="rc-mmeta"><span id="rc-c-pct">0</span>% · <span id="rc-c-kcal">0</span> kcal</div>
+          </div>
+          <div class="rc-mcard fat">
+            <div class="rc-mname">Fat</div>
+            <div class="rc-mgram"><span id="rc-f-g">0</span>g</div>
+            <div class="rc-mmeta"><span id="rc-f-pct">0</span>% · <span id="rc-f-kcal">0</span> kcal</div>
+          </div>
+        </div>
+
+        <div class="rc-stats">
+          <div class="rc-stat"><div class="k">BMR</div><div class="v" id="rc-bmr">0</div></div>
+          <div class="rc-stat"><div class="k">Fiber target</div><div class="v" id="rc-fiber">0 g</div></div>
+          <div class="rc-stat"><div class="k" id="rc-tl-k">Timeline</div><div class="v" id="rc-timeline">—</div></div>
         </div>
       </div>
-      <div class="md:col-span-2">
-        <label class="block font-label-bold text-label-bold text-primary mb-2" for="mac_activity">Activity Level</label>
-        <select id="mac_activity" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal appearance-none" required>
-          <option value="1.2">Sedentary (little to no exercise)</option>
-          <option value="1.375">Lightly Active (light exercise 1-3 days/wk)</option>
-          <option value="1.55">Moderately Active (exercise 3-5 days/wk)</option>
-          <option value="1.725">Very Active (hard exercise 6-7 days/wk)</option>
-        </select>
-      </div>
-      <div class="md:col-span-2">
-        <label class="block font-label-bold text-label-bold text-primary mb-2" for="mac_goal">Your Goal</label>
-        <select id="mac_goal" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal appearance-none" required>
-          <option value="lose">Lose Fat (-500 kcal)</option>
-          <option value="maintain" selected>Maintain Weight</option>
-          <option value="build">Build Muscle (+500 kcal)</option>
-        </select>
-      </div>
     </div>
-    <div class="pt-4">
-      <button type="submit" class="w-full bg-vitality-teal text-on-primary font-label-bold text-label-bold rounded-full py-4 px-6 hover:bg-secondary transition-colors uppercase tracking-widest">Calculate My Macros</button>
-    </div>
-  </form>
 
-  <div id="mac_result" class="hidden mt-10 pt-10 border-t border-border-subtle">
-    <h3 class="font-headline-md text-headline-md text-primary text-center mb-8">Your Daily Targets</h3>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-      <div class="bg-surface-lowest border border-border-subtle rounded-xl p-6 text-center">
-        <span class="block font-label-bold text-on-surface-variant uppercase tracking-widest mb-2">Protein</span>
-        <strong id="mac_protein" class="block font-display-lg-mobile text-vitality-teal">0g</strong>
+    <div class="rc-field" style="margin-top:18px">
+      <label class="rc-lab">Dietary style — re-slice the same calories</label>
+      <div class="rc-presets" id="rc-presets" role="group" aria-label="Diet preset">
+        <button type="button" class="rc-preset" data-p="optimized" aria-pressed="true">Optimized (default)</button>
+        <button type="button" class="rc-preset" data-p="balanced" aria-pressed="false">Balanced</button>
+        <button type="button" class="rc-preset" data-p="highprotein" aria-pressed="false">High-protein</button>
+        <button type="button" class="rc-preset" data-p="lowcarb" aria-pressed="false">Low-carb</button>
+        <button type="button" class="rc-preset" data-p="keto" aria-pressed="false">Keto</button>
       </div>
-      <div class="bg-surface-lowest border border-border-subtle rounded-xl p-6 text-center">
-        <span class="block font-label-bold text-on-surface-variant uppercase tracking-widest mb-2">Fats</span>
-        <strong id="mac_fat" class="block font-display-lg-mobile text-vitality-teal">0g</strong>
+
+      <div class="rc-rangerow">
+        <label class="rc-lab" for="rc-protein" style="margin:0">Protein</label>
+        <span class="rc-rangeval"><span id="rc-protein-val">1.8</span> g/kg</span>
       </div>
-      <div class="bg-surface-lowest border border-border-subtle rounded-xl p-6 text-center">
-        <span class="block font-label-bold text-on-surface-variant uppercase tracking-widest mb-2">Carbs</span>
-        <strong id="mac_carbs" class="block font-display-lg-mobile text-vitality-teal">0g</strong>
-      </div>
+      <input type="range" id="rc-protein" min="1.2" max="3.1" step="0.1" value="1.8">
+      <p class="rc-hint">Optimized mode anchors protein to your body mass (or lean mass if body fat is set). Presets switch to a percentage split. Calories stay constant either way.</p>
     </div>
-    <p class="font-headline-md text-primary text-center">Target Calories: <span id="mac_cals" class="text-vitality-teal font-bold">0</span> kcal/day</p>
+
+    <div class="rc-method" id="rc-method"></div>
+
+    <div class="rc-actions">
+      <button type="button" class="rc-ghost" id="rc-copy">Copy results</button>
+      <button type="button" class="rc-ghost" id="rc-share">Copy shareable link</button>
+    </div>
+
+    <details class="rc-more">
+      <summary>How these numbers are built (methodology)</summary>
+      <p><b>BMR</b> uses Mifflin-St Jeor by default — the equation with the lowest average error in validation studies. When you enter body fat %, it switches to Katch-McArdle, which is more accurate at the extremes because it works from lean mass.</p>
+      <p><b>Calories</b> come from your maintenance (BMR × activity) adjusted by the deficit or surplus needed to hit your chosen weekly rate — roughly 7,700 kcal per kg. A hard floor prevents unsafe low-calorie targets.</p>
+      <p><b>Protein</b> is set per kilogram of body mass (or lean mass), because protein need scales with tissue, not with how many calories you eat. <b>Fat</b> is held at a healthy floor and <b>carbs</b> fill the remainder to fuel training.</p>
+    </details>
+
+    <p class="rc-disc" id="rc-disc">
+      Educational estimate, not medical or dietary advice. Equations are built on population averages — treat the output as a starting point and adjust from real progress data. If you have a medical condition, are pregnant or breastfeeding, or have a history of disordered eating, speak with a qualified professional before changing your intake.
+    </p>
   </div>
 </div>
 
-<div class="prose max-w-none text-on-surface-variant">
-  <p class="text-sm italic mb-8">This tool provides general estimates for educational purposes only and is not a substitute for professional medical advice.</p>
-  <h2 class="font-headline-md text-primary mb-4">How this calculator works</h2>
-  <p class="mb-8">The calculator estimates your daily energy needs from your metrics and activity, then divides that total into protein, carbohydrate, and fat targets suited to your goal.</p>
-  
-  <h2 class="font-headline-md text-primary mb-4">Frequently asked questions</h2>
-  <h3 class="font-bold text-primary mb-2">How are my macros calculated?</h3>
-  <p class="mb-6">Your total daily calories are estimated first, then split into grams of protein, carbohydrate, and fat using ratios suited to your goal and activity level.</p>
-  
-  <h3 class="font-bold text-primary mb-2">Should I hit my macros exactly every day?</h3>
-  <p class="mb-8">Aim for consistency across the week rather than perfection each day. Small daily variation is normal and does not undermine results.</p>
+<div class="rc-toast" id="rc-toast">Copied</div>
 </div>
 
-  </div>
+<script>
+(function(){
+  var R = document.getElementById('ra-macro-root');
+  var $ = function(id){ return document.getElementById(id); };
+
+  // Internal-link config — wire to live RaphaAtlas slugs when published.
+  var CTA_BASE = "https://raphaatlas.com/";
+  void CTA_BASE;
+
+  var state = {
+    units:'metric', sex:'male', goal:'lose', preset:'optimized',
+    proteinPerKg:1.8, userTouchedProtein:false
+  };
+
+  var LB=2.2046226218, IN=0.3937007874;
+  function toKg(w){ return state.units==='metric'? w : w/LB; }
+  function toCm(h){ return state.units==='metric'? h : h/IN; }
+
+  // ---- segmented controls ----
+  function bindSeg(wrapId, attr, key, after){
+    var wrap=$(wrapId);
+    wrap.addEventListener('click', function(e){
+      var b=e.target.closest('button'); if(!b) return;
+      [].forEach.call(wrap.querySelectorAll('button'), function(x){ x.setAttribute('aria-pressed','false'); });
+      b.setAttribute('aria-pressed','true');
+      state[key]=b.getAttribute(attr);
+      if(after) after();
+    });
+  }
+
+  function refreshUnitLabels(){
+    var hw=R.querySelector('[data-unit="height"]'), ww=R.querySelector('[data-unit="weight"]');
+    if(state.units==='metric'){ hw.textContent='Height (cm)'; ww.textContent='Weight (kg)'; }
+    else{ hw.textContent='Height (in)'; ww.textContent='Weight (lb)'; }
+    // convert current numeric values sensibly
+  }
+
+  function goalRateConfig(){
+    // returns {min,max,step,def,unit} for the rate slider based on goal + units
+    var perWk = state.units==='metric' ? 'kg/wk' : 'lb/wk';
+    if(state.goal==='lose'){
+      return state.units==='metric'
+        ? {min:0.25,max:1.0,step:0.05,def:0.5,unit:perWk}
+        : {min:0.5,max:2.0,step:0.1,def:1.0,unit:perWk};
+    }
+    if(state.goal==='gain'){
+      return state.units==='metric'
+        ? {min:0.1,max:0.5,step:0.05,def:0.25,unit:perWk}
+        : {min:0.25,max:1.0,step:0.05,def:0.5,unit:perWk};
+    }
+    return null; // maintain
+  }
+
+  function refreshRateField(){
+    var field=$('rc-rate-field'), cfg=goalRateConfig(), r=$('rc-rate');
+    if(!cfg){ field.style.display='none'; return; }
+    field.style.display='';
+    r.min=cfg.min; r.max=cfg.max; r.step=cfg.step;
+    if(+r.value<cfg.min || +r.value>cfg.max) r.value=cfg.def;
+    updateRateVal();
+    $('rc-rate-hint').textContent = state.goal==='lose'
+      ? 'Sustainable fat loss is ~0.5–1% of body weight per week. Faster costs muscle and adherence.'
+      : 'Lean-gain rates keep fat gain in check. Beginners can push the upper end; advanced lifters should stay low.';
+  }
+  function updateRateVal(){
+    var cfg=goalRateConfig(); if(!cfg) return;
+    $('rc-rate-val').textContent = (+$('rc-rate').value).toFixed(2).replace(/0$/,'').replace(/\.$/,'') + ' ' + cfg.unit;
+  }
+
+  // ---- core math ----
+  function computeBMR(kg,cm,age,bf,formula){
+    var mifflin = 10*kg + 6.25*cm - 5*age + (state.sex==='male'? 5 : -161);
+    var harris  = state.sex==='male'
+      ? 88.362 + 13.397*kg + 4.799*cm - 5.677*age
+      : 447.593 + 9.247*kg + 3.098*cm - 4.330*age;
+    var katch = null;
+    if(bf>0){ var lbm=kg*(1-bf/100); katch = 370 + 21.6*lbm; }
+    var used, label;
+    if(formula==='mifflin'){ used=mifflin; label='Mifflin-St Jeor'; }
+    else if(formula==='harris'){ used=harris; label='Harris-Benedict (revised)'; }
+    else if(formula==='katch'){ if(katch){used=katch;label='Katch-McArdle';} else {used=mifflin;label='Mifflin-St Jeor (no body fat entered)';} }
+    else { if(katch){used=katch;label='Katch-McArdle';} else {used=mifflin;label='Mifflin-St Jeor';} }
+    return {bmr:Math.round(used), label:label, katchAvailable:!!katch};
+  }
+
+  var last=null;
+
+  function calculate(){
+    var age=+$('rc-age').value, hRaw=+$('rc-height').value, wRaw=+$('rc-weight').value;
+    var bf = $('rc-bf').value===''? 0 : +$('rc-bf').value;
+    var kg=toKg(wRaw), cm=toCm(hRaw);
+    if(!(age>0 && kg>0 && cm>0)){ return; }
+
+    var act=+$('rc-activity').value;
+    var b=computeBMR(kg,cm,age,bf,$('rc-formula').value);
+    var maintenance=Math.round(b.bmr*act);
+
+    // calorie delta from desired rate of change
+    var delta=0, warn='';
+    if(state.goal!=='maintain'){
+      var ratePerWk = +$('rc-rate').value;                 // in user's unit
+      var kgPerWk = state.units==='metric'? ratePerWk : ratePerWk/LB;
+      delta = Math.round((kgPerWk*7700)/7);                // ~7700 kcal / kg
+      if(state.goal==='lose') delta=-delta;
+      if(state.goal==='gain') delta=Math.round(delta*1.1); // small NEAT buffer on surplus
+    }
+    var target=maintenance+delta;
+
+    // YMYL safety floor
+    var floor = state.sex==='male'? 1500 : 1200;
+    if(state.goal==='lose' && target<floor){
+      target=floor; warn='To keep you at or above a safe minimum ('+floor+' kcal), your target was raised. Lower your weekly rate for a gentler, more sustainable deficit.';
+    }
+    if(state.goal==='lose' && target<b.bmr){
+      warn='Heads up: your target sits below your BMR. That is aggressive — expect fatigue and muscle loss if held for long. Consider a slower rate.';
+    }
+
+    last={kg:kg, bf:bf, maintenance:maintenance, target:target, delta:target-maintenance, bmr:b.bmr, label:b.label, katch:b.katchAvailable};
+    // reset protein anchor to goal default unless user overrode
+    if(!state.userTouchedProtein){
+      state.proteinPerKg = state.goal==='lose'?2.2 : state.goal==='gain'?2.0 : 1.8;
+      $('rc-protein').value=state.proteinPerKg;
+      $('rc-protein-val').textContent=state.proteinPerKg.toFixed(1);
+    }
+    renderMacros();
+
+    var w=$('rc-warn');
+    if(warn){ w.textContent=warn; w.classList.add('is-on'); } else { w.classList.remove('is-on'); }
+    $('rc-results').classList.add('is-on');
+    $('rc-results').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth', block:'nearest'});
+  }
+
+  function renderMacros(){
+    if(!last) return;
+    var kcal=last.target, kg=last.kg, bf=last.bf;
+    var pKcal,cKcal,fKcal,pG,cG,fG;
+
+    if(state.preset==='optimized'){
+      // protein anchored to (lean) mass; fat floor; carbs remainder
+      var basisKg = (bf>0)? kg*(1-bf/100) : kg;
+      var perKg = state.proteinPerKg;
+      // if using lean mass, nudge target up slightly (protein per kg LBM runs higher)
+      if(bf>0) perKg = state.proteinPerKg + 0.3;
+      pG=Math.round(basisKg*perKg);
+      pKcal=pG*4;
+      var fatFloorG = Math.round(kg*0.8);           // ~0.8 g/kg healthy fat floor
+      fKcal = Math.max(Math.round(kcal*0.25), fatFloorG*9);
+      fG=Math.round(fKcal/9);
+      cKcal=Math.max(kcal-pKcal-fKcal,0);
+      cG=Math.round(cKcal/4);
+    } else {
+      var split={balanced:[0.30,0.40,0.30], highprotein:[0.40,0.35,0.25], lowcarb:[0.35,0.25,0.40], keto:[0.30,0.10,0.60]}[state.preset];
+      pKcal=kcal*split[0]; cKcal=kcal*split[1]; fKcal=kcal*split[2];
+      pG=Math.round(pKcal/4); cG=Math.round(cKcal/4); fG=Math.round(fKcal/9);
+    }
+
+    var total=Math.max(pKcal+cKcal+fKcal,1);
+    var pPct=Math.round(pKcal/total*100), cPct=Math.round(cKcal/total*100), fPct=100-pPct-cPct;
+
+    $('rc-kcal').textContent=kcal.toLocaleString();
+    $('rc-maint').textContent=last.maintenance.toLocaleString();
+    var d=last.delta;
+    $('rc-deltalab').textContent = d<0?'deficit':(d>0?'surplus':'even');
+    $('rc-delta').textContent=Math.abs(d).toLocaleString();
+
+    $('rc-p-g').textContent=pG; $('rc-p-pct').textContent=pPct; $('rc-p-kcal').textContent=Math.round(pG*4).toLocaleString();
+    $('rc-c-g').textContent=cG; $('rc-c-pct').textContent=cPct; $('rc-c-kcal').textContent=Math.round(cG*4).toLocaleString();
+    $('rc-f-g').textContent=fG; $('rc-f-pct').textContent=fPct; $('rc-f-kcal').textContent=Math.round(fG*9).toLocaleString();
+
+    $('rc-bmr').textContent=last.bmr.toLocaleString();
+    $('rc-fiber').textContent=Math.round(kcal/1000*14)+' g';
+
+    // timeline
+    var tv=$('rc-timeline'), tk=$('rc-tl-k');
+    var targetW=$('rc-target').value===''?0:+$('rc-target').value;
+    if(targetW>0 && state.goal!=='maintain'){
+      var diffUser=Math.abs((state.units==='metric'? last.kg : last.kg*LB) - targetW);
+      var rate=+$('rc-rate').value;
+      var wks=rate>0? Math.ceil(diffUser/rate):0;
+      tk.textContent='Est. timeline'; tv.textContent= wks>0? (wks+' wk'+(wks>1?'s':'')) : '—';
+    } else { tk.textContent='Timeline'; tv.textContent='set goal wt'; }
+
+    drawRing(pKcal/total,cKcal/total,fKcal/total);
+
+    var basisNote = (state.preset==='optimized')
+      ? (bf>0? 'protein from <b>lean mass</b> ('+ (state.proteinPerKg+0.3).toFixed(1) +' g/kg LBM)'
+             : 'protein at <b>'+state.proteinPerKg.toFixed(1)+' g/kg</b> body weight')
+      : '<b>'+state.preset+'</b> percentage split';
+    $('rc-method').innerHTML='Calculated with <b>'+last.label+'</b> BMR, then '+basisNote+', fat held to a healthy floor, and carbs filling the remainder.';
+  }
+
+  function drawRing(p,c,f){
+    var C=2*Math.PI*82;
+    function seg(id,frac,offsetFrac){
+      var el=$(id);
+      el.setAttribute('stroke-dasharray', (frac*C)+' '+C);
+      el.setAttribute('stroke-dashoffset', (-offsetFrac*C));
+    }
+    seg('rc-arc-pro', p, 0);
+    seg('rc-arc-carb', c, p);
+    seg('rc-arc-fat', f, p+c);
+  }
+
+  // ---- presets ----
+  $('rc-presets').addEventListener('click', function(e){
+    var b=e.target.closest('.rc-preset'); if(!b) return;
+    [].forEach.call(this.querySelectorAll('.rc-preset'), function(x){ x.setAttribute('aria-pressed','false'); });
+    b.setAttribute('aria-pressed','true');
+    state.preset=b.getAttribute('data-p');
+    renderMacros();
+  });
+
+  $('rc-protein').addEventListener('input', function(){
+    state.userTouchedProtein=true; state.proteinPerKg=+this.value;
+    $('rc-protein-val').textContent=(+this.value).toFixed(1);
+    // switching the protein anchor implies optimized mode
+    state.preset='optimized';
+    [].forEach.call($('rc-presets').querySelectorAll('.rc-preset'), function(x){ x.setAttribute('aria-pressed', x.getAttribute('data-p')==='optimized'?'true':'false'); });
+    renderMacros();
+  });
+
+  // ---- share / copy ----
+  function toast(msg){ var t=$('rc-toast'); t.textContent=msg; t.classList.add('is-on'); setTimeout(function(){t.classList.remove('is-on');},1400); }
+
+  $('rc-copy').addEventListener('click', function(){
+    if(!last) return;
+    var txt='RaphaAtlas Macro Calculator\n'
+      +'Calories: '+last.target+' kcal/day (maintenance '+last.maintenance+')\n'
+      +'Protein: '+$('rc-p-g').textContent+'g  |  Carbs: '+$('rc-c-g').textContent+'g  |  Fat: '+$('rc-f-g').textContent+'g\n'
+      +'Fiber: '+$('rc-fiber').textContent+'  |  BMR: '+last.bmr+' ('+last.label+')';
+    navigator.clipboard && navigator.clipboard.writeText(txt).then(function(){toast('Results copied');},function(){toast('Copy failed');});
+  });
+
+  $('rc-share').addEventListener('click', function(){
+    var p=new URLSearchParams({
+      u:state.units,s:state.sex,g:state.goal,a:$('rc-age').value,h:$('rc-height').value,
+      w:$('rc-weight').value,bf:$('rc-bf').value,act:$('rc-activity').value,
+      r:$('rc-rate').value,t:$('rc-target').value,fm:$('rc-formula').value
+    });
+    var url=location.origin+location.pathname+'?'+p.toString();
+    navigator.clipboard && navigator.clipboard.writeText(url).then(function(){toast('Link copied');},function(){toast('Copy failed');});
+  });
+
+  function hydrateFromURL(){
+    var q=new URLSearchParams(location.search); if(![...q.keys()].length) return;
+    if(q.get('u')){ state.units=q.get('u'); setSeg('rc-units','data-u',state.units); }
+    if(q.get('s')){ state.sex=q.get('s'); setSeg('rc-sex','data-s',state.sex); }
+    if(q.get('g')){ state.goal=q.get('g'); setSeg('rc-goal','data-g',state.goal); }
+    ['a:rc-age','h:rc-height','w:rc-weight','bf:rc-bf','r:rc-rate','t:rc-target'].forEach(function(m){
+      var k=m.split(':')[0], id=m.split(':')[1]; if(q.get(k)!==null && q.get(k)!=='') $(id).value=q.get(k);
+    });
+    if(q.get('act')) $('rc-activity').value=q.get('act');
+    if(q.get('fm')) $('rc-formula').value=q.get('fm');
+    refreshUnitLabels(); refreshRateField();
+    setTimeout(calculate,50);
+  }
+  function setSeg(wrapId,attr,val){
+    var wrap=$(wrapId);
+    [].forEach.call(wrap.querySelectorAll('button'),function(b){ b.setAttribute('aria-pressed', b.getAttribute(attr)===val?'true':'false'); });
+  }
+
+  // ---- bindings ----
+  bindSeg('rc-units','data-u','units', function(){ refreshUnitLabels(); refreshRateField(); if(last) calculate(); });
+  bindSeg('rc-sex','data-s','sex', function(){ if(last) calculate(); });
+  bindSeg('rc-goal','data-g','goal', function(){ state.userTouchedProtein=false; refreshRateField(); if(last) calculate(); });
+  $('rc-rate').addEventListener('input', function(){ updateRateVal(); if(last) calculate(); });
+  $('rc-calc').addEventListener('click', calculate);
+  ['rc-target','rc-activity','rc-formula','rc-bf'].forEach(function(id){ $(id).addEventListener('change', function(){ if(last) calculate(); }); });
+
+  refreshUnitLabels(); refreshRateField(); hydrateFromURL();
+})();
+</script>
+
+<div class="max-w-3xl mx-auto mt-12">
+<h1 class="font-display-md text-display-md font-bold text-primary mb-8">Free Macro Calculator: Accurate in Seconds</h1>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">What Are Macronutrients (Macros)?</h3>
+<p class="mb-6 font-body-md text-on-surface">Forget the tired notion that macronutrients exist only to be tallied inside an app. Macros are the chemical compounds your human body demands in large quantities, separating them sharply from micronutrients measured in tiny milligrams. Three distinct types dominate every single plate: proteins, carbohydrates, and fats. Each one delivers bulk energy differently, yet humans also need water, air, and trace dietary minerals like calcium, sodium, and chloride ions for survival. I always tell clients that calories merely measure fuel, but macros decide what that fuel actually builds. Protein supplies raw materials for growth and repair; carbs and fat handle generating energy across your bodily functions. Your daily calorie intake quietly hides three completely separate stories. A gram of protein or carbohydrates yields 4 calories per gram, while fat packs 9 calories per gram, quietly reshaping how your structures rebuild themselves. Nutrition rarely respects the modern vitamin obsession at all. Vitamin A, copper, iron, and iodine genuinely matter, but arrive in milligrams, not grams. Macronutrients stay the essential nutrients consumed in the largest quantities each day.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Protein</h2>
+<p class="mb-4 font-body-md text-on-surface">Skip the shake-first mentality entirely for now. Proteins are organic compounds built from amino acids, and only certain essential amino acids must come through consumption. Your body quietly assembles the rest, funding muscles and bones.</p>
+<p class="mb-4 font-body-md text-on-surface">Animal sources clearly still dominate the conversation, yet plant-based eaters thrive perfectly fine. Meat, dairy, fish, eggs, and chicken sit beside beans, legumes, nuts, seeds, and soy. Both camps supply real building blocks for tissue.</p>
+<p class="mb-4 font-body-md text-on-surface">Not every single protein earns equal respect here. Complete proteins carry all amino acids; incomplete proteins miss some. Whey protein, lean beef, pork, and skinless poultry rank among healthier proteins worth prioritizing during resistance training.</p>
+<p class="mb-4 font-body-md text-on-surface">Collagen production, protein hormones, and insulin all depend quite heavily on steady intake. I personally target 20 to 40 grams per meal to protect lean muscle mass and genuinely build muscle without any pointless excess.</p>
+<p class="mb-4 font-body-md text-on-surface">Watch the unhealthier proteins quietly hiding inside everyday modern convenience. Fried meats, processed meats, deli meats, sausages, fast-food burgers, high sugar yogurts, and processed protein bars trade well-being for speed. Moderation, not elimination, quietly wins.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Carbohydrates (Carbs)</h2>
+<p class="mb-4 font-body-md text-on-surface">Carbs are never really the villain diet culture loudly insists upon today. Carbohydrates are saccharides ranging from monosaccharides and disaccharides to oligosaccharides and polysaccharides, each shaping blood sugar levels and satiety in wildly different ways.</p>
+<p class="mb-4 font-body-md text-on-surface">Simple carbohydrates spike fast; complex carbohydrates burn far more slowly. Glucose stays the body's preferred energy source, yet cellulose and dietary fibers pass through untouched, quietly steadying digestion and improving stool regularity over enough time.</p>
+<p class="mb-4 font-body-md text-on-surface">Fiber honestly splits into two camps entirely. Soluble fiber softens cholesterol levels; insoluble fiber adds real bulk. Both hide inside whole grains, vegetables, and fruits, unlike the stripped sugars and starches loading most processed foods.</p>
+<p class="mb-4 font-body-md text-on-surface">I genuinely distrust the reflexive low-carb dogma today. Carbs deliver 4 calories per gram and should occupy 45% to 65% of intake for most people. Sugar, starch, and fiber together form the wider carbohydrate family.</p>
+<p class="mb-4 font-body-md text-on-surface">Digestion consistently rewards variety over rigid restriction always. Starches from whole grains behave nothing like refined sugars. Prioritizing intact dietary fibers steadily improves blood sugar levels, sustains real energy, and keeps satiety working between meals.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Fat</h2>
+<p class="mb-4 font-body-md text-on-surface">Dietary fat spent several long decades being wrongly demonized. Fats are molecules of carbon and hydrogen atoms forming triglycerides, phospholipids, and cholesterol, serving both structural functions and metabolic functions your body cannot manufacture entirely alone.</p>
+<p class="mb-4 font-body-md text-on-surface">Not all fat behaves quite identically here. Saturated fats differ from unsaturated fats, which split into monounsaturated fats and polyunsaturated fats. The healthy fats everyone chases include omega-3 fatty acids, quietly supporting durable cellular health.</p>
+<p class="mb-4 font-body-md text-on-surface">Trans fats honestly deserve every bit of their reputation. The Dietary Guidelines for Americans, 2015-2020, capped saturated fats near 10% of calories. I treat that ceiling as sensible, not gospel, adjusting around individual reality instead.</p>
+<p class="mb-4 font-body-md text-on-surface">Fat is energy dense for good reason. At 9 calories per gram it drives energy storage and enables absorption of fat soluble vitamins: vitamin A, vitamin D, vitamin E, and vitamin K, quietly protecting health.</p>
+<p class="mb-4 font-body-md text-on-surface">Balance genuinely beats extremes here quite consistently. Most people function drawing 20-35% of calories from fat, keeping trans fats minimal and treating 6% of total fats guidance loosely. Context, not fear, should govern every choice.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">How Does the Macro Calculator Work?</h3>
+<p class="mb-6 font-body-md text-on-surface">Most people assume a macro calculator reads their body directly. It doesn't. It runs predictive equations against estimates, translating your numbers into daily calories and a rough percentage breakdown nobody should ever treat as gospel. Everything starts with your basal metabolic rate, the energy your body burns at rest. The tool leans on the Mifflin-St Jeor equation, a formula the American Council on Exercise popularized for the everyday average person. There's a quieter second path. If you know your body fat percentage, the Katch-McArdle formula and Cunningham equation compute resting metabolic rate from lean body mass instead, which practitioners find sharper than MacroFactor BMR formulas. From that BMR, the machine layers an activity multiplier, folding in exercise and the thermic effect of food. What emerges is your TDEE, or Total Daily Energy Expenditure, the figure driving every downstream macronutrient percentages. Here's what the interface hides: no registered dietitian nutritionist built your exact profile. The activity factor is a bucket, not a fingerprint. Treat outputs as a starting hypothesis, then verify against scale movement over weeks.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">How to Use the Macro Calculator</h2>
+<p class="mb-4 font-body-md text-on-surface">Skip the instinct to guess. The inputs demand honesty: gender or sex, age, weight, and height, entered in either imperial or metric units, whichever drop-down menu you actually think in without mentally converting numbers midway.</p>
+<p class="mb-4 font-body-md text-on-surface">Choose your measurement carefully. Pounds and feet and inches suit some; kilograms and cm suit others. A 150 lb frame reads as 68.18 kg. Enter these data points cleanly, because rounding errors cascade through calculations.</p>
+<p class="mb-4 font-body-md text-on-surface">Your physical activity selection matters more than people credit. Sedentary desk workers routinely overstate movement. Be brutal about your true activity level, since inflating it silently sabotages whatever goal you actually set, cutting or building.</p>
+<p class="mb-4 font-body-md text-on-surface">Next comes intent. The weight loss goals field lets you pick maintain weight, lose weight, or gain weight. Each shifts the target away from maintenance calories, producing a deliberate deficit or surplus rather than maintenance.</p>
+<p class="mb-4 font-body-md text-on-surface">Finally, layer diet type. A Mediterranean diet, high-protein diet, or low fat diet each reshapes your percentages. The macro calculator then returns a personalized breakdown of proteins, carbs, and fats matched against your personal goals.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Daily Calorie Needs</h2>
+<p class="mb-4 font-body-md text-on-surface">Forget the tired 2000 default plastered on every nutrition label. That 2000-calorie diet describes nobody specifically. Your genuine daily caloric needs depend on stacked variables the Centers for Disease Control and Prevention openly acknowledges elsewhere.</p>
+<p class="mb-4 font-body-md text-on-surface">Ranges exist for a reason. Most men land between 1600-3000 calories; most women between 1600-2400. The American Dietetic Association clearly frames these as energy needs shaped by body weight, age, height, and honest activity level.</p>
+<p class="mb-4 font-body-md text-on-surface">Movement outside the gym quietly dominates. NEAT, or non-exercise activity thermogenesis, separates a fidgety 10000 steps person from a 5000 steps one. Two identical bodies at 15000 steps versus a desk job burn different totals.</p>
+<p class="mb-4 font-body-md text-on-surface">Multipliers make this concrete. Lightly active people use roughly 1.25; moderately active near 1.45; very active around 1.65; extra active athletes stretching toward 1.85 or 2.05. Layered onto BMR, these convert baseline calories into expenditure.</p>
+<p class="mb-4 font-body-md text-on-surface">Expect drift. Metabolic adaptation means your body defends itself, trimming output during a deficit. Regular strength training blunts that decline. Recheck your daily calories every few weeks, because yesterday's estimates rarely survive sustained energy needs.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">How to Count and Calculate Your Macros</h2>
+<p class="mb-4 font-body-md text-on-surface">Counting macros without a food scale is guesswork dressed as precision. Eyeballing a chicken breast wrecks your numbers faster than any cheat meal. A cheap kitchen scale and the serving size beat intuition every time.</p>
+<p class="mb-4 font-body-md text-on-surface">The arithmetic is unforgiving but simple. 1 gram carbohydrates 4 calories, 1 gram protein 4 calories, 1 gram fat 9 calories. That asymmetry, 9 calories per gram for fat, explains why portions matter enormously here.</p>
+<p class="mb-4 font-body-md text-on-surface">Work the split backward. On a 2000 calories plan at 40% carbs, 30% protein, 30% fat, you land near 200 g carbs, 150 g protein, and 67 g fat. Those grams become your tracking targets.</p>
+<p class="mb-4 font-body-md text-on-surface">Weight matters cooked or raw. 100g raw chicken shrinks to 75g cooked, and logging the wrong state inflates intake silently. Pull verified entries from FoodData Central by the USDA rather than trusting a random app.</p>
+<p class="mb-4 font-body-md text-on-surface">Respect the guardrails. Daily percentages allow 45% to 65% carbs, 10% to 35% protein, and 20% to 35% fat. A food journal keeps you inside that macronutrient range while a nutrition label verifies each portion.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Benefits Of Tracking Macros</h2>
+<p class="mb-4 font-body-md text-on-surface">Most people assume tracking macros exists only for bodybuilders, yet the sharpest benefits surface in ordinary kitchens. Awareness of your everyday food choices reshapes daily behavior far faster than any restrictive rulebook ever really manages.</p>
+<p class="mb-4 font-body-md text-on-surface">Athletes chasing muscle building obsess over protein intake, but I have watched desk workers gain more from simple portion control. The number on your plate teaches proportion, and proportion quietly rewrites how genuine hunger feels.</p>
+<p class="mb-4 font-body-md text-on-surface">Flexible dieting, often branded IIFYM or if it fits your macros, dismantles the guilt myth of no bad foods through arithmetic. Balanced nutrition becomes math, not morality, and that quiet reframing sustains real long-term consistency.</p>
+<p class="mb-4 font-body-md text-on-surface">Clinical value hides here too. People managing diabetes gain tighter blood sugar control, while those with kidney disease monitor protein intake deliberately. Nutrient-dense foods and honest food quality decisions carry genuinely measurable health goals forward.</p>
+<p class="mb-4 font-body-md text-on-surface">Weight loss rarely fails from ignorance; it fails from invisibility. Once satiety signals connect to actual grams, fiber-rich vegetables and fruits stop being distant abstractions. You finally see why blood sugar levels swing, then adjust.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Potential Risks Of Tracking Macros</h2>
+<p class="mb-4 font-body-md text-on-surface">Not for everyone is the disclaimer nobody prints loudly enough. The same precision that empowers some tips others toward obsession, where every logged gram feels like a verdict on your personal worth and daily discipline.</p>
+<p class="mb-4 font-body-md text-on-surface">For anyone with a history of eating disorders, this practice carries genuine danger. Disordered eating thrives on intense focus and control, and macro logging can quietly become fuel rather than a neutral, harmless measurement tool.</p>
+<p class="mb-4 font-body-md text-on-surface">Eating disorders aside, the ordinary risks are that it stays tedious. Weighing, logging, recalculating demands mental bandwidth many busy lives cannot spare. Sustainability, not accuracy, decides whether the habit survives past a single motivated fortnight.</p>
+<p class="mb-4 font-body-md text-on-surface">Your medical history matters more than any app algorithm. Before restructuring nutrition goals, consulting a trusted dietitian or nutritionist protects against harm that spreadsheets never flag, especially where clinical complications already exist quietly beneath everything.</p>
+<p class="mb-4 font-body-md text-on-surface">Mental health deserves the loudest caution. Numbers offer control, and control seduces during chaos. When tracking starts governing your mood instead of merely informing choices, the tool has stopped serving and started silently commanding you.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Using The Calculator For Weight Loss</h2>
+<p class="mb-4 font-body-md text-on-surface">The scale lies more often than it tells truth, which is why intelligent fat loss starts with a measurable calorie deficit, not a fluctuating morning number that swings wildly with water, salt, and yesterday's sodium.</p>
+<p class="mb-4 font-body-md text-on-surface">A sensible rate of weight loss sits near 0.5-0.75% body weight per week. Faster promises sell programs but sabotage long-term efficacy. Your macronutrient intake should feel survivable, because adherence beats aggression across every honest timeline.</p>
+<p class="mb-4 font-body-md text-on-surface">Set protein high first; it defends muscle during any calorie reduction. Then carbohydrate consumption and healthy fats fill remaining energy. Roughly 45% from carbs suits most, though bodies negotiate these ratios individually and stubbornly always.</p>
+<p class="mb-4 font-body-md text-on-surface">The ketogenic diet, or keto, drops carbs toward 5% to 10% carbs to force fat burning. It works for some, yet safety and enjoyment matter. Extreme restriction rarely outlasts the novelty that first inspired it.</p>
+<p class="mb-4 font-body-md text-on-surface">Beware rapid weight loss marketing everywhere. Quick drops are mostly water, and painful rebound is nearly guaranteed. A dietitian grounds expectations, translating vanity targets into weight loss your metabolism and schedule can genuinely sustain longer.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Using The Calculator For Weight Maintenance</h2>
+<p class="mb-4 font-body-md text-on-surface">Weight maintenance is harder than losing, though nobody ever celebrates it. Hitting your ideal weight feels like arrival, yet regaining weight ambushes most people within 12 months because they abandon the very structure that worked.</p>
+<p class="mb-4 font-body-md text-on-surface">Maintenance simply means eating at your TDEE, total daily energy expenditure. The distribution of protein, carbohydrates, and fat can loosen considerably, but the ceiling cannot vanish, or hard-won sustained weight loss quietly reverses itself completely.</p>
+<p class="mb-4 font-body-md text-on-surface">The Mediterranean diet ages well precisely because it never punishes. Lean proteins, fruits, vegetables, and minimal red meat create satisfaction without rigid logging. Enjoyment, not restriction, determines whether six months becomes a permanent lifelong pattern.</p>
+<p class="mb-4 font-body-md text-on-surface">Vegetarian and vegan approaches maintain beautifully when plant-based proteins anchor each meal. Beans and lentils deliver both protein and fiber cheaply. Variety here prevents the boredom that historically sabotages otherwise disciplined long-term eaters almost everywhere.</p>
+<p class="mb-4 font-body-md text-on-surface">The Atkins diet and similar low-carb structures can hold weight, but rigidity invites rebound. Maintenance rewards flexibility over dogma. Whatever framework you chose, quiet sustainability matters infinitely more than the first dramatic, disciplined losing month.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Using The Calculator For Muscle Gain</h2>
+<p class="mb-4 font-body-md text-on-surface">Most lifters assume a massive caloric surplus accelerates muscle gain, yet the calculator reveals a leaner reality: a modest 50 calorie surplus frequently outperforms reckless weight gain stacked with pointless fat and predictable regret afterward.</p>
+<p class="mb-4 font-body-md text-on-surface">Your training age truly dictates everything here. A raw beginner or novice captures building muscle at rates a seasoned advanced lifter envies, since genetic potential narrows sharply once you honestly climb past the intermediate tier.</p>
+<p class="mb-4 font-body-md text-on-surface">Punch your numbers in and target 0.5-2% body weight per month; anything faster is fat masquerading as lean muscle mass. Aggressive bulking without that ceiling wastes months you later spend dieting the excess back off.</p>
+<p class="mb-4 font-body-md text-on-surface">Protein intake anchors the equation, roughly 20 to 40 grams protein per feeding, while carbohydrate intake refills muscle glycogen between brutal sessions of hard resistance training that actually earn the surplus you keep eating toward.</p>
+<p class="mb-4 font-body-md text-on-surface">Dietary fat rarely gets deliberately planned, yet it drives the hormones underpinning growth. Advanced trainees chase recomposition instead, holding weight while shifting composition, though the calculator warns this pathway crawls slower than impatient people accept.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Adjusting Your Macros</h2>
+<p class="mb-4 font-body-md text-on-surface">Treat the calculator output as a loose hypothesis, never gospel. Every single number rests on estimation and group averages, so your real starting point only emerges after weeks of honest progress tracking against the scale.</p>
+<p class="mb-4 font-body-md text-on-surface">Metabolic adaptation is the saboteur nobody flags early. Prolonged cutting into a deliberate energy deficit triggers a 5% BMR reduction, occasionally a 3% BMR reduction inside a weight-reduced state, forcing sharper diet adjustments than predicted.</p>
+<p class="mb-4 font-body-md text-on-surface">Scale weight lies daily through water retention, muscle glycogen, and gut content. Ignore noise; track weekly weight change or monthly weight change as a rolling average weight before touching your calorie needs or macros again.</p>
+<p class="mb-4 font-body-md text-on-surface">When progress stalls during bulking, add 330 kcal; hard gainers may need 1100 kcal because NEAT and non-exercise activity thermogenesis incinerate caloric surplus. Cutting stalls invert this: subtract 150 kcal, 250 kcal, or 500 kcal.</p>
+<p class="mb-4 font-body-md text-on-surface">Hold protein near 1 g per pound while recomping, dropping to 0.73 g per pound or 1.6 g per kg at maintenance, climbing to 2.2 g per kg as target body weight approachs through adherence.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Macros Vs Calories</h2>
+<p class="mb-4 font-body-md text-on-surface">The tired debate frames counting calories against counting macronutrients as rival religions, but practitioners know energy balance governs the scale while macro ratios govern whether the weight you lost is fat or hard-won muscle tissue.</p>
+<p class="mb-4 font-body-md text-on-surface">CICO, meaning calories in calories out, remains stubborn physics you cannot cheat. A calorie deficit shrinks you regardless of food breakdown, yet food quality decides how miserable, hungry, and hormonally wrecked that whole process feels.</p>
+<p class="mb-4 font-body-md text-on-surface">Dieting purely by calories completely ignores satiety. Two identical days built from processed foods versus whole foods produce wildly different hunger, meaning the genuinely more effective approach usually layers macro targets over raw energy math.</p>
+<p class="mb-4 font-body-md text-on-surface">A balanced diet with deliberate protein floors protects the lean tissue that pure counting calories neglects entirely. That is why seasoned coaches treat energy balance as foundation and macro ratios as structural framing above it.</p>
+<p class="mb-4 font-body-md text-on-surface">My honest field observation: beginners thrive counting calories first, then graduate to counting macronutrients once the daily habit fully sticks. Stacking both systems simultaneously overwhelms most people and torpedoes the consistency that actually determines outcomes.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Macronutrients In Common Foods</h2>
+<p class="mb-4 font-body-md text-on-surface">Nutrition apps flatten every meal into three numbers, but staring at the serving size printed on a cheeseburger teaches more than any chart. Real intuition grows from handling actual whole food sources, not scanning barcodes.</p>
+<p class="mb-4 font-body-md text-on-surface">Fruit confuses anxious dieters constantly. An apple, banana, grapes, orange, pear, peach, pineapple, strawberry, and watermelon all deliver carbs plus fiber, yet nervous people fear their grams of natural sugar while cheerfully ignoring soda entirely.</p>
+<p class="mb-4 font-body-md text-on-surface">Vegetables anchor sheer volume: asparagus, broccoli, carrots, cucumber, eggplant, lettuce, and tomato flood your plate with complex carbs and satisfying bulk for almost nothing, quietly forming the reliable backbone of any sane fresh produce rotation.</p>
+<p class="mb-4 font-body-md text-on-surface">Protein sources diverge sharply. Beef, chicken, pork, shrimp, catfish, fish, egg, and tofu each carry wildly different fat per ounces, while a plain cup of yogurt or a cold glass of milk adds surprising grams.</p>
+<p class="mb-4 font-body-md text-on-surface">The wreckers hide in plain sight: pizza, hamburger, bread, butter, caesar salad, dark chocolate, beer, coca-cola, diet coke, orange juice, apple cider, plus corn, potato, rice, sandwich, tablespoon portions, every slice measured against unprocessed foods.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">How The Calculator Builds Your Daily Macro Targets</h2>
+<p class="mb-4 font-body-md text-on-surface">Most people assume this tool merely guesses their numbers. It doesn't. Before it can count macros, it anchors every output to your resting daily energy expenditure — the RDEE value describing what your body burns at complete rest.</p>
+<p class="mb-4 font-body-md text-on-surface">Clinicians once called this basal metabolic activity, and organizations like the ACE still frame the same idea slightly differently. Whatever the label, the engine first estimates calorie needs on a daily basis, then partitions them.</p>
+<p class="mb-4 font-body-md text-on-surface">Partitioning is where your macronutrient needs appear. The calculator splits total energy into a protein range, a carbohydrate range, and a fat range, each expressed as grams rather than vague percentages you cannot plate.</p>
+<p class="mb-4 font-body-md text-on-surface">Here is what surprises newcomers: the same RMR can support two goals at once. Choose to maintain and calories hold steady; choose to lose and the tool trims intake beneath the baseline it used to calculate macros.</p>
+<p class="mb-4 font-body-md text-on-surface">Sanity-check the output against reality. The World Health Organization pegs typical adult intake near 2000-3000 calories; drop toward coma calories and no split saves you. Even steps per day shift the math, tying health and fitness together.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Body Weight, Lean Mass, And The Logic Of Grams Per Pound</h2>
+<p class="mb-4 font-body-md text-on-surface">Forget scale weight as the master variable. Serious tools weight lean mass far more heavily, because muscle — not fat — dictates how much protein your lean body mass actually demands each day.</p>
+<p class="mb-4 font-body-md text-on-surface">The gram targets look arbitrary until you see the ratios. A common anchor sits at 1 g per pound of bodyweight, or 2.2 g per kg — identical numbers wearing different measurement clothing.</p>
+<p class="mb-4 font-body-md text-on-surface">Push harder and the numbers climb. Physique athletes often program 1.14 g per pound, roughly 2.5 g per kg, when cutting. The calculator lets you adjust macros upward without recomputing your entire plan by hand.</p>
+<p class="mb-4 font-body-md text-on-surface">One detail wrecks more diets than any other: whether you log raw weight or cooked weight. Chicken loses water when heated, so the same breast reads differently, quietly sabotaging your tracking accuracy for weeks.</p>
+<p class="mb-4 font-body-md text-on-surface">Convenience matters too, which is why the tool expresses protein in both grams per pound and grams per kilogram. Hitting the number through whey protein is fine; the calculator only cares that grams land.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Dietary Fat: Molecules, Structure, And Stored Energy</h2>
+<p class="mb-4 font-body-md text-on-surface">Fat is not the villain your macro split makes it look like. At the level of molecules, it is elegant engineering — chains of carbon bonded to hydrogen atoms, built for dense, portable fuel.</p>
+<p class="mb-4 font-body-md text-on-surface">Three forms do the heavy lifting inside you. Triglycerides dominate energy storage, phospholipids shape every cell membrane, and cholesterol — endlessly maligned — underpins hormones. Grouping fat into three types clarifies why it matters.</p>
+<p class="mb-4 font-body-md text-on-surface">Why does the calculator treat fat grams cautiously? Because fat is energy dense — more than double the calories of protein per gram — so small logging errors here distort totals faster than anywhere else.</p>
+<p class="mb-4 font-body-md text-on-surface">Beyond fuel, fat runs the quiet metabolic functions most dieters never credit. Enzyme activation, temperature regulation, nerve signalling — none of it happens without adequate lipid intake, regardless of what your aggressive cut suggests.</p>
+<p class="mb-4 font-body-md text-on-surface">The structural functions deserve equal billing. Every membrane, every myelin sheath, leans on fat architecture. Strip it too low and the body protests long before the scale rewards you for the sacrifice.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Choosing Fats And The Fat-Soluble Vitamins They Deliver</h2>
+<p class="mb-4 font-body-md text-on-surface">Not all fat grams are moral equals, whatever your macro total pretends. Trans fats behave nothing like omega-3 fatty acids, yet both count identically in the box. Quality hides inside the number.</p>
+<p class="mb-4 font-body-md text-on-surface">Sort them by chemistry. Saturated fats stack straight and solidify; unsaturated fats kink and stay liquid, splitting further into monounsaturated fats and polyunsaturated fats. Prioritising the latter is what earns the label healthy fats.</p>
+<p class="mb-4 font-body-md text-on-surface">Numbers ground the advice. The Dietary Guidelines for Americans, in the 2015-2020 edition, capped saturated intake near 10% of calories and pushed total fat into a 20-35% window of daily energy.</p>
+<p class="mb-4 font-body-md text-on-surface">There is a sharper cut-off worth knowing. Keeping trans intake beneath roughly 6% of total fats protects arteries in ways no supplement reverses. Sources like low-fat dairy products and modest cheese fit comfortably here.</p>
+<p class="mb-4 font-body-md text-on-surface">Here is the payoff dieters forget. Fat soluble vitamins — vitamin A, vitamin D, vitamin E, and vitamin K — hitch a ride on lipids, so their absorption collapses on a near-zero-fat plan.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Carbohydrates: From Simple Sugars To Complex Chains</h2>
+<p class="mb-4 font-body-md text-on-surface">Carbs earned a bad reputation they mostly don't deserve. Strip away the fear and carbohydrates are simply saccharides — sugar units your body prefers as its fastest fuel, whatever low-carb marketing insists.</p>
+<p class="mb-4 font-body-md text-on-surface">Size sorts the family. Monosaccharides like glucose stand alone; disaccharides pair up; oligosaccharides form short chains; and polysaccharides stretch long. That single spectrum explains most confusion around simple carbohydrates versus complexity.</p>
+<p class="mb-4 font-body-md text-on-surface">The complex carbohydrates camp is where starch lives, dense starches the gut dismantles slowly over hours. Contrast that with free sugars hitting your blood fast, and identical gram counts behave nothing alike.</p>
+<p class="mb-4 font-body-md text-on-surface">Energy accounting keeps it honest. Each carb gram delivers 4 calories per gram, the same as protein, which is why the calculator can swap them mathematically even though your physiology treats them very differently.</p>
+<p class="mb-4 font-body-md text-on-surface">Placement, not just amount, guides the range. Most frameworks park carbs at 45% to 65% of intake, generous room that lets athletes fuel training while sedentary users trim without ever hitting zero.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Fiber, Digestion, And Where Carbs Live In Food</h2>
+<p class="mb-4 font-body-md text-on-surface">The most useful carbohydrate is the one you can't even absorb. Dietary fibers pass through largely intact, yet they govern digestion, appetite, and metabolic health more than any digestible energy source.</p>
+<p class="mb-4 font-body-md text-on-surface">Fiber itself divides neatly. Soluble fiber gels in water and helps lower cholesterol levels, while insoluble fiber — think cellulose — adds bulk and drives stool regularity. Two mechanisms, one badly underrated macro sub-component.</p>
+<p class="mb-4 font-body-md text-on-surface">Source quality decides the outcome. Whole grains and legumes carry fiber intact; processed foods strip it out for shelf life, which is precisely why two equal-carb meals can leave you feeling opposite.</p>
+<p class="mb-4 font-body-md text-on-surface">Now widen the lens to the whole diet. Protein supplements fill gaps, but real food supplies the necessary elements and vitamins that isolated powders cannot replicate at any real scale.</p>
+<p class="mb-4 font-body-md text-on-surface">Micronutrient density is the quiet tiebreaker. A serving might carry only 100 milligrams of a key mineral, yet across a day those trace amounts compound into the difference between adequate and merely sufficient eating.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">How Do I Calculate My Macronutrient Needs?</h3>
+<p class="mb-6 font-body-md text-on-surface">Stop hunting one magic number. Your macronutrient needs start from daily caloric needs, then bend around your type of diet, weight goals, and health goals. Set each percentage, watch results, and adjust percentages deliberately as your body honestly responds.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">How Do You Calculate The Macros In Your Food?</h3>
+<p class="mb-6 font-body-md text-on-surface">Ditch eyeballing entirely. Weigh portions on a food scale, read packaged food labels, and pull nutrition information from FoodData Central by the USDA. A balanced split targets roughly 60% carbohydrates and 30% protein, with the rest from healthy fat.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">How Do You Calculate Macros For Special Diets?</h3>
+<p class="mb-6 font-body-md text-on-surface">Plant-based never means protein-starved. A macro calculator ignores food origin, so special diets only shift ingredients, not macronutrient distribution. Whether vegan, vegetarian, or gluten-free, lean on beans and lentils for carbohydrates and protein in one filling serving.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">Can I Use The Macro Calculator If I Have A Medical Condition?</h3>
+<p class="mb-6 font-body-md text-on-surface">Here is the blunt truth: a calculator cannot read bloodwork. With any medical condition, treat its macronutrient profile as a draft and let a health care provider approve it. Numbers ignore micronutrients and your genuine individual health needs entirely.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">Can The Macro Calculator Help Me Lose Weight?</h3>
+<p class="mb-6 font-body-md text-on-surface">The tool never causes loss; a deficit does. Most weight loss plans fail on adherence, so do not blindly restrict macronutrients or increase macronutrients. Fit your diet to individual goals, and let a health care provider guide any medical case.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">What Is A Good Macro Ratio For Fat Loss Or Muscle Gain?</h3>
+<p class="mb-6 font-body-md text-on-surface">Chase adherence, not a perfect macro ratio. For fat loss, prioritize high-quality protein and sensible carbohydrate intake; for muscle gain, raise carbohydrate consumption toward 45% daily calories, keep protein steady, add healthy fat. Match training goals, and consult a dietitian.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">What Are The Downsides Of Counting Macros?</h3>
+<p class="mb-6 font-body-md text-on-surface">Tracking can quietly backfire. It is tedious, and the intense focus on numbers sometimes tips vulnerable people toward disordered eating. Anyone with a fraught medical history should keep nutrition goals attached to living well, guided by a dietitian or nutritionist.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">Does This Calculator Work And Why Should I Trust It?</h3>
+<p class="mb-6 font-body-md text-on-surface">Trust it only as a starting point. Built on estimations and group averages, it leans on BMR formulas and an activity multiplier that most people misjudge. Respect these calculator limitations, make one informed decision, then let reality overrule the estimate.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">Is It Better To Focus On Macros Or Calories?</h3>
+<p class="mb-6 font-body-md text-on-surface">It is a false binary. Calories decide whether weight moves; macros and food quality decide how you feel. Stack them: set calories, arrange ratios, then favor a balanced diet of whole foods over processed foods whenever you reasonably can.</p>
+</div>
+
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"RaphaAtlas Macro Calculator",
+  "applicationCategory":"HealthApplication",
+  "operatingSystem":"Any",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+  "description":"Free macro calculator that sets protein by body mass and derives calorie targets from your desired rate of weight change, using Mifflin-St Jeor and Katch-McArdle BMR equations with built-in safety floors."
+}
+</script>
+
 </main>
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What Are Macronutrients (Macros)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Forget the tired notion that macronutrients exist only to be tallied inside an app. Macros are the chemical compounds your human body demands in large quantities, separating them sharply from micronutrients measured in tiny milligrams. Three distinct types dominate every single plate: proteins, carbohydrates, and fats. Each one delivers bulk energy differently, yet humans also need water, air, and trace dietary minerals like calcium, sodium, and chloride ions for survival. I always tell clients that calories merely measure fuel, but macros decide what that fuel actually builds. Protein supplies raw materials for growth and repair; carbs and fat handle generating energy across your bodily functions. Your daily calorie intake quietly hides three completely separate stories. A gram of protein or carbohydrates yields 4 calories per gram, while fat packs 9 calories per gram, quietly reshaping how your structures rebuild themselves. Nutrition rarely respects the modern vitamin obsession at all. Vitamin A, copper, iron, and iodine genuinely matter, but arrive in milligrams, not grams. Macronutrients stay the essential nutrients consumed in the largest quantities each day."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How Does the Macro Calculator Work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most people assume a macro calculator reads their body directly. It doesn't. It runs predictive equations against estimates, translating your numbers into daily calories and a rough percentage breakdown nobody should ever treat as gospel. Everything starts with your basal metabolic rate, the energy your body burns at rest. The tool leans on the Mifflin-St Jeor equation, a formula the American Council on Exercise popularized for the everyday average person. There's a quieter second path. If you know your body fat percentage, the Katch-McArdle formula and Cunningham equation compute resting metabolic rate from lean body mass instead, which practitioners find sharper than MacroFactor BMR formulas. From that BMR, the machine layers an activity multiplier, folding in exercise and the thermic effect of food. What emerges is your TDEE, or Total Daily Energy Expenditure, the figure driving every downstream macronutrient percentages. Here's what the interface hides: no registered dietitian nutritionist built your exact profile. The activity factor is a bucket, not a fingerprint. Treat outputs as a starting hypothesis, then verify against scale movement over weeks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How Do I Calculate My Macronutrient Needs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Stop hunting one magic number. Your macronutrient needs start from daily caloric needs, then bend around your type of diet, weight goals, and health goals. Set each percentage, watch results, and adjust percentages deliberately as your body honestly responds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How Do You Calculate The Macros In Your Food?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ditch eyeballing entirely. Weigh portions on a food scale, read packaged food labels, and pull nutrition information from FoodData Central by the USDA. A balanced split targets roughly 60% carbohydrates and 30% protein, with the rest from healthy fat."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How Do You Calculate Macros For Special Diets?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Plant-based never means protein-starved. A macro calculator ignores food origin, so special diets only shift ingredients, not macronutrient distribution. Whether vegan, vegetarian, or gluten-free, lean on beans and lentils for carbohydrates and protein in one filling serving."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I Use The Macro Calculator If I Have A Medical Condition?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Here is the blunt truth: a calculator cannot read bloodwork. With any medical condition, treat its macronutrient profile as a draft and let a health care provider approve it. Numbers ignore micronutrients and your genuine individual health needs entirely."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can The Macro Calculator Help Me Lose Weight?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool never causes loss; a deficit does. Most weight loss plans fail on adherence, so do not blindly restrict macronutrients or increase macronutrients. Fit your diet to individual goals, and let a health care provider guide any medical case."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What Is A Good Macro Ratio For Fat Loss Or Muscle Gain?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Chase adherence, not a perfect macro ratio. For fat loss, prioritize high-quality protein and sensible carbohydrate intake; for muscle gain, raise carbohydrate consumption toward 45% daily calories, keep protein steady, add healthy fat. Match training goals, and consult a dietitian."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What Are The Downsides Of Counting Macros?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tracking can quietly backfire. It is tedious, and the intense focus on numbers sometimes tips vulnerable people toward disordered eating. Anyone with a fraught medical history should keep nutrition goals attached to living well, guided by a dietitian or nutritionist."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does This Calculator Work And Why Should I Trust It?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trust it only as a starting point. Built on estimations and group averages, it leans on BMR formulas and an activity multiplier that most people misjudge. Respect these calculator limitations, make one informed decision, then let reality overrule the estimate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is It Better To Focus On Macros Or Calories?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is a false binary. Calories decide whether weight moves; macros and food quality decide how you feel. Stack them: set calories, arrange ratios, then favor a balanced diet of whole foods over processed foods whenever you reasonably can."
+      }
+    }
+  ]
+}
+</script>
 <footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto">
 <div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center">
 <div class="mb-8 md:mb-0">
@@ -304,55 +1038,47 @@
 </footer>
   
 <script>
-  document.getElementById('macroForm').addEventListener('submit', function(e) {
+  document.getElementById('bacForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const gender = document.getElementById('mac_gender').value;
-    const age = parseInt(document.getElementById('mac_age').value, 10);
-    const weightLbs = parseFloat(document.getElementById('mac_weight').value);
-    const heightFt = parseInt(document.getElementById('mac_ft').value, 10);
-    const heightIn = parseInt(document.getElementById('mac_in').value, 10);
-    const activity = parseFloat(document.getElementById('mac_activity').value);
-    const goal = document.getElementById('mac_goal').value;
+    const gender = document.getElementById('bac_gender').value;
+    const weightLbs = parseFloat(document.getElementById('bac_weight').value);
+    const drinks = parseFloat(document.getElementById('bac_drinks').value);
+    const hours = parseFloat(document.getElementById('bac_hours').value);
 
-    const weightKg = weightLbs * 0.453592;
-    const heightCm = ((heightFt * 12) + heightIn) * 2.54;
+    const alcoholGrams = drinks * 14; 
+    const weightGrams = weightLbs * 453.592;
+    const r = (gender === 'male') ? 0.68 : 0.55;
 
-    let bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age);
-    if (gender === 'male') {
-      bmr += 5;
+    let bac = ((alcoholGrams / (weightGrams * r)) * 100) - (0.015 * hours);
+    
+    if (bac < 0) bac = 0;
+
+    document.getElementById('bac_value').innerText = bac.toFixed(3) + "%";
+
+    const descEl = document.getElementById('bac_desc');
+    descEl.className = 'inline-block px-6 py-3 rounded-lg font-bold text-lg'; // reset
+
+    if (bac === 0) {
+      descEl.innerText = "Sober. Zero alcohol detected.";
+      descEl.classList.add('bg-green-100', 'text-green-800');
+    } else if (bac < 0.04) {
+      descEl.innerText = "Mild impairment. Lightheadedness and relaxation.";
+      descEl.classList.add('bg-green-100', 'text-green-800');
+    } else if (bac < 0.08) {
+      descEl.innerText = "Impairment. Lowered inhibitions, reasoning, and depth perception. Driving is unsafe.";
+      descEl.classList.add('bg-yellow-100', 'text-yellow-800');
+    } else if (bac < 0.20) {
+      descEl.innerText = "Legally intoxicated (>= 0.08%). Significant impairment of motor coordination and judgement. Do not drive.";
+      descEl.classList.add('bg-red-100', 'text-red-800');
+    } else if (bac < 0.30) {
+      descEl.innerText = "Severe intoxication. Confusion, nausea, and potential blackouts.";
+      descEl.classList.add('bg-red-100', 'text-red-800');
     } else {
-      bmr -= 161;
+      descEl.innerText = "Medical emergency. High risk of alcohol poisoning, loss of consciousness, and death.";
+      descEl.classList.add('bg-red-200', 'text-red-900');
     }
 
-    let tdee = bmr * activity;
-
-    if (goal === 'lose') tdee -= 500;
-    if (goal === 'build') tdee += 500;
-
-    if (gender === 'male' && tdee < 1500) tdee = 1500;
-    if (gender === 'female' && tdee < 1200) tdee = 1200;
-
-    tdee = Math.round(tdee);
-
-    let proteinPct, fatPct, carbPct;
-    if (goal === 'lose') {
-      proteinPct = 0.40; fatPct = 0.30; carbPct = 0.30;
-    } else if (goal === 'build') {
-      proteinPct = 0.30; fatPct = 0.25; carbPct = 0.45;
-    } else {
-      proteinPct = 0.30; fatPct = 0.30; carbPct = 0.40;
-    }
-
-    const proteinGrams = Math.round((tdee * proteinPct) / 4);
-    const fatGrams = Math.round((tdee * fatPct) / 9);
-    const carbGrams = Math.round((tdee * carbPct) / 4);
-
-    document.getElementById('mac_protein').innerText = proteinGrams + "g";
-    document.getElementById('mac_fat').innerText = fatGrams + "g";
-    document.getElementById('mac_carbs').innerText = carbGrams + "g";
-    document.getElementById('mac_cals').innerText = tdee;
-
-    document.getElementById('mac_result').classList.remove('hidden');
+    document.getElementById('bac_result').classList.remove('hidden');
   });
 </script>
 </body>
