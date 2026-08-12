@@ -8,14 +8,6 @@ import { useId } from "react";
  * <RaphaAtlasLogo variant="favicon" size={16} />
  * <RaphaAtlasLogo serpents={2} />        // twin-serpent (caduceus) version
  * <RaphaAtlasLogo mono="#2F4A6D" />      // one-colour build for dark headers / print
- *
- * Notes
- * - clipPath id is generated per instance. Hardcoding it breaks the second
- *   instance on the page, because duplicate DOM ids make clip-path resolve
- *   to the first element and the landmasses disappear.
- * - `paper` must match the surface the logo sits on. It paints the knockout
- *   halo that separates the rod from the landmasses. On a dark header, pass
- *   paper="#0E1B26" or use mono.
  */
 export default function RaphaAtlasLogo({
   variant = "lockup",
@@ -84,7 +76,6 @@ export default function RaphaAtlasLogo({
   return (
     <svg viewBox={box} {...dims} role="img" aria-label={title} {...rest}>
       <g transform={isLockup ? "translate(200,16)" : undefined}>
-        {/* landmasses */}
         <g clipPath={`url(#${clip})`}>
           <path fill={c.green} d="M40,58 C51,47 70,47 79,56 C85,63 79,71 71,75 C62,81 53,85 47,81 C39,74 34,65 40,58 Z" />
           <path fill={c.navy} d="M70,136 C79,132 85,142 83,155 C81,171 74,190 67,187 C61,184 63,167 65,155 C66,146 65,139 70,136 Z" />
@@ -92,17 +83,11 @@ export default function RaphaAtlasLogo({
           <path fill={c.green} d="M152,102 C166,97 180,107 181,121 C183,138 171,158 160,167 C153,172 148,167 147,157 C145,142 141,125 145,114 C147,107 149,103 152,102 Z" />
           <path fill={c.navy} d="M180,148 C188,146 193,152 190,158 C187,164 179,164 176,159 C174,154 176,149 180,148 Z" />
         </g>
-
-        {/* knockout halo — must render before the ring so the sphere stays unbroken */}
         <g fill={c.paper} stroke={c.paper} strokeWidth="9" strokeLinejoin="round" strokeLinecap="round">
           {rod}
         </g>
-
-        {/* sphere */}
         <path fill="none" stroke={c.navy} strokeWidth="5" strokeLinecap="round" d="M120,20 A100,100 0 0,0 120,220" />
         <path fill="none" stroke={c.green} strokeWidth="5" strokeLinecap="round" d="M120,20 A100,100 0 0,1 120,220" />
-
-        {/* circuit traces */}
         <g fill="none" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round">
           <path stroke={c.gold} d="M20,111 L8,99 L8,84" />
           <path stroke={c.gold} d="M26,154 L12,168 L12,186" />
@@ -121,8 +106,6 @@ export default function RaphaAtlasLogo({
           <circle cx="232" cy="175" r="5.5" stroke={c.gold} />
           <circle cx="214" cy="209" r="5.5" stroke={c.green} />
         </g>
-
-        {/* rod of Asclepius */}
         <path fill={c.navy} d="M113,196 L120,222 L127,196 Z" />
         <path fill="none" stroke={c.navy} strokeWidth="7" strokeLinecap="round" d="M120,60 V198" />
         <circle fill={c.navy} cx="120" cy="50" r="8.5" />
@@ -137,7 +120,6 @@ export default function RaphaAtlasLogo({
           </>
         )}
       </g>
-
       {isLockup && (
         <>
           <text x="320" y="322" textAnchor="middle"
@@ -153,7 +135,6 @@ export default function RaphaAtlasLogo({
           </text>
         </>
       )}
-
       <defs>
         <clipPath id={clip}><circle cx="120" cy="120" r="97" /></clipPath>
       </defs>

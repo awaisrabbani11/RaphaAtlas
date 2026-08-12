@@ -130,7 +130,7 @@
 <!-- Main Content -->
 <main>
 <!-- Hero Section with Shader Background -->
-<section class="relative min-h-[80vh] flex items-center bg-header-black overflow-hidden border-b border-border-subtle">
+<section class="relative min-h-[80vh] flex items-center bg-[#2F4A6D] overflow-hidden border-b border-border-subtle">
 <!-- Animated Shader Background -->
 <div class="absolute inset-0 w-full h-full opacity-40 z-0">
 <canvas id="shader-canvas-ANIMATION_3" style="display:block;width:100%;height:100%"></canvas>
@@ -166,7 +166,7 @@ void main() {
     float dist = distance(uv, vec2(0.5));
     float pulse = 0.5 + 0.5 * sin(u_time * 2.0);
     vec3 color1 = vec3(1.0, 1.0, 1.0);
-    vec3 color2 = vec3(0.01, 0.51, 0.55); // vitality-teal vibe
+    vec3 color2 = vec3(0.36, 0.50, 0.24); // #5C7F3E green vibe
     float mask = smoothstep(0.4, 0.6, dist + pulse * 0.05);
     vec3 finalColor = mix(color2, color1, mask);
     float scanline = sin(uv.y * 800.0) * 0.02;
@@ -207,23 +207,11 @@ void main() {
 <div class="relative z-10 w-full max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-section-gap">
 <!-- Text Content -->
 <div class="space-y-6 text-on-primary text-center md:text-left drop-shadow-lg">
-<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg font-black tracking-tight text-on-primary">
-                        High-Definition <br>
-<span class="text-vitality-teal">Wellness</span>
-</h1>
-<p class="font-body-lg text-body-lg text-on-primary opacity-90 max-w-xl mx-auto md:mx-0">
-                        Evidence-based insights, precise calculators, and joyful living. Build your optimal routine with clinical accuracy and high energy.
-                    </p>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg font-black tracking-tight text-[#F5F4EF]">A Complete Guide To Health</h1>
+
 <div class="pt-4 flex flex-col sm:flex-row items-center sm:justify-start gap-4 justify-center">
-<a class="inline-flex items-center justify-center bg-vitality-teal text-on-primary font-label-bold text-label-bold rounded-full px-8 py-4 hover:bg-opacity-90 transition-transform hover:scale-105 shadow-lg w-full sm:w-auto" href="/nutrition">
-                            Start Your Journey
-                        </a>
-<a class="inline-flex items-center justify-center bg-surface-container-lowest text-primary font-label-bold text-label-bold rounded-full px-8 py-4 border-2 border-primary hover:bg-surface-cream transition-colors w-full sm:w-auto" href="/calculators">
-                            Explore Calculators
-                        </a>
-</div>
-</div>
-<!-- Hero Imagery -->
+<a class="inline-flex items-center justify-center bg-[#C4A05A] text-[#F5F4EF] font-label-bold text-label-bold rounded-full px-8 py-4 hover:bg-opacity-90 transition-transform hover:scale-105 shadow-lg w-full sm:w-auto" href="/calculators">Explore Calculators</a>
+</div></div><!-- Hero Imagery -->
 <div class="relative h-[400px] md:h-[600px] w-full rounded-xl overflow-hidden border-4 border-vitality-teal bg-surface-container-highest transform md:rotate-2 hover:rotate-0 transition-transform duration-500 shadow-2xl">
 <img class="w-full h-full object-cover transition-all duration-700" data-alt="A vibrant, high-key brightly lit modern photography scene showing a diverse group of healthy individuals joyfully engaging in an active outdoor lifestyle. The composition features a mix of running, stretching, and laughing in a bright, modern architectural park setting. The lighting is crisp and clear, emphasizing a high-contrast aesthetic with pure whites, deep blacks, and subtle pops of bright teal clothing accents. The mood is energetic, authoritative yet highly approachable and uplifting." src="https://i.pinimg.com/736x/19/af/83/19af831efa10ca721994c5b8b890721e.jpg">
 <!-- Decorative overlay -->
@@ -351,10 +339,7 @@ void main() {
 <footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto">
 <div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center">
 <div class="mb-8 md:mb-0">
-<a href="/" class="flex items-center mb-2">
-  <img src="/raphaatlas-mark.svg" alt="RaphaAtlas" height="50" width="50" class="h-12 w-12">
-  <span style="font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 900; letter-spacing: -1px; color: white; margin-left: 14px; transform: translateY(2px);">RaphaAtlas</span>
-</a>
+<a href="/" class="flex items-center mb-2"><img src="/raphaatlas-lockup.svg" alt="RaphaAtlas" height="90" style="height:90px; width:auto;"></a>
 </div>
 <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8" style="font-family: 'Inter', sans-serif;">
 <a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/about">About Us</a>
