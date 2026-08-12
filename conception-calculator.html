@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Conception Calculator - RaphaAtlas</title>
+<title>Conception Calculator | RaphaAtlas</title>
 <meta name="description" content="Free conception calculator. Estimate your likely conception date and due date from your last period, cycle length, or a known date.">
 
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -138,91 +138,864 @@
 </head>
 <body class="bg-surface-lowest text-on-surface font-body-md min-h-screen flex flex-col antialiased">
 <header class="bg-header-black border-b border-black docked full-width top-0 z-50 sticky transition-all duration-300" id="main-header"><div class="flex justify-between items-center px-4 md:px-8 py-2 w-full max-w-7xl mx-auto">  <a href="/" aria-label="RaphaAtlas home" class="flex items-center">    <img src="/raphaatlas-mark.svg" alt="RaphaAtlas Logo" height="40" width="40" class="h-10 w-10">    <span style="font-family: 'Inter', sans-serif; font-size: 32px; font-weight: 900; letter-spacing: -1px; color: white; margin-left: 12px; transform: translateY(2px);">RaphaAtlas</span>  </a>  <nav class="hidden lg:flex items-center space-x-6">    <a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/nutrition">Nutrition</a>    <a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/health">Health</a>        <div class="relative group">      <button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors py-2" style="font-family: 'Inter', sans-serif;" aria-expanded="false">        <span>Calculators</span><span class="material-symbols-outlined text-sm">expand_more</span>      </button>      <div class="absolute left-0 mt-2 w-56 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg">        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/bac-calculator">BAC Calculator</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/body-type-calculator">Body Type Calculator</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/macro-calculator">Macro Calculator</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/conception-calculator">Conception Calculator</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all" href="/calculators">All Calculators</a>      </div>    </div>        <a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/fitness">Fitness</a>        <div class="relative group">      <button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors py-2" style="font-family: 'Inter', sans-serif;" aria-expanded="false">        <span>More</span><span class="material-symbols-outlined text-sm">expand_more</span>      </button>      <div class="absolute left-0 mt-2 w-56 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg">        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/about">About Us</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/editorial-policy">Editorial Policy</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/medical-review-board">Medical Review Board</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/privacy">Privacy Policy</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all" href="/contact">Contact Us</a>      </div>    </div>  </nav>  <div class="flex items-center space-x-4">    <button class="lg:hidden text-on-primary" id="mobile-menu-btn" aria-label="Toggle mobile menu">      <span class="material-symbols-outlined text-2xl">menu</span>    </button>  </div></div><!-- Mobile Menu Slide-out --><div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-surface-container-lowest shadow-2xl z-[100] transform translate-x-full transition-transform duration-300 lg:hidden overflow-y-auto border-l border-border-subtle">  <div class="p-4 border-b border-border-subtle flex justify-end">    <button id="mobile-menu-close" class="text-on-surface hover:text-primary p-2">      <span class="material-symbols-outlined">close</span>    </button>  </div>  <nav class="p-4 flex flex-col space-y-2">    <a href="/nutrition" class="block py-2 text-primary font-bold border-b border-border-subtle">Nutrition</a>    <a href="/health" class="block py-2 text-primary font-bold border-b border-border-subtle">Health</a>        <div class="py-2 border-b border-border-subtle">      <button class="flex items-center justify-between w-full text-primary font-bold mb-2 mobile-dropdown-btn">        <span>Calculators</span>        <span class="material-symbols-outlined text-sm transition-transform duration-200">expand_more</span>      </button>      <div class="pl-4 space-y-2 mobile-dropdown-content overflow-hidden max-h-0 transition-all duration-300">        <a href="/bac-calculator" class="block text-on-surface-variant hover:text-primary py-1">BAC Calculator</a>        <a href="/body-type-calculator" class="block text-on-surface-variant hover:text-primary py-1">Body Type Calculator</a>        <a href="/macro-calculator" class="block text-on-surface-variant hover:text-primary py-1">Macro Calculator</a>        <a href="/conception-calculator" class="block text-on-surface-variant hover:text-primary py-1">Conception Calculator</a>        <a href="/calculators" class="block text-on-surface-variant hover:text-primary py-1">All Calculators</a>      </div>    </div>        <a href="/fitness" class="block py-2 text-primary font-bold border-b border-border-subtle">Fitness</a>        <div class="py-2 border-b border-border-subtle">      <button class="flex items-center justify-between w-full text-primary font-bold mb-2 mobile-dropdown-btn">        <span>More</span>        <span class="material-symbols-outlined text-sm transition-transform duration-200">expand_more</span>      </button>      <div class="pl-4 space-y-2 mobile-dropdown-content overflow-hidden max-h-0 transition-all duration-300">        <a href="/about" class="block text-on-surface-variant hover:text-primary py-1">About Us</a>        <a href="/editorial-policy" class="block text-on-surface-variant hover:text-primary py-1">Editorial Policy</a>        <a href="/medical-review-board" class="block text-on-surface-variant hover:text-primary py-1">Medical Review Board</a>        <a href="/privacy" class="block text-on-surface-variant hover:text-primary py-1">Privacy Policy</a>        <a href="/contact" class="block text-on-surface-variant hover:text-primary py-1">Contact Us</a>      </div>    </div>  </nav></div><!-- Mobile Menu Overlay --><div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-[90] hidden lg:hidden"></div><script>  (function() {    const btn = document.getElementById('mobile-menu-btn');    const closeBtn = document.getElementById('mobile-menu-close');    const menu = document.getElementById('mobile-menu');    const overlay = document.getElementById('mobile-overlay');    function openMenu() {      if(menu) menu.classList.remove('translate-x-full');      if(overlay) overlay.classList.remove('hidden');    }    function closeMenu() {      if(menu) menu.classList.add('translate-x-full');      if(overlay) overlay.classList.add('hidden');    }    if (btn) btn.addEventListener('click', openMenu);    if (closeBtn) closeBtn.addEventListener('click', closeMenu);    if (overlay) overlay.addEventListener('click', closeMenu);    /* Mobile dropdown toggle logic */    const dropdownBtns = document.querySelectorAll('.mobile-dropdown-btn');    dropdownBtns.forEach(btn => {      btn.addEventListener('click', () => {        const content = btn.nextElementSibling;        const icon = btn.querySelector('.material-symbols-outlined');        if (content.classList.contains('max-h-0')) {          content.classList.remove('max-h-0');          content.classList.add('max-h-screen');          icon.style.transform = 'rotate(180deg)';        } else {          content.classList.add('max-h-0');          content.classList.remove('max-h-screen');          icon.style.transform = 'rotate(0deg)';        }      });    });  })();</script></header>
-
-<nav class="hidden lg:flex items-center space-x-6">
-<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link" href="/nutrition">Nutrition</a>
-<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link" href="/health">Health</a>
-<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link" href="/calculators">Calculators</a>
-<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link" href="/fitness">Fitness</a>
-<div class="relative group">
-<button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link py-2">
-<span>More</span>
-<span class="material-symbols-outlined text-sm">expand_more</span>
-</button>
-<div class="absolute left-0 mt-2 w-48 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg">
-<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all font-body-md text-body-md border-b border-border-subtle" href="/about">About Us</a>
-<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all font-body-md text-body-md" href="/contact">Contact Us</a>
-</div>
-</div>
-</nav>
-  
 <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-gutter py-12 md:py-section-gap">
-  <div class="max-w-3xl mx-auto">
-    
-<div class="mb-12 text-center">
-  <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-    <span class="material-symbols-outlined text-on-primary text-3xl" data-icon="child_care">child_care</span>
-  </div>
-  <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">Conception Calculator</h1>
-  <p class="font-body-lg text-body-lg text-on-surface-variant">Estimate your likely conception date and due date from your last menstrual period, cycle length, or a date you already know.</p>
-</div>
+<style>
+:root{
+  --paper:#e8ede8;
+  --ink:#16302b;
+  --ink-soft:#4c5c56;
+  --ink-faint:#7c8a84;
+  --surface:#ffffff;
+  --surface-2:#f4f7f3;
+  --line:#d3ddd2;
+  --line-soft:#e3eae2;
+  --teal:#26786c;        /* primary action + due date */
+  --teal-deep:#1c5d54;
+  --rose:#cf6670;        /* conception — the emotional heart */
+  --rose-soft:#f3d9dc;
+  --gold:#c39027;        /* ovulation / fertile peak */
+  --gold-soft:#efe1bd;
+  --sage:#6f9b8a;        /* second trimester / supportive */
+  --sage-soft:#d9e6df;
+  --t1:#e9c2c6;          /* trimester band tints */
+  --t2:#bcd6ca;
+  --t3:#e6d3a3;
+  --radius:16px;
+  --radius-sm:11px;
+  --shadow:0 1px 2px rgba(20,48,43,.05),0 12px 34px -18px rgba(20,48,43,.28);
+  --mono:'Spline Sans Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --disp:'Fraunces',Georgia,'Times New Roman',serif;
+  --body:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:16px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:clamp(20px,4vw,56px) clamp(16px,4vw,32px) 72px}
 
-<div class="bg-surface-cream rounded-xl p-8 md:p-12 border border-border-subtle shadow-sm mb-12">
-  <form id="conceptForm" class="space-y-6">
-    <div>
-      <label class="block font-label-bold text-label-bold text-primary mb-2" for="con_method">Calculate based on</label>
-      <select id="con_method" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal appearance-none" required>
-        <option value="lmp">First day of last period</option>
-        <option value="due">Known due date</option>
-      </select>
-    </div>
-    <div>
-      <label id="con_date_label" class="block font-label-bold text-label-bold text-primary mb-2" for="con_date">First day of last period</label>
-      <input type="date" id="con_date" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal" required>
-    </div>
-    <div id="con_cycle_field">
-      <label class="block font-label-bold text-label-bold text-primary mb-2" for="con_cycle">Average cycle length (days)</label>
-      <input type="number" id="con_cycle" min="20" max="45" value="28" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal" required>
-    </div>
-    <div class="pt-4">
-      <button type="submit" class="w-full bg-vitality-teal text-on-primary font-label-bold text-label-bold rounded-full py-4 px-6 hover:bg-secondary transition-colors uppercase tracking-widest">Calculate Dates</button>
-    </div>
-  </form>
+/* ---------- header ---------- */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--teal-deep);background:var(--sage-soft);
+  padding:6px 12px;border-radius:999px;
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--rose)}
+h1{
+  font-family:var(--disp);font-weight:600;font-size:clamp(2.1rem,6vw,3.4rem);
+  line-height:1.02;letter-spacing:-.01em;margin:.5em 0 .28em;max-width:16ch;
+}
+h1 em{font-style:italic;color:var(--rose)}
+.lede{font-size:clamp(1rem,2.4vw,1.14rem);color:var(--ink-soft);max-width:56ch;margin:0}
 
-  <div id="con_result" class="hidden mt-10 pt-10 border-t border-border-subtle">
-    <h3 class="font-headline-md text-headline-md text-primary text-center mb-8">Your Results</h3>
-    <div class="space-y-4">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-center py-4 border-b border-border-subtle">
-        <span class="font-body-lg text-on-surface-variant">Estimated Due Date:</span>
-        <strong id="res_due" class="font-headline-md text-vitality-teal"></strong>
-      </div>
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-center py-4 border-b border-border-subtle">
-        <span class="font-body-lg text-on-surface-variant">Estimated Conception Date:</span>
-        <strong id="res_concept" class="font-headline-md text-primary"></strong>
-      </div>
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-center py-4">
-        <span class="font-body-lg text-on-surface-variant">Likely Fertile Window:</span>
-        <strong id="res_fertile" class="font-headline-md text-primary"></strong>
-      </div>
-    </div>
-  </div>
-</div>
+/* ---------- layout ---------- */
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:22px;margin-top:34px}
+@media (max-width:860px){.grid{grid-template-columns:1fr;gap:18px}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.pad{padding:clamp(18px,3vw,26px)}
 
-<div class="prose max-w-none text-on-surface-variant">
-  <p class="text-sm italic mb-8">This tool provides general estimates for educational purposes only and is not a substitute for professional medical advice.</p>
-  <h2 class="font-headline-md text-primary mb-4">How this calculator works</h2>
-  <p class="mb-8">The tool works from your last menstrual period and cycle length to estimate ovulation and conception, then projects a due date about 40 weeks from your last period.</p>
+.card-title{font-family:var(--disp);font-weight:600;font-size:1.18rem;margin:0 0 2px}
+.card-sub{font-size:.86rem;color:var(--ink-faint);margin:0 0 18px}
+
+/* ---------- method selector ---------- */
+.methods{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
+.method{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.01em;
+  border:1px solid var(--line);background:var(--surface-2);color:var(--ink-soft);
+  padding:8px 13px;border-radius:999px;cursor:pointer;transition:.16s;
+}
+.method:hover{border-color:var(--sage)}
+.method[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.method:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+label{display:block;font-size:.82rem;font-weight:500;color:var(--ink-soft);margin:0 0 6px}
+.field{margin-bottom:16px}
+.field:last-of-type{margin-bottom:0}
+input[type=date],input[type=number],select{
+  width:100%;font-family:var(--body);font-size:1rem;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:11px 13px;transition:.16s;
+}
+input:focus,select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(38,120,108,.14)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hint{font-size:.75rem;color:var(--ink-faint);margin:6px 0 0;font-family:var(--mono)}
+.ga-input{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+.btns{display:flex;gap:10px;margin-top:22px}
+.btn{
+  font-family:var(--body);font-weight:600;font-size:.98rem;cursor:pointer;
+  border-radius:var(--radius-sm);padding:12px 20px;border:1px solid transparent;transition:.16s;
+}
+.btn-go{background:var(--teal);color:#fff;flex:1}
+.btn-go:hover{background:var(--teal-deep)}
+.btn-reset{background:transparent;color:var(--ink-soft);border-color:var(--line)}
+.btn-reset:hover{border-color:var(--ink-soft)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+.err{
+  display:none;margin-top:14px;padding:11px 13px;border-radius:var(--radius-sm);
+  background:#fbeceb;border:1px solid #eec7c4;color:#8f3a34;font-size:.86rem;
+}
+.err.show{display:block}
+
+/* ---------- results ---------- */
+.result-card{display:flex;flex-direction:column}
+.wheel-shell{padding:clamp(14px,3vw,22px) clamp(14px,3vw,22px) 4px;display:flex;justify-content:center}
+svg.wheel{width:100%;max-width:340px;height:auto;display:block}
+.wheel-empty{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;color:var(--ink-faint);min-height:300px;padding:30px;gap:10px;
+}
+.wheel-empty svg{opacity:.5}
+.wheel-empty p{margin:0;font-size:.9rem;max-width:26ch}
+
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-soft);
+  border-top:1px solid var(--line-soft);margin-top:8px}
+.tile{background:var(--surface);padding:15px 18px}
+.tile.wide{grid-column:1/-1}
+.tile .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 4px;display:flex;align-items:center;gap:6px}
+.tile .k .swatch{width:8px;height:8px;border-radius:2px}
+.tile .v{font-family:var(--disp);font-weight:600;font-size:1.32rem;line-height:1.1;color:var(--ink)}
+.tile .v small{font-family:var(--mono);font-weight:500;font-size:.72rem;color:var(--ink-soft);display:block;margin-top:3px;letter-spacing:0}
+
+/* ---------- timeline ---------- */
+.section{margin-top:22px}
+.timeline{position:relative;margin:26px 4px 8px}
+.tl-track{position:absolute;left:0;right:0;top:19px;height:3px;background:var(--line);border-radius:2px}
+.tl-fill{position:absolute;left:0;top:19px;height:3px;background:var(--teal);border-radius:2px;transition:width .6s ease}
+.tl-marks{display:flex;justify-content:space-between;position:relative}
+.tl-mark{flex:1;text-align:center;position:relative}
+.tl-mark .node{width:11px;height:11px;border-radius:50%;background:var(--surface);border:2.5px solid var(--sage);margin:14px auto 8px;position:relative;z-index:2}
+.tl-mark.done .node{background:var(--sage);border-color:var(--sage)}
+.tl-mark.now .node{background:var(--rose);border-color:var(--rose);box-shadow:0 0 0 5px var(--rose-soft)}
+.tl-mark .wk{font-family:var(--mono);font-size:11px;color:var(--ink-faint)}
+.tl-mark .lbl{font-size:.74rem;color:var(--ink-soft);line-height:1.25;margin-top:2px}
+.tl-mark .dt{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);margin-top:3px}
+@media (max-width:560px){.tl-mark .lbl{font-size:.66rem}.tl-mark .dt{display:none}}
+
+/* ---------- info blocks ---------- */
+.note{background:var(--surface-2);border:1px solid var(--line-soft);border-radius:var(--radius-sm);padding:16px 18px;margin-top:14px}
+.note h4{font-family:var(--body);font-weight:600;font-size:.92rem;margin:0 0 6px;color:var(--ink)}
+.note p{margin:0;font-size:.86rem;color:var(--ink-soft)}
+.note.redate{border-left:3px solid var(--gold)}
+
+.plural-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.84rem}
+.plural-table th,.plural-table td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line-soft)}
+.plural-table th{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+.plural-table td:last-child{font-family:var(--mono);color:var(--teal-deep);text-align:right}
+.plural-table tr.hit td{background:var(--sage-soft)}
+
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.cta a{font-family:var(--mono);font-size:12.5px;color:var(--teal-deep);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:8px 14px;transition:.16s;background:var(--surface)}
+.cta a:hover{border-color:var(--teal);background:var(--surface-2)}
+
+.disclaimer{margin-top:26px;font-size:.8rem;color:var(--ink-faint);line-height:1.5;max-width:70ch}
+.disclaimer strong{color:var(--ink-soft)}
+
+.foot{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--ink-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<div class="wrap">
+
   
-  <h2 class="font-headline-md text-primary mb-4">Frequently asked questions</h2>
-  <h3 class="font-bold text-primary mb-2">How accurate is an estimated conception date?</h3>
-  <p class="mb-6">It is an estimate based on a typical cycle. Actual conception depends on when ovulation occurred, which varies, so an ultrasound gives a more precise date.</p>
-  <h3 class="font-bold text-primary mb-2">Can I find the exact day I conceived?</h3>
-  <p class="mb-8">Rarely with certainty. Sperm can survive several days, so conception may occur days after intercourse. The tool gives a likely window, not an exact day.</p>
+
+  <div class="grid">
+
+    <!-- INPUT -->
+    <section class="card pad" aria-label="Calculator inputs">
+      <p class="card-title">What do you know?</p>
+      <p class="card-sub">Pick the date you're most confident about. The calculator fills in the rest.</p>
+
+      <div class="methods" role="group" aria-label="Calculation method">
+        <button class="method" data-method="edd" aria-pressed="true">Due date</button>
+        <button class="method" data-method="lmp" aria-pressed="false">Last period</button>
+        <button class="method" data-method="us" aria-pressed="false">Ultrasound</button>
+        <button class="method" data-method="ivf" aria-pressed="false">IVF transfer</button>
+        <button class="method" data-method="conc" aria-pressed="false">Conception date</button>
+      </div>
+
+      <!-- dynamic fields -->
+      <div id="fields"></div>
+
+      <div class="field" id="asofWrap">
+        <label for="asof">Calculate how far along as of</label>
+        <input type="date" id="asof">
+        <p class="hint">Defaults to today. Change it to date a past or future point.</p>
+      </div>
+
+      <div class="field">
+        <label for="plural">Number of babies (adjusts typical delivery week)</label>
+        <select id="plural">
+          <option value="1">Singleton</option>
+          <option value="2">Twins</option>
+          <option value="3">Triplets</option>
+          <option value="4">Quadruplets</option>
+          <option value="5">Quintuplets+</option>
+        </select>
+      </div>
+
+      <div class="btns">
+        <button class="btn btn-go" id="calc">Calculate</button>
+        <button class="btn btn-reset" id="reset">Reset</button>
+      </div>
+      <div class="err" id="err" role="alert"></div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="card result-card" aria-label="Results" aria-live="polite">
+      <div class="wheel-shell" id="wheelShell">
+        <div class="wheel-empty" id="wheelEmpty">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="#7c8a84" stroke-width="2"><circle cx="36" cy="36" r="28"/><path d="M36 14v22l14 8"/></svg>
+          <p>Your pregnancy wheel appears here once you calculate.</p>
+        </div>
+      </div>
+      <div class="tiles" id="tiles" hidden></div>
+    </section>
+  </div>
+
+  <!-- TIMELINE -->
+  <section class="card pad section" id="timelineCard" hidden>
+    <p class="card-title">Milestone timeline</p>
+    <p class="card-sub" id="tlSub">Where you are across the 40-week gestational calendar.</p>
+    <div class="timeline">
+      <div class="tl-track"></div>
+      <div class="tl-fill" id="tlFill" style="width:0%"></div>
+      <div class="tl-marks" id="tlMarks"></div>
+    </div>
+  </section>
+
+  <!-- CONTEXT NOTES -->
+  <section class="section" id="notes" hidden>
+    <div class="grid">
+      <div>
+        <div class="note redate">
+          <h4>When an ultrasound overrules your dates</h4>
+          <p id="redateNote">First-trimester ultrasound (crown-rump length up to 13w6d) is the most accurate way to date a pregnancy. Clinicians re-date from the scan when it disagrees with your last period by more than the accepted margin for that stage.</p>
+        </div>
+        <div class="note">
+          <h4>Conception vs. gestational age</h4>
+          <p>Gestational age is counted from the first day of your last period. Fetal (conceptional) age is counted from conception — about two weeks less. Most medical timelines use gestational age.</p>
+        </div>
+      </div>
+      <div>
+        <div class="note">
+          <h4 id="pluralHead">Typical delivery by number of babies</h4>
+          <table class="plural-table" id="pluralTable">
+            <thead><tr><th>Pregnancy</th><th>Avg. weeks</th><th>Est. date</th></tr></thead>
+            <tbody id="pluralBody"></tbody>
+          </table>
+          <p style="margin-top:10px" class="hint">Multiples usually arrive earlier. This does not change how the due date is first assigned.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta" id="cta">
+      <a href="" data-slug="/ovulation-calculator">Ovulation calculator →</a>
+      <a href="" data-slug="/due-date-calculator">Due date calculator →</a>
+      <a href="" data-slug="/pregnancy-week-by-week">Week-by-week guide →</a>
+      <a href="" data-slug="/hcg-calculator">hCG calculator →</a>
+    </div>
+  </section>
+
+  <p class="disclaimer">
+    <strong>This is an estimate, not a diagnosis.</strong> Conception timing, fertile windows, and due dates are approximations based on standard obstetric formulas (a 40-week gestation and ovulation roughly mid-cycle). Real cycles vary, and only about 1 in 20 babies arrives on the exact estimated due date — most healthy births happen anywhere from 37 to 42 weeks. For pregnancy dating that guides medical decisions, rely on your clinician and a dating ultrasound, not this or any other online calculator.
+  </p>
+
+  <div class="foot">
+    <span>RaphaAtlas · Conception Calculator</span>
+    <span id="methodTag">Method: Due date</span>
+  </div>
 </div>
 
-  </div>
-</main>
 
+<div class="max-w-3xl mx-auto mt-12">
+
+<h1 class="font-display-md text-display-md font-bold text-primary mb-8 text-center">Pregnancy Conception Calculator</h1>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Introductions</h2>
+<p class="mb-4 font-body-md text-on-surface">Most people expect a Pregnancy Conception Calculator to hand over one exact date, yet biology resists that request. What it truly returns is an estimate, a narrow date range where conception most plausibly occurred inside.</p>
+<p class="mb-4 font-body-md text-on-surface">A developing baby cannot announce the day it began, so competent practice works backward. We read your last period date, an ultrasound date, or an IVF transfer date toward the true date of conception instead.</p>
+<p class="mb-4 font-body-md text-on-surface">Clinicians rarely trust one method alone. Your LMP, your ultrasound results, and your fertility timing each estimate the approximate conception date differently, and honest counseling means admitting these figures vary from person to person noticeably.</p>
+<p class="mb-4 font-body-md text-on-surface">Why does knowing how far along you are matter so much? Because a defensible gestational age shapes every prenatal decision ahead, from screening windows to the expected due date your provider will eventually calculate together.</p>
+<p class="mb-4 font-body-md text-on-surface">Treat the Conception Calculator as a compass, never a guarantee of timing. It estimates when you likely conceived, offering a reliable estimate and corresponding due date rather than a promise about your actual birth date.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">When Did I Conceive / When Did I Get Pregnant</h2>
+<p class="mb-4 font-body-md text-on-surface">Forget the tidy assumption that conception matches the night of sexual intercourse. Sperm stays viable several days inside you, so fertilization may occur far later, quietly widening the plausible range of possible conception dates here.</p>
+<p class="mb-4 font-body-md text-on-surface">Reverse arithmetic anchors most estimation here. Since a 40-week pregnancy counts roughly 266 days from conception, we subtract backward from any estimated due date, producing an estimated conception date your healthcare provider can independently sanity-check.</p>
+<p class="mb-4 font-body-md text-on-surface">Your cycle length quietly rewrites everything. Textbook logic assumes a regular 28-day cycle with ovulation on day 14, yet irregular periods, longer phases, and shorter ones each shift when conception genuinely occurred within your body.</p>
+<p class="mb-4 font-body-md text-on-surface">Numbers make this concrete. A 25-day cycle places ovulation near day 11, while a 35-day cycle pushes it toward day 21, so a corrected LMP matters before trusting any estimated conception date blindly, frankly, today.</p>
+<p class="mb-4 font-body-md text-on-surface">Practitioners weigh a sonogram against dates. When your first day memory is fuzzy, an early ultrasound measuring gestational age overrides shaky counting, because accurate recall of a regular period frankly fails many patients seeking honesty.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Last Menstrual Period (LMP)</h2>
+<p class="mb-4 font-body-md text-on-surface">The Last Menstrual Period dominates because it is simple, not because it is truly accurate. Providers still adore it, yet LMP silently assumes textbook normal cycles that most real living human bodies never actually keep.</p>
+<p class="mb-4 font-body-md text-on-surface">Mechanically, the LMP method takes the first day of your last period and applies add 280 days, roughly 40 weeks or 9 months and 7 days, generating a fast, defensible due date almost instantly today.</p>
+<p class="mb-4 font-body-md text-on-surface">Here lies the buried flaw everyone ignores. The formula presumes ovulation at day 14 of a regular cycle, so anyone with irregular cycles or unusual cycle lengths inherits a quietly wrong gestational age immediately onward.</p>
+<p class="mb-4 font-body-md text-on-surface">Correction beats blind faith. Using Conception Date = LMP + (Cycle Length - 14 days) lets us subtract 14 days intelligently, adjusting the number of days whenever your average cycle length strays past 28 days.</p>
+<p class="mb-4 font-body-md text-on-surface">Boundaries matter clinically here. Normal cycles span 21 to 35 days, and beyond that range the LMP estimate frays badly. That is precisely why thoughtful family planning pairs recall with ultrasound, never recall alone honestly.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Due Date Method</h2>
+<p class="mb-4 font-body-md text-on-surface">Working from a known due date feels backward, yet it is often the cleanest path. If a sonogram already fixed your EDD, we simply reverse the math toward a corresponding window of possible conception dates.</p>
+<p class="mb-4 font-body-md text-on-surface">The arithmetic stays blunt. Conception Date = Due Date - 266 Days reflects that a full 40-week pregnancy runs 2 weeks shorter in real embryonic terms, landing near 38 weeks of genuine post-fertilization growth inside.</p>
+<p class="mb-4 font-body-md text-on-surface">Worked example beats abstraction every time. Take a due date of August 9; subtract the 266 days and you arrive around November 16 of the previous year as the most plausible estimated conception date overall.</p>
+<p class="mb-4 font-body-md text-on-surface">This method shines when earlier data exists already. A confirmed IVF transfer or a first-trimester ultrasound yields a sturdier due date than shaky LMP recall, so back-calculating from it produces a more accurate final answer.</p>
+<p class="mb-4 font-body-md text-on-surface">Never oversell the output though, ever. Even a polished Due Date Calculation delivers a range, not a verdict, because natural variation means barely 5% of babies actually arrive on the precise estimated due date printed.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Conception Date Method</h2>
+<p class="mb-4 font-body-md text-on-surface">Forget the notion that one remembered night pins your conception date. Because live sperm linger inside the reproductive tract, real fertilization can arrive five days earlier than the intercourse you keep blaming and counting on.</p>
+<p class="mb-4 font-body-md text-on-surface">The cleanest Conception Date Method runs backward from a known due date, since the sound calculation adds 266 days from fertilization rather than counting from your imprecise last menstrual period and its usual two-week padding.</p>
+<p class="mb-4 font-body-md text-on-surface">I trust this most when a patient logged ovulation deliberately. Ovulation predictor kits, ovulation test strips, and a disciplined basal body temperature chart mark the ovulation window far tighter than any generic assumed 28-day cycle.</p>
+<p class="mb-4 font-body-md text-on-surface">Fertility treatments rewrite the arithmetic completely. Under IUI or in vitro fertilization, the human egg meets sperm at a scheduled hour, so the brief 12 to 24 hours of viability, not vague memory, fixes conception.</p>
+<p class="mb-4 font-body-md text-on-surface">Skeptics demand one exact day, yet biology declines politely. An honest conception date is really a range of days, anchored wherever ovulation occurs, then quietly confirmed later through ultrasound dating instead of the wall calendar.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Ultrasound / Gestational Age</h2>
+<p class="mb-4 font-body-md text-on-surface">Your LMP date is a guess wearing the costume of fact, and the obstetric ultrasound overrules it without apology. Sound waves assemble images of internal body structures, and those measurements date the pregnancy more honestly.</p>
+<p class="mb-4 font-body-md text-on-surface">Early pregnancy ultrasounds earn trust between 6 and 8 weeks, when crown-rump length, read from top of head to bottom, predicts gestational age within 5 to 7 days, the most accurate window you will get.</p>
+<p class="mb-4 font-body-md text-on-surface">Practitioners convert a raw crown rump length into weeks and days through a sonographic method, never intuition. A first-trimester scan reading 7 weeks 5 days lets me count backward toward the truly genuine ovulation window.</p>
+<p class="mb-4 font-body-md text-on-surface">I have watched one early pregnancy scan quietly adjust a due date by ten days. Once fetal size outpaces the calculated LMP, the ultrasound-based EDD wins, because living tissue grows on a reliable biological schedule.</p>
+<p class="mb-4 font-body-md text-on-surface">Past 12 weeks the growing baby varies too widely for precise dating, which is why first trimester timing matters. A pregnancy confirmation ultrasound at five or six weeks merely proves viability, never the exact age.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">IVF / ART Embryo Transfer</h2>
+<p class="mb-4 font-body-md text-on-surface">Couples using IVF often assume their dating stays fuzzy, yet the reverse holds. Because the embryo transfer date and embryo age sit documented in a chart, IVF/ART yields obstetrics' single most precise conception timeline overall.</p>
+<p class="mb-4 font-body-md text-on-surface">The math hinges entirely on which transfer date occurred. A day-three embryo transfer at the cleavage stage, meaning Day 3, and a day-five embryo transfer at the blastocyst stage, meaning Day 5, carry distinct offsets.</p>
+<p class="mb-4 font-body-md text-on-surface">For the estimated due date, clinicians reckon from transfer, never from a phantom period. In Vitro Fertilization records replace the menstrual cycles and ovulation dates muddying natural conception, so the calculator needs one clean number.</p>
+<p class="mb-4 font-body-md text-on-surface">A blastocyst embryo transfer adds fewer days than a cleavage transfer, while a Day 6 transfer shifts the sum yet again. This is precisely why I forbid patients reusing a generic pregnancy due date widget.</p>
+<p class="mb-4 font-body-md text-on-surface">Fertility treatments strip out the customary adjustment guesswork entirely. Where a natural cycle forces some hazy estimated date range, a logged embryo transfer hands you a fixed origin, rendering gestational age almost stubbornly, accurately knowable.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Reverse-Calculate from Date of Birth</h2>
+<p class="mb-4 font-body-md text-on-surface">Working forward toward a due date feels intuitive, yet reversing from an actual date of birth is where precision hides. The formula Conception Date = Date of Birth - 266 Days anchors this entire reconstruction.</p>
+<p class="mb-4 font-body-md text-on-surface">The logic rests on gestation in humans spanning roughly 38 to 42 weeks, or 38 x 7 counted days from conception. Full-term pregnancies cluster there, though plus or minus two weeks stays ordinary, never alarming.</p>
+<p class="mb-4 font-body-md text-on-surface">Take one date of birth of April 2 1990; the subtraction lands conception near the prior July 10 1989. Repeating that same operation against any birth date exposes the likely conception date with surprising cleanliness.</p>
+<p class="mb-4 font-body-md text-on-surface">Because delivery arrives early, late, or precisely on schedule, the reversed figure is a window, not a pinpoint. A June 26 birth against a July 24 birth swings the exact date of conception measurably apart.</p>
+<p class="mb-4 font-body-md text-on-surface">Remember the first two weeks of the menstrual cycle predate the true fertilization of the egg entirely. Counting from birth ignores that clinical fiction, delivering an estimated date range grounded in the egg meeting sperm.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Ovulation Method</h2>
+<p class="mb-4 font-body-md text-on-surface">Most people assume conception happens the exact moment you have sex, yet fertilization actually follows ovulation by hours, not days. Pinpointing your day of ovulation matters far more than any single bedroom date you half-remember.</p>
+<p class="mb-4 font-body-md text-on-surface">Your ovaries release a single egg roughly 14 days before your next period arrives, though real cycles scatter this across an 11-21 days range. That is why lazy cycle length - 28 assumptions wreck estimates.</p>
+<p class="mb-4 font-body-md text-on-surface">Once the ovaries let go, the egg travels down the fallopian tubes awaiting sperm. When a sperm fertilizes it, that newly fertilized cell implants into the uterus wall roughly a week afterward, certainly not immediately.</p>
+<p class="mb-4 font-body-md text-on-surface">The most commonly used shortcut simply adds 280 days onto your last period, but the ovulation route runs sharper. Count backward, add two weeks onto your calculated ovulation moment, and the fertile window tightens considerably.</p>
+<p class="mb-4 font-body-md text-on-surface">I tell patients that tracking ovulation cycles beats memory every single time. Note your menstrual period start, subtract two weeks, and you land on the ovulation day when you were most likely to conceive successfully.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Intercourse / Last Sexual Contact</h2>
+<p class="mb-4 font-body-md text-on-surface">Dating a pregnancy from the last time you had sex feels perfectly logical, yet it misleads more couples than it helps. Sperm stay alive far longer than the encounter itself, quietly distorting the whole process.</p>
+<p class="mb-4 font-body-md text-on-surface">A man's sperm can survive up to a week inside the reproductive tract, just patiently waiting around. So the day you had intercourse rarely marks the day you genuinely ovulated or actually became pregnant afterward.</p>
+<p class="mb-4 font-body-md text-on-surface">This takes time to accept, particularly with more than one partner across a cycle. Because sperm linger, identifying which partner or encounter truly led to conception becomes genuinely difficult without any hard ovulation timing data.</p>
+<p class="mb-4 font-body-md text-on-surface">Assuming birth control kept you fully safe is another common trap. No method sits 100% effective at preventing pregnancy, and people who were ovulating while lapsing on protection conceive far more often than they expected.</p>
+<p class="mb-4 font-body-md text-on-surface">Your ovaries release the egg into the fallopian tubes, and then can pregnant status begin. Add two weeks past your menstrual period; irregular body cycles and ovulation cycles shift this by two or three days.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">When To Prefer Ultrasound Dating Over LMP</h2>
+<p class="mb-4 font-body-md text-on-surface">Trusting your last period to date a pregnancy sounds sensible until you learn how often it misleads prenatal care. LMP dating quietly assumes textbook regular 28-day cycles, yet most real bodies refuse to cooperate neatly.</p>
+<p class="mb-4 font-body-md text-on-surface">An early ultrasound scan never guesses; it takes a real-time measure of the fetus to confirm gestational age within a few days. Reading CRL size, the standard procedure across obstetric ultrasounds, reliably beats recalled dates.</p>
+<p class="mb-4 font-body-md text-on-surface">The clinical question is discrepancy size, not preference. When your scan and LMP dating diverge past the recommended thresholds, providers redate you. Blindly adding 280 days onto an uncertain period only compounds that original error.</p>
+<p class="mb-4 font-body-md text-on-surface">Here are the ACOG bands I actually follow: before 9 0/7 weeks, redate beyond 5 days; across 9 0/7-15 6/7 weeks, seven days; then 16 0/7-21 6/7 weeks loosens to 10 days before correction applies.</p>
+<p class="mb-4 font-body-md text-on-surface">Past that, 22 0/7-27 6/7 weeks tolerates 14 days, while 28 0/7 weeks onward permits 21 days. CRL fades beyond 13 weeks 6 days, so the exam date anchors how software back-calculates and derives EDD.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Determining The Estimated Due Date (EDD)</h2>
+<p class="mb-4 font-body-md text-on-surface">Your estimated due date offers only a general idea of when you will give birth, never a hard deadline. Treating it as exact timing invites disappointment, since few babies arrive born on exact due date.</p>
+<p class="mb-4 font-body-md text-on-surface">The standard clinical method begins by adding 280 days to your last period, setting a rough baseline. That crude midpoint ignores your actual biology, so clinicians refine it well before trusting the final printed number.</p>
+<p class="mb-4 font-body-md text-on-surface">We refine using early ultrasound measurements plus a cycle length - 28 days correction to improve the estimate. Longer cycles mean you ovulate later, and ignoring such quiet factors skews the entire projection badly downstream.</p>
+<p class="mb-4 font-body-md text-on-surface">For conception-based cases the arithmetic differs sharply: IVF procedures with known embryo transfer dates subtract precisely, yielding 263 days or 261 days by blastocyst age. That calculated precision beats estimating from a fuzzy recalled period.</p>
+<p class="mb-4 font-body-md text-on-surface">Accept the accuracy limits honestly. Individual differences, timing, and discrepancies between ultrasound methods and fetal measurements mean your actual due date lands a week or two before or after the true spontaneous onset of labor.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Fertile Window, Ovulation, Fertilization & Conception</h2>
+<p class="mb-4 font-body-md text-on-surface">The day you had sex rarely marks conceiving. Clinically, the initiation of pregnancy follows a strict scientific definition where fertilization and implantation occur separately, leaving you not considered pregnant until the embryo develops and settles.</p>
+<p class="mb-4 font-body-md text-on-surface">Timing drives probability. Your fertile window spans roughly 5 days, yet the highest odds combine into a three-day window ending at ovulation. Couples attempting to conceive should target the most fertile days, not blind guesswork.</p>
+<p class="mb-4 font-body-md text-on-surface">Studies show regular sexual intercourse across the last 3 days before ovulation gives the sharpest increase in successfully conceiving. Understand that five days before ovulation sperm still survive; pregnancy can begin from earlier contact, surprisingly.</p>
+<p class="mb-4 font-body-md text-on-surface">Once sperm fertilizes the waiting egg, that fertilized egg travels the fallopian tube. The egg fertilized moment isn't pregnancy yet. People use these terms interchangeably, but medical precision matters when tracking becoming pregnant accurately here.</p>
+<p class="mb-4 font-body-md text-on-surface">Shortly after ovulation, the implanted embryo burrows into the uterine lining, gripping the wall of the uterus. Only after implantation does pregnancy officially begins. Roughly 30% of cases fail silently before you get pregnant knowingly.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Regular Lovemaking & Childbearing</h2>
+<p class="mb-4 font-body-md text-on-surface">Scheduling sex around the ovulation day often backfires. Couples fixated on trying to have a baby invite stress that suppresses fertility. The best preparation is regular sex, not military precision aimed at one fertile morning.</p>
+<p class="mb-4 font-body-md text-on-surface">Lovemaking roughly 2 to 3 times a week keeps sperm life span overlapping your fertile window naturally. This rhythm quietly raises chances of conception while extending the fertile window, since fresh sperm await the egg.</p>
+<p class="mb-4 font-body-md text-on-surface">Desire fades when work, chores, and daily distractions dominate life. A couple who only make love on command drains intimacy. Protect your relationships first; a partner feeling pressured rarely brings feelings of sexuality to bed.</p>
+<p class="mb-4 font-body-md text-on-surface">Childbearing depends heavily on lifestyle. A skewed hormonal level or chronic worry produces low fertility signals inside the woman's body. Wanting a child intensely never overrides favorable conditions built through rest, nutrition, and steady calm.</p>
+<p class="mb-4 font-body-md text-on-surface">Fertile-quality, egg-white cervical mucus signals ready vaginal conditions. Healthy vagina chemistry aids protecting the sperm during transit. Love the process itself; couples who relax read these bodily cues sharper than any rigid calendar ever manages.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Making The Fertility Window Work (Basal Body Temperature & Cervical Mucus)</h2>
+<p class="mb-4 font-body-md text-on-surface">Forget generic app predictions. Your own biological cycle speaks louder. Serious tracking blends a basal body temperature chart with cervical mucus reading to predict ovulation from real signals, not from a phone's crudely averaged guess.</p>
+<p class="mb-4 font-body-md text-on-surface">Take your body temperature every morning before rising, same 24-hour period rhythm, using a basal thermometer from most pharmacies. Consistency delivers an accurate reading; even minute changes distinguish the lowest body temperature from a rise.</p>
+<p class="mb-4 font-body-md text-on-surface">Before you ovulate, readings hover near 97.2 degrees, inside a normal range. Roughly two or three days after the day of ovulation, temperature climbs one-half to one degree toward 97.7 degrees Fahrenheit, confirming the shift.</p>
+<p class="mb-4 font-body-md text-on-surface">Mucus tells the forward story. Dry days, then sticky paste, then cloudy mucus, finally clear, slippery, raw egg white strands mark your fertility window. These become the best days for regular lovemaking, sex, or insemination.</p>
+<p class="mb-4 font-body-md text-on-surface">Chart both patterns across one full length of the cycle, roughly day 12 through day 17, and a biological pattern emerges. Predicting your next period sharpens chances of conception and best days to get pregnant.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Follow Your Feelings</h2>
+<p class="mb-4 font-body-md text-on-surface">Charts can betray you. When the tracking process becomes stressful, it sabotages the very bodies you monitor. Worry and stress flood your system, and the woman's body responds by delaying the favorable hormonal moment entirely.</p>
+<p class="mb-4 font-body-md text-on-surface">I tell couples to loosen the charting grip. Have sex roughly every two days as a comfortable minimum, never a chore. This keeps you closer without turning intimacy into a clinical process ruled by spreadsheets.</p>
+<p class="mb-4 font-body-md text-on-surface">Feeling good matters physiologically. Relaxed body conditions create favorable chemistry across the crucial seven days surrounding ovulation. A loving, unhurried contact does more for conception than any anxious, obsessively logged temperature reading ever truly could.</p>
+<p class="mb-4 font-body-md text-on-surface">Getting closer emotionally shifts biology. Partners who stay loving and present, skin contact frequent, report calmer cycles. The woman's body rewards safety, not surveillance; that is the truth most fertility apps quietly refuse to mention.</p>
+<p class="mb-4 font-body-md text-on-surface">Trust your own bodies over borrowed rules. Feeling good, low worry, steady contact every few days, this natural process carries couples through seven days of possibility while the rigid tracking process crowd stays anxious enough.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">How The Tool Estimates Your Dates</h2>
+<p class="mb-4 font-body-md text-on-surface">Most people assume you can pinpoint exactly when you became pregnant. Biologically, that's difficult. A pregnancy conception date varies across women because multiple ways exist to measure it, and each gives slightly different conception dates.</p>
+<p class="mb-4 font-body-md text-on-surface">A conception calculator works by entering dates — usually the mother's last menstrual period — then applying the average menstrual cycle length. From these factors it estimates when real conception most likely happened for you.</p>
+<p class="mb-4 font-body-md text-on-surface">This is why a pregnancy calculator stays the number one, most popular starting point for anyone unsure how many weeks pregnant they are, or trying to track pregnancy week by week.</p>
+<p class="mb-4 font-body-md text-on-surface">The age of the baby — its gestational age on date selected — differs from the moment conception took place by roughly two weeks, since clinicians count from your last period, not fertilization.</p>
+<p class="mb-4 font-body-md text-on-surface">Whether it's a planned baby or an unplanned pregnancy, the woman's body works identically. Sperm linger 3-5 days, while implantation follows conception by roughly 10 days, shifting your fertile map.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">When Did I Conceive?</h3>
+<p class="mb-6 font-body-md text-on-surface">At your first prenatal visit, the clinician often estimates when you ovulated. If your period started April 24, ovulation near May 7 — about 13 days later — marks the likeliest window.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Estimating Conception From An Ultrasound</h2>
+<p class="mb-4 font-body-md text-on-surface">Beyond dating methods built purely on cycles, a last ultrasound reads the embryo directly, checking its progress and the health of both mother and child through precise, measurable early growth.</p>
+<p class="mb-4 font-body-md text-on-surface">Timing is everything here. On a 30-day cycle, a scan reading 38 days points to conception about 16 days after your period — noticeably earlier than clumsy tracking ovulation guesswork suggests.</p>
+<p class="mb-4 font-body-md text-on-surface">Software then back-calculates the fuller picture: a January 15 scan showing 54 days of growth sets conception near December 8, sharpening ovulation timing into a single, dependable, dated estimate you can trust.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">IVF, Delivery, And Why Ranges Beat Single Dates</h2>
+<p class="mb-4 font-body-md text-on-surface">For IVF embryo transfer, the calculator skips guesswork entirely — the transfer date fixes conception precisely. Natural pregnancy timing windows stay wider, which is why the tool shows ranges, not one rigid day.</p>
+<p class="mb-4 font-body-md text-on-surface">That range matters because few babies actually deliver on the exact calculated date. Knowing your true conception window simply helps you plan care, testing, and expectations across the pregnancy realistically.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">How Accurate Is the Due Date?</h3>
+<p class="mb-6 font-body-md text-on-surface">Treat your due date as a probability, not a promise. Fewer than one in twenty babies arrive on it. Still, it anchors pregnancy planning and early preparations with useful, workable structure.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">Can My Due Date Change?</h3>
+<p class="mb-6 font-body-md text-on-surface">Due dates change; that's normal. A shift means accuracy, not error. Fetal measurements convert your cycle-based general estimate into due date adjustment. New information, baby's growth, natural variability nudge pregnancy toward its actual due date.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">What If I Already Know My Due Date?</h3>
+<p class="mb-6 font-body-md text-on-surface">Knowing the date is the beginning, not the answer. Entering it into the Pregnancy Due Date Calculator stays helpful, generating a detailed pregnancy timeline with key milestones, symptoms, prenatal tests, reminders, and scheduled prenatal visits.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Gestational Age at Delivery by Plurality</h2>
+<p class="mb-4 font-body-md text-on-surface">Forty weeks fits singleton pregnancies alone. Multiple gestations deliver earlier: twins 35 weeks, triplets 32 weeks, quadruplets 30 weeks, quintuplets 27 weeks. Plurality sets the average gestational age assigned, while the singleton reaches 39 weeks.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">How is the estimated due date calculated?</h3>
+<p class="mb-6 font-body-md text-on-surface">Most tools apply Naegele's rule: add 280 days to your last menstrual period, assuming a 28-day cycle and ovulation around day fourteen. That fixed formula yields forty weeks of gestation.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">What if I don't know my last period / LMP date?</h3>
+<p class="mb-6 font-body-md text-on-surface">Irregular or unknown? A dating ultrasound or clinical scan measures baby's length, yielding ultrasound gestational age. That becomes an accurate due date, established due date, or known conception date to estimate EDD and pregnancy timeline.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">How accurate is an estimated due date?</h3>
+<p class="mb-6 font-body-md text-on-surface">Think helpful target, never fixed deadline. Only about four percent are born on the date. Most healthy pregnancies are delivered full-term, anywhere between 37 and 42 weeks, and that spread is completely normal.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">Can my due date change during pregnancy?</h3>
+<p class="mb-6 font-body-md text-on-surface">Your calendar is a roadmap, not a contract. As your baby grows, ultrasound measurements and fresh clinical data let your provider track development and, when warranted, the estimate is adjusted.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">How many weeks pregnant am I today?</h3>
+<p class="mb-6 font-body-md text-on-surface">The clinical standard, measured from last period, makes you two weeks pregnant before conception occurs. Gestational weeks precede the day of conception. Your doctor uses this timeline to set your prenatal appointment schedule for pregnancy.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">Can I find out the exact day I got pregnant?</h3>
+<p class="mb-6 font-body-md text-on-surface">Rarely with certainty. Sperm can live up to five days, so the fertile window, not one exact day, is when you likely got pregnant. Conception timing varies, which is why it's estimated, never precisely calculated.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">What is conception date?</h3>
+<p class="mb-6 font-body-md text-on-surface">It's the day sperm fertilized the egg — biologically when you actually became pregnant. Unlike the LMP-based estimate, it reflects the real fertilization event, though it usually can't be pinpointed to a single calendar day.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">How long after conception until pregnancy officially begins?</h3>
+<p class="mb-6 font-body-md text-on-surface">Fertilization isn't the official start. The fertilized egg travels for roughly 6-12 days before it can implant in the uterine wall. Only after that implantation, clinically speaking, does pregnancy officially begin.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">How does ultrasound dating calculate a due date?</h3>
+<p class="mb-6 font-body-md text-on-surface">It measures the embryo or fetus — crown-rump length early on — and converts that size into gestational age expressed in weeks and days, then projects forty weeks forward to estimate delivery.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">When should ultrasound dating be preferred over LMP?</h3>
+<p class="mb-6 font-body-md text-on-surface">When a discrepancy between LMP dating and ultrasound exceeds recommended thresholds — often five to seven days in the first trimester — the ultrasound estimate should replace the period-based date for accuracy.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">How is EDD calculated for IVF/ART?</h3>
+<p class="mb-6 font-body-md text-on-surface">With IVF, dating is unusually precise because the embryo's age is known. Providers add 266 days to egg retrieval for fresh transfers, or adjust by the embryo's age at transfer for frozen cycles.</p>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">Difference between gestational age and fetal (conceptional) age?</h3>
+<p class="mb-6 font-body-md text-on-surface">Gestational age is counted from your last period; fetal age, also called conceptional age, starts at fertilization. Because ovulation follows menstruation by about two weeks, fetal age runs 2 weeks less than gestational age.</p>
+</div>
+
+</main>
+<script>
+/* ============ config: wire result CTAs to your real site slugs ============ */
+const CTA_BASE = "https://raphaatlas.com";
+document.querySelectorAll('#cta a').forEach(a=>{a.href = CTA_BASE + a.dataset.slug;});
+
+const EMPTY_WHEEL = `<div class="wheel-empty" id="wheelEmpty">
+  <svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="#7c8a84" stroke-width="2"><circle cx="36" cy="36" r="28"/><path d="M36 14v22l14 8"/></svg>
+  <p>Your pregnancy wheel appears here once you calculate.</p></div>`;
+
+/* ============ UTC-noon date engine (DST-safe) ============ */
+const DAY = 86400000;
+function ymdToDate(str){                       // "YYYY-MM-DD" -> Date at UTC noon
+  if(!str) return null;
+  const [y,m,d] = str.split('-').map(Number);
+  if(!y||!m||!d) return null;
+  return new Date(Date.UTC(y, m-1, d, 12));
+}
+function addDays(dt, n){ return new Date(dt.getTime() + n*DAY); }
+function diffDays(a, b){ return Math.round((a - b)/DAY); }   // a - b in whole days
+function todayUTC(){ const n=new Date(); return new Date(Date.UTC(n.getFullYear(),n.getMonth(),n.getDate(),12)); }
+const FMT = {weekday:'short', month:'short', day:'numeric', year:'numeric', timeZone:'UTC'};
+const FMT_S = {month:'short', day:'numeric', timeZone:'UTC'};
+function fmt(dt){ return dt.toLocaleDateString('en-US', FMT); }
+function fmtShort(dt){ return dt.toLocaleDateString('en-US', FMT_S); }
+
+/* ============ state ============ */
+let method = 'edd';
+const AVG_GA = [null,39,35,32,30,27];   // index by plurality count
+
+/* ============ field templates per method ============ */
+function renderFields(){
+  const F = document.getElementById('fields');
+  const cyc = `
+    <div class="field">
+      <label for="cycle">Average cycle length (days)</label>
+      <input type="number" id="cycle" min="20" max="45" value="28">
+      <p class="hint">Corrects ovulation timing. 28 = textbook. Longer cycle ⇒ later ovulation.</p>
+    </div>`;
+  const map = {
+    edd: `<div class="field"><label for="d1">Your estimated due date</label><input type="date" id="d1"><p class="hint">We reverse-calculate: conception = due date − 266 days.</p></div>`,
+    lmp: `<div class="field"><label for="d1">First day of your last period</label><input type="date" id="d1"></div>${cyc}`,
+    us:  `<div class="field"><label for="d1">Date the ultrasound was done</label><input type="date" id="d1"></div>
+          <div class="field"><label>Gestational age at that scan</label>
+            <div class="ga-input">
+              <input type="number" id="usw" min="0" max="45" placeholder="weeks">
+              <input type="number" id="usd" min="0" max="6" placeholder="days">
+            </div>
+            <p class="hint">e.g. 12 weeks 3 days. Shown on your scan report.</p></div>`,
+    ivf: `<div class="field"><label for="d1">Embryo transfer date</label><input type="date" id="d1"></div>
+          <div class="field"><label for="emb">Embryo age at transfer</label>
+            <select id="emb"><option value="3">Day 3 (cleavage)</option><option value="5" selected>Day 5 (blastocyst)</option><option value="6">Day 6 (blastocyst)</option></select></div>`,
+    conc:`<div class="field"><label for="d1">Known conception / ovulation date</label><input type="date" id="d1"><p class="hint">Due date = conception + 266 days. Cycle length isn't needed when conception is known.</p></div>`
+  };
+  F.innerHTML = map[method];
+  const t = todayUTC().toISOString().slice(0,10);
+  const d1 = document.getElementById('d1'); if(d1 && !d1.value) d1.value = t;
+}
+
+/* ============ core computation ============ */
+/* All methods resolve to a single LMP anchor, then everything derives from it. */
+function compute(){
+  const err = document.getElementById('err');
+  err.classList.remove('show');
+  const cycleEl = document.getElementById('cycle');
+  const cycle = cycleEl ? clamp(+cycleEl.value||28,20,45) : 28;
+  const ovOffset = cycle - 14;                 // days from LMP to ovulation/conception
+  const d1 = ymdToDate((document.getElementById('d1')||{}).value);
+  if(!d1) return fail("Enter a valid date to calculate.");
+
+  // Resolve every method to ONE dating anchor: the (cycle-corrected) effective LMP.
+  // conception = anchor + 14, EDD = anchor + 280, GA = asof − anchor. Always internally consistent.
+  let anchor;
+  if(method==='edd'){
+    anchor = addDays(d1, -280);
+  } else if(method==='lmp'){
+    anchor = addDays(d1, cycle - 28);          // cycle correction (perinatology/ACOG)
+  } else if(method==='conc'){
+    anchor = addDays(d1, -14);                 // conception given directly; cycle is irrelevant here
+  } else if(method==='us'){
+    const w = +(document.getElementById('usw').value);
+    const dd = +(document.getElementById('usd').value||0);
+    if(!Number.isFinite(w)||document.getElementById('usw').value==='') return fail("Enter the gestational age (weeks) from the scan.");
+    if(dd<0||dd>6) return fail("Days must be between 0 and 6.");
+    anchor = addDays(d1, -(w*7 + dd));
+  } else if(method==='ivf'){
+    const emb = +document.getElementById('emb').value;
+    anchor = addDays(d1, -emb - 14);
+  }
+
+  const conception = addDays(anchor, 14);
+  const lmp = anchor;                          // reported "dating anchor" (cycle-corrected LMP)
+  const edd = addDays(anchor, 280);
+  const asof = ymdToDate(document.getElementById('asof').value) || todayUTC();
+  const gaDays = diffDays(asof, anchor);
+  const plural = +document.getElementById('plural').value;
+
+  if(gaDays < -30) return fail("That date is over a month before conception — check the inputs.");
+  if(gaDays > 336) return fail("That's beyond 48 weeks of gestation — check the inputs.");
+
+  render({lmp, conception, edd, asof, gaDays, cycle, plural});
+}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+function fail(msg){const e=document.getElementById('err');e.textContent=msg;e.classList.add('show');}
+
+/* ============ render results ============ */
+function render(r){
+  const {lmp, conception, edd, asof, gaDays, plural} = r;
+  const gw = Math.floor(Math.abs(gaDays)/7), gd = Math.abs(gaDays)%7;
+  const gaStr = gaDays<0 ? "Not yet — pre-conception" : `${gw}w ${gd}d`;
+
+  // trimester
+  let tri = "—", triClass="";
+  if(gaDays>=0){
+    if(gaDays<=97){tri="First trimester";}
+    else if(gaDays<=195){tri="Second trimester";}
+    else {tri="Third trimester";}
+  } else {tri="Trying to conceive";}
+
+  // fertile window: sperm survive ~5d before ovulation, egg ~1d after
+  const fwStart = addDays(conception,-5), fwEnd = addDays(conception,1);
+
+  // tiles
+  const tiles = document.getElementById('tiles');
+  tiles.hidden=false;
+  tiles.innerHTML = `
+    <div class="tile">
+      <p class="k"><span class="swatch" style="background:var(--rose)"></span>Most likely conception</p>
+      <p class="v">${fmt(conception)}</p>
+    </div>
+    <div class="tile">
+      <p class="k"><span class="swatch" style="background:var(--gold)"></span>Fertile window</p>
+      <p class="v" style="font-size:1rem;line-height:1.25">${fmtShort(fwStart)} – ${fmtShort(fwEnd)}<small>6-day window around ovulation</small></p>
+    </div>
+    <div class="tile">
+      <p class="k"><span class="swatch" style="background:var(--teal)"></span>Estimated due date</p>
+      <p class="v">${fmt(edd)}</p>
+    </div>
+    <div class="tile">
+      <p class="k">Gestational age ${sameDay(asof,todayUTC())?'today':'on '+fmtShort(asof)}</p>
+      <p class="v">${gaStr}<small>${tri}</small></p>
+    </div>
+    <div class="tile wide">
+      <p class="k">Calculated last menstrual period (LMP anchor)</p>
+      <p class="v" style="font-size:1.05rem">${fmt(lmp)}<small>All dates derive from this. Fetal age ≈ ${gaDays>=0?Math.max(0,gw-2)+'w '+gd+'d':'—'} (about 2 weeks less than gestational age)</small></p>
+    </div>`;
+
+  drawWheel(r, tri);
+  drawTimeline(r);
+  drawPlural(r);
+  document.getElementById('methodTag').textContent = 'Method: '+methodLabel();
+  document.getElementById('timelineCard').hidden=false;
+  document.getElementById('notes').hidden=false;
+}
+function sameDay(a,b){return diffDays(a,b)===0;}
+function methodLabel(){return {edd:'Due date',lmp:'Last period',us:'Ultrasound',ivf:'IVF transfer',conc:'Conception date'}[method];}
+
+/* ============ the pregnancy wheel (signature element) ============ */
+function drawWheel(r, tri){
+  const {edd, gaDays} = r;
+  // real values — CSS var() does not resolve inside SVG presentation attributes
+  const C = {t1:'#e9c2c6',t2:'#bcd6ca',t3:'#e6d3a3',post:'#d8ddd6',teal:'#26786c',
+             rose:'#cf6670',sage:'#6f9b8a',ink:'#16302b',inkSoft:'#4c5c56',inkFaint:'#7c8a84',tick:'#b9c5bd'};
+  const MONO="'Spline Sans Mono',monospace", DISP="'Fraunces',Georgia,serif", BODY="'Inter',sans-serif";
+  const cx=170, cy=170, rOuter=140, rBand=120, band=17, TOTAL=42;
+  const ang = w => -90 + (w/TOTAL)*360;
+  const pol = (rr,a)=>[cx+rr*Math.cos(a*Math.PI/180), cy+rr*Math.sin(a*Math.PI/180)];
+  const arc = (rr,a0,a1,color,width)=>{
+    const large=(a1-a0)>180?1:0;
+    const [x0,y0]=pol(rr,a0),[x1,y1]=pol(rr,a1);
+    return `<path d="M${x0.toFixed(1)} ${y0.toFixed(1)} A${rr} ${rr} 0 ${large} 1 ${x1.toFixed(1)} ${y1.toFixed(1)}" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round"/>`;
+  };
+  const gaW = Math.max(0, Math.min(TOTAL, gaDays/7));
+
+  let svg = `<svg class="wheel" viewBox="0 0 340 340" role="img" aria-label="Pregnancy progress wheel, ${tri}">`;
+  svg += arc(rBand, ang(0),  ang(13), C.t1, band);
+  svg += arc(rBand, ang(13), ang(27), C.t2, band);
+  svg += arc(rBand, ang(27), ang(40), C.t3, band);
+  svg += arc(rBand, ang(40), ang(42), C.post, band);
+  if(gaW>0) svg += arc(rOuter, ang(0.15), ang(gaW), C.teal, 4);
+  for(let w=0; w<=40; w+=4){
+    const [x0,y0]=pol(rBand+band/2+4, ang(w));
+    const [x1,y1]=pol(rBand+band/2+9, ang(w));
+    svg += `<line x1="${x0.toFixed(1)}" y1="${y0.toFixed(1)}" x2="${x1.toFixed(1)}" y2="${y1.toFixed(1)}" stroke="${C.tick}" stroke-width="1.5"/>`;
+    const [tx,ty]=pol(rBand+band/2+20, ang(w));
+    svg += `<text x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" font-family="${MONO}" font-size="9" fill="${C.inkFaint}" text-anchor="middle" dominant-baseline="middle">${w}</text>`;
+  }
+  const marker = (w,color)=>{const [mx,my]=pol(rBand,ang(w));
+    return `<circle cx="${mx.toFixed(1)}" cy="${my.toFixed(1)}" r="6" fill="#fff" stroke="${color}" stroke-width="3"/>`;};
+  svg += marker(2,  C.rose);   // conception ~2w GA
+  svg += marker(24, C.sage);   // viability
+  svg += marker(40, C.teal);   // due date
+  if(gaW>0){
+    const [hx,hy]=pol(rBand-band/2-2, ang(gaW));
+    svg += `<line x1="${cx}" y1="${cy}" x2="${hx.toFixed(1)}" y2="${hy.toFixed(1)}" stroke="${C.ink}" stroke-width="2.5" stroke-linecap="round"/>`;
+    svg += `<circle cx="${hx.toFixed(1)}" cy="${hy.toFixed(1)}" r="5" fill="${C.rose}"/>`;
+  }
+  svg += `<circle cx="${cx}" cy="${cy}" r="4" fill="${C.ink}"/>`;
+  const gw=Math.floor(Math.max(0,gaDays)/7), gd=Math.max(0,gaDays)%7;
+  const big = gaDays<0 ? '—' : `${gw}w`;
+  svg += `<text x="${cx}" y="${cy-30}" font-family="${MONO}" font-size="9" letter-spacing="1" fill="${C.inkFaint}" text-anchor="middle">GESTATIONAL AGE</text>`;
+  svg += `<text x="${cx}" y="${cy+4}" font-family="${DISP}" font-weight="600" font-size="46" fill="${C.ink}" text-anchor="middle">${big}</text>`;
+  svg += `<text x="${cx}" y="${cy+28}" font-family="${MONO}" font-size="12" fill="${C.inkSoft}" text-anchor="middle">${gaDays<0?'pre-conception':gd+' days'}</text>`;
+  svg += `<text x="${cx}" y="${cy+72}" font-family="${BODY}" font-size="11" fill="${C.inkFaint}" text-anchor="middle">Due ${fmtShort(edd)}</text>`;
+  svg += `</svg>`;
+  document.getElementById('wheelShell').innerHTML = svg;
+}
+
+/* ============ milestone timeline ============ */
+function drawTimeline(r){
+  const {lmp, gaDays} = r;
+  const marks = [
+    {w:0,  lbl:'Conception window'},
+    {w:13, lbl:'End of 1st trimester'},
+    {w:20, lbl:'Anatomy scan'},
+    {w:24, lbl:'Viability'},
+    {w:28, lbl:'3rd trimester'},
+    {w:37, lbl:'Full term'},
+    {w:40, lbl:'Due date'}
+  ];
+  const nowW = gaDays/7;
+  const pct = Math.max(0,Math.min(100, (nowW/40)*100));
+  document.getElementById('tlFill').style.width = pct+'%';
+  document.getElementById('tlMarks').innerHTML = marks.map(m=>{
+    const date = addDays(lmp, m.w*7);
+    const done = nowW >= m.w;
+    const now = Math.abs(nowW - m.w) < 1.6;
+    return `<div class="tl-mark ${done?'done':''} ${now?'now':''}">
+      <div class="wk">${m.w}w</div><div class="node"></div>
+      <div class="lbl">${m.lbl}</div><div class="dt">${fmtShort(date)}</div></div>`;
+  }).join('');
+  document.getElementById('tlSub').textContent =
+    gaDays<0 ? 'Estimated timeline once pregnancy begins.' :
+    `You're roughly ${Math.round(pct)}% through a 40-week pregnancy.`;
+}
+
+/* ============ plurality table ============ */
+function drawPlural(r){
+  const {lmp, plural} = r;
+  const rows = [['Singleton',39],['Twins',35],['Triplets',32],['Quadruplets',30],['Quintuplets+',27]];
+  document.getElementById('pluralBody').innerHTML = rows.map((row,i)=>{
+    const est = addDays(lmp, row[1]*7);
+    const hit = (i+1)===plural;
+    return `<tr class="${hit?'hit':''}"><td>${row[0]}</td><td>${row[1]}</td><td>${fmtShort(est)}</td></tr>`;
+  }).join('');
+}
+
+/* ============ wiring ============ */
+document.querySelectorAll('.method').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.method').forEach(x=>x.setAttribute('aria-pressed','false'));
+    b.setAttribute('aria-pressed','true');
+    method = b.dataset.method;
+    renderFields();
+    document.getElementById('err').classList.remove('show');
+  });
+});
+document.getElementById('calc').addEventListener('click', compute);
+document.getElementById('reset').addEventListener('click', ()=>{
+  method='edd';
+  document.querySelectorAll('.method').forEach((x,i)=>x.setAttribute('aria-pressed', i===0?'true':'false'));
+  renderFields();
+  document.getElementById('asof').value = todayUTC().toISOString().slice(0,10);
+  document.getElementById('plural').value='1';
+  document.getElementById('tiles').hidden=true;
+  document.getElementById('timelineCard').hidden=true;
+  document.getElementById('notes').hidden=true;
+  document.getElementById('wheelShell').innerHTML = EMPTY_WHEEL;
+  document.getElementById('err').classList.remove('show');
+});
+document.addEventListener('keydown',e=>{ if(e.key==='Enter' && !e.shiftKey){ const t=e.target.tagName; if(t==='INPUT'||t==='SELECT'){e.preventDefault();compute();} }});
+
+// init
+renderFields();
+document.getElementById('asof').value = todayUTC().toISOString().slice(0,10);
+</script>
+
+<!-- ============ structured data ============ -->
+
+
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"MedicalWebPage",
+  "name":"Conception Calculator",
+  "url":"https://raphaatlas.com/conception-calculator",
+  "description":"Estimate the most likely date of conception, fertile window, gestational age, and due date from a due date, last menstrual period, ultrasound, IVF transfer, or known conception date.",
+  "medicalAudience":["Patient"],
+  "mainEntity":{
+    "@type":"WebApplication",
+    "name":"RaphaAtlas Conception Calculator",
+    "applicationCategory":"HealthApplication",
+    "operatingSystem":"Any",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "When Did I Conceive?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At your first prenatal visit, the clinician often estimates when you ovulated. If your period started April 24, ovulation near May 7 — about 13 days later — marks the likeliest window."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How Accurate Is the Due Date?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Treat your due date as a probability, not a promise. Fewer than one in twenty babies arrive on it. Still, it anchors pregnancy planning and early preparations with useful, workable structure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can My Due Date Change?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Due dates change; that's normal. A shift means accuracy, not error. Fetal measurements convert your cycle-based general estimate into due date adjustment. New information, baby's growth, natural variability nudge pregnancy toward its actual due date."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What If I Already Know My Due Date?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Knowing the date is the beginning, not the answer. Entering it into the Pregnancy Due Date Calculator stays helpful, generating a detailed pregnancy timeline with key milestones, symptoms, prenatal tests, reminders, and scheduled prenatal visits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is the estimated due date calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most tools apply Naegele's rule: add 280 days to your last menstrual period, assuming a 28-day cycle and ovulation around day fourteen. That fixed formula yields forty weeks of gestation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I don't know my last period / LMP date?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Irregular or unknown? A dating ultrasound or clinical scan measures baby's length, yielding ultrasound gestational age. That becomes an accurate due date, established due date, or known conception date to estimate EDD and pregnancy timeline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is an estimated due date?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Think helpful target, never fixed deadline. Only about four percent are born on the date. Most healthy pregnancies are delivered full-term, anywhere between 37 and 42 weeks, and that spread is completely normal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can my due date change during pregnancy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your calendar is a roadmap, not a contract. As your baby grows, ultrasound measurements and fresh clinical data let your provider track development and, when warranted, the estimate is adjusted."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many weeks pregnant am I today?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The clinical standard, measured from last period, makes you two weeks pregnant before conception occurs. Gestational weeks precede the day of conception. Your doctor uses this timeline to set your prenatal appointment schedule for pregnancy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I find out the exact day I got pregnant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rarely with certainty. Sperm can live up to five days, so the fertile window, not one exact day, is when you likely got pregnant. Conception timing varies, which is why it's estimated, never precisely calculated."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is conception date?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's the day sperm fertilized the egg — biologically when you actually became pregnant. Unlike the LMP-based estimate, it reflects the real fertilization event, though it usually can't be pinpointed to a single calendar day."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long after conception until pregnancy officially begins?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fertilization isn't the official start. The fertilized egg travels for roughly 6-12 days before it can implant in the uterine wall. Only after that implantation, clinically speaking, does pregnancy officially begin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does ultrasound dating calculate a due date?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It measures the embryo or fetus — crown-rump length early on — and converts that size into gestational age expressed in weeks and days, then projects forty weeks forward to estimate delivery."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should ultrasound dating be preferred over LMP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When a discrepancy between LMP dating and ultrasound exceeds recommended thresholds — often five to seven days in the first trimester — the ultrasound estimate should replace the period-based date for accuracy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is EDD calculated for IVF/ART?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With IVF, dating is unusually precise because the embryo's age is known. Providers add 266 days to egg retrieval for fresh transfers, or adjust by the embryo's age at transfer for frozen cycles."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Difference between gestational age and fetal (conceptional) age?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gestational age is counted from your last period; fetal age, also called conceptional age, starts at fertilization. Because ovulation follows menstruation by about two weeks, fetal age runs 2 weeks less than gestational age."
+      }
+    }
+  ]
+}
+</script>
 <footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto">
 <div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center">
 <div class="mb-8 md:mb-0">
