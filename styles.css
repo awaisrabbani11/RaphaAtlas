@@ -54,6 +54,7 @@ h1,h2,h3,h4{font-family:var(--head);letter-spacing:-.02em;line-height:1.15;margi
   position:absolute;top:calc(100% + 8px);left:0;min-width:230px;background:#fff;border:1px solid var(--line);
   border-radius:12px;box-shadow:var(--shadow);padding:8px;opacity:0;visibility:hidden;transform:translateY(6px);
   transition:opacity .16s ease,transform .16s ease,visibility .16s}
+.menu::before{content:"";position:absolute;top:-12px;left:0;right:0;height:12px}
 .nav .item:hover .menu,.nav .item[aria-open="true"] .menu{opacity:1;visibility:visible;transform:translateY(0)}
 .menu a{display:block;padding:10px 12px;border-radius:8px;color:var(--ink);font-size:14.5px}
 .menu a:hover{background:var(--brand-tint);color:var(--brand-deep);text-decoration:none}
