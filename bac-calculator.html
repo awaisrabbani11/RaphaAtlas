@@ -135,13 +135,94 @@
 <link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Blood Alcohol Concentration (BAC) Calculator",
+  "applicationCategory":"HealthApplication",
+  "operatingSystem":"Any",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+  "description":"Free calculator that estimates blood alcohol concentration, time until the legal driving limit, and time to sober, using the Widmark formula."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What Is One Standard Drink?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A \"drink\" is a marketing word, not a measurement. One standard drink means 14 grams of pure alcohol — roughly 0.6 fluid ounces — regardless of whether it arrives as beer, wine, or spirits in your glass. The equivalence surprises people. 12 fl oz regular beer at 5% alcohol, 5 fl oz table wine near 12% alcohol, 1.5 fl oz distilled spirits at 40% alcohol deliver the same amount of alcohol identically. This is why standard drinks matter for any BAC estimate. A tall pint of 8-9 fl oz malt liquor can hide nearly two servings, quietly outpacing the one standard drink per hour your liver metabolized. Your body needs roughly one hour to process each unit. NIAAA sets the recommended weekly limit at 14 for male, 7 for female. Exceeding it consistently is where the % ABV on labels stops being trivia. Regional measures muddy things. A can holds 12 oz (341 mL); a standard shot pours 1.5 oz (43 mL). Knowing ounces per drink beats guessing, because identical volume rarely means identical alcohol content across bottles."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What Does BAC Stand For?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most assume a breathalyzer just says how drunk you are. Wrong. BAC — blood alcohol concentration — quantifies the percentage of alcohol in blood. Every test, whether a breath test or lab chemical tests, exists to measure exactly that."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How Can I Calculate BAC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Skip the apps. Widmark's formula does it: BAC = A/(bw × Wt) × 100% − mr × t. Here A = amount of alcohol in grams, Wt = body weight in kilograms, bw = ratio of body water to total weight, t = time in hours, and mr = metabolism rate at 0.017% per hour."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which Factor Is the Only Way to Lower BAC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Here's what nobody wants to hear: nothing speeds it up. Coffee, a cold shower, a glass of water — every trick to sober up fast is a myth, not true. Only spending time without drinking lets your system finish what it absorbs and get rid of alcohol."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What BAC Means That I Am Drunk?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Legally, 0.08% BAC marks where you can't drive under the influence across the United States — though Utah sets it lower. But effects of being drunk begin earlier: mild impairment of speech, vision, coordination, and reaction times."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which Factors Affect BAC Levels?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's not only the number of standard drinks. Weight matters — a heavier person gets a lower BAC. Sex too: men metabolize faster than women. Add medications, drugs, liver health, speed of sipping, and food — an empty stomach speeds alcohol absorption and intoxication."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What Is My BAC After 2 Beers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Take a US man at 180 lbs drinking two large beers — roughly 50 grams of raw alcohol. After about 4 hours to metabolize, his reading lands near 0.06%, or 0.6‰."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-surface-lowest text-on-surface font-body-md min-h-screen flex flex-col antialiased">
 <header class="bg-header-black border-b border-black docked full-width top-0 z-50 sticky transition-all duration-300">
 <div class="flex justify-between items-center px-4 md:px-8 py-2 w-full max-w-7xl mx-auto">
 <a href="/" aria-label="RaphaAtlas home" class="flex items-center">
   <img src="/raphaatlas-mark.svg" alt="RaphaAtlas Logo" height="40" width="40" class="h-10 w-10">
-  <span style="font-family: 'Merriweather', 'Georgia', serif; font-size: 34px; font-weight: 900; letter-spacing: -1.5px; color: white; margin-left: 12px; transform: translateY(2px);">RaphaAtlas</span>
+  <span style="font-family: 'Inter', sans-serif; font-size: 32px; font-weight: 900; letter-spacing: -1px; color: white; margin-left: 12px; transform: translateY(2px);">RaphaAtlas</span>
 </a>
 <nav class="hidden lg:flex items-center space-x-6">
 <a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/nutrition">Nutrition</a>
@@ -186,74 +267,438 @@
 </div>
 </nav>
   
-<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-gutter py-12 md:py-section-gap">
-  <div class="max-w-3xl mx-auto">
-    
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-gutter py-12 md:py-section-gap"><div class="max-w-3xl mx-auto">
 <div class="mb-12 text-center">
-  <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-    <span class="material-symbols-outlined text-on-primary text-3xl" data-icon="local_bar">local_bar</span>
-  </div>
-  <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">BAC Calculator</h1>
-  <p class="font-body-lg text-body-lg text-on-surface-variant">Estimate your blood alcohol concentration from the drinks you have had, your body weight, sex, and elapsed time.</p>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">BAC Calculator: Know Before You Drive</h1>
 </div>
+<div class="mb-12">
 
-<div class="bg-surface-cream rounded-xl p-8 md:p-12 border border-border-subtle shadow-sm mb-12">
-  <form id="bacForm" class="space-y-6">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<style id="ra-bac-style">
+.ra-bac{
+  /* ---- theme tokens: override these to match raphaatlas.com ---- */
+  --ra-bg:#ffffff;
+  --ra-surface:#f7f8f9;
+  --ra-ink:#14181d;
+  --ra-muted:#5b6672;
+  --ra-line:#e2e6ea;
+  --ra-accent:#1f6feb;
+  --ra-green:#1a9e5f;
+  --ra-amber:#d99100;
+  --ra-red:#d23b2f;
+  --ra-crit:#7c1a12;
+  --ra-radius:12px;
+  --ra-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+
+  all:unset;
+  display:block;
+  box-sizing:border-box;
+  font-family:var(--ra-font);
+  color:var(--ra-ink);
+  background:var(--ra-bg);
+  border:1px solid var(--ra-line);
+  border-radius:var(--ra-radius);
+  padding:20px;
+  max-width:560px;
+  margin:0 auto;
+  line-height:1.45;
+}
+.ra-bac *{box-sizing:border-box}
+.ra-bac h2{font-size:1.25rem;margin:0 0 2px;font-weight:700;letter-spacing:-.01em}
+.ra-bac .ra-sub{font-size:.82rem;color:var(--ra-muted);margin:0 0 18px}
+.ra-bac fieldset{border:0;margin:0 0 14px;padding:0}
+.ra-bac legend{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ra-muted);font-weight:600;padding:0;margin-bottom:7px}
+.ra-bac label{font-size:.8rem;color:var(--ra-muted);display:block;margin-bottom:4px}
+
+.ra-bac .ra-row{display:flex;gap:10px;flex-wrap:wrap}
+.ra-bac .ra-row>div{flex:1;min-width:120px}
+
+.ra-bac .ra-seg{display:inline-flex;border:1px solid var(--ra-line);border-radius:8px;overflow:hidden;background:var(--ra-surface)}
+.ra-bac .ra-seg button{all:unset;cursor:pointer;padding:8px 14px;font-size:.85rem;color:var(--ra-muted);text-align:center}
+.ra-bac .ra-seg button[aria-pressed="true"]{background:var(--ra-accent);color:#fff;font-weight:600}
+
+.ra-bac input,.ra-bac select{
+  width:100%;font:inherit;font-size:.92rem;color:var(--ra-ink);
+  background:var(--ra-bg);border:1px solid var(--ra-line);border-radius:8px;
+  padding:9px 10px;-moz-appearance:textfield;
+}
+.ra-bac input:focus,.ra-bac select:focus{outline:2px solid var(--ra-accent);outline-offset:1px;border-color:var(--ra-accent)}
+
+.ra-bac .ra-drink{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--ra-surface);border:1px solid var(--ra-line);border-radius:8px;padding:8px 10px;margin-bottom:8px}
+.ra-bac .ra-drink .ra-d-name{font-size:.86rem;font-weight:600}
+.ra-bac .ra-drink .ra-d-meta{font-size:.72rem;color:var(--ra-muted)}
+.ra-bac .ra-step{display:flex;align-items:center;gap:8px}
+.ra-bac .ra-step button{all:unset;cursor:pointer;width:30px;height:30px;line-height:30px;text-align:center;border:1px solid var(--ra-line);border-radius:7px;font-size:1.1rem;font-weight:600;color:var(--ra-ink);background:var(--ra-bg)}
+.ra-bac .ra-step button:hover{border-color:var(--ra-accent);color:var(--ra-accent)}
+.ra-bac .ra-step .ra-count{min-width:22px;text-align:center;font-variant-numeric:tabular-nums;font-weight:700}
+
+.ra-bac .ra-custom{display:flex;gap:8px;align-items:end;flex-wrap:wrap;margin-top:2px}
+.ra-bac .ra-custom>div{flex:1;min-width:78px}
+
+/* ---- readout / signature meter ---- */
+.ra-bac .ra-out{margin-top:18px;padding-top:16px;border-top:1px solid var(--ra-line)}
+.ra-bac .ra-bac-num{font-size:3rem;font-weight:800;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.ra-bac .ra-bac-unit{font-size:1rem;font-weight:600;color:var(--ra-muted);margin-left:4px}
+.ra-bac .ra-stage{font-size:.9rem;font-weight:600;margin:4px 0 2px}
+.ra-bac .ra-stage-desc{font-size:.82rem;color:var(--ra-muted);margin:0}
+
+.ra-bac .ra-meter{position:relative;height:16px;border-radius:8px;background:var(--ra-surface);margin:16px 0 6px;overflow:hidden;border:1px solid var(--ra-line)}
+.ra-bac .ra-meter-fill{position:absolute;left:0;top:0;bottom:0;width:0;transition:width .25s ease,background .25s ease;border-radius:8px}
+.ra-bac .ra-meter-mark{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ra-ink)}
+.ra-bac .ra-meter-mark::after{content:attr(data-label);position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-size:.6rem;white-space:nowrap;color:var(--ra-ink);font-weight:600}
+.ra-bac .ra-scale{display:flex;justify-content:space-between;font-size:.62rem;color:var(--ra-muted);font-variant-numeric:tabular-nums}
+
+.ra-bac .ra-verdict{font-size:.9rem;font-weight:700;margin:14px 0 12px;padding:10px 12px;border-radius:8px;text-align:center}
+
+.ra-bac .ra-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ra-bac .ra-stat{background:var(--ra-surface);border:1px solid var(--ra-line);border-radius:8px;padding:10px}
+.ra-bac .ra-stat .ra-k{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ra-muted);font-weight:600}
+.ra-bac .ra-stat .ra-v{font-size:1.05rem;font-weight:700;font-variant-numeric:tabular-nums;margin-top:2px}
+
+.ra-bac .ra-note{font-size:.72rem;color:var(--ra-muted);margin-top:14px;padding:10px 12px;background:var(--ra-surface);border-radius:8px;border:1px solid var(--ra-line)}
+.ra-bac .ra-note strong{color:var(--ra-red)}
+
+@media (max-width:420px){.ra-bac .ra-bac-num{font-size:2.4rem}}
+</style>
+
+<div class="ra-bac" id="raBac" role="group" aria-label="Blood Alcohol Concentration Calculator">
+  <h2>Blood Alcohol Concentration Calculator</h2>
+  <p class="ra-sub">Estimate your BAC, time to the legal limit, and time to sober — updates as you type.</p>
+
+  <fieldset>
+    <legend>Biological sex</legend>
+    <div class="ra-seg" role="group" aria-label="Sex">
+      <button type="button" data-sex="male" aria-pressed="true">Male</button>
+      <button type="button" data-sex="female" aria-pressed="false">Female</button>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Body weight</legend>
+    <div class="ra-row">
       <div>
-        <label class="block font-label-bold text-label-bold text-primary mb-2" for="bac_gender">Biological Sex</label>
-        <select id="bac_gender" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal appearance-none" required>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
+        <label for="raW">Weight</label>
+        <input id="raW" type="number" inputmode="decimal" min="1" step="1" value="70">
       </div>
       <div>
-        <label class="block font-label-bold text-label-bold text-primary mb-2" for="bac_weight">Body Weight (lbs)</label>
-        <input type="number" id="bac_weight" min="50" max="500" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal" required placeholder="e.g. 150">
-      </div>
-      <div>
-        <label class="block font-label-bold text-label-bold text-primary mb-2" for="bac_drinks">Number of Standard Drinks</label>
-        <input type="number" id="bac_drinks" step="0.5" min="0" max="30" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal" required placeholder="e.g. 2">
-        <p class="text-xs text-on-surface-variant mt-2">1 drink = 12oz beer, 5oz wine, 1.5oz liquor</p>
-      </div>
-      <div>
-        <label class="block font-label-bold text-label-bold text-primary mb-2" for="bac_hours">Hours since first drink</label>
-        <input type="number" id="bac_hours" step="0.5" min="0" max="48" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal" required placeholder="e.g. 2.5">
+        <label for="raWU">Unit</label>
+        <select id="raWU"><option value="kg">Kilograms</option><option value="lb">Pounds</option></select>
       </div>
     </div>
-    <div class="pt-4">
-      <button type="submit" class="w-full bg-vitality-teal text-on-primary font-label-bold text-label-bold rounded-full py-4 px-6 hover:bg-secondary transition-colors uppercase tracking-widest">Estimate BAC</button>
-    </div>
-  </form>
+  </fieldset>
 
-  <div id="bac_result" class="hidden mt-10 pt-10 border-t border-border-subtle text-center">
-    <h3 class="font-label-bold text-on-surface-variant uppercase tracking-widest mb-4">Estimated BAC</h3>
-    <p id="bac_value" class="text-6xl font-display-lg text-primary mb-6">0.00%</p>
-    <div id="bac_desc" class="inline-block px-6 py-3 rounded-lg font-bold text-lg"></div>
+  <fieldset>
+    <legend>Drinks consumed</legend>
+    <div class="ra-drink" data-vol="355" data-abv="5">
+      <div><div class="ra-d-name">Beer</div><div class="ra-d-meta">12 oz · 5% ABV</div></div>
+      <div class="ra-step"><button type="button" data-dec>–</button><span class="ra-count">0</span><button type="button" data-inc>+</button></div>
+    </div>
+    <div class="ra-drink" data-vol="148" data-abv="12">
+      <div><div class="ra-d-name">Wine</div><div class="ra-d-meta">5 oz · 12% ABV</div></div>
+      <div class="ra-step"><button type="button" data-dec>–</button><span class="ra-count">0</span><button type="button" data-inc>+</button></div>
+    </div>
+    <div class="ra-drink" data-vol="44" data-abv="40">
+      <div><div class="ra-d-name">Shot / spirit</div><div class="ra-d-meta">1.5 oz · 40% ABV</div></div>
+      <div class="ra-step"><button type="button" data-dec>–</button><span class="ra-count">0</span><button type="button" data-inc>+</button></div>
+    </div>
+    <div class="ra-custom" aria-label="Custom drink">
+      <div><label for="raCV">Custom vol (ml)</label><input id="raCV" type="number" inputmode="decimal" min="0" step="10" value="0"></div>
+      <div><label for="raCA">ABV %</label><input id="raCA" type="number" inputmode="decimal" min="0" max="100" step="0.5" value="0"></div>
+      <div><label for="raCC">Qty</label><input id="raCC" type="number" inputmode="numeric" min="0" step="1" value="0"></div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Context</legend>
+    <div class="ra-row">
+      <div>
+        <label for="raT">Hours since first drink</label>
+        <input id="raT" type="number" inputmode="decimal" min="0" step="0.25" value="1">
+      </div>
+      <div>
+        <label for="raS">Stomach</label>
+        <select id="raS"><option value="1">Empty</option><option value="0.92">Light meal</option><option value="0.85">Full</option></select>
+      </div>
+    </div>
+    <div style="margin-top:10px">
+      <label for="raL">Legal driving limit</label>
+      <select id="raL">
+        <option value="0.08">0.08% — US, Canada, England &amp; Wales</option>
+        <option value="0.05">0.05% — Scotland, most of Europe, Australia, Utah</option>
+        <option value="0.03">0.03% — India, Japan</option>
+        <option value="0.02">0.02% — Sweden, Poland, Norway</option>
+        <option value="0.00">0.00% — Zero tolerance</option>
+      </select>
+    </div>
+  </fieldset>
+
+  <div class="ra-out" aria-live="polite">
+    <div><span class="ra-bac-num" id="raNum">0.000</span><span class="ra-bac-unit">% BAC</span></div>
+    <div class="ra-stage" id="raStage">No alcohol detected</div>
+    <p class="ra-stage-desc" id="raDesc">Add your drinks above to see an estimate.</p>
+
+    <div class="ra-meter" aria-hidden="true">
+      <div class="ra-meter-fill" id="raFill"></div>
+      <div class="ra-meter-mark" id="raMark" data-label="limit"></div>
+    </div>
+    <div class="ra-scale"><span>0</span><span>0.10</span><span>0.20</span><span>0.30+</span></div>
+
+    <div class="ra-verdict" id="raVerdict" style="background:var(--ra-surface)">Enter your details</div>
+
+    <div class="ra-stats">
+      <div class="ra-stat"><div class="ra-k">Time to legal limit</div><div class="ra-v" id="raLegal">—</div></div>
+      <div class="ra-stat"><div class="ra-k">Time to sober (0.00)</div><div class="ra-v" id="raSober">—</div></div>
+      <div class="ra-stat"><div class="ra-k">Standard drinks</div><div class="ra-v" id="raStd">0</div></div>
+      <div class="ra-stat"><div class="ra-k">Pure alcohol</div><div class="ra-v" id="raGrams">0 g</div></div>
+    </div>
+
+    <p class="ra-note"><strong>Estimate only — never use this to decide whether to drive.</strong> Real BAC varies with genetics, hydration, medication, drinking pace and food. Impairment happens below every legal limit. If you've been drinking, don't drive.</p>
   </div>
 </div>
 
+<script id="ra-bac-js">
+(function(){
+  var root=document.getElementById("raBac");
+  if(!root)return;
+  var DENSITY=0.789, BETA=0.015, R={male:0.68,female:0.55}, STD=14;
+  var state={sex:"male"};
+
+  var $=function(id){return document.getElementById(id)};
+  var fmtTime=function(h){
+    if(h<=0)return "0 min";
+    var H=Math.floor(h),M=Math.round((h-H)*60);
+    if(M===60){H++;M=0}
+    return (H?H+"h ":"")+(M?M+"m":(H?"":"0m"))||"0m";
+  };
+
+  // sex toggle
+  root.querySelectorAll('[data-sex]').forEach(function(b){
+    b.addEventListener('click',function(){
+      state.sex=b.getAttribute('data-sex');
+      root.querySelectorAll('[data-sex]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+      render();
+    });
+  });
+  // steppers
+  root.querySelectorAll('.ra-drink').forEach(function(d){
+    var c=d.querySelector('.ra-count');
+    d.querySelector('[data-inc]').addEventListener('click',function(){c.textContent=(+c.textContent+1);render()});
+    d.querySelector('[data-dec]').addEventListener('click',function(){c.textContent=Math.max(0,+c.textContent-1);render()});
+  });
+  // inputs
+  ['raW','raWU','raCV','raCA','raCC','raT','raS','raL'].forEach(function(id){
+    $(id).addEventListener('input',render); $(id).addEventListener('change',render);
+  });
+
+  function gramsTotal(){
+    var g=0;
+    root.querySelectorAll('.ra-drink').forEach(function(d){
+      var n=+d.querySelector('.ra-count').textContent;
+      g+=n*(+d.getAttribute('data-vol'))*(+d.getAttribute('data-abv')/100)*DENSITY;
+    });
+    var cv=+$('raCV').value||0, ca=+$('raCA').value||0, cc=+$('raCC').value||0;
+    g+=cc*cv*(ca/100)*DENSITY;
+    return g;
+  }
+
+  function stage(b){
+    if(b<=0)return["No alcohol detected","Add your drinks above to see an estimate."];
+    if(b<0.03)return["Minimal","Little obvious impairment; subtle effects only."];
+    if(b<0.06)return["Mild","Relaxed and less inhibited; focus and coordination dip slightly."];
+    if(b<0.10)return["Impaired","Judgment, reasoning and depth perception affected; reaction time slows."];
+    if(b<0.20)return["Heavily impaired","Slurred speech and poor motor control; nausea possible."];
+    if(b<0.30)return["Severe","Disorientation and vomiting likely; risk of memory blackout."];
+    if(b<0.40)return["Dangerous","Stupor; possible loss of consciousness. Seek help."];
+    return["Life-threatening","Risk of coma or death. Call emergency services."];
+  }
+  function zoneColor(b){
+    if(b<0.03)return getVar('--ra-green');
+    if(b<0.08)return getVar('--ra-amber');
+    if(b<0.20)return getVar('--ra-red');
+    return getVar('--ra-crit');
+  }
+  function getVar(v){return getComputedStyle(root).getPropertyValue(v).trim()}
+
+  function render(){
+    var wRaw=+$('raW').value||0, wKg=$('raWU').value==='lb'?wRaw*0.453592:wRaw;
+    var wG=wKg*1000, t=+$('raT').value||0, sf=+$('raS').value, limit=+$('raL').value;
+    var raw=gramsTotal(), absorbed=raw*sf;
+    var bac=0;
+    if(wG>0)bac=Math.max(0,(absorbed/(R[state.sex]*wG))*100 - BETA*t);
+
+    $('raNum').textContent=bac.toFixed(3);
+    var st=stage(bac);
+    $('raStage').textContent=st[0]; $('raDesc').textContent=st[1];
+
+    var pct=Math.min(bac/0.30,1)*100, col=zoneColor(bac);
+    var fill=$('raFill'); fill.style.width=pct+'%'; fill.style.background=col;
+    var mk=$('raMark'); mk.style.left=Math.min(limit/0.30,1)*100+'%';
+    mk.setAttribute('data-label',limit>0?limit.toFixed(2):'0');
+    mk.style.display=limit>0?'block':'none';
+
+    var v=$('raVerdict');
+    if(bac<=0){v.textContent='Enter your details';v.style.background=getVar('--ra-surface');v.style.color=getVar('--ra-ink');}
+    else if(bac<=limit){v.textContent='Under the '+limit.toFixed(2)+'% limit — but likely still impaired';v.style.background=getVar('--ra-green');v.style.color='#fff';}
+    else{v.textContent='OVER the '+limit.toFixed(2)+'% limit — do not drive';v.style.background=getVar('--ra-red');v.style.color='#fff';}
+
+    $('raLegal').textContent=bac<=limit?'Under now':fmtTime((bac-limit)/BETA);
+    $('raSober').textContent=bac<=0?'—':fmtTime(bac/BETA);
+    $('raStd').textContent=(raw/STD).toFixed(1);
+    $('raGrams').textContent=Math.round(raw)+' g';
+  }
+  render();
+})();
+</script>
+
+
+</div>
 <div class="prose max-w-none text-on-surface-variant">
-  <p class="text-sm italic mb-8">This tool provides general estimates for educational purposes only and is not a substitute for professional medical advice. Never use a calculator to determine if it is safe to drive.</p>
-  <h2 class="font-headline-md text-primary mb-4">How this calculator works</h2>
-  <p class="mb-8">The calculator applies the Widmark method, combining alcohol consumed with your estimated body water and time elapsed to approximate current BAC.</p>
-  
-  <h2 class="font-headline-md text-primary mb-4">Frequently asked questions</h2>
-  <h3 class="font-bold text-primary mb-2">How accurate is a BAC calculator?</h3>
-  <p class="mb-6">It gives an estimate only. Real BAC varies with food, medication, metabolism, and hydration — never use a calculator to decide whether it is safe to drive.</p>
-  <h3 class="font-bold text-primary mb-2">How long does alcohol stay in your system?</h3>
-  <p class="mb-8">The body clears roughly one standard drink per hour on average, but this varies. Only time lowers BAC; coffee and water do not speed it up.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">Blood Alcohol Concentration (BAC) Calculator</h2>
+<p class="mb-6">Most drivers assume a BAC readout confirms they are fit to drive. It never does. This educational tool delivers a rough calculation, an approximate estimate of blood alcohol content — not permission to start driving home.</p>
+<p class="mb-6">Behind every percentage sits an algorithm built on population averages. Feed it your current weight, biological sex, and time since first drink, and it will predict roughly how much alcohol currently floats in your bloodstream.</p>
+<p class="mb-6">Gender matters more than bravado here. A male and female of identical body weight reach different intoxication levels from the same standard drinks, because body water distribution shifts how alcohol by volume ultimately disperses internally.</p>
+<p class="mb-6">The legal limit of 0.08% dominates conversation in the United States, yet penalties begin far lower. Under 21, zero tolerance applies; some states enforce 0.01%. The legal drinking age and thresholds vary by state constantly.</p>
+<p class="mb-6">Your body metabolizes at a fixed rate; coffee, cold showers, and water will not sober up anyone faster. Only time alone returns BAC to zero. Use this to plan a taxi, never to justify driving.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">Alcohol And Health</h2>
+<p class="mb-6">Forget the red wine myth. The supposed health benefits of moderation shrink sharply under scrutiny, while long-term effects — liver disease, cardiovascular disease, several cancers — stack quietly across many years of even moderate drinkers daily routines.</p>
+<p class="mb-6">Short-term effects arrive faster: dehydration, blunted metabolism, and impaired mental health within a single night. The brain registers alcohol as a depressant, not a stimulant, despite how light drinkers describe that first inviting loosening glass.</p>
+<p class="mb-6">Heavy drinking carries defined thresholds. Mayo Clinic flags three drinks a day or 14 drinks a week for men younger than 65. Cross that line and high blood pressure, stroke, and heart failure risks climb.</p>
+<p class="mb-6">Excessive drinking damages the organ people forget: the heart. Heart muscle damage, heart disease, and sudden death trace directly back to heavy alcohol use. Even diabetes and ischemic stroke correlate with sustained alcohol consumption patterns.</p>
+<p class="mb-6">Guidelines split by women and men over 65, whose elimination rate slows. Before trusting any 1 drink per day allowance, consult a doctor. No health benefits offset the accidental injury, brain damage, and death risk.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">Effects By Blood Alcohol Concentration</h2>
+<p class="mb-6">You cannot feel your BAC accurately. At 0.001–0.029 a drinker appears normal, showing only subtle effects detectable through special tests. Confidence rises long before real impairment does — which is why early drinking feels genuinely deceptive.</p>
+<p class="mb-6">By 0.060–0.099, reasoning and depth perception erode. 0.100–0.199 brings slurred speech, staggering, and nausea. The friendly euphoria of 0.030–0.059 — that mild euphoria, relaxation, talkativeness, and decreased inhibition — has already quietly begun reversing its course entirely.</p>
+<p class="mb-6">Beyond 0.200–0.299, dangerous stupor sets in — loss of consciousness, vomiting, memory blackout. At 0.300–0.399 comes coma and genuine possibility of death. Past 0.400–0.500, respiratory arrest and central nervous system depression turn frequently fatal without help.</p>
+<p class="mb-6">The mid-zone genuinely deserves respect. 0.100–0.199 wrecks motor coordination, balance, and vision, while triggering violent emotional swings — anger, sadness, over-expression. Reaction time and gross motor control collapse, yet many still insist they feel in control.</p>
+<p class="mb-6">0.05% carries reduced coordination and lowered alertness; 0.02% already dulls divided attention and visual functions. These are not moral failings but measurable degree of impairment, mapped precisely across nearly every BAC chart researchers regularly publish.</p>
+<h3 class="font-bold text-primary mt-8 mb-2">What Is One Standard Drink?</h3><p class="mb-6 mt-2">A "drink" is a marketing word, not a measurement. One standard drink means 14 grams of pure alcohol — roughly 0.6 fluid ounces — regardless of whether it arrives as beer, wine, or spirits in your glass. The equivalence surprises people. 12 fl oz regular beer at 5% alcohol, 5 fl oz table wine near 12% alcohol, 1.5 fl oz distilled spirits at 40% alcohol deliver the same amount of alcohol identically. This is why standard drinks matter for any BAC estimate. A tall pint of 8-9 fl oz malt liquor can hide nearly two servings, quietly outpacing the one standard drink per hour your liver metabolized. Your body needs roughly one hour to process each unit. NIAAA sets the recommended weekly limit at 14 for male, 7 for female. Exceeding it consistently is where the % ABV on labels stops being trivia. Regional measures muddy things. A can holds 12 oz (341 mL); a standard shot pours 1.5 oz (43 mL). Knowing ounces per drink beats guessing, because identical volume rarely means identical alcohol content across bottles.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">Drive Limits (BAC)</h2>
+<p class="mb-6">Most drivers assume falling below the legal limit means safe roads. Wrong. Impaired driving prevention starts far beneath 0.08. Across the US, that standard legal BAC hides how badly reflexes and decision-making quietly collapse first.</p>
+<p class="mb-6">Your license type, age, and jurisdiction rewrite the rulebook. A fully licenced driver faces 0.08, yet a 21 years or under motorist meets zero tolerance. Utah dropped its legal BAC limit to 0.05, breaking rank.</p>
+<p class="mb-6">Canada runs a warn range between 0.05-0.079, triggering immediate driver's licence suspension under the Highway Traffic Act. Ontario sets harsher rules for G1, G2, M1, M2 licence holders. Australia and many countries sit nearer 0.05%.</p>
+<p class="mb-6">Cross into 0.08 or more and penalties turn administrative into a criminal offence. Expect an enhanced penalty, and for repeat offenders or underage non-legal drinkers, escalating consequences. The DWAI limit near .05 traps sober drivers.</p>
+<p class="mb-6">Wikipedia logs how the 0.05% and 0.08% split fractures across Alabama, California, New York, Texas. Every jurisdiction and circumstance shifts the threshold, so treating one number as universal safe ground is exactly how licences vanish.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">Widmark Formula</h2>
+<p class="mb-6">Treat the Widmark Equation as gospel and you'll misjudge yourself badly. Every Widmark's formula output is a generalized mathematical model, not a verdict. It converts your dose in grams into an estimate, never a certainty.</p>
+<p class="mb-6">Classic Widmark divides A, your liquid ounces of alcohol, by W weight in pounds multiplied by r, the distribution ratio or sex constant. Then subtract .015 x H, where H counts hours since first drink.</p>
+<p class="mb-6">That r splits by sex: r(male)=.68 against r(female)=.55. Older tables list .73 for men and .66 for women. These distribution ratio constants exist because a volume of blood genuinely differs, not because arithmetic favours anyone.</p>
+<p class="mb-6">Your body burns alcohol at a constant rate, roughly -0.016 BAC per hour, some models cite 0.017% per hour. That metabolism rate, tagged mr, means t, elapsed hours, steadily trims your %BAC toward absolute zero.</p>
+<p class="mb-6">Because it runs on user-provided information, the simplified version stays only as honest as your inputs. Convert body weight in grams or kilograms, respect total weight, and remember: A x 5.14 models one clean scenario.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">Additional Factors</h2>
+<p class="mb-6">Weight gets the credit, but it's the least interesting variable. A 25-year-old in good health and an identical-weight peer with hidden health issues process alcohol differently. Genetics and liver function quietly dominate the final outcome.</p>
+<p class="mb-6">An empty stomach betrays you fastest. The type of food eaten and sheer amount of food slow absorption; non-alcoholic beverages and steady hydration buy time. Timing of consumption matters more than most drinkers ever concede.</p>
+<p class="mb-6">Body composition outranks the bathroom scale. Higher body fat holds less water, spiking concentration; leaner body size and better fitness level blunt it. Two people, same age, wildly different absorption curves from raw genetics alone.</p>
+<p class="mb-6">Stack drugs or medications onto alcohol and your metabolism rewrites its own rules. A long history of alcohol consumption shifts tolerance; drink strength and serving size decide dose. Fatigue silently amplifies every single measurable effect.</p>
+<p class="mb-6">Elimination isn't fixed. Textbooks quote 0.015 mg/100 mL/hour, yet real bodies swing between 0.01 and 0.025. Your rate varies with health, sipping speed, and overall condition; no single clean number survives contact with raw biology.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">Understanding BAC</h2>
+<p class="mb-6">Blood alcohol concentration isn't about how much you drank; it's about pace. Two key factors rule everything: how much alcohol enters the amount of alcohol in bloodstream, and how quickly consumed that intake actually was.</p>
+<p class="mb-6">Pour more standard drinks into a shorter period of time and you manufacture a higher BAC, fast. The math is unforgiving: volume compressed against the clock, not spread across it, is what wrecks your reading.</p>
+<p class="mb-6">Here's the delayed trap: after your last drink, BAC continues to rise. Alcohol still waiting in your gut hasn't been metabolized yet, so levels climb for thirty-plus minutes after you've set the glass firmly down.</p>
+<p class="mb-6">Your liver clears roughly one standard drink per hour, no negotiating. Everything above that pace stacks, because intake outruns elimination. That widening gap, not your total volume, is the story a calculator captures for you.</p>
+<p class="mb-6">This is why blood alcohol concentration behaves less like a fuel gauge and more like a tide. The key factors aren't mysterious; they're just consistently underestimated by everyone certain they can eyeball their own limit.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">Colour Legend</h2>
+<p class="mb-6">Most users assume the green band signals permission to drive. It does not. Our colour legend maps risk, not clearance, and even green carries residual impairment worth respecting before you touch any steering wheel again.</p>
+<p class="mb-6">Green spans 0.00 to 0.049, the calculator's lowest tier. Practitioners read this as minimal measurable effect, yet reaction time already softens here. Treat the shade purely as information about your body, never as legal absolution.</p>
+<p class="mb-6">Yellow marks the warn range, 0.05 to 0.079. Judgment slips here before you notice it slipping, which is exactly why the shade exists: self-assessment fails precisely when you most need honest, external, unemotional feedback here.</p>
+<p class="mb-6">Red begins at .08, where a criminal offence and real penalties enter the picture. Yet the calculator refuses to celebrate lower numbers, because danger is a gradient, and red simply names where consequences turn legal.</p>
+<p class="mb-6">Read the legend against your current BAC and peak BAC together, not in isolation. A green result now can slide upward minutes later. The intoxication level you see is a snapshot, not a fixed verdict.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">Safety First Approach</h2>
+<p class="mb-6">A calculator does not make drinking safe; it renders risks visible. The safest reading is the one you never produce, because you built a plan before the first pour and refused to operate machinery afterward.</p>
+<p class="mb-6">Driving while intoxicated kills predictably, so treat the tool as safety guidance, not a permission slip. Practitioners who've seen the aftermath don't drive on a hopeful guess; they arrange transport while still sober and clear-headed.</p>
+<p class="mb-6">Bars practicing responsible alcohol service cut patrons off for a reason. Every number the calculator returns should be read at your own risk, a phrase that sounds legalistic until the danger is your own body.</p>
+<p class="mb-6">Informed decision-making means accepting the ugly answer. The only reliable method for genuine zero is to abstain, everything else being harm reduction. When numbers climb, get help without embarrassment and simply concede the night ended.</p>
+<p class="mb-6">When judgment has already gone, let someone who hasn't been drive you home. The bravest move at that point is admitting the estimate was right, surrendering your keys, and choosing tomorrow's clear head over stubbornness.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">Free Blood Alcohol Calculator</h2>
+<p class="mb-6">A free tool sounds like a gimmick until you realize paid breathalyzers fail too. This one is free, accurate enough for decisions, and easy-to-use, letting everyone estimate exposure before the open road becomes a coffin.</p>
+<p class="mb-6">Its purpose is blunt: prevent alcohol-related death. Every year alcohol-related fatalities cluster around people who felt fine after few drinks. The gap between feeling sober and being sober is precisely where this tool truly matters.</p>
+<p class="mb-6">Zero-tolerance policies exist because impaired driving kills at low readings. Enter your inputs honestly and the model will estimate blood alcohol content without flinching, handing you a figure to act on rather than false comfort.</p>
+<p class="mb-6">Once you see the number, plan an alternative way home. Call an uber, walk, or crash on a couch. The dangers of driving buzzed are not abstract; driving while drunk turns ordinary streets genuinely lethal.</p>
+<p class="mb-6">No tool guarantees safety, yet an honest, quick estimate shifts the odds toward survival. That is the entire point here: fewer bodies on the highway, fewer families rebuilt around an empty chair, more people home.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">Fast Blood Alcohol Level Estimate</h2>
+<p class="mb-6">Speed is usually the enemy of accuracy, but not here. A fast result beats a perfect result you calculate after you've already driven off. This estimated blood alcohol level arrives before your keys ever move.</p>
+<p class="mb-6">You feed it a few details and wait roughly 60 seconds. No lab, no needle, no appointment. The average user underestimates their own impairment badly, which is precisely why a rapid external number outperforms guessing.</p>
+<p class="mb-6">Accurate enough matters more than laboratory-perfect. Field practitioners learned long ago that a defensible ballpark, delivered instantly, changes behaviour, while a flawless figure computed tomorrow morning changes nothing except the wording on a police report.</p>
+<p class="mb-6">Being easy-to-use is no cosmetic feature; it decides whether a drunk person actually finishes the check. Complexity kills adoption exactly when adoption matters most, so simplicity here operates as a quiet, underrated safety mechanism itself.</p>
+<p class="mb-6">Do not mistake a quick reading for permission. The fast estimate buys you a decision window, nothing more. Sixty honest seconds now can spare you decades of regret, so run it before, never after, driving.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">Features</h2>
+<p class="mb-6">Forget the single figure that everyone always fixates upon. The genuine strength lives inside the chart feature, plotting your time to reach peak and the precise moment when BAC reaches 0% across one long night.</p>
+<p class="mb-6">Before trusting any tool at all, ask what is a BAC calculator actually gauging. It weighs height, weight, biological sex, and hunger level against drinks consumed, translating messy inputs into a single readable, honest curve.</p>
+<p class="mb-6">People rarely stop to question how does a BAC calculator work until output surprises them completely. The engine cross-references time drinking with body variables, exposing why two friends sharing rounds land at wildly separate places.</p>
+<p class="mb-6">The honest reason why do I need a BAC calculator seldom appears in glossy marketing copy. Curiosity aside, these tools quietly surface links between casual habits and alcohol and drug addiction almost nobody discusses openly.</p>
+<p class="mb-6">Good platforms tend to bury one underrated asset entirely: resources. Beyond the graph they point toward real help, folding physical health context and alcoholism awareness into what most users treat as a throwaway novelty widget.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">How to Use Blood Alcohol Calculator</h2>
+<p class="mb-6">Skip the instructions that everyone ignores anyway. Begin by entering your sex and body weight, because a male at 90 kilos will process rounds differently than the 165 grams benchmark that many tools quietly assume.</p>
+<p class="mb-6">Log the number of beers first, then wine glasses and vodka shots separately right afterward. Three large beers consumed 8 hrs ago produce lower percentage readings than the same 3 downed within one reckless hour.</p>
+<p class="mb-6">The field for time started drinking trips people up constantly and quite badly. Enter it precisely, since raw alcohol measured in grams decays predictably, and one sloppy timestamp corrupts the exact amount your algorithm returns.</p>
+<p class="mb-6">Watch how just 50 grams of ethanol converts into a 0.6‰ reading onscreen. That deceptively small blood alcohol content value still hides real alcohol intoxication, which is why entering 0 drinks clarifies your sober baseline.</p>
+<p class="mb-6">Precision beats guesswork here almost every single time. The tool wants 5 honest fields, never rounded lies, because amount of alcohol consumed drives everything downstream, and metabolism quietly reshapes those numbers after your final shot.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">Why Use the BAC Calculator</h2>
+<p class="mb-6">Nobody ever really admits the actual quiet motive: curiosity. Long before any hangover arrives, people run the estimate to compare readings with friends, treating alcohol content math like a strange party spectator sport again tonight.</p>
+<p class="mb-6">The dangerous myth wrongly says this simply replaces a breathalyzer test. It does not, ever. A store-bought breathalyzer from pharmacies will always measure actual breath, while software merely estimates who feels under the influence now.</p>
+<p class="mb-6">Planning matters so much more than reaction afterward. Couples building a wedding alcohol calculator budget lean on the exact identical engine, forecasting how many guests drift drunk before the drive home conversation ever becomes relevant.</p>
+<p class="mb-6">Pair the estimate with a solid BMR calculator and patterns emerge quickly. Your metabolism and physical tolerance shape almost everything, so the tool exposes drinking pattern truths that gut feeling and bravado consistently get wrong.</p>
+<p class="mb-6">The comparison game teaches restraint indirectly and almost accidentally. Watching predicted numbers climb toward high BAC levels makes abstract drunkenness suddenly concrete, reframing the next bottle as a measurable choice rather than harmless weekend fun.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">Sobriety Calculator</h2>
+<p class="mb-6">A sobriety tool completely inverts the entire question. Instead of asking how high you climbed, it estimates time to get alcohol out of system, projecting the hour your current blood alcohol level finally flattens completely.</p>
+<p class="mb-6">The type of drinks chosen just hours earlier still dictates almost everything right now. A heavy liquor night and a light beer evening reach fully sober status on wildly divergent timelines despite identical starting counts.</p>
+<p class="mb-6">What people genuinely crave here is the estimate of blood alcohol content equal 0. That single projected timestamp, more than any peak reading, governs whether tomorrow's early morning meeting survives last night's questionable decisions intact.</p>
+<p class="mb-6">Understand that the concentration of alcohol falls only one single way: through patient waiting. The body drains it away at a stubborn fixed elimination rate, so no clever trick accelerates the march toward zero faster.</p>
+<p class="mb-6">The countdown reframes your drinking as borrowed time entirely. Every additional shot pushes your return to zero further out, and the calculator makes that quiet arithmetic uncomfortably, usefully visible long before regret finally sets in.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">In Conclusion, the BAC Calculator Can Tell You</h2>
+<p class="mb-6">The heading itself misleads slightly, honestly speaking. This tool concludes nothing; it reveals how drunk you are at one snapshot while ignoring the messier arc your alcohol consumption pattern actually traces across a full evening.</p>
+<p class="mb-6">It clearly flags the three most common alcohol types driving your reading right now, translating beer, wine, and spirits into one comparable blood alcohol content figure that strips away marketing and proof-number confusion almost instantly.</p>
+<p class="mb-6">Pair its output with an audit score calculator and something quietly shifts deep inside. Individual nights matter far less than trajectory, and WHO thresholds reframe casual weekly habits as data worth genuinely examining, not dismissing.</p>
+<p class="mb-6">Total sobriety always appears as a distant destination, never a default state. The projection clearly shows how far that point sits, quietly challenging the assumption that feeling fine equals being measured truly safe by anyone.</p>
+<p class="mb-6">What it cannot ever tell you matters just equally much. No estimate captures fatigue, hydration, or the medications silently amplifying each single drink, which is precisely why blind faith in a green number stays reckless.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">Important Disclaimer</h2>
+<p class="mb-6">Read this carefully before the calculator, never after. Every output serves educational purposes and informational purposes only, never legal advice or professional medical advice, because no calculator 100% accurate enough to actually trust blindly exists.</p>
+<p class="mb-6">The generalized formulas rest almost entirely on user-provided information, meaning that honesty determines everything downstream. Numerous factors including genetics, body composition, liver function, and drink strength introduce complexities these tidy estimated numbers quietly flatten away.</p>
+<p class="mb-6">A doctor or a health care provider interprets your medical condition better than software ever could. Your history of alcohol consumption, current health issues, and legal counsel questions belong with real humans, not anonymous code.</p>
+<p class="mb-6">Legal BAC limits vary widely by jurisdiction and license type, so treat each figure as rough estimation only. Only a breath test, blood test, or laboratory tests run on calibrated equipment carry genuine evidentiary weight.</p>
+<p class="mb-6">We remain not liable; this exists for demonstration purposes alone. Research from the Homewood Research Institute and Peter Boris Centre for Addiction Research informs it, yet food, timing, and serving size still defeat clean prediction.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">What Your Blood Alcohol Number Actually Measures</h2>
+<p class="mb-6">Here's what trips people up before they ever open a calculator: a 12 fl oz beer, a 5 fl oz wine, and 1.5 fl oz distilled spirits are not three different amounts of alcohol — they are the same effect wearing three costumes. Each delivers roughly 0.6 ounces, about 17 mL pure alcohol, into your body. That equivalence is the whole game, and almost every argument about "I only had a beer" dies right there.</p>
+<p class="mb-6">The confusion lives in drink volume. A tall 16 oz pour in a can is not one drink; it is closer to one and a half. A generous cup past the standard 5 oz (142 mL) counts as more. What matters is never the glass, only the ABV — alcohol by volume — multiplied by how much liquid you actually swallowed, whether you measure it in oz or ml.</p>
+<p class="mb-6">Spirits distort this further. 80-proof liquor — most gin, rum, tequila, vodka, and whiskey — hovers near 40% ABV, while cider runs low and table wine sits in the middle. One measure knocked back in 20-minutes hits harder than the same amount grazed over an hour. Advice like four drinks per day means nothing when your "drink" is quietly two, which is why pacing with non-alcoholic beverages is the single most underused trick at any table.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">How the Calculator Guesses, and Why It Can Only Guess</h2>
+<p class="mb-6">Every online estimator is running some version of the same equation. The modern form is BAC = A/(bw × Wt) × 100% − mr × t; the original 1930s version was closer to W x r applied to weight in pounds. The output is your blood alcohol concentration — reported casually as your blood alcohol level — the fraction of alcohol saturating your blood at that instant.</p>
+<p class="mb-6">Break the variables open. Wt is body mass, which the tool takes in kilograms or pounds along with a few personal details so it can approximate bw, your body-water ratio, typically near 0.50 and scaled by 100% into a percentage. Your sex assigned at birth matters here biologically rather than socially; trans and non-binary users get the roughest reading unless the calculator was built on validated equations rather than a single default. Age shifts the arithmetic again — and note that plain age is a separate factor from the drinking-age question entirely.</p>
+<p class="mb-6">Time is the part people ignore. Alcohol does not teleport into your blood stream; alcohol absorption peaks 30-70 minutes after your time of consumption, so any reading pulled mid-absorption understates the truth. The mr term is your elimination rate — around 0.015 per hour, but realistically 0.01 to 0.025 depending on the body. That is why both time spent drinking and total elapsed hours (t) feed the model, and why, at any given time, only patience — never coffee — lets a number fall below legal limit.</p>
+<p class="mb-6">This is also why a breathalyzer and a calculator openly disagree: one samples breath, the other simulates it, and both are approximate by nature. No formula finds your personal sweet spot of pleasurable effects, and none can predict how the estimate will work against your live chemistry. Drivers especially should read the result as a rough model, not a verdict.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">The Stages, From First Sip to Medical Crisis</h2>
+<p class="mb-6">Your number only means something once you know what each band does to a human being. The table below is the rough universal progression; treat the edges as blurry, because tolerance smears them, but the sequence itself does not change. Individual biology decides where you land, not bravado.</p>
+<div class="overflow-x-auto my-8"><table class="min-w-full text-left border-collapse">
+<thead><tr class="bg-surface-cream"><th class="px-4 py-2 border border-border-subtle font-bold text-primary">BAC band</th><th class="px-4 py-2 border border-border-subtle font-bold text-primary">What is happening</th><th class="px-4 py-2 border border-border-subtle font-bold text-primary">How it shows up</th></tr></thead><tbody>
+<tr><td class="px-4 py-2 border border-border-subtle">0.00%-0.02% ( .00, .01, .02 )</td><td class="px-4 py-2 border border-border-subtle">only measurable alcohol, no obvious side effects</td><td class="px-4 py-2 border border-border-subtle">a faint warmth, nothing more</td></tr>
+<tr><td class="px-4 py-2 border border-border-subtle">0.02%-0.04% (band .01%-.06%)</td><td class="px-4 py-2 border border-border-subtle">joyousness, reduced shyness</td><td class="px-4 py-2 border border-border-subtle">relaxed, mildly happy, early reduced sensitivity to pain</td></tr>
+<tr><td class="px-4 py-2 border border-border-subtle">0.04%-0.06%</td><td class="px-4 py-2 border border-border-subtle">disinhibition, extraversion</td><td class="px-4 py-2 border border-border-subtle">blunted feelings, reduced inhibitions, decreased libido, and in men temporary erectile dysfunction despite feeling confident</td></tr>
+<tr><td class="px-4 py-2 border border-border-subtle">0.06%-0.10% (crossing 0.08%, the .05–0.08 legal zone)</td><td class="px-4 py-2 border border-border-subtle">impairment of judgement, impaired judgment, weakened reason, slipping concentration</td><td class="px-4 py-2 border border-border-subtle">fading small-muscle control, peripheral vision, and glare recovery; rising boisterousness and exaggerated behaviour</td></tr>
+<tr><td class="px-4 py-2 border border-border-subtle">0.10%-0.13% ( 0.10%, .10 )</td><td class="px-4 py-2 border border-border-subtle">impairment of speech, impaired speech, slowed thinking</td><td class="px-4 py-2 border border-border-subtle">loss of balance, poor muscle coordination, loss of coordination, blurred vision, impaired vision, difficulty focusing eyes — the classic sloppy drunk</td></tr>
+<tr><td class="px-4 py-2 border border-border-subtle">0.13%-0.16% ( 0.15%, .15, .16 ), inside the .07%-.20% band</td><td class="px-4 py-2 border border-border-subtle">major loss of balance, dysequilibrium, positional alcohol nystagmus</td><td class="px-4 py-2 border border-border-subtle">mental confusion, impaired sensations, partial loss of understanding, unreliable movement</td></tr>
+<tr><td class="px-4 py-2 border border-border-subtle">0.16%-0.20% ( .17, .18 )</td><td class="px-4 py-2 border border-border-subtle">needs assistance walking</td><td class="px-4 py-2 border border-border-subtle">emotional instability, reduced memory, nausea, deepening impairment of every motion</td></tr>
+<tr><td class="px-4 py-2 border border-border-subtle">0.20%-0.25% ( .20, opening the .21%-.40% band )</td><td class="px-4 py-2 border border-border-subtle">severe motor impairment, blackouts, loss of memory, failing memory</td><td class="px-4 py-2 border border-border-subtle">loss of bladder control as bladder function slips, cold skin, high-risk intoxication — a genuinely dangerous level</td></tr>
+<tr><td class="px-4 py-2 border border-border-subtle">0.25%-0.40%</td><td class="px-4 py-2 border border-border-subtle">lapses in and out of consciousness, low possibility of death</td><td class="px-4 py-2 border border-border-subtle">depressed breathing and slow breathing, dropping heart rate, alcohol poisoning, fading hearing, self-control gone</td></tr>
+<tr><td class="px-4 py-2 border border-border-subtle">0.40%</td><td class="px-4 py-2 border border-border-subtle">high possibility of death</td><td class="px-4 py-2 border border-border-subtle">unresponsive, near-coma, a medical emergency</td></tr>
+</tbody></table></div>
+<p class="mb-6">The two faculties the law cares about most are judgment and coordination: the first fails before you can feel it, the second fails where everyone can see it. That gap — feeling fine while testing impaired — is exactly what the calculator exists to expose.</p>
+<p class="mb-6">People never narrate this in clinical terms. They say they are feeling it, then buzzed, tipsy, talkative, emotional, briefly unstoppable and over-confident; later groggy, uncoordinated, out of it, dizzy, disoriented, the room spinning. Push past that and the vocabulary curdles: angry, irrational, jumpy, sick, sleepy, exhausted; then lost, confused, unaware, words gone unintelligible; finally wasted, gone, uncontrollable, uncooperative, unable to stand ( can't stand ) or walk ( can't walk ), puking, and eventually unresponsive.</p>
+<h2 class="font-headline-md text-primary mt-12 mb-4">Legal Limits, New Drivers, and the Line Where You Call for Help</h2>
+<p class="mb-6">Now the part with legal teeth. Across the United States the default ceiling for drivers is 0.08%, written by police as grams of alcohol per 100 mL of blood. The states carried in this reference share that framework or something stricter: Alaska, Arizona, Arkansas, Colorado, Connecticut, Delaware, District of Columbia, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina, South Dakota, Tennessee, Vermont, Virginia, Washington, West Virginia, Wisconsin, and Wyoming.</p>
+<p class="mb-6">The ceiling is not uniform. Anyone under age 21, and anyone holding a provisional driver's license, typically faces a near-zero limit — often .00 or a whisper above — because zero-tolerance rules bind new and young drivers hardest. A charge of driving while intoxicated does not require feeling drunk; it only requires crossing a line your senses may never announce.</p>
+<p class="mb-6">Read this next part carefully, because it is the actual point: everything here is not medical advice. A calculator's estimate is no legal defense and no health verdict. If a person is unresponsive, breathing slowly, or cannot be woken, that is an emergency — call for help instead of waiting for a figure to drop. Responsible alcohol service and informed decision-making exist precisely because no algorithm can make the call for you.</p>
+<h3 class="font-bold text-primary mt-8 mb-2">What Does BAC Stand For?</h3><p class="mb-6 mt-2">Most assume a breathalyzer just says how drunk you are. Wrong. BAC — blood alcohol concentration — quantifies the percentage of alcohol in blood. Every test, whether a breath test or lab chemical tests, exists to measure exactly that.</p>
+<h3 class="font-bold text-primary mt-8 mb-2">How Can I Calculate BAC?</h3><p class="mb-6 mt-2">Skip the apps. Widmark's formula does it: BAC = A/(bw × Wt) × 100% − mr × t. Here A = amount of alcohol in grams, Wt = body weight in kilograms, bw = ratio of body water to total weight, t = time in hours, and mr = metabolism rate at 0.017% per hour.</p>
+<h3 class="font-bold text-primary mt-8 mb-2">Which Factor Is the Only Way to Lower BAC?</h3><p class="mb-6 mt-2">Here's what nobody wants to hear: nothing speeds it up. Coffee, a cold shower, a glass of water — every trick to sober up fast is a myth, not true. Only spending time without drinking lets your system finish what it absorbs and get rid of alcohol.</p>
+<h3 class="font-bold text-primary mt-8 mb-2">What BAC Means That I Am Drunk?</h3><p class="mb-6 mt-2">Legally, 0.08% BAC marks where you can't drive under the influence across the United States — though Utah sets it lower. But effects of being drunk begin earlier: mild impairment of speech, vision, coordination, and reaction times.</p>
+<h3 class="font-bold text-primary mt-8 mb-2">Which Factors Affect BAC Levels?</h3><p class="mb-6 mt-2">It's not only the number of standard drinks. Weight matters — a heavier person gets a lower BAC. Sex too: men metabolize faster than women. Add medications, drugs, liver health, speed of sipping, and food — an empty stomach speeds alcohol absorption and intoxication.</p>
+<h3 class="font-bold text-primary mt-8 mb-2">What Is My BAC After 2 Beers?</h3><p class="mb-6 mt-2">Take a US man at 180 lbs drinking two large beers — roughly 50 grams of raw alcohol. After about 4 hours to metabolize, his reading lands near 0.06%, or 0.6‰.</p>
 </div>
-
-  </div>
-</main>
-
+</div></main>
 <footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto">
 <div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center">
 <div class="mb-8 md:mb-0">
 <a href="/" class="flex items-center mb-2">
   <img src="/raphaatlas-mark.svg" alt="RaphaAtlas" height="50" width="50" class="h-12 w-12">
-  <span style="font-family: 'Merriweather', 'Georgia', serif; font-size: 40px; font-weight: 900; letter-spacing: -1.5px; color: white; margin-left: 14px; transform: translateY(2px);">RaphaAtlas</span>
+  <span style="font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 900; letter-spacing: -1px; color: white; margin-left: 14px; transform: translateY(2px);">RaphaAtlas</span>
 </a>
 </div>
 <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8" style="font-family: 'Inter', sans-serif;">
