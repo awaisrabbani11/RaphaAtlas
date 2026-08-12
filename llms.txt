@@ -4,18 +4,18 @@
 > A project of Growth Partners Global LLC. Health content reviewed by MBBS physicians.
 
 ## Calculators
-- [Body Type Calculator](https://www.raphaatlas.com/body-type-calculator/): Find your somatotype (ectomorph, mesomorph, endomorph).
-- [Macro Calculator](https://www.raphaatlas.com/macro-calculator/): Daily protein, carbohydrate, and fat targets.
-- [BAC Calculator](https://www.raphaatlas.com/bac-calculator/): Estimate blood alcohol concentration (Widmark method).
-- [Conception Calculator](https://www.raphaatlas.com/conception-calculator/): Estimate conception and due dates.
+- [Body Type Calculator](https://www.raphaatlas.com/body-type-calculator): Find your somatotype (ectomorph, mesomorph, endomorph).
+- [Macro Calculator](https://www.raphaatlas.com/macro-calculator): Daily protein, carbohydrate, and fat targets.
+- [BAC Calculator](https://www.raphaatlas.com/bac-calculator): Estimate blood alcohol concentration (Widmark method).
+- [Conception Calculator](https://www.raphaatlas.com/conception-calculator): Estimate conception and due dates.
 
 ## Content
-- [Fitness](https://www.raphaatlas.com/fitness/): Strength, conditioning, recovery.
-- [Nutrition](https://www.raphaatlas.com/nutrition/): Macros, micronutrients, eating patterns.
-- [Health](https://www.raphaatlas.com/health/): Conditions, biomarkers, preventive care.
+- [Fitness](https://www.raphaatlas.com/fitness): Strength, conditioning, recovery.
+- [Nutrition](https://www.raphaatlas.com/nutrition): Macros, micronutrients, eating patterns.
+- [Health](https://www.raphaatlas.com/health): Conditions, biomarkers, preventive care.
 
 ## Trust
-- [Medical Review Board](https://www.raphaatlas.com/medical-review-board/): Reviewing physicians (MBBS).
-- [Editorial Policy](https://www.raphaatlas.com/editorial-policy/): How content is researched, reviewed, corrected.
-- [About](https://www.raphaatlas.com/about/)
-- [Contact](https://www.raphaatlas.com/contact/)
+- [Medical Review Board](https://www.raphaatlas.com/medical-review-board): Reviewing physicians (MBBS).
+- [Editorial Policy](https://www.raphaatlas.com/editorial-policy): How content is researched, reviewed, corrected.
+- [About](https://www.raphaatlas.com/about)
+- [Contact](https://www.raphaatlas.com/contact)

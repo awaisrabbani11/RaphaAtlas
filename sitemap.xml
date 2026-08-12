@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.raphaatlas.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.raphaatlas.com/calculators</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.raphaatlas.com/body-type-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.raphaatlas.com/macro-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.raphaatlas.com/bac-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.raphaatlas.com/conception-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.raphaatlas.com/fitness</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.raphaatlas.com/nutrition</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.raphaatlas.com/health</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.raphaatlas.com/about</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.raphaatlas.com/contact</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://www.raphaatlas.com/medical-review-board</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.raphaatlas.com/editorial-policy</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.raphaatlas.com/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.raphaatlas.com/</loc><lastmod>2026-08-12</lastmod><priority>1.0</priority></url>
+  <url><loc>https://www.raphaatlas.com/calculators</loc><lastmod>2026-08-12</lastmod><priority>0.9</priority></url>
+  <url><loc>https://www.raphaatlas.com/macro-calculator</loc><lastmod>2026-08-12</lastmod><priority>0.9</priority></url>
+  <url><loc>https://www.raphaatlas.com/bac-calculator</loc><lastmod>2026-08-12</lastmod><priority>0.9</priority></url>
+  <url><loc>https://www.raphaatlas.com/body-type-calculator</loc><lastmod>2026-08-12</lastmod><priority>0.9</priority></url>
+  <url><loc>https://www.raphaatlas.com/conception-calculator</loc><lastmod>2026-08-12</lastmod><priority>0.9</priority></url>
+  <url><loc>https://www.raphaatlas.com/fitness</loc><lastmod>2026-08-12</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.raphaatlas.com/nutrition</loc><lastmod>2026-08-12</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.raphaatlas.com/health</loc><lastmod>2026-08-12</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.raphaatlas.com/about</loc><lastmod>2026-08-12</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.raphaatlas.com/contact</loc><lastmod>2026-08-12</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.raphaatlas.com/medical-review-board</loc><lastmod>2026-08-12</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.raphaatlas.com/editorial-policy</loc><lastmod>2026-08-12</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.raphaatlas.com/privacy</loc><lastmod>2026-08-12</lastmod><priority>0.6</priority></url>
 </urlset>

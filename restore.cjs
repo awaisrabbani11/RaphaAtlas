@@ -1,22 +1,122 @@
-<!DOCTYPE html><html lang="en"><head>
+const fs = require('fs');
+
+const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Conception Calculator | RaphaAtlas</title>
-
-
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- raphaatlas:seo-block -->
+<link rel="canonical" href="https://www.raphaatlas.com/conception-calculator">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RaphaAtlas">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Conception Calculator | RaphaAtlas">
+<meta property="og:description" content="Free conception calculator. Estimate your likely conception date and due date from your last period, cycle length, or a known date.">
+<meta property="og:url" content="https://www.raphaatlas.com/conception-calculator">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Conception Calculator | RaphaAtlas">
+<meta name="twitter:description" content="Free conception calculator. Estimate your likely conception date and due date from your last period, cycle length, or a known date.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.raphaatlas.com/#organization",
+      "name": "RaphaAtlas",
+      "url": "https://www.raphaatlas.com/",
+      "description": "Evidence-based health calculators and wellness reference, reviewed by qualified medical graduates.",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Growth Partners Global LLC"
+      },
+      "publishingPrinciples": "https://www.raphaatlas.com/editorial-policy",
+      "employee": [
+        {
+          "@id": "https://www.raphaatlas.com/medical-review-board#awais"
+        },
+        {
+          "@id": "https://www.raphaatlas.com/medical-review-board#ahmed"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.raphaatlas.com/#website",
+      "url": "https://www.raphaatlas.com/",
+      "name": "RaphaAtlas",
+      "publisher": {
+        "@id": "https://www.raphaatlas.com/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.raphaatlas.com/medical-review-board#awais",
+      "name": "Dr. Muhammad Awais Rabbani",
+      "honorificSuffix": "MBBS",
+      "jobTitle": "Medical Reviewer",
+      "url": "https://www.raphaatlas.com/medical-review-board",
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "degree",
+        "educationalLevel": "Bachelor of Medicine, Bachelor of Surgery (MBBS)"
+      },
+      "worksFor": {
+        "@id": "https://www.raphaatlas.com/#organization"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.raphaatlas.com/medical-review-board#ahmed",
+      "name": "Dr. Ahmed Humayon",
+      "honorificSuffix": "MBBS",
+      "jobTitle": "Medical Reviewer",
+      "url": "https://www.raphaatlas.com/medical-review-board",
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "degree",
+        "educationalLevel": "Bachelor of Medicine, Bachelor of Surgery (MBBS)"
+      },
+      "worksFor": {
+        "@id": "https://www.raphaatlas.com/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.raphaatlas.com/conception-calculator#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.raphaatlas.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Conception Calculator",
+          "item": "https://www.raphaatlas.com/conception-calculator"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- /raphaatlas:seo-block -->
+<meta name="description" content="Free conception calculator. Estimate your likely conception date and due date from your last period, cycle length, or a known date.">
 <link href="https://fonts.googleapis.com" rel="preconnect">
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <style>
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24
 }
 </style>
-
-
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -36,26 +136,9 @@
             }
         }
     </script>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Montserrat:wght@600;700;900&amp;family=Archivo:wght@700&amp;display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&amp;display=swap" rel="stylesheet">
-  <meta name="description" content="Free conception calculator. Estimate your likely conception date and due date from LMP, ultrasound, or IVF transfer using Naegele dating.">
-  <link rel="canonical" href="https://www.raphaatlas.com/conception-calculator">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="RaphaAtlas">
-  <meta property="og:title" content="Conception Calculator — Estimate Conception & Due Date | RaphaAtlas">
-  <meta property="og:description" content="Free conception calculator. Estimate your likely conception date and due date from LMP, ultrasound, or IVF transfer using Naegele dating.">
-  <meta property="og:url" content="https://www.raphaatlas.com/conception-calculator">
-  <meta property="og:image" content="https://www.raphaatlas.com/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Conception Calculator — Estimate Conception & Due Date | RaphaAtlas">
-  <meta name="twitter:description" content="Free conception calculator. Estimate your likely conception date and due date from LMP, ultrasound, or IVF transfer using Naegele dating.">
-  <meta name="twitter:image" content="https://www.raphaatlas.com/og-image.png">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <script type="application/ld+json" data-ra="page">{"@context":"https://schema.org","@type":["WebApplication","MedicalWebPage"],"name":"Conception Calculator","url":"https://www.raphaatlas.com/conception-calculator","description":"Free conception calculator. Estimate your likely conception date and due date from LMP, ultrasound, or IVF transfer using Naegele dating.","applicationCategory":"HealthApplication","operatingSystem":"Any (web browser)","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"inLanguage":"en","publisher":{"@id":"https://www.raphaatlas.com/#organization"},"reviewedBy":{"@type":"Person","name":"Dr. Muhammad Awais Rabbani, MBBS","jobTitle":"Medical Reviewer","url":"https://www.raphaatlas.com/medical-review-board"},"lastReviewed":"2026-08-12"}</script>
-  <script type="application/ld+json" data-ra="page">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.raphaatlas.com/"},{"@type":"ListItem","position":2,"name":"Conception Calculator","item":"https://www.raphaatlas.com/conception-calculator"}]}</script>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
 </head>
 <body class="bg-surface-lowest text-on-surface font-body-md min-h-screen flex flex-col antialiased">
 <header class="bg-header-black border-b border-black docked full-width top-0 z-50 sticky transition-all duration-300" id="main-header"><div class="flex justify-between items-center px-4 md:px-8 py-2 w-full max-w-7xl mx-auto">  <a href="/" aria-label="RaphaAtlas home" class="flex items-center">    <img src="/raphaatlas-mark.svg" alt="RaphaAtlas Logo" height="40" width="40" class="h-10 w-10">    <span style="font-family: 'Inter', sans-serif; font-size: 32px; font-weight: 900; letter-spacing: -1px; color: white; margin-left: 12px; transform: translateY(2px);">RaphaAtlas</span>  </a>  <nav class="hidden lg:flex items-center space-x-6">    <a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/nutrition">Nutrition</a>    <a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/health">Health</a>        <div class="relative group">      <button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors py-2" style="font-family: 'Inter', sans-serif;" aria-expanded="false">        <span>Calculators</span><span class="material-symbols-outlined text-sm">expand_more</span>      </button>      <div class="absolute left-0 mt-2 w-56 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg before:content-[''] before:absolute before:-top-4 before:left-0 before:right-0 before:h-4">        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/bac-calculator">BAC Calculator</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/body-type-calculator">Body Type Calculator</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/macro-calculator">Macro Calculator</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/conception-calculator">Conception Calculator</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all" href="/calculators">All Calculators</a>      </div>    </div>        <a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/fitness">Fitness</a>        <div class="relative group">      <button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors py-2" style="font-family: 'Inter', sans-serif;" aria-expanded="false">        <span>More</span><span class="material-symbols-outlined text-sm">expand_more</span>      </button>      <div class="absolute left-0 mt-2 w-56 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg before:content-[''] before:absolute before:-top-4 before:left-0 before:right-0 before:h-4">        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/about">About Us</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/editorial-policy">Editorial Policy</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/medical-review-board">Medical Review Board</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/privacy">Privacy Policy</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all" href="/contact">Contact Us</a>      </div>    </div>  </nav>  <div class="flex items-center space-x-4">    <button class="lg:hidden text-on-primary" id="mobile-menu-btn" aria-label="Toggle mobile menu">      <span class="material-symbols-outlined text-2xl">menu</span>    </button>  </div></div><!-- Mobile Menu Slide-out --><div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-surface-container-lowest shadow-2xl z-[100] transform translate-x-full transition-transform duration-300 lg:hidden overflow-y-auto border-l border-border-subtle">  <div class="p-4 border-b border-border-subtle flex justify-end">    <button id="mobile-menu-close" class="text-on-surface hover:text-primary p-2">      <span class="material-symbols-outlined">close</span>    </button>  </div>  <nav class="p-4 flex flex-col space-y-2">    <a href="/nutrition" class="block py-2 text-primary font-bold border-b border-border-subtle">Nutrition</a>    <a href="/health" class="block py-2 text-primary font-bold border-b border-border-subtle">Health</a>        <div class="py-2 border-b border-border-subtle">      <button class="flex items-center justify-between w-full text-primary font-bold mb-2 mobile-dropdown-btn">        <span>Calculators</span>        <span class="material-symbols-outlined text-sm transition-transform duration-200">expand_more</span>      </button>      <div class="pl-4 space-y-2 mobile-dropdown-content overflow-hidden max-h-0 transition-all duration-300">        <a href="/bac-calculator" class="block text-on-surface-variant hover:text-primary py-1">BAC Calculator</a>        <a href="/body-type-calculator" class="block text-on-surface-variant hover:text-primary py-1">Body Type Calculator</a>        <a href="/macro-calculator" class="block text-on-surface-variant hover:text-primary py-1">Macro Calculator</a>        <a href="/conception-calculator" class="block text-on-surface-variant hover:text-primary py-1">Conception Calculator</a>        <a href="/calculators" class="block text-on-surface-variant hover:text-primary py-1">All Calculators</a>      </div>    </div>        <a href="/fitness" class="block py-2 text-primary font-bold border-b border-border-subtle">Fitness</a>        <div class="py-2 border-b border-border-subtle">      <button class="flex items-center justify-between w-full text-primary font-bold mb-2 mobile-dropdown-btn">        <span>More</span>        <span class="material-symbols-outlined text-sm transition-transform duration-200">expand_more</span>      </button>      <div class="pl-4 space-y-2 mobile-dropdown-content overflow-hidden max-h-0 transition-all duration-300">        <a href="/about" class="block text-on-surface-variant hover:text-primary py-1">About Us</a>        <a href="/editorial-policy" class="block text-on-surface-variant hover:text-primary py-1">Editorial Policy</a>        <a href="/medical-review-board" class="block text-on-surface-variant hover:text-primary py-1">Medical Review Board</a>        <a href="/privacy" class="block text-on-surface-variant hover:text-primary py-1">Privacy Policy</a>        <a href="/contact" class="block text-on-surface-variant hover:text-primary py-1">Contact Us</a>      </div>    </div>  </nav></div><!-- Mobile Menu Overlay --><div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-[90] hidden lg:hidden"></div><script>  (function() {    const btn = document.getElementById('mobile-menu-btn');    const closeBtn = document.getElementById('mobile-menu-close');    const menu = document.getElementById('mobile-menu');    const overlay = document.getElementById('mobile-overlay');    function openMenu() {      if(menu) menu.classList.remove('translate-x-full');      if(overlay) overlay.classList.remove('hidden');    }    function closeMenu() {      if(menu) menu.classList.add('translate-x-full');      if(overlay) overlay.classList.add('hidden');    }    if (btn) btn.addEventListener('click', openMenu);    if (closeBtn) closeBtn.addEventListener('click', closeMenu);    if (overlay) overlay.addEventListener('click', closeMenu);    /* Mobile dropdown toggle logic */    const dropdownBtns = document.querySelectorAll('.mobile-dropdown-btn');    dropdownBtns.forEach(btn => {      btn.addEventListener('click', () => {        const content = btn.nextElementSibling;        const icon = btn.querySelector('.material-symbols-outlined');        if (content.classList.contains('max-h-0')) {          content.classList.remove('max-h-0');          content.classList.add('max-h-screen');          icon.style.transform = 'rotate(180deg)';        } else {          content.classList.add('max-h-0');          content.classList.remove('max-h-screen');          icon.style.transform = 'rotate(0deg)';        }      });    });  })();</script></header>
@@ -70,15 +153,15 @@
   --surface-2:#f4f7f3;
   --line:#d3ddd2;
   --line-soft:#e3eae2;
-  --teal:#26786c;        /* primary action + due date */
+  --teal:#26786c;
   --teal-deep:#1c5d54;
-  --rose:#cf6670;        /* conception — the emotional heart */
+  --rose:#cf6670;
   --rose-soft:#f3d9dc;
-  --gold:#c39027;        /* ovulation / fertile peak */
+  --gold:#c39027;
   --gold-soft:#efe1bd;
-  --sage:#6f9b8a;        /* second trimester / supportive */
+  --sage:#6f9b8a;
   --sage-soft:#d9e6df;
-  --t1:#e9c2c6;          /* trimester band tints */
+  --t1:#e9c2c6;
   --t2:#bcd6ca;
   --t3:#e6d3a3;
   --radius:16px;
@@ -88,146 +171,109 @@
   --disp:'Fraunces',Georgia,'Times New Roman',serif;
   --body:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
 }
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{
-  margin:0;background:var(--paper);color:var(--ink);
+.ra-conception *{box-sizing:border-box}
+.ra-conception{
   font-family:var(--body);font-size:16px;line-height:1.55;
-  -webkit-font-smoothing:antialiased;
+  color:var(--ink);
+  max-width:1080px;margin:0 auto;
 }
-.wrap{max-width:1080px;margin:0 auto;padding:clamp(20px,4vw,56px) clamp(16px,4vw,32px) 72px}
+.ra-conception .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:22px;margin-top:34px}
+@media (max-width:860px){.ra-conception .grid{grid-template-columns:1fr;gap:18px}}
+.ra-conception .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.ra-conception .pad{padding:clamp(18px,3vw,26px)}
 
-/* ---------- header ---------- */
-.eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--teal-deep);background:var(--sage-soft);
-  padding:6px 12px;border-radius:999px;
-}
-.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--rose)}
-h1{
-  font-family:var(--disp);font-weight:600;font-size:clamp(2.1rem,6vw,3.4rem);
-  line-height:1.02;letter-spacing:-.01em;margin:.5em 0 .28em;max-width:16ch;
-}
-h1 em{font-style:italic;color:var(--rose)}
-.lede{font-size:clamp(1rem,2.4vw,1.14rem);color:var(--ink-soft);max-width:56ch;margin:0}
+.ra-conception .card-title{font-family:var(--disp);font-weight:600;font-size:1.18rem;margin:0 0 2px}
+.ra-conception .card-sub{font-size:.86rem;color:var(--ink-faint);margin:0 0 18px}
 
-/* ---------- layout ---------- */
-.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:22px;margin-top:34px}
-@media (max-width:860px){.grid{grid-template-columns:1fr;gap:18px}}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
-.pad{padding:clamp(18px,3vw,26px)}
-
-.card-title{font-family:var(--disp);font-weight:600;font-size:1.18rem;margin:0 0 2px}
-.card-sub{font-size:.86rem;color:var(--ink-faint);margin:0 0 18px}
-
-/* ---------- method selector ---------- */
-.methods{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
-.method{
+.ra-conception .methods{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
+.ra-conception .method{
   font-family:var(--mono);font-size:12.5px;letter-spacing:.01em;
   border:1px solid var(--line);background:var(--surface-2);color:var(--ink-soft);
   padding:8px 13px;border-radius:999px;cursor:pointer;transition:.16s;
 }
-.method:hover{border-color:var(--sage)}
-.method[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
-.method:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.ra-conception .method:hover{border-color:var(--sage)}
+.ra-conception .method[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.ra-conception .method:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 
-label{display:block;font-size:.82rem;font-weight:500;color:var(--ink-soft);margin:0 0 6px}
-.field{margin-bottom:16px}
-.field:last-of-type{margin-bottom:0}
-input[type=date],input[type=number],select{
+.ra-conception label{display:block;font-size:.82rem;font-weight:500;color:var(--ink-soft);margin:0 0 6px}
+.ra-conception .field{margin-bottom:16px}
+.ra-conception .field:last-of-type{margin-bottom:0}
+.ra-conception input[type=date], .ra-conception input[type=number], .ra-conception select{
   width:100%;font-family:var(--body);font-size:1rem;color:var(--ink);
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
   padding:11px 13px;transition:.16s;
 }
-input:focus,select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(38,120,108,.14)}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.hint{font-size:.75rem;color:var(--ink-faint);margin:6px 0 0;font-family:var(--mono)}
-.ga-input{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ra-conception input:focus, .ra-conception select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(38,120,108,.14)}
+.ra-conception .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ra-conception .hint{font-size:.75rem;color:var(--ink-faint);margin:6px 0 0;font-family:var(--mono)}
+.ra-conception .ga-input{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
-.btns{display:flex;gap:10px;margin-top:22px}
-.btn{
+.ra-conception .btns{display:flex;gap:10px;margin-top:22px}
+.ra-conception .btn{
   font-family:var(--body);font-weight:600;font-size:.98rem;cursor:pointer;
   border-radius:var(--radius-sm);padding:12px 20px;border:1px solid transparent;transition:.16s;
 }
-.btn-go{background:var(--teal);color:#fff;flex:1}
-.btn-go:hover{background:var(--teal-deep)}
-.btn-reset{background:transparent;color:var(--ink-soft);border-color:var(--line)}
-.btn-reset:hover{border-color:var(--ink-soft)}
-.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.ra-conception .btn-go{background:var(--teal);color:#fff;flex:1}
+.ra-conception .btn-go:hover{background:var(--teal-deep)}
+.ra-conception .btn-reset{background:transparent;color:var(--ink-soft);border-color:var(--line)}
+.ra-conception .btn-reset:hover{border-color:var(--ink-soft)}
+.ra-conception .btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 
-.err{
+.ra-conception .err{
   display:none;margin-top:14px;padding:11px 13px;border-radius:var(--radius-sm);
   background:#fbeceb;border:1px solid #eec7c4;color:#8f3a34;font-size:.86rem;
 }
-.err.show{display:block}
+.ra-conception .err.show{display:block}
 
-/* ---------- results ---------- */
-.result-card{display:flex;flex-direction:column}
-.wheel-shell{padding:clamp(14px,3vw,22px) clamp(14px,3vw,22px) 4px;display:flex;justify-content:center}
-svg.wheel{width:100%;max-width:340px;height:auto;display:block}
-.wheel-empty{
+.ra-conception .result-card{display:flex;flex-direction:column}
+.ra-conception .wheel-shell{padding:clamp(14px,3vw,22px) clamp(14px,3vw,22px) 4px;display:flex;justify-content:center}
+.ra-conception svg.wheel{width:100%;max-width:340px;height:auto;display:block}
+.ra-conception .wheel-empty{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;color:var(--ink-faint);min-height:300px;padding:30px;gap:10px;
 }
-.wheel-empty svg{opacity:.5}
-.wheel-empty p{margin:0;font-size:.9rem;max-width:26ch}
+.ra-conception .wheel-empty svg{opacity:.5}
+.ra-conception .wheel-empty p{margin:0;font-size:.9rem;max-width:26ch}
 
-.tiles{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-soft);
-  border-top:1px solid var(--line-soft);margin-top:8px}
-.tile{background:var(--surface);padding:15px 18px}
-.tile.wide{grid-column:1/-1}
-.tile .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 4px;display:flex;align-items:center;gap:6px}
-.tile .k .swatch{width:8px;height:8px;border-radius:2px}
-.tile .v{font-family:var(--disp);font-weight:600;font-size:1.32rem;line-height:1.1;color:var(--ink)}
-.tile .v small{font-family:var(--mono);font-weight:500;font-size:.72rem;color:var(--ink-soft);display:block;margin-top:3px;letter-spacing:0}
+.ra-conception .tiles{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-soft);
+  border-top:1px solid var(--line-soft);margin-top:8px;border-bottom-left-radius:var(--radius);border-bottom-right-radius:var(--radius);overflow:hidden}
+.ra-conception .tile{background:var(--surface);padding:15px 18px}
+.ra-conception .tile.wide{grid-column:1/-1}
+.ra-conception .tile .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 4px;display:flex;align-items:center;gap:6px}
+.ra-conception .tile .k .swatch{width:8px;height:8px;border-radius:2px}
+.ra-conception .tile .v{font-family:var(--disp);font-weight:600;font-size:1.32rem;line-height:1.1;color:var(--ink)}
+.ra-conception .tile .v small{font-family:var(--mono);font-weight:500;font-size:.72rem;color:var(--ink-soft);display:block;margin-top:3px;letter-spacing:0}
 
-/* ---------- timeline ---------- */
-.section{margin-top:22px}
-.timeline{position:relative;margin:26px 4px 8px}
-.tl-track{position:absolute;left:0;right:0;top:19px;height:3px;background:var(--line);border-radius:2px}
-.tl-fill{position:absolute;left:0;top:19px;height:3px;background:var(--teal);border-radius:2px;transition:width .6s ease}
-.tl-marks{display:flex;justify-content:space-between;position:relative}
-.tl-mark{flex:1;text-align:center;position:relative}
-.tl-mark .node{width:11px;height:11px;border-radius:50%;background:var(--surface);border:2.5px solid var(--sage);margin:14px auto 8px;position:relative;z-index:2}
-.tl-mark.done .node{background:var(--sage);border-color:var(--sage)}
-.tl-mark.now .node{background:var(--rose);border-color:var(--rose);box-shadow:0 0 0 5px var(--rose-soft)}
-.tl-mark .wk{font-family:var(--mono);font-size:11px;color:var(--ink-faint)}
-.tl-mark .lbl{font-size:.74rem;color:var(--ink-soft);line-height:1.25;margin-top:2px}
-.tl-mark .dt{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);margin-top:3px}
-@media (max-width:560px){.tl-mark .lbl{font-size:.66rem}.tl-mark .dt{display:none}}
+.ra-conception .section{margin-top:22px}
+.ra-conception .timeline{position:relative;margin:26px 4px 8px}
+.ra-conception .tl-track{position:absolute;left:0;right:0;top:19px;height:3px;background:var(--line);border-radius:2px}
+.ra-conception .tl-fill{position:absolute;left:0;top:19px;height:3px;background:var(--teal);border-radius:2px;transition:width .6s ease}
+.ra-conception .tl-marks{display:flex;justify-content:space-between;position:relative}
+.ra-conception .tl-mark{flex:1;text-align:center;position:relative}
+.ra-conception .tl-mark .node{width:11px;height:11px;border-radius:50%;background:var(--surface);border:2.5px solid var(--sage);margin:14px auto 8px;position:relative;z-index:2}
+.ra-conception .tl-mark.done .node{background:var(--sage);border-color:var(--sage)}
+.ra-conception .tl-mark.now .node{background:var(--rose);border-color:var(--rose);box-shadow:0 0 0 5px var(--rose-soft)}
+.ra-conception .tl-mark .wk{font-family:var(--mono);font-size:11px;color:var(--ink-faint)}
+.ra-conception .tl-mark .lbl{font-size:.74rem;color:var(--ink-soft);line-height:1.25;margin-top:2px}
+.ra-conception .tl-mark .dt{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);margin-top:3px}
+@media (max-width:560px){.ra-conception .tl-mark .lbl{font-size:.66rem}.ra-conception .tl-mark .dt{display:none}}
 
-/* ---------- info blocks ---------- */
-.note{background:var(--surface-2);border:1px solid var(--line-soft);border-radius:var(--radius-sm);padding:16px 18px;margin-top:14px}
-.note h4{font-family:var(--body);font-weight:600;font-size:.92rem;margin:0 0 6px;color:var(--ink)}
-.note p{margin:0;font-size:.86rem;color:var(--ink-soft)}
-.note.redate{border-left:3px solid var(--gold)}
+.ra-conception .note{background:var(--surface-2);border:1px solid var(--line-soft);border-radius:var(--radius-sm);padding:16px 18px;margin-top:14px}
+.ra-conception .note h4{font-family:var(--body);font-weight:600;font-size:.92rem;margin:0 0 6px;color:var(--ink)}
+.ra-conception .note p{margin:0;font-size:.86rem;color:var(--ink-soft)}
+.ra-conception .note.redate{border-left:3px solid var(--gold)}
 
-.plural-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.84rem}
-.plural-table th,.plural-table td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line-soft)}
-.plural-table th{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
-.plural-table td:last-child{font-family:var(--mono);color:var(--teal-deep);text-align:right}
-.plural-table tr.hit td{background:var(--sage-soft)}
+.ra-conception .plural-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.84rem}
+.ra-conception .plural-table th, .ra-conception .plural-table td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line-soft)}
+.ra-conception .plural-table th{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+.ra-conception .plural-table td:last-child{font-family:var(--mono);color:var(--teal-deep);text-align:right}
+.ra-conception .plural-table tr.hit td{background:var(--sage-soft)}
 
-.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-.cta a{font-family:var(--mono);font-size:12.5px;color:var(--teal-deep);text-decoration:none;
-  border:1px solid var(--line);border-radius:999px;padding:8px 14px;transition:.16s;background:var(--surface)}
-.cta a:hover{border-color:var(--teal);background:var(--surface-2)}
-
-.disclaimer{margin-top:26px;font-size:.8rem;color:var(--ink-faint);line-height:1.5;max-width:70ch}
-.disclaimer strong{color:var(--ink-soft)}
-
-.foot{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--ink-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (prefers-reduced-motion:reduce){.ra-conception *{transition:none!important;animation:none!important}}
 </style>
-<div class="wrap">
 
-  
-
+<div class="ra-conception">
   <div class="grid">
-
-    <!-- INPUT -->
     <section class="card pad" aria-label="Calculator inputs">
       <p class="card-title">What do you know?</p>
       <p class="card-sub">Pick the date you're most confident about. The calculator fills in the rest.</p>
@@ -240,8 +286,7 @@ svg.wheel{width:100%;max-width:340px;height:auto;display:block}
         <button class="method" data-method="conc" aria-pressed="false">Conception date</button>
       </div>
 
-      <!-- dynamic fields -->
-      <div id="fields"></div>
+      <div id="ra-conc-fields"></div>
 
       <div class="field" id="asofWrap">
         <label for="asof">Calculate how far along as of</label>
@@ -250,7 +295,7 @@ svg.wheel{width:100%;max-width:340px;height:auto;display:block}
       </div>
 
       <div class="field">
-        <label for="plural">Number of babies (adjusts typical delivery week)</label>
+        <label for="plural">Number of babies <span style="font-weight:400;color:var(--ink-faint)">(adjusts typical delivery week)</span></label>
         <select id="plural">
           <option value="1">Singleton</option>
           <option value="2">Twins</option>
@@ -261,42 +306,39 @@ svg.wheel{width:100%;max-width:340px;height:auto;display:block}
       </div>
 
       <div class="btns">
-        <button class="btn btn-go" id="calc">Calculate</button>
-        <button class="btn btn-reset" id="reset">Reset</button>
+        <button class="btn btn-go" id="ra-conc-calc">Calculate</button>
+        <button class="btn btn-reset" id="ra-conc-reset">Reset</button>
       </div>
-      <div class="err" id="err" role="alert"></div>
+      <div class="err" id="ra-conc-err" role="alert"></div>
     </section>
 
-    <!-- RESULTS -->
     <section class="card result-card" aria-label="Results" aria-live="polite">
-      <div class="wheel-shell" id="wheelShell">
-        <div class="wheel-empty" id="wheelEmpty">
-          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="#7c8a84" stroke-width="2"><circle cx="36" cy="36" r="28"></circle><path d="M36 14v22l14 8"></path></svg>
+      <div class="wheel-shell" id="ra-conc-wheel">
+        <div class="wheel-empty">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="#7c8a84" stroke-width="2"><circle cx="36" cy="36" r="28"/><path d="M36 14v22l14 8"/></svg>
           <p>Your pregnancy wheel appears here once you calculate.</p>
         </div>
       </div>
-      <div class="tiles" id="tiles" hidden=""></div>
+      <div class="tiles" id="ra-conc-tiles" hidden></div>
     </section>
   </div>
 
-  <!-- TIMELINE -->
-  <section class="card pad section" id="timelineCard" hidden="">
+  <section class="card pad section" id="ra-conc-tl-card" hidden>
     <p class="card-title">Milestone timeline</p>
-    <p class="card-sub" id="tlSub">Where you are across the 40-week gestational calendar.</p>
+    <p class="card-sub" id="ra-conc-tl-sub">Where you are across the 40-week gestational calendar.</p>
     <div class="timeline">
       <div class="tl-track"></div>
-      <div class="tl-fill" id="tlFill" style="width:0%"></div>
-      <div class="tl-marks" id="tlMarks"></div>
+      <div class="tl-fill" id="ra-conc-tl-fill" style="width:0%"></div>
+      <div class="tl-marks" id="ra-conc-tl-marks"></div>
     </div>
   </section>
 
-  <!-- CONTEXT NOTES -->
-  <section class="section" id="notes" hidden="">
+  <section class="section" id="ra-conc-notes" hidden>
     <div class="grid">
       <div>
         <div class="note redate">
           <h4>When an ultrasound overrules your dates</h4>
-          <p id="redateNote">First-trimester ultrasound (crown-rump length up to 13w6d) is the most accurate way to date a pregnancy. Clinicians re-date from the scan when it disagrees with your last period by more than the accepted margin for that stage.</p>
+          <p>First-trimester ultrasound (crown-rump length up to 13w6d) is the most accurate way to date a pregnancy. Clinicians re-date from the scan when it disagrees with your last period by more than the accepted margin for that stage.</p>
         </div>
         <div class="note">
           <h4>Conception vs. gestational age</h4>
@@ -305,37 +347,232 @@ svg.wheel{width:100%;max-width:340px;height:auto;display:block}
       </div>
       <div>
         <div class="note">
-          <h4 id="pluralHead">Typical delivery by number of babies</h4>
-          <table class="plural-table" id="pluralTable">
+          <h4>Typical delivery by number of babies</h4>
+          <table class="plural-table">
             <thead><tr><th>Pregnancy</th><th>Avg. weeks</th><th>Est. date</th></tr></thead>
-            <tbody id="pluralBody"></tbody>
+            <tbody id="ra-conc-plural-body"></tbody>
           </table>
           <p style="margin-top:10px" class="hint">Multiples usually arrive earlier. This does not change how the due date is first assigned.</p>
         </div>
       </div>
     </div>
-
-    <div class="cta" id="cta">
-      <a href="" data-slug="/ovulation-calculator">Ovulation calculator →</a>
-      <a href="" data-slug="/due-date-calculator">Due date calculator →</a>
-      <a href="" data-slug="/pregnancy-week-by-week">Week-by-week guide →</a>
-      <a href="" data-slug="/hcg-calculator">hCG calculator →</a>
-    </div>
   </section>
 
-  <p class="disclaimer">
-    <strong>This is an estimate, not a diagnosis.</strong> Conception timing, fertile windows, and due dates are approximations based on standard obstetric formulas (a 40-week gestation and ovulation roughly mid-cycle). Real cycles vary, and only about 1 in 20 babies arrives on the exact estimated due date — most healthy births happen anywhere from 37 to 42 weeks. For pregnancy dating that guides medical decisions, rely on your clinician and a dating ultrasound, not this or any other online calculator.
-  </p>
-
-  <div class="foot">
-    <span>RaphaAtlas · Conception Calculator</span>
-    <span id="methodTag">Method: Due date</span>
-  </div>
 </div>
 
+<script>
+(function(){
+  const DAY = 86400000;
+  function ymdToDate(str){
+    if(!str) return null;
+    const [y,m,d] = str.split('-').map(Number);
+    if(!y||!m||!d) return null;
+    return new Date(Date.UTC(y, m-1, d, 12));
+  }
+  function addDays(dt, n){ return new Date(dt.getTime() + n*DAY); }
+  function diffDays(a, b){ return Math.round((a - b)/DAY); }
+  function todayUTC(){ const n=new Date(); return new Date(Date.UTC(n.getFullYear(),n.getMonth(),n.getDate(),12)); }
+  const FMT = {weekday:'short', month:'short', day:'numeric', year:'numeric', timeZone:'UTC'};
+  const FMT_S = {month:'short', day:'numeric', timeZone:'UTC'};
+  function fmt(dt){ return dt.toLocaleDateString('en-US', FMT); }
+  function fmtShort(dt){ return dt.toLocaleDateString('en-US', FMT_S); }
+
+  let method = 'edd';
+
+  function renderFields(){
+    const F = document.getElementById('ra-conc-fields');
+    const cyc = `<div class="field"><label for="cycle">Average cycle length (days)</label><input type="number" id="cycle" min="20" max="45" value="28"><p class="hint">Corrects ovulation timing. 28 = textbook. Longer cycle ⇒ later ovulation.</p></div>`;
+    const map = {
+      edd: `<div class="field"><label for="d1">Your estimated due date</label><input type="date" id="d1"><p class="hint">We reverse-calculate: conception = due date − 266 days.</p></div>`,
+      lmp: `<div class="field"><label for="d1">First day of your last period</label><input type="date" id="d1"></div>${cyc}`,
+      us:  `<div class="field"><label for="d1">Date the ultrasound was done</label><input type="date" id="d1"></div><div class="field"><label>Gestational age at that scan</label><div class="ga-input"><input type="number" id="usw" min="0" max="45" placeholder="weeks"><input type="number" id="usd" min="0" max="6" placeholder="days"></div><p class="hint">e.g. 12 weeks 3 days. Shown on your scan report.</p></div>`,
+      ivf: `<div class="field"><label for="d1">Embryo transfer date</label><input type="date" id="d1"></div><div class="field"><label for="emb">Embryo age at transfer</label><select id="emb"><option value="3">Day 3 (cleavage)</option><option value="5" selected>Day 5 (blastocyst)</option><option value="6">Day 6 (blastocyst)</option></select></div>`,
+      conc:`<div class="field"><label for="d1">Known conception / ovulation date</label><input type="date" id="d1"><p class="hint">Due date = conception + 266 days. Cycle length isn't needed when conception is known.</p></div>`
+    };
+    F.innerHTML = map[method];
+    const t = todayUTC().toISOString().slice(0,10);
+    const d1 = document.getElementById('d1'); if(d1 && !d1.value) d1.value = t;
+  }
+
+  function compute(){
+    const err = document.getElementById('ra-conc-err');
+    err.classList.remove('show');
+    const cycleEl = document.getElementById('cycle');
+    const cycle = cycleEl ? Math.max(20,Math.min(45,+cycleEl.value||28)) : 28;
+    const d1 = ymdToDate((document.getElementById('d1')||{}).value);
+    if(!d1) return fail("Enter a valid date to calculate.");
+
+    let anchor;
+    if(method==='edd') anchor = addDays(d1, -280);
+    else if(method==='lmp') anchor = addDays(d1, cycle - 28);
+    else if(method==='conc') anchor = addDays(d1, -14);
+    else if(method==='us'){
+      const w = +(document.getElementById('usw').value);
+      const dd = +(document.getElementById('usd').value||0);
+      if(!Number.isFinite(w)||document.getElementById('usw').value==='') return fail("Enter the gestational age (weeks) from the scan.");
+      if(dd<0||dd>6) return fail("Days must be between 0 and 6.");
+      anchor = addDays(d1, -(w*7 + dd));
+    } else if(method==='ivf'){
+      const emb = +document.getElementById('emb').value;
+      anchor = addDays(d1, -emb - 14);
+    }
+
+    const conception = addDays(anchor, 14);
+    const lmp = anchor;
+    const edd = addDays(anchor, 280);
+    const asof = ymdToDate(document.getElementById('asof').value) || todayUTC();
+    const gaDays = diffDays(asof, anchor);
+    const plural = +document.getElementById('plural').value;
+
+    if(gaDays < -30) return fail("That date is over a month before conception — check the inputs.");
+    if(gaDays > 336) return fail("That's beyond 48 weeks of gestation — check the inputs.");
+
+    render({lmp, conception, edd, asof, gaDays, cycle, plural});
+  }
+  function fail(msg){const e=document.getElementById('ra-conc-err');e.textContent=msg;e.classList.add('show');}
+
+  function render(r){
+    const {lmp, conception, edd, asof, gaDays, plural} = r;
+    const gw = Math.floor(Math.abs(gaDays)/7), gd = Math.abs(gaDays)%7;
+    const gaStr = gaDays<0 ? "Not yet — pre-conception" : `${gw}w ${gd}d`;
+
+    let tri = "—";
+    if(gaDays>=0){
+      if(gaDays<=97) tri="First trimester";
+      else if(gaDays<=195) tri="Second trimester";
+      else tri="Third trimester";
+    } else tri="Trying to conceive";
+
+    const fwStart = addDays(conception,-5), fwEnd = addDays(conception,1);
+
+    const tiles = document.getElementById('ra-conc-tiles');
+    tiles.hidden=false;
+    tiles.innerHTML = `
+      <div class="tile"><p class="k"><span class="swatch" style="background:var(--rose)"></span>Most likely conception</p><p class="v">${fmt(conception)}</p></div>
+      <div class="tile"><p class="k"><span class="swatch" style="background:var(--gold)"></span>Fertile window</p><p class="v" style="font-size:1rem;line-height:1.25">${fmtShort(fwStart)} – ${fmtShort(fwEnd)}<small>6-day window around ovulation</small></p></div>
+      <div class="tile"><p class="k"><span class="swatch" style="background:var(--teal)"></span>Estimated due date</p><p class="v">${fmt(edd)}</p></div>
+      <div class="tile"><p class="k">Gestational age ${diffDays(asof,todayUTC())===0?'today':'on '+fmtShort(asof)}</p><p class="v">${gaStr}<small>${tri}</small></p></div>
+      <div class="tile wide"><p class="k">Calculated last menstrual period (LMP anchor)</p><p class="v" style="font-size:1.05rem">${fmt(lmp)}<small>All dates derive from this. Fetal age ≈ ${gaDays>=0?Math.max(0,gw-2)+'w '+gd+'d':'—'} (about 2 weeks less than gestational age)</small></p></div>`;
+
+    drawWheel(r, tri);
+    drawTimeline(r);
+    drawPlural(r);
+    document.getElementById('ra-conc-tl-card').hidden=false;
+    document.getElementById('ra-conc-notes').hidden=false;
+  }
+
+  function drawWheel(r, tri){
+    const {edd, gaDays} = r;
+    const C = {t1:'#e9c2c6',t2:'#bcd6ca',t3:'#e6d3a3',post:'#d8ddd6',teal:'#26786c',rose:'#cf6670',sage:'#6f9b8a',ink:'#16302b',inkSoft:'#4c5c56',inkFaint:'#7c8a84',tick:'#b9c5bd'};
+    const MONO="'Spline Sans Mono',ui-monospace,SFMono-Regular,Menlo,monospace", DISP="'Fraunces',Georgia,'Times New Roman',serif", BODY="'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif";
+    const cx=170, cy=170, rOuter=140, rBand=120, band=17, TOTAL=42;
+    const ang = w => -90 + (w/TOTAL)*360;
+    const pol = (rr,a)=>[cx+rr*Math.cos(a*Math.PI/180), cy+rr*Math.sin(a*Math.PI/180)];
+    const arc = (rr,a0,a1,color,width)=>{
+      const large=(a1-a0)>180?1:0;
+      const [x0,y0]=pol(rr,a0),[x1,y1]=pol(rr,a1);
+      return `<path d="M${x0.toFixed(1)} ${y0.toFixed(1)} A${rr} ${rr} 0 ${large} 1 ${x1.toFixed(1)} ${y1.toFixed(1)}" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round"/>`;
+    };
+    const gaW = Math.max(0, Math.min(TOTAL, gaDays/7));
+
+    let svg = `<svg class="wheel" viewBox="0 0 340 340" role="img" aria-label="Pregnancy progress wheel, ${tri}">`;
+    svg += arc(rBand, ang(0),  ang(13), C.t1, band);
+    svg += arc(rBand, ang(13), ang(27), C.t2, band);
+    svg += arc(rBand, ang(27), ang(40), C.t3, band);
+    svg += arc(rBand, ang(40), ang(42), C.post, band);
+    if(gaW>0) svg += arc(rOuter, ang(0.15), ang(gaW), C.teal, 4);
+    for(let w=0; w<=40; w+=4){
+      const [x0,y0]=pol(rBand+band/2+4, ang(w));
+      const [x1,y1]=pol(rBand+band/2+9, ang(w));
+      svg += `<line x1="${x0.toFixed(1)}" y1="${y0.toFixed(1)}" x2="${x1.toFixed(1)}" y2="${y1.toFixed(1)}" stroke="${C.tick}" stroke-width="1.5"/>`;
+      const [tx,ty]=pol(rBand+band/2+20, ang(w));
+      svg += `<text x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" font-family="${MONO}" font-size="9" fill="${C.inkFaint}" text-anchor="middle" dominant-baseline="middle">${w}</text>`;
+    }
+    const marker = (w,color)=>{const [mx,my]=pol(rBand,ang(w));return `<circle cx="${mx.toFixed(1)}" cy="${my.toFixed(1)}" r="6" fill="#fff" stroke="${color}" stroke-width="3"/>`;};
+    svg += marker(2,  C.rose);
+    svg += marker(24, C.sage);
+    svg += marker(40, C.teal);
+    if(gaW>0){
+      const [hx,hy]=pol(rBand-band/2-2, ang(gaW));
+      svg += `<line x1="${cx}" y1="${cy}" x2="${hx.toFixed(1)}" y2="${hy.toFixed(1)}" stroke="${C.ink}" stroke-width="2.5" stroke-linecap="round"/>`;
+      svg += `<circle cx="${hx.toFixed(1)}" cy="${hy.toFixed(1)}" r="5" fill="${C.rose}"/>`;
+    }
+    svg += `<circle cx="${cx}" cy="${cy}" r="4" fill="${C.ink}"/>`;
+    const gw=Math.floor(Math.max(0,gaDays)/7), gd=Math.max(0,gaDays)%7;
+    const big = gaDays<0 ? '—' : `${gw}w`;
+    svg += `<text x="${cx}" y="${cy-30}" font-family="${MONO}" font-size="9" letter-spacing="1" fill="${C.inkFaint}" text-anchor="middle">GESTATIONAL AGE</text>`;
+    svg += `<text x="${cx}" y="${cy+4}" font-family="${DISP}" font-weight="600" font-size="46" fill="${C.ink}" text-anchor="middle">${big}</text>`;
+    svg += `<text x="${cx}" y="${cy+28}" font-family="${MONO}" font-size="12" fill="${C.inkSoft}" text-anchor="middle">${gaDays<0?'pre-conception':gd+' days'}</text>`;
+    svg += `<text x="${cx}" y="${cy+72}" font-family="${BODY}" font-size="11" fill="${C.inkFaint}" text-anchor="middle">Due ${fmtShort(edd)}</text>`;
+    svg += `</svg>`;
+    document.getElementById('ra-conc-wheel').innerHTML = svg;
+  }
+
+  function drawTimeline(r){
+    const {lmp, gaDays} = r;
+    const marks = [
+      {w:0,  lbl:'Conception window'},
+      {w:13, lbl:'End of 1st trimester'},
+      {w:20, lbl:'Anatomy scan'},
+      {w:24, lbl:'Viability'},
+      {w:28, lbl:'3rd trimester'},
+      {w:37, lbl:'Full term'},
+      {w:40, lbl:'Due date'}
+    ];
+    const nowW = gaDays/7;
+    const pct = Math.max(0,Math.min(100, (nowW/40)*100));
+    document.getElementById('ra-conc-tl-fill').style.width = pct+'%';
+    document.getElementById('ra-conc-tl-marks').innerHTML = marks.map(m=>{
+      const date = addDays(lmp, m.w*7);
+      const done = nowW >= m.w;
+      const now = Math.abs(nowW - m.w) < 1.6;
+      return `<div class="tl-mark ${done?'done':''} ${now?'now':''}">
+        <div class="wk">${m.w}w</div><div class="node"></div>
+        <div class="lbl">${m.lbl}</div><div class="dt">${fmtShort(date)}</div></div>`;
+    }).join('');
+    document.getElementById('ra-conc-tl-sub').textContent = gaDays<0 ? 'Estimated timeline once pregnancy begins.' : `You're roughly ${Math.round(pct)}% through a 40-week pregnancy.`;
+  }
+
+  function drawPlural(r){
+    const {lmp, plural} = r;
+    const rows = [['Singleton',39],['Twins',35],['Triplets',32],['Quadruplets',30],['Quintuplets+',27]];
+    document.getElementById('ra-conc-plural-body').innerHTML = rows.map((row,i)=>{
+      const est = addDays(lmp, row[1]*7);
+      const hit = (i+1)===plural;
+      return `<tr class="${hit?'hit':''}"><td>${row[0]}</td><td>${row[1]}</td><td>${fmtShort(est)}</td></tr>`;
+    }).join('');
+  }
+
+  document.querySelectorAll('.ra-conception .method').forEach(b=>{
+    b.addEventListener('click',()=>{
+      document.querySelectorAll('.ra-conception .method').forEach(x=>x.setAttribute('aria-pressed','false'));
+      b.setAttribute('aria-pressed','true');
+      method = b.dataset.method;
+      renderFields();
+      document.getElementById('ra-conc-err').classList.remove('show');
+    });
+  });
+  document.getElementById('ra-conc-calc').addEventListener('click', compute);
+  document.getElementById('ra-conc-reset').addEventListener('click', ()=>{
+    method='edd';
+    document.querySelectorAll('.ra-conception .method').forEach((x,i)=>x.setAttribute('aria-pressed', i===0?'true':'false'));
+    renderFields();
+    document.getElementById('asof').value = todayUTC().toISOString().slice(0,10);
+    document.getElementById('plural').value='1';
+    document.getElementById('ra-conc-tiles').hidden=true;
+    document.getElementById('ra-conc-tl-card').hidden=true;
+    document.getElementById('ra-conc-notes').hidden=true;
+    document.getElementById('ra-conc-wheel').innerHTML = '<div class="wheel-empty"><svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="#7c8a84" stroke-width="2"><circle cx="36" cy="36" r="28"/><path d="M36 14v22l14 8"/></svg><p>Your pregnancy wheel appears here once you calculate.</p></div>';
+    document.getElementById('ra-conc-err').classList.remove('show');
+  });
+  document.addEventListener('keydown',e=>{ if(e.key==='Enter' && !e.shiftKey){ const t=e.target.tagName; if(t==='INPUT'||t==='SELECT'){e.preventDefault();compute();} }});
+
+  renderFields();
+  document.getElementById('asof').value = todayUTC().toISOString().slice(0,10);
+})();
+</script>
 
 <div class="max-w-3xl mx-auto mt-12">
-
 <h1 class="font-display-md text-display-md font-bold text-primary mb-8 text-center">Pregnancy Conception Calculator</h1>
 <h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Introductions</h2>
 <p class="mb-4 font-body-md text-on-surface">Most people expect a Pregnancy Conception Calculator to hand over one exact date, yet biology resists that request. What it truly returns is an estimate, a narrow date range where conception most plausibly occurred inside.</p>
@@ -409,19 +646,19 @@ svg.wheel{width:100%;max-width:340px;height:auto;display:block}
 <p class="mb-4 font-body-md text-on-surface">We refine using early ultrasound measurements plus a cycle length - 28 days correction to improve the estimate. Longer cycles mean you ovulate later, and ignoring such quiet factors skews the entire projection badly downstream.</p>
 <p class="mb-4 font-body-md text-on-surface">For conception-based cases the arithmetic differs sharply: IVF procedures with known embryo transfer dates subtract precisely, yielding 263 days or 261 days by blastocyst age. That calculated precision beats estimating from a fuzzy recalled period.</p>
 <p class="mb-4 font-body-md text-on-surface">Accept the accuracy limits honestly. Individual differences, timing, and discrepancies between ultrasound methods and fetal measurements mean your actual due date lands a week or two before or after the true spontaneous onset of labor.</p>
-<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Fertile Window, Ovulation, Fertilization &amp; Conception</h2>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Fertile Window, Ovulation, Fertilization & Conception</h2>
 <p class="mb-4 font-body-md text-on-surface">The day you had sex rarely marks conceiving. Clinically, the initiation of pregnancy follows a strict scientific definition where fertilization and implantation occur separately, leaving you not considered pregnant until the embryo develops and settles.</p>
 <p class="mb-4 font-body-md text-on-surface">Timing drives probability. Your fertile window spans roughly 5 days, yet the highest odds combine into a three-day window ending at ovulation. Couples attempting to conceive should target the most fertile days, not blind guesswork.</p>
 <p class="mb-4 font-body-md text-on-surface">Studies show regular sexual intercourse across the last 3 days before ovulation gives the sharpest increase in successfully conceiving. Understand that five days before ovulation sperm still survive; pregnancy can begin from earlier contact, surprisingly.</p>
 <p class="mb-4 font-body-md text-on-surface">Once sperm fertilizes the waiting egg, that fertilized egg travels the fallopian tube. The egg fertilized moment isn't pregnancy yet. People use these terms interchangeably, but medical precision matters when tracking becoming pregnant accurately here.</p>
 <p class="mb-4 font-body-md text-on-surface">Shortly after ovulation, the implanted embryo burrows into the uterine lining, gripping the wall of the uterus. Only after implantation does pregnancy officially begins. Roughly 30% of cases fail silently before you get pregnant knowingly.</p>
-<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Regular Lovemaking &amp; Childbearing</h2>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Regular Lovemaking & Childbearing</h2>
 <p class="mb-4 font-body-md text-on-surface">Scheduling sex around the ovulation day often backfires. Couples fixated on trying to have a baby invite stress that suppresses fertility. The best preparation is regular sex, not military precision aimed at one fertile morning.</p>
 <p class="mb-4 font-body-md text-on-surface">Lovemaking roughly 2 to 3 times a week keeps sperm life span overlapping your fertile window naturally. This rhythm quietly raises chances of conception while extending the fertile window, since fresh sperm await the egg.</p>
 <p class="mb-4 font-body-md text-on-surface">Desire fades when work, chores, and daily distractions dominate life. A couple who only make love on command drains intimacy. Protect your relationships first; a partner feeling pressured rarely brings feelings of sexuality to bed.</p>
 <p class="mb-4 font-body-md text-on-surface">Childbearing depends heavily on lifestyle. A skewed hormonal level or chronic worry produces low fertility signals inside the woman's body. Wanting a child intensely never overrides favorable conditions built through rest, nutrition, and steady calm.</p>
 <p class="mb-4 font-body-md text-on-surface">Fertile-quality, egg-white cervical mucus signals ready vaginal conditions. Healthy vagina chemistry aids protecting the sperm during transit. Love the process itself; couples who relax read these bodily cues sharper than any rigid calendar ever manages.</p>
-<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Making The Fertility Window Work (Basal Body Temperature &amp; Cervical Mucus)</h2>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Making The Fertility Window Work (Basal Body Temperature & Cervical Mucus)</h2>
 <p class="mb-4 font-body-md text-on-surface">Forget generic app predictions. Your own biological cycle speaks louder. Serious tracking blends a basal body temperature chart with cervical mucus reading to predict ovulation from real signals, not from a phone's crudely averaged guess.</p>
 <p class="mb-4 font-body-md text-on-surface">Take your body temperature every morning before rising, same 24-hour period rhythm, using a basal thermometer from most pharmacies. Consistency delivers an accurate reading; even minute changes distinguish the lowest body temperature from a rise.</p>
 <p class="mb-4 font-body-md text-on-surface">Before you ovulate, readings hover near 97.2 degrees, inside a normal range. Roughly two or three days after the day of ovulation, temperature climbs one-half to one degree toward 97.7 degrees Fahrenheit, confirming the shift.</p>
@@ -481,496 +718,10 @@ svg.wheel{width:100%;max-width:340px;height:auto;display:block}
 <h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">Difference between gestational age and fetal (conceptional) age?</h3>
 <p class="mb-6 font-body-md text-on-surface">Gestational age is counted from your last period; fetal age, also called conceptional age, starts at fertilization. Because ovulation follows menstruation by about two weeks, fetal age runs 2 weeks less than gestational age.</p>
 </div>
-
 </main>
-<script>
-/* ============ config: wire result CTAs to your real site slugs ============ */
-const CTA_BASE = "https://raphaatlas.com";
-document.querySelectorAll('#cta a').forEach(a=>{a.href = CTA_BASE + a.dataset.slug;});
-
-const EMPTY_WHEEL = `<div class="wheel-empty" id="wheelEmpty">
-  <svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="#7c8a84" stroke-width="2"><circle cx="36" cy="36" r="28"/><path d="M36 14v22l14 8"/></svg>
-  <p>Your pregnancy wheel appears here once you calculate.</p></div>`;
-
-/* ============ UTC-noon date engine (DST-safe) ============ */
-const DAY = 86400000;
-function ymdToDate(str){                       // "YYYY-MM-DD" -> Date at UTC noon
-  if(!str) return null;
-  const [y,m,d] = str.split('-').map(Number);
-  if(!y||!m||!d) return null;
-  return new Date(Date.UTC(y, m-1, d, 12));
-}
-function addDays(dt, n){ return new Date(dt.getTime() + n*DAY); }
-function diffDays(a, b){ return Math.round((a - b)/DAY); }   // a - b in whole days
-function todayUTC(){ const n=new Date(); return new Date(Date.UTC(n.getFullYear(),n.getMonth(),n.getDate(),12)); }
-const FMT = {weekday:'short', month:'short', day:'numeric', year:'numeric', timeZone:'UTC'};
-const FMT_S = {month:'short', day:'numeric', timeZone:'UTC'};
-function fmt(dt){ return dt.toLocaleDateString('en-US', FMT); }
-function fmtShort(dt){ return dt.toLocaleDateString('en-US', FMT_S); }
-
-/* ============ state ============ */
-let method = 'edd';
-const AVG_GA = [null,39,35,32,30,27];   // index by plurality count
-
-/* ============ field templates per method ============ */
-function renderFields(){
-  const F = document.getElementById('fields');
-  const cyc = `
-    <div class="field">
-      <label for="cycle">Average cycle length (days)</label>
-      <input type="number" id="cycle" min="20" max="45" value="28">
-      <p class="hint">Corrects ovulation timing. 28 = textbook. Longer cycle ⇒ later ovulation.</p>
-    </div>`;
-  const map = {
-    edd: `<div class="field"><label for="d1">Your estimated due date</label><input type="date" id="d1"><p class="hint">We reverse-calculate: conception = due date − 266 days.</p></div>`,
-    lmp: `<div class="field"><label for="d1">First day of your last period</label><input type="date" id="d1"></div>${cyc}`,
-    us:  `<div class="field"><label for="d1">Date the ultrasound was done</label><input type="date" id="d1"></div>
-          <div class="field"><label>Gestational age at that scan</label>
-            <div class="ga-input">
-              <input type="number" id="usw" min="0" max="45" placeholder="weeks">
-              <input type="number" id="usd" min="0" max="6" placeholder="days">
-            </div>
-            <p class="hint">e.g. 12 weeks 3 days. Shown on your scan report.</p></div>`,
-    ivf: `<div class="field"><label for="d1">Embryo transfer date</label><input type="date" id="d1"></div>
-          <div class="field"><label for="emb">Embryo age at transfer</label>
-            <select id="emb"><option value="3">Day 3 (cleavage)</option><option value="5" selected>Day 5 (blastocyst)</option><option value="6">Day 6 (blastocyst)</option></select></div>`,
-    conc:`<div class="field"><label for="d1">Known conception / ovulation date</label><input type="date" id="d1"><p class="hint">Due date = conception + 266 days. Cycle length isn't needed when conception is known.</p></div>`
-  };
-  F.innerHTML = map[method];
-  const t = todayUTC().toISOString().slice(0,10);
-  const d1 = document.getElementById('d1'); if(d1 && !d1.value) d1.value = t;
-}
-
-/* ============ core computation ============ */
-/* All methods resolve to a single LMP anchor, then everything derives from it. */
-function compute(){
-  const err = document.getElementById('err');
-  err.classList.remove('show');
-  const cycleEl = document.getElementById('cycle');
-  const cycle = cycleEl ? clamp(+cycleEl.value||28,20,45) : 28;
-  const ovOffset = cycle - 14;                 // days from LMP to ovulation/conception
-  const d1 = ymdToDate((document.getElementById('d1')||{}).value);
-  if(!d1) return fail("Enter a valid date to calculate.");
-
-  // Resolve every method to ONE dating anchor: the (cycle-corrected) effective LMP.
-  // conception = anchor + 14, EDD = anchor + 280, GA = asof − anchor. Always internally consistent.
-  let anchor;
-  if(method==='edd'){
-    anchor = addDays(d1, -280);
-  } else if(method==='lmp'){
-    anchor = addDays(d1, cycle - 28);          // cycle correction (perinatology/ACOG)
-  } else if(method==='conc'){
-    anchor = addDays(d1, -14);                 // conception given directly; cycle is irrelevant here
-  } else if(method==='us'){
-    const w = +(document.getElementById('usw').value);
-    const dd = +(document.getElementById('usd').value||0);
-    if(!Number.isFinite(w)||document.getElementById('usw').value==='') return fail("Enter the gestational age (weeks) from the scan.");
-    if(dd<0||dd>6) return fail("Days must be between 0 and 6.");
-    anchor = addDays(d1, -(w*7 + dd));
-  } else if(method==='ivf'){
-    const emb = +document.getElementById('emb').value;
-    anchor = addDays(d1, -emb - 14);
-  }
-
-  const conception = addDays(anchor, 14);
-  const lmp = anchor;                          // reported "dating anchor" (cycle-corrected LMP)
-  const edd = addDays(anchor, 280);
-  const asof = ymdToDate(document.getElementById('asof').value) || todayUTC();
-  const gaDays = diffDays(asof, anchor);
-  const plural = +document.getElementById('plural').value;
-
-  if(gaDays < -30) return fail("That date is over a month before conception — check the inputs.");
-  if(gaDays > 336) return fail("That's beyond 48 weeks of gestation — check the inputs.");
-
-  render({lmp, conception, edd, asof, gaDays, cycle, plural});
-}
-function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
-function fail(msg){const e=document.getElementById('err');e.textContent=msg;e.classList.add('show');}
-
-/* ============ render results ============ */
-function render(r){
-  const {lmp, conception, edd, asof, gaDays, plural} = r;
-  const gw = Math.floor(Math.abs(gaDays)/7), gd = Math.abs(gaDays)%7;
-  const gaStr = gaDays<0 ? "Not yet — pre-conception" : `${gw}w ${gd}d`;
-
-  // trimester
-  let tri = "—", triClass="";
-  if(gaDays>=0){
-    if(gaDays<=97){tri="First trimester";}
-    else if(gaDays<=195){tri="Second trimester";}
-    else {tri="Third trimester";}
-  } else {tri="Trying to conceive";}
-
-  // fertile window: sperm survive ~5d before ovulation, egg ~1d after
-  const fwStart = addDays(conception,-5), fwEnd = addDays(conception,1);
-
-  // tiles
-  const tiles = document.getElementById('tiles');
-  tiles.hidden=false;
-  tiles.innerHTML = `
-    <div class="tile">
-      <p class="k"><span class="swatch" style="background:var(--rose)"></span>Most likely conception</p>
-      <p class="v">${fmt(conception)}</p>
-    </div>
-    <div class="tile">
-      <p class="k"><span class="swatch" style="background:var(--gold)"></span>Fertile window</p>
-      <p class="v" style="font-size:1rem;line-height:1.25">${fmtShort(fwStart)} – ${fmtShort(fwEnd)}<small>6-day window around ovulation</small></p>
-    </div>
-    <div class="tile">
-      <p class="k"><span class="swatch" style="background:var(--teal)"></span>Estimated due date</p>
-      <p class="v">${fmt(edd)}</p>
-    </div>
-    <div class="tile">
-      <p class="k">Gestational age ${sameDay(asof,todayUTC())?'today':'on '+fmtShort(asof)}</p>
-      <p class="v">${gaStr}<small>${tri}</small></p>
-    </div>
-    <div class="tile wide">
-      <p class="k">Calculated last menstrual period (LMP anchor)</p>
-      <p class="v" style="font-size:1.05rem">${fmt(lmp)}<small>All dates derive from this. Fetal age ≈ ${gaDays>=0?Math.max(0,gw-2)+'w '+gd+'d':'—'} (about 2 weeks less than gestational age)</small></p>
-    </div>`;
-
-  drawWheel(r, tri);
-  drawTimeline(r);
-  drawPlural(r);
-  document.getElementById('methodTag').textContent = 'Method: '+methodLabel();
-  document.getElementById('timelineCard').hidden=false;
-  document.getElementById('notes').hidden=false;
-}
-function sameDay(a,b){return diffDays(a,b)===0;}
-function methodLabel(){return {edd:'Due date',lmp:'Last period',us:'Ultrasound',ivf:'IVF transfer',conc:'Conception date'}[method];}
-
-/* ============ the pregnancy wheel (signature element) ============ */
-function drawWheel(r, tri){
-  const {edd, gaDays} = r;
-  // real values — CSS var() does not resolve inside SVG presentation attributes
-  const C = {t1:'#e9c2c6',t2:'#bcd6ca',t3:'#e6d3a3',post:'#d8ddd6',teal:'#26786c',
-             rose:'#cf6670',sage:'#6f9b8a',ink:'#16302b',inkSoft:'#4c5c56',inkFaint:'#7c8a84',tick:'#b9c5bd'};
-  const MONO="'Spline Sans Mono',monospace", DISP="'Fraunces',Georgia,serif", BODY="'Inter',sans-serif";
-  const cx=170, cy=170, rOuter=140, rBand=120, band=17, TOTAL=42;
-  const ang = w => -90 + (w/TOTAL)*360;
-  const pol = (rr,a)=>[cx+rr*Math.cos(a*Math.PI/180), cy+rr*Math.sin(a*Math.PI/180)];
-  const arc = (rr,a0,a1,color,width)=>{
-    const large=(a1-a0)>180?1:0;
-    const [x0,y0]=pol(rr,a0),[x1,y1]=pol(rr,a1);
-    return `<path d="M${x0.toFixed(1)} ${y0.toFixed(1)} A${rr} ${rr} 0 ${large} 1 ${x1.toFixed(1)} ${y1.toFixed(1)}" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round"/>`;
-  };
-  const gaW = Math.max(0, Math.min(TOTAL, gaDays/7));
-
-  let svg = `<svg class="wheel" viewBox="0 0 340 340" role="img" aria-label="Pregnancy progress wheel, ${tri}">`;
-  svg += arc(rBand, ang(0),  ang(13), C.t1, band);
-  svg += arc(rBand, ang(13), ang(27), C.t2, band);
-  svg += arc(rBand, ang(27), ang(40), C.t3, band);
-  svg += arc(rBand, ang(40), ang(42), C.post, band);
-  if(gaW>0) svg += arc(rOuter, ang(0.15), ang(gaW), C.teal, 4);
-  for(let w=0; w<=40; w+=4){
-    const [x0,y0]=pol(rBand+band/2+4, ang(w));
-    const [x1,y1]=pol(rBand+band/2+9, ang(w));
-    svg += `<line x1="${x0.toFixed(1)}" y1="${y0.toFixed(1)}" x2="${x1.toFixed(1)}" y2="${y1.toFixed(1)}" stroke="${C.tick}" stroke-width="1.5"/>`;
-    const [tx,ty]=pol(rBand+band/2+20, ang(w));
-    svg += `<text x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" font-family="${MONO}" font-size="9" fill="${C.inkFaint}" text-anchor="middle" dominant-baseline="middle">${w}</text>`;
-  }
-  const marker = (w,color)=>{const [mx,my]=pol(rBand,ang(w));
-    return `<circle cx="${mx.toFixed(1)}" cy="${my.toFixed(1)}" r="6" fill="#fff" stroke="${color}" stroke-width="3"/>`;};
-  svg += marker(2,  C.rose);   // conception ~2w GA
-  svg += marker(24, C.sage);   // viability
-  svg += marker(40, C.teal);   // due date
-  if(gaW>0){
-    const [hx,hy]=pol(rBand-band/2-2, ang(gaW));
-    svg += `<line x1="${cx}" y1="${cy}" x2="${hx.toFixed(1)}" y2="${hy.toFixed(1)}" stroke="${C.ink}" stroke-width="2.5" stroke-linecap="round"/>`;
-    svg += `<circle cx="${hx.toFixed(1)}" cy="${hy.toFixed(1)}" r="5" fill="${C.rose}"/>`;
-  }
-  svg += `<circle cx="${cx}" cy="${cy}" r="4" fill="${C.ink}"/>`;
-  const gw=Math.floor(Math.max(0,gaDays)/7), gd=Math.max(0,gaDays)%7;
-  const big = gaDays<0 ? '—' : `${gw}w`;
-  svg += `<text x="${cx}" y="${cy-30}" font-family="${MONO}" font-size="9" letter-spacing="1" fill="${C.inkFaint}" text-anchor="middle">GESTATIONAL AGE</text>`;
-  svg += `<text x="${cx}" y="${cy+4}" font-family="${DISP}" font-weight="600" font-size="46" fill="${C.ink}" text-anchor="middle">${big}</text>`;
-  svg += `<text x="${cx}" y="${cy+28}" font-family="${MONO}" font-size="12" fill="${C.inkSoft}" text-anchor="middle">${gaDays<0?'pre-conception':gd+' days'}</text>`;
-  svg += `<text x="${cx}" y="${cy+72}" font-family="${BODY}" font-size="11" fill="${C.inkFaint}" text-anchor="middle">Due ${fmtShort(edd)}</text>`;
-  svg += `</svg>`;
-  document.getElementById('wheelShell').innerHTML = svg;
-}
-
-/* ============ milestone timeline ============ */
-function drawTimeline(r){
-  const {lmp, gaDays} = r;
-  const marks = [
-    {w:0,  lbl:'Conception window'},
-    {w:13, lbl:'End of 1st trimester'},
-    {w:20, lbl:'Anatomy scan'},
-    {w:24, lbl:'Viability'},
-    {w:28, lbl:'3rd trimester'},
-    {w:37, lbl:'Full term'},
-    {w:40, lbl:'Due date'}
-  ];
-  const nowW = gaDays/7;
-  const pct = Math.max(0,Math.min(100, (nowW/40)*100));
-  document.getElementById('tlFill').style.width = pct+'%';
-  document.getElementById('tlMarks').innerHTML = marks.map(m=>{
-    const date = addDays(lmp, m.w*7);
-    const done = nowW >= m.w;
-    const now = Math.abs(nowW - m.w) < 1.6;
-    return `<div class="tl-mark ${done?'done':''} ${now?'now':''}">
-      <div class="wk">${m.w}w</div><div class="node"></div>
-      <div class="lbl">${m.lbl}</div><div class="dt">${fmtShort(date)}</div></div>`;
-  }).join('');
-  document.getElementById('tlSub').textContent =
-    gaDays<0 ? 'Estimated timeline once pregnancy begins.' :
-    `You're roughly ${Math.round(pct)}% through a 40-week pregnancy.`;
-}
-
-/* ============ plurality table ============ */
-function drawPlural(r){
-  const {lmp, plural} = r;
-  const rows = [['Singleton',39],['Twins',35],['Triplets',32],['Quadruplets',30],['Quintuplets+',27]];
-  document.getElementById('pluralBody').innerHTML = rows.map((row,i)=>{
-    const est = addDays(lmp, row[1]*7);
-    const hit = (i+1)===plural;
-    return `<tr class="${hit?'hit':''}"><td>${row[0]}</td><td>${row[1]}</td><td>${fmtShort(est)}</td></tr>`;
-  }).join('');
-}
-
-/* ============ wiring ============ */
-document.querySelectorAll('.method').forEach(b=>{
-  b.addEventListener('click',()=>{
-    document.querySelectorAll('.method').forEach(x=>x.setAttribute('aria-pressed','false'));
-    b.setAttribute('aria-pressed','true');
-    method = b.dataset.method;
-    renderFields();
-    document.getElementById('err').classList.remove('show');
-  });
-});
-document.getElementById('calc').addEventListener('click', compute);
-document.getElementById('reset').addEventListener('click', ()=>{
-  method='edd';
-  document.querySelectorAll('.method').forEach((x,i)=>x.setAttribute('aria-pressed', i===0?'true':'false'));
-  renderFields();
-  document.getElementById('asof').value = todayUTC().toISOString().slice(0,10);
-  document.getElementById('plural').value='1';
-  document.getElementById('tiles').hidden=true;
-  document.getElementById('timelineCard').hidden=true;
-  document.getElementById('notes').hidden=true;
-  document.getElementById('wheelShell').innerHTML = EMPTY_WHEEL;
-  document.getElementById('err').classList.remove('show');
-});
-document.addEventListener('keydown',e=>{ if(e.key==='Enter' && !e.shiftKey){ const t=e.target.tagName; if(t==='INPUT'||t==='SELECT'){e.preventDefault();compute();} }});
-
-// init
-renderFields();
-document.getElementById('asof').value = todayUTC().toISOString().slice(0,10);
-</script>
-
-<!-- ============ structured data ============ -->
-
-
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "When Did I Conceive?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "At your first prenatal visit, the clinician often estimates when you ovulated. If your period started April 24, ovulation near May 7 — about 13 days later — marks the likeliest window."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How Accurate Is the Due Date?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Treat your due date as a probability, not a promise. Fewer than one in twenty babies arrive on it. Still, it anchors pregnancy planning and early preparations with useful, workable structure."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can My Due Date Change?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Due dates change; that's normal. A shift means accuracy, not error. Fetal measurements convert your cycle-based general estimate into due date adjustment. New information, baby's growth, natural variability nudge pregnancy toward its actual due date."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What If I Already Know My Due Date?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Knowing the date is the beginning, not the answer. Entering it into the Pregnancy Due Date Calculator stays helpful, generating a detailed pregnancy timeline with key milestones, symptoms, prenatal tests, reminders, and scheduled prenatal visits."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How is the estimated due date calculated?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Most tools apply Naegele's rule: add 280 days to your last menstrual period, assuming a 28-day cycle and ovulation around day fourteen. That fixed formula yields forty weeks of gestation."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What if I don't know my last period / LMP date?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Irregular or unknown? A dating ultrasound or clinical scan measures baby's length, yielding ultrasound gestational age. That becomes an accurate due date, established due date, or known conception date to estimate EDD and pregnancy timeline."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is an estimated due date?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Think helpful target, never fixed deadline. Only about four percent are born on the date. Most healthy pregnancies are delivered full-term, anywhere between 37 and 42 weeks, and that spread is completely normal."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can my due date change during pregnancy?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Your calendar is a roadmap, not a contract. As your baby grows, ultrasound measurements and fresh clinical data let your provider track development and, when warranted, the estimate is adjusted."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How many weeks pregnant am I today?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The clinical standard, measured from last period, makes you two weeks pregnant before conception occurs. Gestational weeks precede the day of conception. Your doctor uses this timeline to set your prenatal appointment schedule for pregnancy."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I find out the exact day I got pregnant?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Rarely with certainty. Sperm can live up to five days, so the fertile window, not one exact day, is when you likely got pregnant. Conception timing varies, which is why it's estimated, never precisely calculated."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is conception date?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It's the day sperm fertilized the egg — biologically when you actually became pregnant. Unlike the LMP-based estimate, it reflects the real fertilization event, though it usually can't be pinpointed to a single calendar day."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long after conception until pregnancy officially begins?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Fertilization isn't the official start. The fertilized egg travels for roughly 6-12 days before it can implant in the uterine wall. Only after that implantation, clinically speaking, does pregnancy officially begin."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does ultrasound dating calculate a due date?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It measures the embryo or fetus — crown-rump length early on — and converts that size into gestational age expressed in weeks and days, then projects forty weeks forward to estimate delivery."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "When should ultrasound dating be preferred over LMP?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "When a discrepancy between LMP dating and ultrasound exceeds recommended thresholds — often five to seven days in the first trimester — the ultrasound estimate should replace the period-based date for accuracy."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How is EDD calculated for IVF/ART?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "With IVF, dating is unusually precise because the embryo's age is known. Providers add 266 days to egg retrieval for fresh transfers, or adjust by the embryo's age at transfer for frozen cycles."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Difference between gestational age and fetal (conceptional) age?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Gestational age is counted from your last period; fetal age, also called conceptional age, starts at fertilization. Because ovulation follows menstruation by about two weeks, fetal age runs 2 weeks less than gestational age."
-      }
-    }
-  ]
-}
-</script>
-<footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto">
-<div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center">
-<div class="mb-8 md:mb-0">
-<a href="/" class="flex items-center mb-2"><img src="/raphaatlas-lockup.svg" alt="RaphaAtlas" height="90" style="height:90px; width:auto;"></a>
-</div>
-<div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8" style="font-family: 'Inter', sans-serif;">
-<a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/about">About Us</a>
-<a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/editorial-policy">Editorial Policy</a>
-<a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/medical-review-board">Medical Review Board</a>
-<a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/contact">Contact</a>
-<a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/privacy">Privacy Policy</a>
-</div>
-<div class="mt-8 md:mt-0 text-on-primary opacity-30 text-sm" style="font-family: 'Inter', sans-serif;">© 2026 RaphaAtlas. All rights reserved.</div>
-</div>
-</footer>
-  
-<script>
-  const methodSelect = document.getElementById('con_method');
-  const dateLabel = document.getElementById('con_date_label');
-  const cycleField = document.getElementById('con_cycle_field');
-
-  methodSelect.addEventListener('change', function() {
-    if (this.value === 'lmp') {
-      dateLabel.innerText = "First day of last period";
-      cycleField.style.display = 'block';
-    } else {
-      dateLabel.innerText = "Known due date";
-      cycleField.style.display = 'none';
-    }
-  });
-
-  document.getElementById('conceptForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const method = document.getElementById('con_method').value;
-    const dateInput = document.getElementById('con_date').value;
-    const cycleLength = parseInt(document.getElementById('con_cycle').value, 10);
-    
-    if (!dateInput) return;
-
-    const inputDate = new Date(dateInput);
-    inputDate.setMinutes(inputDate.getMinutes() + inputDate.getTimezoneOffset());
-
-    let dueDate, conceptDate;
-
-    if (method === 'lmp') {
-      const addedDays = 280 + (cycleLength - 28);
-      dueDate = new Date(inputDate.getTime());
-      dueDate.setDate(dueDate.getDate() + addedDays);
-
-      conceptDate = new Date(inputDate.getTime());
-      conceptDate.setDate(conceptDate.getDate() + (cycleLength - 14));
-    } else {
-      dueDate = new Date(inputDate.getTime());
-      conceptDate = new Date(dueDate.getTime());
-      conceptDate.setDate(conceptDate.getDate() - 266);
-    }
-
-    const fertileStart = new Date(conceptDate.getTime());
-    fertileStart.setDate(fertileStart.getDate() - 5);
-    const fertileEnd = new Date(conceptDate.getTime());
-    fertileEnd.setDate(fertileEnd.getDate() + 1);
-
-    const options = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
-    const shortOptions = { month: 'short', day: 'numeric' };
-    
-    document.getElementById('res_due').innerText = dueDate.toLocaleDateString(undefined, options);
-    document.getElementById('res_concept').innerText = conceptDate.toLocaleDateString(undefined, options);
-    document.getElementById('res_fertile').innerText = fertileStart.toLocaleDateString(undefined, shortOptions) + " — " + fertileEnd.toLocaleDateString(undefined, shortOptions);
-
-    document.getElementById('con_result').classList.remove('hidden');
-  });
-</script>
-
+<footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto"><div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center"><div class="mb-8 md:mb-0"><a href="/" class="flex items-center mb-2"><img src="/raphaatlas-lockup.svg" alt="RaphaAtlas" height="90" style="height:90px; width:auto;"></a></div><div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8" style="font-family: 'Inter', sans-serif;"><a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/about">About Us</a><a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/editorial-policy">Editorial Policy</a><a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/medical-review-board">Medical Review Board</a><a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/contact">Contact</a><a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/privacy">Privacy Policy</a></div><div class="mt-8 md:mt-0 text-on-primary opacity-30 text-sm" style="font-family: 'Inter', sans-serif;">© 2024 RaphaAtlas. All rights reserved.</div></div></footer>
 </body></html>
+`;
+
+fs.writeFileSync('conception-calculator.html', html);
+console.log('Restored conception-calculator.html!');
