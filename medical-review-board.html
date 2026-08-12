@@ -19,57 +19,61 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "vitality-teal": "#02838D",
+                        "header-black": "#000000",
+                        "surface-cream": "#FBF5ED",
+                        "on-primary": "#ffffff",
+                        "primary": "#000000",
+                        "surface-container-lowest": "#ffffff",
+                        "border-subtle": "#E0EDEF",
+                        "on-surface": "#1d1b17",
+                    }
+                }
+            }
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@600;700;900&family=Archivo:wght@700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
-<header class="site-header">
-  <div class="wrap bar">
-    <a class="logo" href="/"><span class="dot"></span>RaphaAtlas</a>
-    <button class="hamburger" aria-label="Menu" aria-expanded="false">&#9776;</button>
-    <nav class="nav" aria-label="Primary">
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Calculators <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/body-type-calculator">Body Type Calculator</a>
-          <a href="/macro-calculator">Macro Calculator</a>
-          <a href="/bac-calculator">BAC Calculator</a>
-          <a href="/conception-calculator">Conception Calculator</a>
-          <div class="sep"></div>
-          <a href="/calculators">All calculators</a>
-        </div>
-      </div>
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Fitness <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/fitness">All Fitness</a>
-          <a href="/fitness">Strength &amp; Training</a>
-          <a href="/fitness">Cardio &amp; Conditioning</a>
-          <a href="/fitness">Recovery</a>
-        </div>
-      </div>
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Nutrition <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/nutrition">All Nutrition</a>
-          <a href="/nutrition">Macros &amp; Diets</a>
-          <a href="/nutrition">Supplements</a>
-          <a href="/nutrition">Weight Management</a>
-        </div>
-      </div>
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Health <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/health">All Health</a>
-          <a href="/health">Conditions</a>
-          <a href="/health">Biomarkers</a>
-          <a href="/health">Preventive Care</a>
-        </div>
-      </div>
-      <div class="item"><a href="/about">About</a></div>
-      <a class="btn nav-cta" href="/calculators">Calculators</a>
-    </nav>
-  </div>
+<header class="bg-header-black border-b border-black docked full-width top-0 z-50 sticky transition-all duration-300">
+<div class="flex justify-between items-center px-4 md:px-8 py-2 w-full max-w-7xl mx-auto">
+<a href="/" aria-label="RaphaAtlas home" class="flex items-center">
+  <img src="/raphaatlas-mark.svg" alt="RaphaAtlas Logo" height="40" width="40" class="h-10 w-10">
+  <span style="font-family: 'Archivo', 'Montserrat', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: -1px; color: white; margin-left: 12px;">RAPHAATLAS</span>
+</a>
+<nav class="hidden lg:flex items-center space-x-6">
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/nutrition">Nutrition</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/health">Health</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/calculators">Calculators</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/fitness">Fitness</a>
+<div class="relative group">
+<button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors py-2" style="font-family: 'Inter', sans-serif;">
+<span>More</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="absolute left-0 mt-2 w-48 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg">
+<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/about">About Us</a>
+<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all" href="/contact">Contact Us</a>
+</div>
+</div>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="text-on-primary hover:text-vitality-teal transition-colors"><span class="material-symbols-outlined">search</span></button>
+<button class="lg:hidden text-on-primary"><span class="material-symbols-outlined text-2xl">menu</span></button>
+</div>
+</div>
 </header>
-<nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span>Medical Review Board</nav>
+
 <main class="article">
   <h1>Medical Review Board</h1>
   <p>Health content on RaphaAtlas is reviewed by practicing physicians for clinical accuracy before publication. Reviewers check claims against current evidence and flag anything that overstates certainty.</p>
@@ -80,51 +84,21 @@
   <div class="callout"><strong>Our standard.</strong> A physician review means a qualified doctor has read the content and confirmed it reflects current medical understanding. It is not a substitute for personal medical advice.</div>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <a class="logo" href="/"><span class="dot"></span>RaphaAtlas</a>
-        <p>Evidence-based health, fitness, and nutrition — with free clinical calculators. A project of Growth Partners Global LLC.</p>
-        <p><a href="mailto:dr.awais@growthpartnersgloballlc.com">dr.awais@growthpartnersgloballlc.com</a><a href="mailto:dr.ahmed@growthpartnersgloballlc.com">dr.ahmed@growthpartnersgloballlc.com</a></p>
-      </div>
-      <div>
-        <h5>Calculators</h5>
-        <a href="/body-type-calculator">Body Type</a>
-        <a href="/macro-calculator">Macros</a>
-        <a href="/bac-calculator">BAC</a>
-        <a href="/conception-calculator">Conception</a>
-      </div>
-      <div>
-        <h5>Explore</h5>
-        <a href="/fitness">Fitness</a>
-        <a href="/nutrition">Nutrition</a>
-        <a href="/health">Health</a>
-        <a href="/calculators">All calculators</a>
-      </div>
-      <div>
-        <h5>Company</h5>
-        <a href="/about">About</a>
-        <a href="/medical-review-board">Medical review board</a>
-        <a href="/editorial-policy">Editorial policy</a>
-        <a href="/contact">Contact</a>
-        <a href="/privacy">Privacy</a>
-      </div>
-    </div>
-
-    <div class="foot-aff">
-      <h5>Recommended products</h5>
-      <div class="foot-aff-row">
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Digital Food Scale</a>
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Whey Protein</a>
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Resistance Bands</a>
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Smart Scale</a>
-      </div>
-      <p class="aff-disclosure" style="color:#8AA0A9">As an Amazon Associate, RaphaAtlas earns from qualifying purchases. Replace PRODUCT-ID and YOUR-AFFILIATE-TAG with your Amazon Associates tag.</p>
-    </div>
-
-    <p class="foot-legal">RaphaAtlas provides general educational information and estimates only. It is not a medical device and does not provide medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional for decisions about your health. &copy; <span id="yr"></span> RaphaAtlas — a project of Growth Partners Global LLC.</p>
-  </div>
+<footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto">
+<div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center">
+<div class="mb-8 md:mb-0">
+<a href="/" class="block mb-2">
+  <img src="/raphaatlas-lockup.svg" alt="RaphaAtlas" height="90" width="144" class="h-[90px] w-auto">
+</a>
+</div>
+<div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8" style="font-family: 'Inter', sans-serif;">
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="/privacy">Privacy Policy</a>
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="/contact">Contact</a>
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="#">FAQ</a>
+</div>
+<div class="mt-8 md:mt-0 text-on-primary opacity-30 text-sm" style="font-family: 'Inter', sans-serif;">© 2024 RaphaAtlas. All rights reserved.</div>
+</div>
 </footer>
 <script src="/site.js" defer></script>
 </body>

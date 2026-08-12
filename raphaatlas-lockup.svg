@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400"
+     role="img" aria-labelledby="ra-title ra-desc">
+  <title id="ra-title">RaphaAtlas</title>
+  <desc id="ra-desc">A globe encircling a rod of Asclepius wired to circuit traces, above the RaphaAtlas wordmark.</desc>
+
+  <!-- Palette: navy #2F4A6D · green #5C7F3E · gold #C4A05A · paper #F5F4EF -->
+
+  <g transform="translate(200,16)">
+
+    <!-- landmasses -->
+    <g clip-path="url(#raGlobeClip)">
+      <path fill="#5C7F3E" d="M40,58 C51,47 70,47 79,56 C85,63 79,71 71,75 C62,81 53,85 47,81 C39,74 34,65 40,58 Z"/>
+      <path fill="#2F4A6D" d="M70,136 C79,132 85,142 83,155 C81,171 74,190 67,187 C61,184 63,167 65,155 C66,146 65,139 70,136 Z"/>
+      <path fill="#2F4A6D" d="M150,50 C165,45 182,52 190,63 C195,70 186,78 176,80 C163,83 151,78 147,69 C143,62 144,53 150,50 Z"/>
+      <path fill="#5C7F3E" d="M152,102 C166,97 180,107 181,121 C183,138 171,158 160,167 C153,172 148,167 147,157 C145,142 141,125 145,114 C147,107 149,103 152,102 Z"/>
+      <path fill="#2F4A6D" d="M180,148 C188,146 193,152 190,158 C187,164 179,164 176,159 C174,154 176,149 180,148 Z"/>
+    </g>
+
+    <!-- knockout halo: separates the rod from the landmasses -->
+    <g fill="#F5F4EF" stroke="#F5F4EF" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M113,196 L120,222 L127,196 Z"/>
+      <path d="M120,60 V198"/>
+      <circle cx="120" cy="50" r="8.5"/>
+      <path d="M118,92 C106,76 92,68 78,66 C80,81 94,93 116,96 Z"/>
+      <path d="M122,92 C134,76 148,68 162,66 C160,81 146,93 124,96 Z"/>
+      <path fill="none" d="M104,206 C130,194 130,176 106,164 C82,152 82,134 106,124 C120,120 130,120 136,114"/>
+      <circle cx="138" cy="112" r="5"/>
+    </g>
+
+    <!-- sphere: navy west, green east -->
+    <path fill="none" stroke="#2F4A6D" stroke-width="5" stroke-linecap="round" d="M120,20 A100,100 0 0,0 120,220"/>
+    <path fill="none" stroke="#5C7F3E" stroke-width="5" stroke-linecap="round" d="M120,20 A100,100 0 0,1 120,220"/>
+
+    <!-- circuit traces radiating from the rim -->
+    <g fill="none" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="#C4A05A" d="M20,111 L8,99 L8,84"/>
+      <path stroke="#C4A05A" d="M26,154 L12,168 L12,186"/>
+      <path stroke="#5C7F3E" d="M49,191 L40,200 L22,200"/>
+      <path stroke="#5C7F3E" d="M197,56 L210,43 L232,43"/>
+      <path stroke="#C4A05A" d="M218,103 L230,91 L230,74"/>
+      <path stroke="#C4A05A" d="M211,162 L224,175 L232,175"/>
+      <path stroke="#5C7F3E" d="M184,197 L196,209 L214,209"/>
+    </g>
+    <g fill="#F5F4EF" stroke-width="3.4">
+      <circle cx="8"   cy="84"  r="5.5" stroke="#C4A05A"/>
+      <circle cx="12"  cy="186" r="5.5" stroke="#C4A05A"/>
+      <circle cx="22"  cy="200" r="5.5" stroke="#5C7F3E"/>
+      <circle cx="232" cy="43"  r="5.5" stroke="#5C7F3E"/>
+      <circle cx="230" cy="74"  r="5.5" stroke="#C4A05A"/>
+      <circle cx="232" cy="175" r="5.5" stroke="#C4A05A"/>
+      <circle cx="214" cy="209" r="5.5" stroke="#5C7F3E"/>
+    </g>
+
+    <!-- rod of Asclepius -->
+    <path fill="#2F4A6D" d="M113,196 L120,222 L127,196 Z"/>
+    <path fill="none" stroke="#2F4A6D" stroke-width="7" stroke-linecap="round" d="M120,60 V198"/>
+    <circle fill="#2F4A6D" cx="120" cy="50" r="8.5"/>
+    <path fill="#2F4A6D" d="M118,92 C106,76 92,68 78,66 C80,81 94,93 116,96 Z"/>
+    <path fill="#5C7F3E" d="M122,92 C134,76 148,68 162,66 C160,81 146,93 124,96 Z"/>
+    <path fill="none" stroke="#5C7F3E" stroke-width="6" stroke-linecap="round"
+          d="M104,206 C130,194 130,176 106,164 C82,152 82,134 106,124 C120,120 130,120 136,114"/>
+    <circle fill="#5C7F3E" cx="138" cy="112" r="5"/>
+  </g>
+
+  <text x="320" y="322" text-anchor="middle"
+        font-family="Archivo, Inter, 'Helvetica Neue', Arial, sans-serif"
+        font-weight="700" font-size="50" letter-spacing="1.5">
+    <tspan fill="#2F4A6D">RAPHA</tspan><tspan fill="#5C7F3E">ATLAS</tspan>
+  </text>
+  <text x="320" y="352" text-anchor="middle" fill="#2F4A6D" fill-opacity="0.78"
+        font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+        font-weight="500" font-size="12.5" letter-spacing="3">THE COMPLETE MAP OF HEALING &amp; HEALTH AI</text>
+
+  <defs><clipPath id="raGlobeClip"><circle cx="120" cy="120" r="97"/></clipPath></defs>
+</svg>

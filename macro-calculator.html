@@ -2,303 +2,352 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Macro Calculator — Daily Protein, Carbs &amp; Fat | RaphaAtlas</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Macro Calculator - RaphaAtlas</title>
 <meta name="description" content="Free macro calculator. Get personalized daily protein, carbohydrate, and fat targets based on your goals, activity, and body metrics.">
-<link rel="canonical" href="https://www.raphaatlas.com/macro-calculator">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="RaphaAtlas">
-<meta property="og:title" content="Macro Calculator — Daily Protein, Carbs &amp; Fat | RaphaAtlas">
-<meta property="og:description" content="Free macro calculator. Get personalized daily protein, carbohydrate, and fat targets based on your goals, activity, and body metrics.">
-<meta property="og:url" content="https://www.raphaatlas.com/macro-calculator/">
-<meta property="og:image" content="https://www.raphaatlas.com/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
 
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#c6c6c7",
+                      "on-tertiary-container": "#838484",
+                      "on-primary-container": "#848484",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "on-error-container": "#93000a",
+                      "tertiary-container": "#1a1c1c",
+                      "on-primary-fixed": "#1b1b1b",
+                      "surface-container-low": "#f9f3eb",
+                      "background": "#fff8f0",
+                      "outline-variant": "#cfc4c5",
+                      "surface-container-high": "#ede7df",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed": "#002023",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed-variant": "#474747",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "surface-container": "#f3ede5",
+                      "surface-container-highest": "#e7e2da",
+                      "vitality-teal": "#02838D",
+                      "secondary-fixed-dim": "#75d5e0",
+                      "on-background": "#1d1b17",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed": "#92f1fc",
+                      "primary-fixed": "#e2e2e2",
+                      "on-secondary-fixed-variant": "#004f55",
+                      "border-subtle": "#E0EDEF",
+                      "on-surface-variant": "#4c4546",
+                      "header-black": "#000000",
+                      "surface": "#fff8f0",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "on-surface": "#1d1b17",
+                      "on-tertiary": "#ffffff",
+                      "surface-tint": "#5e5e5e",
+                      "secondary": "#006971",
+                      "on-secondary-container": "#006d76",
+                      "inverse-on-surface": "#f6f0e8",
+                      "outline": "#7e7576",
+                      "secondary-container": "#8feff9",
+                      "surface-variant": "#e7e2da",
+                      "inverse-surface": "#32302b",
+                      "primary": "#000000",
+                      "surface-dim": "#dfd9d2",
+                      "on-primary": "#ffffff",
+                      "surface-cream": "#FBF5ED",
+                      "on-error": "#ffffff",
+                      "primary-container": "#1b1b1b",
+                      "inverse-primary": "#c6c6c6",
+                      "tertiary": "#000000",
+                      "surface-bright": "#fff8f0",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed": "#e2e2e2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "container-max": "1280px",
+                      "section-gap": "80px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Montserrat"],
+                      "headline-md": ["Montserrat"],
+                      "body-md": ["Inter"],
+                      "display-lg-mobile": ["Montserrat"],
+                      "nav-link": ["Inter"],
+                      "label-bold": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                      "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                      "display-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                      "nav-link": ["15px", { "lineHeight": "24px", "fontWeight": "500" }],
+                      "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                      "body-lg": ["18px", { "lineHeight": "30px", "fontWeight": "400" }]
+              }
+      },
+          },
+        }
+</script>
+<style>
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24
+}
+</style>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "vitality-teal": "#02838D",
+                        "header-black": "#000000",
+                        "surface-cream": "#FBF5ED",
+                        "on-primary": "#ffffff",
+                        "primary": "#000000",
+                        "surface-container-lowest": "#ffffff",
+                        "border-subtle": "#E0EDEF",
+                        "on-surface": "#1d1b17",
+                    }
+                }
+            }
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@600;700;900&family=Archivo:wght@700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
-<body>
-<header class="site-header">
-  <div class="wrap bar">
-    <a class="logo" href="/"><span class="dot"></span>RaphaAtlas</a>
-    <button class="hamburger" aria-label="Menu" aria-expanded="false">&#9776;</button>
-    <nav class="nav" aria-label="Primary">
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Calculators <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/body-type-calculator">Body Type Calculator</a>
-          <a href="/macro-calculator">Macro Calculator</a>
-          <a href="/bac-calculator">BAC Calculator</a>
-          <a href="/conception-calculator">Conception Calculator</a>
-          <div class="sep"></div>
-          <a href="/calculators">All calculators</a>
-        </div>
-      </div>
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Fitness <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/fitness">All Fitness</a>
-          <a href="/fitness">Strength &amp; Training</a>
-          <a href="/fitness">Cardio &amp; Conditioning</a>
-          <a href="/fitness">Recovery</a>
-        </div>
-      </div>
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Nutrition <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/nutrition">All Nutrition</a>
-          <a href="/nutrition">Macros &amp; Diets</a>
-          <a href="/nutrition">Supplements</a>
-          <a href="/nutrition">Weight Management</a>
-        </div>
-      </div>
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Health <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/health">All Health</a>
-          <a href="/health">Conditions</a>
-          <a href="/health">Biomarkers</a>
-          <a href="/health">Preventive Care</a>
-        </div>
-      </div>
-      <div class="item"><a href="/about">About</a></div>
-      <a class="btn nav-cta" href="/calculators">Calculators</a>
-    </nav>
-  </div>
+<body class="bg-surface-lowest text-on-surface font-body-md min-h-screen flex flex-col antialiased">
+<header class="bg-header-black border-b border-black docked full-width top-0 z-50 sticky transition-all duration-300">
+<div class="flex justify-between items-center px-4 md:px-8 py-2 w-full max-w-7xl mx-auto">
+<a href="/" aria-label="RaphaAtlas home" class="flex items-center">
+  <img src="/raphaatlas-mark.svg" alt="RaphaAtlas Logo" height="40" width="40" class="h-10 w-10">
+  <span style="font-family: 'Archivo', 'Montserrat', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: -1px; color: white; margin-left: 12px;">RAPHAATLAS</span>
+</a>
+<nav class="hidden lg:flex items-center space-x-6">
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/nutrition">Nutrition</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/health">Health</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/calculators">Calculators</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/fitness">Fitness</a>
+<div class="relative group">
+<button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors py-2" style="font-family: 'Inter', sans-serif;">
+<span>More</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="absolute left-0 mt-2 w-48 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg">
+<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/about">About Us</a>
+<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all" href="/contact">Contact Us</a>
+</div>
+</div>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="text-on-primary hover:text-vitality-teal transition-colors"><span class="material-symbols-outlined">search</span></button>
+<button class="lg:hidden text-on-primary"><span class="material-symbols-outlined text-2xl">menu</span></button>
+</div>
+</div>
 </header>
-<nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/calculators">Calculators</a><span>/</span>Macro Calculator</nav>
-<main class="article">
-  <h1>Macro Calculator</h1>
-  <p style="font-size:19px;color:var(--ink-soft)">Get daily protein, carbohydrate, and fat targets tailored to your goal — losing fat, maintaining, or building muscle.</p>
 
-  <div class="tool-hero">
-    <!-- Replace with a real image: <img src="/images/macro-calculator.jpg" alt="Macro Calculator"> -->
-    <span class="ph">Add tool image &rarr; /images/macro-calculator.jpg</span>
+<nav class="hidden lg:flex items-center space-x-6">
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link" href="/nutrition">Nutrition</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link" href="/health">Health</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link" href="/calculators">Calculators</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link" href="/fitness">Fitness</a>
+<div class="relative group">
+<button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link py-2">
+<span>More</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="absolute left-0 mt-2 w-48 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg">
+<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all font-body-md text-body-md border-b border-border-subtle" href="/about">About Us</a>
+<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all font-body-md text-body-md" href="/contact">Contact Us</a>
+</div>
+</div>
+</nav>
+  
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-gutter py-12 md:py-section-gap">
+  <div class="max-w-3xl mx-auto">
+    
+<div class="mb-12 text-center">
+  <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+    <span class="material-symbols-outlined text-on-primary text-3xl" data-icon="restaurant_menu">restaurant_menu</span>
   </div>
+  <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">Macro Calculator</h1>
+  <p class="font-body-lg text-body-lg text-on-surface-variant">Get daily protein, carbohydrate, and fat targets tailored to your goal — losing fat, maintaining, or building muscle.</p>
+</div>
 
-  <!-- ============================================================
-       PASTE YOUR EXISTING Macro Calculator CODE BETWEEN THESE MARKERS.
-       Keep the surrounding page, header, footer, and schema intact.
-       ============================================================ -->
-  <div class="calc-slot" id="calculator">
-    <!-- >>> CALCULATOR START <<< -->
-    <style>
-      .calc-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 600px; margin: 0 auto; }
-      .calc-form .full { grid-column: 1 / -1; }
-      .calc-form .field { display: flex; flex-direction: column; gap: 8px; }
-      .calc-form label { font-weight: 600; font-size: 15px; }
-      .calc-form select, .calc-form input { padding: 12px; border: 1px solid var(--line); border-radius: 8px; font-family: inherit; font-size: 16px; background: #fff; }
-      .calc-form select:focus, .calc-form input:focus { outline: 2px solid var(--brand); outline-offset: 1px; }
-      .calc-btn { background: var(--brand); color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: 700; font-size: 16px; cursor: pointer; transition: opacity 0.2s; grid-column: 1 / -1; }
-      .calc-btn:hover { opacity: 0.9; }
-      .calc-result { display: none; margin-top: 24px; padding: 24px; background: var(--brand-tint); border-radius: 12px; text-align: center; }
-      .calc-result h3 { margin: 0 0 20px; font-size: 22px; color: var(--brand-deep); }
-      .macro-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
-      .macro-box { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 16px; display: flex; flex-direction: column; align-items: center; }
-      .macro-box span { font-size: 14px; color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
-      .macro-box strong { font-size: 24px; font-weight: 800; color: var(--ink); }
-      .macro-cal { font-size: 18px; font-weight: 600; color: var(--ink); margin: 0; }
-      @media (max-width: 500px) { .calc-form { grid-template-columns: 1fr; } .macro-grid { grid-template-columns: 1fr; } }
-    </style>
-    <form id="macroForm" class="calc-form">
-      <div class="field">
-        <label for="mac_gender">Gender</label>
-        <select id="mac_gender" required>
+<div class="bg-surface-cream rounded-xl p-8 md:p-12 border border-border-subtle shadow-sm mb-12">
+  <form id="macroForm" class="space-y-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label class="block font-label-bold text-label-bold text-primary mb-2" for="mac_gender">Gender</label>
+        <select id="mac_gender" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal appearance-none" required>
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
       </div>
-      <div class="field">
-        <label for="mac_age">Age</label>
-        <input type="number" id="mac_age" min="15" max="100" required placeholder="Years">
+      <div>
+        <label class="block font-label-bold text-label-bold text-primary mb-2" for="mac_age">Age (Years)</label>
+        <input type="number" id="mac_age" min="15" max="100" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal" required placeholder="e.g. 30">
       </div>
-      <div class="field">
-        <label for="mac_weight">Weight (lbs)</label>
-        <input type="number" id="mac_weight" min="50" max="500" required placeholder="Pounds">
+      <div>
+        <label class="block font-label-bold text-label-bold text-primary mb-2" for="mac_weight">Weight (lbs)</label>
+        <input type="number" id="mac_weight" min="50" max="500" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal" required placeholder="e.g. 165">
       </div>
-      <div class="field" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-        <div style="display:flex; flex-direction:column; gap:8px;">
-          <label for="mac_ft">Height (ft)</label>
-          <input type="number" id="mac_ft" min="4" max="8" required placeholder="Feet">
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block font-label-bold text-label-bold text-primary mb-2" for="mac_ft">Height (ft)</label>
+          <input type="number" id="mac_ft" min="4" max="8" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal" required placeholder="e.g. 5">
         </div>
-        <div style="display:flex; flex-direction:column; gap:8px;">
-          <label for="mac_in">Height (in)</label>
-          <input type="number" id="mac_in" min="0" max="11" required placeholder="Inches">
+        <div>
+          <label class="block font-label-bold text-label-bold text-primary mb-2" for="mac_in">Height (in)</label>
+          <input type="number" id="mac_in" min="0" max="11" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal" required placeholder="e.g. 10">
         </div>
       </div>
-      <div class="field full">
-        <label for="mac_activity">Activity Level</label>
-        <select id="mac_activity" required>
+      <div class="md:col-span-2">
+        <label class="block font-label-bold text-label-bold text-primary mb-2" for="mac_activity">Activity Level</label>
+        <select id="mac_activity" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal appearance-none" required>
           <option value="1.2">Sedentary (little to no exercise)</option>
           <option value="1.375">Lightly Active (light exercise 1-3 days/wk)</option>
           <option value="1.55">Moderately Active (exercise 3-5 days/wk)</option>
           <option value="1.725">Very Active (hard exercise 6-7 days/wk)</option>
         </select>
       </div>
-      <div class="field full">
-        <label for="mac_goal">Your Goal</label>
-        <select id="mac_goal" required>
+      <div class="md:col-span-2">
+        <label class="block font-label-bold text-label-bold text-primary mb-2" for="mac_goal">Your Goal</label>
+        <select id="mac_goal" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal appearance-none" required>
           <option value="lose">Lose Fat (-500 kcal)</option>
           <option value="maintain" selected>Maintain Weight</option>
           <option value="build">Build Muscle (+500 kcal)</option>
         </select>
       </div>
-      <button type="submit" class="calc-btn">Calculate My Macros</button>
-    </form>
-    <div id="mac_result" class="calc-result">
-      <h3>Your Daily Targets</h3>
-      <div class="macro-grid">
-        <div class="macro-box">
-          <span>Protein</span>
-          <strong id="mac_protein">0g</strong>
-        </div>
-        <div class="macro-box">
-          <span>Fats</span>
-          <strong id="mac_fat">0g</strong>
-        </div>
-        <div class="macro-box">
-          <span>Carbs</span>
-          <strong id="mac_carbs">0g</strong>
-        </div>
-      </div>
-      <p class="macro-cal">Target Calories: <span id="mac_cals">0</span> kcal/day</p>
     </div>
-    <script>
-      document.getElementById('macroForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const gender = document.getElementById('mac_gender').value;
-        const age = parseInt(document.getElementById('mac_age').value, 10);
-        const weightLbs = parseFloat(document.getElementById('mac_weight').value);
-        const heightFt = parseInt(document.getElementById('mac_ft').value, 10);
-        const heightIn = parseInt(document.getElementById('mac_in').value, 10);
-        const activity = parseFloat(document.getElementById('mac_activity').value);
-        const goal = document.getElementById('mac_goal').value;
+    <div class="pt-4">
+      <button type="submit" class="w-full bg-vitality-teal text-on-primary font-label-bold text-label-bold rounded-full py-4 px-6 hover:bg-secondary transition-colors uppercase tracking-widest">Calculate My Macros</button>
+    </div>
+  </form>
 
-        // Convert to metric
-        const weightKg = weightLbs * 0.453592;
-        const heightCm = ((heightFt * 12) + heightIn) * 2.54;
-
-        // Mifflin-St Jeor BMR
-        let bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age);
-        if (gender === 'male') {
-          bmr += 5;
-        } else {
-          bmr -= 161;
-        }
-
-        let tdee = bmr * activity;
-
-        // Goal adjustment
-        if (goal === 'lose') tdee -= 500;
-        if (goal === 'build') tdee += 500;
-
-        // Ensure minimum calories for safety
-        if (gender === 'male' && tdee < 1500) tdee = 1500;
-        if (gender === 'female' && tdee < 1200) tdee = 1200;
-
-        tdee = Math.round(tdee);
-
-        // Macro Split
-        let proteinPct, fatPct, carbPct;
-        if (goal === 'lose') {
-          proteinPct = 0.40; fatPct = 0.30; carbPct = 0.30;
-        } else if (goal === 'build') {
-          proteinPct = 0.30; fatPct = 0.25; carbPct = 0.45;
-        } else {
-          proteinPct = 0.30; fatPct = 0.30; carbPct = 0.40;
-        }
-
-        const proteinGrams = Math.round((tdee * proteinPct) / 4);
-        const fatGrams = Math.round((tdee * fatPct) / 9);
-        const carbGrams = Math.round((tdee * carbPct) / 4);
-
-        document.getElementById('mac_protein').innerText = proteinGrams + "g";
-        document.getElementById('mac_fat').innerText = fatGrams + "g";
-        document.getElementById('mac_carbs').innerText = carbGrams + "g";
-        document.getElementById('mac_cals').innerText = tdee;
-
-        document.getElementById('mac_result').style.display = 'block';
-      });
-    </script>
-    <!-- >>> CALCULATOR END <<< -->
+  <div id="mac_result" class="hidden mt-10 pt-10 border-t border-border-subtle">
+    <h3 class="font-headline-md text-headline-md text-primary text-center mb-8">Your Daily Targets</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div class="bg-surface-lowest border border-border-subtle rounded-xl p-6 text-center">
+        <span class="block font-label-bold text-on-surface-variant uppercase tracking-widest mb-2">Protein</span>
+        <strong id="mac_protein" class="block font-display-lg-mobile text-vitality-teal">0g</strong>
+      </div>
+      <div class="bg-surface-lowest border border-border-subtle rounded-xl p-6 text-center">
+        <span class="block font-label-bold text-on-surface-variant uppercase tracking-widest mb-2">Fats</span>
+        <strong id="mac_fat" class="block font-display-lg-mobile text-vitality-teal">0g</strong>
+      </div>
+      <div class="bg-surface-lowest border border-border-subtle rounded-xl p-6 text-center">
+        <span class="block font-label-bold text-on-surface-variant uppercase tracking-widest mb-2">Carbs</span>
+        <strong id="mac_carbs" class="block font-display-lg-mobile text-vitality-teal">0g</strong>
+      </div>
+    </div>
+    <p class="font-headline-md text-primary text-center">Target Calories: <span id="mac_cals" class="text-vitality-teal font-bold">0</span> kcal/day</p>
   </div>
+</div>
 
-  <div class="med-note">This tool provides general estimates for educational purposes only and is not a substitute for professional medical advice.</div>
+<div class="prose max-w-none text-on-surface-variant">
+  <p class="text-sm italic mb-8">This tool provides general estimates for educational purposes only and is not a substitute for professional medical advice.</p>
+  <h2 class="font-headline-md text-primary mb-4">How this calculator works</h2>
+  <p class="mb-8">The calculator estimates your daily energy needs from your metrics and activity, then divides that total into protein, carbohydrate, and fat targets suited to your goal.</p>
+  
+  <h2 class="font-headline-md text-primary mb-4">Frequently asked questions</h2>
+  <h3 class="font-bold text-primary mb-2">How are my macros calculated?</h3>
+  <p class="mb-6">Your total daily calories are estimated first, then split into grams of protein, carbohydrate, and fat using ratios suited to your goal and activity level.</p>
+  
+  <h3 class="font-bold text-primary mb-2">Should I hit my macros exactly every day?</h3>
+  <p class="mb-8">Aim for consistency across the week rather than perfection each day. Small daily variation is normal and does not undermine results.</p>
+</div>
 
-  <h2>How this calculator works</h2>
-  <p>The calculator estimates your daily energy needs from your metrics and activity, then divides that total into protein, carbohydrate, and fat targets suited to your goal.</p>
-
-  <section class="aff">
-    <h2>Recommended products</h2>
-    <div class="aff-grid"><div class="aff-card"><div class="thumb">Product image</div><h4>Digital Food Scale</h4><p>Weigh portions for accurate macros.</p><a class="btn ghost" href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">View on Amazon</a></div><div class="aff-card"><div class="thumb">Product image</div><h4>Whey Protein Powder</h4><p>Hit protein targets easily.</p><a class="btn ghost" href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">View on Amazon</a></div><div class="aff-card"><div class="thumb">Product image</div><h4>Meal Prep Containers</h4><p>Portion meals ahead of time.</p><a class="btn ghost" href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">View on Amazon</a></div></div>
-    <p class="aff-disclosure">As an Amazon Associate, RaphaAtlas earns from qualifying purchases. Links are affiliate links; replace PRODUCT-ID and YOUR-AFFILIATE-TAG with your Amazon Associates tag.</p>
-  </section>
-
-  <h2>Frequently asked questions</h2>
-  <h3>How are my macros calculated?</h3><p>Your total daily calories are estimated first, then split into grams of protein, carbohydrate, and fat using ratios suited to your goal and activity level.</p><h3>Should I hit my macros exactly every day?</h3><p>Aim for consistency across the week rather than perfection each day. Small daily variation is normal and does not undermine results.</p>
+  </div>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <a class="logo" href="/"><span class="dot"></span>RaphaAtlas</a>
-        <p>Evidence-based health, fitness, and nutrition — with free clinical calculators. A project of Growth Partners Global LLC.</p>
-        <p><a href="mailto:dr.awais@growthpartnersgloballlc.com">dr.awais@growthpartnersgloballlc.com</a><a href="mailto:dr.ahmed@growthpartnersgloballlc.com">dr.ahmed@growthpartnersgloballlc.com</a></p>
-      </div>
-      <div>
-        <h5>Calculators</h5>
-        <a href="/body-type-calculator">Body Type</a>
-        <a href="/macro-calculator">Macros</a>
-        <a href="/bac-calculator">BAC</a>
-        <a href="/conception-calculator">Conception</a>
-      </div>
-      <div>
-        <h5>Explore</h5>
-        <a href="/fitness">Fitness</a>
-        <a href="/nutrition">Nutrition</a>
-        <a href="/health">Health</a>
-        <a href="/calculators">All calculators</a>
-      </div>
-      <div>
-        <h5>Company</h5>
-        <a href="/about">About</a>
-        <a href="/medical-review-board">Medical review board</a>
-        <a href="/editorial-policy">Editorial policy</a>
-        <a href="/contact">Contact</a>
-        <a href="/privacy">Privacy</a>
-      </div>
-    </div>
-
-    <div class="foot-aff">
-      <h5>Recommended products</h5>
-      <div class="foot-aff-row">
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Digital Food Scale</a>
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Whey Protein</a>
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Resistance Bands</a>
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Smart Scale</a>
-      </div>
-      <p class="aff-disclosure" style="color:#8AA0A9">As an Amazon Associate, RaphaAtlas earns from qualifying purchases. Replace PRODUCT-ID and YOUR-AFFILIATE-TAG with your Amazon Associates tag.</p>
-    </div>
-
-    <p class="foot-legal">RaphaAtlas provides general educational information and estimates only. It is not a medical device and does not provide medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional for decisions about your health. &copy; <span id="yr"></span> RaphaAtlas — a project of Growth Partners Global LLC.</p>
-  </div>
+<footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto">
+<div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center">
+<div class="mb-8 md:mb-0">
+<a href="/" class="block mb-2">
+  <img src="/raphaatlas-lockup.svg" alt="RaphaAtlas" height="90" width="144" class="h-[90px] w-auto">
+</a>
+</div>
+<div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8" style="font-family: 'Inter', sans-serif;">
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="/privacy">Privacy Policy</a>
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="/contact">Contact</a>
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="#">FAQ</a>
+</div>
+<div class="mt-8 md:mt-0 text-on-primary opacity-30 text-sm" style="font-family: 'Inter', sans-serif;">© 2024 RaphaAtlas. All rights reserved.</div>
+</div>
 </footer>
-<script src="/site.js" defer></script>
+  
+<script>
+  document.getElementById('macroForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const gender = document.getElementById('mac_gender').value;
+    const age = parseInt(document.getElementById('mac_age').value, 10);
+    const weightLbs = parseFloat(document.getElementById('mac_weight').value);
+    const heightFt = parseInt(document.getElementById('mac_ft').value, 10);
+    const heightIn = parseInt(document.getElementById('mac_in').value, 10);
+    const activity = parseFloat(document.getElementById('mac_activity').value);
+    const goal = document.getElementById('mac_goal').value;
+
+    const weightKg = weightLbs * 0.453592;
+    const heightCm = ((heightFt * 12) + heightIn) * 2.54;
+
+    let bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age);
+    if (gender === 'male') {
+      bmr += 5;
+    } else {
+      bmr -= 161;
+    }
+
+    let tdee = bmr * activity;
+
+    if (goal === 'lose') tdee -= 500;
+    if (goal === 'build') tdee += 500;
+
+    if (gender === 'male' && tdee < 1500) tdee = 1500;
+    if (gender === 'female' && tdee < 1200) tdee = 1200;
+
+    tdee = Math.round(tdee);
+
+    let proteinPct, fatPct, carbPct;
+    if (goal === 'lose') {
+      proteinPct = 0.40; fatPct = 0.30; carbPct = 0.30;
+    } else if (goal === 'build') {
+      proteinPct = 0.30; fatPct = 0.25; carbPct = 0.45;
+    } else {
+      proteinPct = 0.30; fatPct = 0.30; carbPct = 0.40;
+    }
+
+    const proteinGrams = Math.round((tdee * proteinPct) / 4);
+    const fatGrams = Math.round((tdee * fatPct) / 9);
+    const carbGrams = Math.round((tdee * carbPct) / 4);
+
+    document.getElementById('mac_protein').innerText = proteinGrams + "g";
+    document.getElementById('mac_fat').innerText = fatGrams + "g";
+    document.getElementById('mac_carbs').innerText = carbGrams + "g";
+    document.getElementById('mac_cals').innerText = tdee;
+
+    document.getElementById('mac_result').classList.remove('hidden');
+  });
+</script>
 </body>
 </html>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
- {"@type":"WebApplication","name":"Macro Calculator","url":"https://www.raphaatlas.com/macro-calculator/","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},
- {"@type":"BreadcrumbList","itemListElement":[
-   {"@type":"ListItem","position":1,"name":"Home","item":"https://www.raphaatlas.com/"},
-   {"@type":"ListItem","position":2,"name":"Calculators","item":"https://www.raphaatlas.com/calculators/"},
-   {"@type":"ListItem","position":3,"name":"Macro Calculator","item":"https://www.raphaatlas.com/macro-calculator/"}
- ]},
- {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are my macros calculated?","acceptedAnswer":{"@type":"Answer","text":"Your total daily calories are estimated first, then split into grams of protein, carbohydrate, and fat using ratios suited to your goal and activity level."}},{"@type":"Question","name":"Should I hit my macros exactly every day?","acceptedAnswer":{"@type":"Answer","text":"Aim for consistency across the week rather than perfection each day. Small daily variation is normal and does not undermine results."}}]}
-]}
-</script>

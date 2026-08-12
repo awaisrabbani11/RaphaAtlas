@@ -1,26 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy — RaphaAtlas</title>
-<meta name="description" content="How RaphaAtlas handles data and privacy.">
-<link rel="canonical" href="https://www.raphaatlas.com/privacy">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="RaphaAtlas">
-<meta property="og:title" content="Privacy Policy — RaphaAtlas">
-<meta property="og:description" content="How RaphaAtlas handles data and privacy.">
-<meta property="og:url" content="https://www.raphaatlas.com/privacy/">
-<meta property="og:image" content="https://www.raphaatlas.com/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
+const fs = require('fs');
+const path = require('path');
+
+function getFiles(dir, extArray, fileList = []) {
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+        if (file === 'node_modules' || file === '.git') continue;
+        const filePath = path.join(dir, file);
+        if (fs.statSync(filePath).isDirectory()) {
+            getFiles(filePath, extArray, fileList);
+        } else {
+            if (extArray.includes(path.extname(filePath))) {
+                fileList.push(filePath);
+            }
+        }
+    }
+    return fileList;
+}
+
+const tailwindConfig = `<script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -38,14 +35,16 @@
                 }
             }
         }
-    </script>
+    </script>`;
+
+const headLinks = `<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+${tailwindConfig}
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@600;700;900&family=Archivo:wght@700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-</head>
-<body>
-<header class="bg-header-black border-b border-black docked full-width top-0 z-50 sticky transition-all duration-300">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">`;
+
+const headerHtml = `<header class="bg-header-black border-b border-black docked full-width top-0 z-50 sticky transition-all duration-300">
 <div class="flex justify-between items-center px-4 md:px-8 py-2 w-full max-w-7xl mx-auto">
 <a href="/" aria-label="RaphaAtlas home" class="flex items-center">
   <img src="/raphaatlas-mark.svg" alt="RaphaAtlas Logo" height="40" width="40" class="h-10 w-10">
@@ -72,22 +71,9 @@
 <button class="lg:hidden text-on-primary"><span class="material-symbols-outlined text-2xl">menu</span></button>
 </div>
 </div>
-</header>
+</header>`;
 
-<main class="article">
-  <h1>Privacy policy</h1>
-  <p>This page explains, in plain terms, how RaphaAtlas handles your information.</p>
-  <h2>Calculators run in your browser</h2>
-  <p>Our calculators compute results on your device. We do not require accounts and do not collect the values you enter.</p>
-  <h2>Analytics and cookies</h2>
-  <p>We may use privacy-respecting analytics to understand aggregate traffic. Replace this section with your actual analytics and cookie details.</p>
-  <h2>Affiliate links</h2>
-  <p>Some links are affiliate links (including Amazon). Clicking them may set cookies controlled by those third parties.</p>
-  <h2>Contact</h2>
-  <p>Privacy questions: <a href="mailto:dr.awais@growthpartnersgloballlc.com">dr.awais@growthpartnersgloballlc.com</a>.</p>
-</main>
-
-<footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto">
+const footerHtml = `<footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto">
 <div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center">
 <div class="mb-8 md:mb-0">
 <a href="/" class="block mb-2">
@@ -102,7 +88,43 @@
 </div>
 <div class="mt-8 md:mt-0 text-on-primary opacity-30 text-sm" style="font-family: 'Inter', sans-serif;">© 2024 RaphaAtlas. All rights reserved.</div>
 </div>
-</footer>
-<script src="/site.js" defer></script>
-</body>
-</html>
+</footer>`;
+
+const files = getFiles('.', ['.html', '.cjs']);
+
+files.forEach(file => {
+    if (file === 'unify_layout.cjs') return;
+    let content = fs.readFileSync(file, 'utf8');
+
+    // 1. Inject head links
+    if (!content.includes('apple-touch-icon.png')) {
+        content = content.replace('</head>', headLinks + '\n</head>');
+    }
+
+    // 2. Replace Header
+    const headerRegex = /<header[\s\S]*?<\/header>/;
+    if (content.match(headerRegex)) {
+        content = content.replace(headerRegex, headerHtml);
+    } else {
+        const bodyRegex = /<body[^>]*>/;
+        content = content.replace(bodyRegex, '$&\n' + headerHtml);
+    }
+
+    // 3. Replace Footer
+    const footerRegex = /<footer[\s\S]*?<\/footer>/;
+    if (content.match(footerRegex)) {
+        content = content.replace(footerRegex, footerHtml);
+    } else {
+        content = content.replace('</body>', footerHtml + '\n</body>');
+    }
+    
+    // Also remove old navigation crumbs block from old files like health.html
+    const navCrumbsRegex = /<nav class="wrap crumbs"[^>]*>([\s\S]*?)<\/nav>/;
+    if (content.match(navCrumbsRegex)) {
+        content = content.replace(navCrumbsRegex, '');
+    }
+
+    fs.writeFileSync(file, content);
+});
+
+console.log('Unification complete.');

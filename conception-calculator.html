@@ -2,278 +2,325 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Conception Calculator — Estimate Conception &amp; Due Date | RaphaAtlas</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Conception Calculator - RaphaAtlas</title>
 <meta name="description" content="Free conception calculator. Estimate your likely conception date and due date from your last period, cycle length, or a known date.">
-<link rel="canonical" href="https://www.raphaatlas.com/conception-calculator">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="RaphaAtlas">
-<meta property="og:title" content="Conception Calculator — Estimate Conception &amp; Due Date | RaphaAtlas">
-<meta property="og:description" content="Free conception calculator. Estimate your likely conception date and due date from your last period, cycle length, or a known date.">
-<meta property="og:url" content="https://www.raphaatlas.com/conception-calculator/">
-<meta property="og:image" content="https://www.raphaatlas.com/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
 
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#c6c6c7",
+                      "on-tertiary-container": "#838484",
+                      "on-primary-container": "#848484",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "on-error-container": "#93000a",
+                      "tertiary-container": "#1a1c1c",
+                      "on-primary-fixed": "#1b1b1b",
+                      "surface-container-low": "#f9f3eb",
+                      "background": "#fff8f0",
+                      "outline-variant": "#cfc4c5",
+                      "surface-container-high": "#ede7df",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed": "#002023",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed-variant": "#474747",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "surface-container": "#f3ede5",
+                      "surface-container-highest": "#e7e2da",
+                      "vitality-teal": "#02838D",
+                      "secondary-fixed-dim": "#75d5e0",
+                      "on-background": "#1d1b17",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed": "#92f1fc",
+                      "primary-fixed": "#e2e2e2",
+                      "on-secondary-fixed-variant": "#004f55",
+                      "border-subtle": "#E0EDEF",
+                      "on-surface-variant": "#4c4546",
+                      "header-black": "#000000",
+                      "surface": "#fff8f0",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "on-surface": "#1d1b17",
+                      "on-tertiary": "#ffffff",
+                      "surface-tint": "#5e5e5e",
+                      "secondary": "#006971",
+                      "on-secondary-container": "#006d76",
+                      "inverse-on-surface": "#f6f0e8",
+                      "outline": "#7e7576",
+                      "secondary-container": "#8feff9",
+                      "surface-variant": "#e7e2da",
+                      "inverse-surface": "#32302b",
+                      "primary": "#000000",
+                      "surface-dim": "#dfd9d2",
+                      "on-primary": "#ffffff",
+                      "surface-cream": "#FBF5ED",
+                      "on-error": "#ffffff",
+                      "primary-container": "#1b1b1b",
+                      "inverse-primary": "#c6c6c6",
+                      "tertiary": "#000000",
+                      "surface-bright": "#fff8f0",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed": "#e2e2e2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "container-max": "1280px",
+                      "section-gap": "80px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Montserrat"],
+                      "headline-md": ["Montserrat"],
+                      "body-md": ["Inter"],
+                      "display-lg-mobile": ["Montserrat"],
+                      "nav-link": ["Inter"],
+                      "label-bold": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                      "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                      "display-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                      "nav-link": ["15px", { "lineHeight": "24px", "fontWeight": "500" }],
+                      "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                      "body-lg": ["18px", { "lineHeight": "30px", "fontWeight": "400" }]
+              }
+      },
+          },
+        }
+</script>
+<style>
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24
+}
+</style>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "vitality-teal": "#02838D",
+                        "header-black": "#000000",
+                        "surface-cream": "#FBF5ED",
+                        "on-primary": "#ffffff",
+                        "primary": "#000000",
+                        "surface-container-lowest": "#ffffff",
+                        "border-subtle": "#E0EDEF",
+                        "on-surface": "#1d1b17",
+                    }
+                }
+            }
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@600;700;900&family=Archivo:wght@700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
-<body>
-<header class="site-header">
-  <div class="wrap bar">
-    <a class="logo" href="/"><span class="dot"></span>RaphaAtlas</a>
-    <button class="hamburger" aria-label="Menu" aria-expanded="false">&#9776;</button>
-    <nav class="nav" aria-label="Primary">
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Calculators <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/body-type-calculator">Body Type Calculator</a>
-          <a href="/macro-calculator">Macro Calculator</a>
-          <a href="/bac-calculator">BAC Calculator</a>
-          <a href="/conception-calculator">Conception Calculator</a>
-          <div class="sep"></div>
-          <a href="/calculators">All calculators</a>
-        </div>
-      </div>
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Fitness <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/fitness">All Fitness</a>
-          <a href="/fitness">Strength &amp; Training</a>
-          <a href="/fitness">Cardio &amp; Conditioning</a>
-          <a href="/fitness">Recovery</a>
-        </div>
-      </div>
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Nutrition <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/nutrition">All Nutrition</a>
-          <a href="/nutrition">Macros &amp; Diets</a>
-          <a href="/nutrition">Supplements</a>
-          <a href="/nutrition">Weight Management</a>
-        </div>
-      </div>
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Health <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/health">All Health</a>
-          <a href="/health">Conditions</a>
-          <a href="/health">Biomarkers</a>
-          <a href="/health">Preventive Care</a>
-        </div>
-      </div>
-      <div class="item"><a href="/about">About</a></div>
-      <a class="btn nav-cta" href="/calculators">Calculators</a>
-    </nav>
-  </div>
+<body class="bg-surface-lowest text-on-surface font-body-md min-h-screen flex flex-col antialiased">
+<header class="bg-header-black border-b border-black docked full-width top-0 z-50 sticky transition-all duration-300">
+<div class="flex justify-between items-center px-4 md:px-8 py-2 w-full max-w-7xl mx-auto">
+<a href="/" aria-label="RaphaAtlas home" class="flex items-center">
+  <img src="/raphaatlas-mark.svg" alt="RaphaAtlas Logo" height="40" width="40" class="h-10 w-10">
+  <span style="font-family: 'Archivo', 'Montserrat', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: -1px; color: white; margin-left: 12px;">RAPHAATLAS</span>
+</a>
+<nav class="hidden lg:flex items-center space-x-6">
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/nutrition">Nutrition</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/health">Health</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/calculators">Calculators</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/fitness">Fitness</a>
+<div class="relative group">
+<button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors py-2" style="font-family: 'Inter', sans-serif;">
+<span>More</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="absolute left-0 mt-2 w-48 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg">
+<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/about">About Us</a>
+<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all" href="/contact">Contact Us</a>
+</div>
+</div>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="text-on-primary hover:text-vitality-teal transition-colors"><span class="material-symbols-outlined">search</span></button>
+<button class="lg:hidden text-on-primary"><span class="material-symbols-outlined text-2xl">menu</span></button>
+</div>
+</div>
 </header>
-<nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/calculators">Calculators</a><span>/</span>Conception Calculator</nav>
-<main class="article">
-  <h1>Conception Calculator</h1>
-  <p style="font-size:19px;color:var(--ink-soft)">Estimate your likely conception date and due date from your last menstrual period, cycle length, or a date you already know.</p>
 
-  <div class="tool-hero">
-    <!-- Replace with a real image: <img src="/images/conception-calculator.jpg" alt="Conception Calculator"> -->
-    <span class="ph">Add tool image &rarr; /images/conception-calculator.jpg</span>
+<nav class="hidden lg:flex items-center space-x-6">
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link" href="/nutrition">Nutrition</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link" href="/health">Health</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link" href="/calculators">Calculators</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link" href="/fitness">Fitness</a>
+<div class="relative group">
+<button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors font-nav-link text-nav-link py-2">
+<span>More</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="absolute left-0 mt-2 w-48 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg">
+<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all font-body-md text-body-md border-b border-border-subtle" href="/about">About Us</a>
+<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all font-body-md text-body-md" href="/contact">Contact Us</a>
+</div>
+</div>
+</nav>
+  
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-gutter py-12 md:py-section-gap">
+  <div class="max-w-3xl mx-auto">
+    
+<div class="mb-12 text-center">
+  <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+    <span class="material-symbols-outlined text-on-primary text-3xl" data-icon="child_care">child_care</span>
   </div>
+  <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">Conception Calculator</h1>
+  <p class="font-body-lg text-body-lg text-on-surface-variant">Estimate your likely conception date and due date from your last menstrual period, cycle length, or a date you already know.</p>
+</div>
 
-  <!-- ============================================================
-       PASTE YOUR EXISTING Conception Calculator CODE BETWEEN THESE MARKERS.
-       Keep the surrounding page, header, footer, and schema intact.
-       ============================================================ -->
-  <div class="calc-slot" id="calculator">
-    <!-- >>> CALCULATOR START <<< -->
-    <style>
-      .calc-form { display: flex; flex-direction: column; gap: 20px; max-width: 500px; margin: 0 auto; }
-      .calc-form .field { display: flex; flex-direction: column; gap: 8px; }
-      .calc-form label { font-weight: 600; font-size: 15px; }
-      .calc-form select, .calc-form input { padding: 12px; border: 1px solid var(--line); border-radius: 8px; font-family: inherit; font-size: 16px; background: #fff; }
-      .calc-form select:focus, .calc-form input:focus { outline: 2px solid var(--brand); outline-offset: 1px; }
-      .calc-btn { background: var(--brand); color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: 700; font-size: 16px; cursor: pointer; transition: opacity 0.2s; margin-top: 8px; }
-      .calc-btn:hover { opacity: 0.9; }
-      .calc-result { display: none; margin-top: 24px; padding: 24px; background: var(--brand-tint); border-radius: 12px; }
-      .calc-result h3 { margin: 0 0 20px; font-size: 22px; color: var(--brand-deep); text-align: center; }
-      .result-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding: 14px 0; }
-      .result-row:last-child { border-bottom: none; padding-bottom: 0; }
-      .result-row span { font-size: 15px; color: var(--ink-soft); font-weight: 500; }
-      .result-row strong { font-size: 18px; color: var(--ink); font-weight: 700; }
-      @media (max-width: 500px) {
-        .result-row { flex-direction: column; align-items: flex-start; gap: 4px; }
-      }
-    </style>
-    <form id="conceptForm" class="calc-form">
-      <div class="field">
-        <label for="con_method">Calculate based on</label>
-        <select id="con_method" required>
-          <option value="lmp">First day of last period</option>
-          <option value="due">Known due date</option>
-        </select>
+<div class="bg-surface-cream rounded-xl p-8 md:p-12 border border-border-subtle shadow-sm mb-12">
+  <form id="conceptForm" class="space-y-6">
+    <div>
+      <label class="block font-label-bold text-label-bold text-primary mb-2" for="con_method">Calculate based on</label>
+      <select id="con_method" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal appearance-none" required>
+        <option value="lmp">First day of last period</option>
+        <option value="due">Known due date</option>
+      </select>
+    </div>
+    <div>
+      <label id="con_date_label" class="block font-label-bold text-label-bold text-primary mb-2" for="con_date">First day of last period</label>
+      <input type="date" id="con_date" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal" required>
+    </div>
+    <div id="con_cycle_field">
+      <label class="block font-label-bold text-label-bold text-primary mb-2" for="con_cycle">Average cycle length (days)</label>
+      <input type="number" id="con_cycle" min="20" max="45" value="28" class="w-full bg-surface-lowest border border-black rounded px-4 py-3 font-body-md text-primary focus:outline-none focus:ring-1 focus:ring-vitality-teal focus:border-vitality-teal" required>
+    </div>
+    <div class="pt-4">
+      <button type="submit" class="w-full bg-vitality-teal text-on-primary font-label-bold text-label-bold rounded-full py-4 px-6 hover:bg-secondary transition-colors uppercase tracking-widest">Calculate Dates</button>
+    </div>
+  </form>
+
+  <div id="con_result" class="hidden mt-10 pt-10 border-t border-border-subtle">
+    <h3 class="font-headline-md text-headline-md text-primary text-center mb-8">Your Results</h3>
+    <div class="space-y-4">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center py-4 border-b border-border-subtle">
+        <span class="font-body-lg text-on-surface-variant">Estimated Due Date:</span>
+        <strong id="res_due" class="font-headline-md text-vitality-teal"></strong>
       </div>
-      <div class="field">
-        <label id="con_date_label" for="con_date">First day of last period</label>
-        <input type="date" id="con_date" required>
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center py-4 border-b border-border-subtle">
+        <span class="font-body-lg text-on-surface-variant">Estimated Conception Date:</span>
+        <strong id="res_concept" class="font-headline-md text-primary"></strong>
       </div>
-      <div class="field" id="con_cycle_field">
-        <label for="con_cycle">Average cycle length (days)</label>
-        <input type="number" id="con_cycle" min="20" max="45" value="28" required>
-      </div>
-      <button type="submit" class="calc-btn">Calculate Dates</button>
-    </form>
-    <div id="con_result" class="calc-result">
-      <h3>Your Results</h3>
-      <div class="result-row">
-        <span>Estimated Due Date:</span>
-        <strong id="res_due"></strong>
-      </div>
-      <div class="result-row">
-        <span>Estimated Conception Date:</span>
-        <strong id="res_concept"></strong>
-      </div>
-      <div class="result-row">
-        <span>Likely Fertile Window:</span>
-        <strong id="res_fertile"></strong>
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center py-4">
+        <span class="font-body-lg text-on-surface-variant">Likely Fertile Window:</span>
+        <strong id="res_fertile" class="font-headline-md text-primary"></strong>
       </div>
     </div>
-    <script>
-      const methodSelect = document.getElementById('con_method');
-      const dateLabel = document.getElementById('con_date_label');
-      const cycleField = document.getElementById('con_cycle_field');
-
-      methodSelect.addEventListener('change', function() {
-        if (this.value === 'lmp') {
-          dateLabel.innerText = "First day of last period";
-          cycleField.style.display = 'flex';
-        } else {
-          dateLabel.innerText = "Known due date";
-          cycleField.style.display = 'none';
-        }
-      });
-
-      document.getElementById('conceptForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const method = document.getElementById('con_method').value;
-        const dateInput = document.getElementById('con_date').value;
-        const cycleLength = parseInt(document.getElementById('con_cycle').value, 10);
-        
-        if (!dateInput) return;
-
-        const inputDate = new Date(dateInput);
-        // Correct for timezone offset so date is exactly as selected
-        inputDate.setMinutes(inputDate.getMinutes() + inputDate.getTimezoneOffset());
-
-        let dueDate, conceptDate;
-
-        if (method === 'lmp') {
-          // Standard: 280 days + (cycle - 28)
-          const addedDays = 280 + (cycleLength - 28);
-          dueDate = new Date(inputDate.getTime());
-          dueDate.setDate(dueDate.getDate() + addedDays);
-
-          // Conception typically 14 days before next period (or cycleLength - 14 days after LMP)
-          conceptDate = new Date(inputDate.getTime());
-          conceptDate.setDate(conceptDate.getDate() + (cycleLength - 14));
-        } else {
-          dueDate = new Date(inputDate.getTime());
-          
-          // Conception is approx 266 days before due date
-          conceptDate = new Date(dueDate.getTime());
-          conceptDate.setDate(conceptDate.getDate() - 266);
-        }
-
-        // Fertile window (5 days before + day of)
-        const fertileStart = new Date(conceptDate.getTime());
-        fertileStart.setDate(fertileStart.getDate() - 5);
-        const fertileEnd = new Date(conceptDate.getTime());
-        fertileEnd.setDate(fertileEnd.getDate() + 1); // sometimes 1 day after ovulation is included
-
-        const options = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
-        const shortOptions = { month: 'short', day: 'numeric' };
-        
-        document.getElementById('res_due').innerText = dueDate.toLocaleDateString(undefined, options);
-        document.getElementById('res_concept').innerText = conceptDate.toLocaleDateString(undefined, options);
-        document.getElementById('res_fertile').innerText = fertileStart.toLocaleDateString(undefined, shortOptions) + " — " + fertileEnd.toLocaleDateString(undefined, shortOptions);
-
-        document.getElementById('con_result').style.display = 'block';
-      });
-    </script>
-    <!-- >>> CALCULATOR END <<< -->
   </div>
+</div>
 
-  <div class="med-note">This tool provides general estimates for educational purposes only and is not a substitute for professional medical advice.</div>
+<div class="prose max-w-none text-on-surface-variant">
+  <p class="text-sm italic mb-8">This tool provides general estimates for educational purposes only and is not a substitute for professional medical advice.</p>
+  <h2 class="font-headline-md text-primary mb-4">How this calculator works</h2>
+  <p class="mb-8">The tool works from your last menstrual period and cycle length to estimate ovulation and conception, then projects a due date about 40 weeks from your last period.</p>
+  
+  <h2 class="font-headline-md text-primary mb-4">Frequently asked questions</h2>
+  <h3 class="font-bold text-primary mb-2">How accurate is an estimated conception date?</h3>
+  <p class="mb-6">It is an estimate based on a typical cycle. Actual conception depends on when ovulation occurred, which varies, so an ultrasound gives a more precise date.</p>
+  <h3 class="font-bold text-primary mb-2">Can I find the exact day I conceived?</h3>
+  <p class="mb-8">Rarely with certainty. Sperm can survive several days, so conception may occur days after intercourse. The tool gives a likely window, not an exact day.</p>
+</div>
 
-  <h2>How this calculator works</h2>
-  <p>The tool works from your last menstrual period and cycle length to estimate ovulation and conception, then projects a due date about 40 weeks from your last period.</p>
-
-  <section class="aff">
-    <h2>Recommended products</h2>
-    <div class="aff-grid"><div class="aff-card"><div class="thumb">Product image</div><h4>Ovulation Test Kit</h4><p>Pinpoint your fertile window.</p><a class="btn ghost" href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">View on Amazon</a></div><div class="aff-card"><div class="thumb">Product image</div><h4>Prenatal Vitamins</h4><p>Support early pregnancy.</p><a class="btn ghost" href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">View on Amazon</a></div><div class="aff-card"><div class="thumb">Product image</div><h4>Pregnancy Journal</h4><p>Track milestones week by week.</p><a class="btn ghost" href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">View on Amazon</a></div></div>
-    <p class="aff-disclosure">As an Amazon Associate, RaphaAtlas earns from qualifying purchases. Links are affiliate links; replace PRODUCT-ID and YOUR-AFFILIATE-TAG with your Amazon Associates tag.</p>
-  </section>
-
-  <h2>Frequently asked questions</h2>
-  <h3>How accurate is an estimated conception date?</h3><p>It is an estimate based on a typical cycle. Actual conception depends on when ovulation occurred, which varies, so an ultrasound gives a more precise date.</p><h3>Can I find the exact day I conceived?</h3><p>Rarely with certainty. Sperm can survive several days, so conception may occur days after intercourse. The tool gives a likely window, not an exact day.</p>
+  </div>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <a class="logo" href="/"><span class="dot"></span>RaphaAtlas</a>
-        <p>Evidence-based health, fitness, and nutrition — with free clinical calculators. A project of Growth Partners Global LLC.</p>
-        <p><a href="mailto:dr.awais@growthpartnersgloballlc.com">dr.awais@growthpartnersgloballlc.com</a><a href="mailto:dr.ahmed@growthpartnersgloballlc.com">dr.ahmed@growthpartnersgloballlc.com</a></p>
-      </div>
-      <div>
-        <h5>Calculators</h5>
-        <a href="/body-type-calculator">Body Type</a>
-        <a href="/macro-calculator">Macros</a>
-        <a href="/bac-calculator">BAC</a>
-        <a href="/conception-calculator">Conception</a>
-      </div>
-      <div>
-        <h5>Explore</h5>
-        <a href="/fitness">Fitness</a>
-        <a href="/nutrition">Nutrition</a>
-        <a href="/health">Health</a>
-        <a href="/calculators">All calculators</a>
-      </div>
-      <div>
-        <h5>Company</h5>
-        <a href="/about">About</a>
-        <a href="/medical-review-board">Medical review board</a>
-        <a href="/editorial-policy">Editorial policy</a>
-        <a href="/contact">Contact</a>
-        <a href="/privacy">Privacy</a>
-      </div>
-    </div>
-
-    <div class="foot-aff">
-      <h5>Recommended products</h5>
-      <div class="foot-aff-row">
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Digital Food Scale</a>
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Whey Protein</a>
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Resistance Bands</a>
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Smart Scale</a>
-      </div>
-      <p class="aff-disclosure" style="color:#8AA0A9">As an Amazon Associate, RaphaAtlas earns from qualifying purchases. Replace PRODUCT-ID and YOUR-AFFILIATE-TAG with your Amazon Associates tag.</p>
-    </div>
-
-    <p class="foot-legal">RaphaAtlas provides general educational information and estimates only. It is not a medical device and does not provide medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional for decisions about your health. &copy; <span id="yr"></span> RaphaAtlas — a project of Growth Partners Global LLC.</p>
-  </div>
+<footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto">
+<div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center">
+<div class="mb-8 md:mb-0">
+<a href="/" class="block mb-2">
+  <img src="/raphaatlas-lockup.svg" alt="RaphaAtlas" height="90" width="144" class="h-[90px] w-auto">
+</a>
+</div>
+<div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8" style="font-family: 'Inter', sans-serif;">
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="/privacy">Privacy Policy</a>
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="/contact">Contact</a>
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="#">FAQ</a>
+</div>
+<div class="mt-8 md:mt-0 text-on-primary opacity-30 text-sm" style="font-family: 'Inter', sans-serif;">© 2024 RaphaAtlas. All rights reserved.</div>
+</div>
 </footer>
-<script src="/site.js" defer></script>
+  
+<script>
+  const methodSelect = document.getElementById('con_method');
+  const dateLabel = document.getElementById('con_date_label');
+  const cycleField = document.getElementById('con_cycle_field');
+
+  methodSelect.addEventListener('change', function() {
+    if (this.value === 'lmp') {
+      dateLabel.innerText = "First day of last period";
+      cycleField.style.display = 'block';
+    } else {
+      dateLabel.innerText = "Known due date";
+      cycleField.style.display = 'none';
+    }
+  });
+
+  document.getElementById('conceptForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const method = document.getElementById('con_method').value;
+    const dateInput = document.getElementById('con_date').value;
+    const cycleLength = parseInt(document.getElementById('con_cycle').value, 10);
+    
+    if (!dateInput) return;
+
+    const inputDate = new Date(dateInput);
+    inputDate.setMinutes(inputDate.getMinutes() + inputDate.getTimezoneOffset());
+
+    let dueDate, conceptDate;
+
+    if (method === 'lmp') {
+      const addedDays = 280 + (cycleLength - 28);
+      dueDate = new Date(inputDate.getTime());
+      dueDate.setDate(dueDate.getDate() + addedDays);
+
+      conceptDate = new Date(inputDate.getTime());
+      conceptDate.setDate(conceptDate.getDate() + (cycleLength - 14));
+    } else {
+      dueDate = new Date(inputDate.getTime());
+      conceptDate = new Date(dueDate.getTime());
+      conceptDate.setDate(conceptDate.getDate() - 266);
+    }
+
+    const fertileStart = new Date(conceptDate.getTime());
+    fertileStart.setDate(fertileStart.getDate() - 5);
+    const fertileEnd = new Date(conceptDate.getTime());
+    fertileEnd.setDate(fertileEnd.getDate() + 1);
+
+    const options = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
+    const shortOptions = { month: 'short', day: 'numeric' };
+    
+    document.getElementById('res_due').innerText = dueDate.toLocaleDateString(undefined, options);
+    document.getElementById('res_concept').innerText = conceptDate.toLocaleDateString(undefined, options);
+    document.getElementById('res_fertile').innerText = fertileStart.toLocaleDateString(undefined, shortOptions) + " — " + fertileEnd.toLocaleDateString(undefined, shortOptions);
+
+    document.getElementById('con_result').classList.remove('hidden');
+  });
+</script>
 </body>
 </html>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
- {"@type":"WebApplication","name":"Conception Calculator","url":"https://www.raphaatlas.com/conception-calculator/","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},
- {"@type":"BreadcrumbList","itemListElement":[
-   {"@type":"ListItem","position":1,"name":"Home","item":"https://www.raphaatlas.com/"},
-   {"@type":"ListItem","position":2,"name":"Calculators","item":"https://www.raphaatlas.com/calculators/"},
-   {"@type":"ListItem","position":3,"name":"Conception Calculator","item":"https://www.raphaatlas.com/conception-calculator/"}
- ]},
- {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How accurate is an estimated conception date?","acceptedAnswer":{"@type":"Answer","text":"It is an estimate based on a typical cycle. Actual conception depends on when ovulation occurred, which varies, so an ultrasound gives a more precise date."}},{"@type":"Question","name":"Can I find the exact day I conceived?","acceptedAnswer":{"@type":"Answer","text":"Rarely with certainty. Sperm can survive several days, so conception may occur days after intercourse. The tool gives a likely window, not an exact day."}}]}
-]}
-</script>

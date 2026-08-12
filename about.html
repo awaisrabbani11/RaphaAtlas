@@ -1,133 +1,290 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About RaphaAtlas</title>
-<meta name="description" content="RaphaAtlas is an evidence-based health publication and calculator library, a project of Growth Partners Global LLC, reviewed by practicing physicians.">
-<link rel="canonical" href="https://www.raphaatlas.com/about">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="RaphaAtlas">
-<meta property="og:title" content="About RaphaAtlas">
-<meta property="og:description" content="RaphaAtlas is an evidence-based health publication and calculator library, a project of Growth Partners Global LLC, reviewed by practicing physicians.">
-<meta property="og:url" content="https://www.raphaatlas.com/about/">
-<meta property="og:image" content="https://www.raphaatlas.com/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>About Me - rafaatlas.com</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-tertiary-container": "#838484",
+                        "on-primary-container": "#848484",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#1a1c1c",
+                        "on-primary-fixed": "#1b1b1b",
+                        "surface-container-low": "#f9f3eb",
+                        "background": "#fff8f0",
+                        "outline-variant": "#cfc4c5",
+                        "surface-container-high": "#ede7df",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#002023",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#474747",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "surface-container": "#f3ede5",
+                        "surface-container-highest": "#e7e2da",
+                        "vitality-teal": "#02838D",
+                        "secondary-fixed-dim": "#75d5e0",
+                        "on-background": "#1d1b17",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#92f1fc",
+                        "primary-fixed": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#004f55",
+                        "border-subtle": "#E0EDEF",
+                        "on-surface-variant": "#4c4546",
+                        "header-black": "#000000",
+                        "surface": "#fff8f0",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-surface": "#1d1b17",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#5e5e5e",
+                        "secondary": "#006971",
+                        "on-secondary-container": "#006d76",
+                        "inverse-on-surface": "#f6f0e8",
+                        "outline": "#7e7576",
+                        "secondary-container": "#8feff9",
+                        "surface-variant": "#e7e2da",
+                        "inverse-surface": "#32302b",
+                        "primary": "#000000",
+                        "surface-dim": "#dfd9d2",
+                        "on-primary": "#ffffff",
+                        "surface-cream": "#FBF5ED",
+                        "on-error": "#ffffff",
+                        "primary-container": "#1b1b1b",
+                        "inverse-primary": "#c6c6c6",
+                        "tertiary": "#000000",
+                        "surface-bright": "#fff8f0",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "section-gap": "80px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "nav-link": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "nav-link": ["15px", { "lineHeight": "24px", "fontWeight": "500" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "30px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "vitality-teal": "#02838D",
+                        "header-black": "#000000",
+                        "surface-cream": "#FBF5ED",
+                        "on-primary": "#ffffff",
+                        "primary": "#000000",
+                        "surface-container-lowest": "#ffffff",
+                        "border-subtle": "#E0EDEF",
+                        "on-surface": "#1d1b17",
+                    }
+                }
+            }
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@600;700;900&family=Archivo:wght@700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
-<body>
-<header class="site-header">
-  <div class="wrap bar">
-    <a class="logo" href="/"><span class="dot"></span>RaphaAtlas</a>
-    <button class="hamburger" aria-label="Menu" aria-expanded="false">&#9776;</button>
-    <nav class="nav" aria-label="Primary">
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Calculators <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/body-type-calculator">Body Type Calculator</a>
-          <a href="/macro-calculator">Macro Calculator</a>
-          <a href="/bac-calculator">BAC Calculator</a>
-          <a href="/conception-calculator">Conception Calculator</a>
-          <div class="sep"></div>
-          <a href="/calculators">All calculators</a>
-        </div>
-      </div>
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Fitness <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/fitness">All Fitness</a>
-          <a href="/fitness">Strength &amp; Training</a>
-          <a href="/fitness">Cardio &amp; Conditioning</a>
-          <a href="/fitness">Recovery</a>
-        </div>
-      </div>
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Nutrition <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/nutrition">All Nutrition</a>
-          <a href="/nutrition">Macros &amp; Diets</a>
-          <a href="/nutrition">Supplements</a>
-          <a href="/nutrition">Weight Management</a>
-        </div>
-      </div>
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Health <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/health">All Health</a>
-          <a href="/health">Conditions</a>
-          <a href="/health">Biomarkers</a>
-          <a href="/health">Preventive Care</a>
-        </div>
-      </div>
-      <div class="item"><a href="/about">About</a></div>
-      <a class="btn nav-cta" href="/calculators">Calculators</a>
-    </nav>
-  </div>
+<body class="bg-surface-lowest text-on-surface antialiased flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-header-black border-b border-black docked full-width top-0 z-50 sticky transition-all duration-300">
+<div class="flex justify-between items-center px-4 md:px-8 py-2 w-full max-w-7xl mx-auto">
+<a href="/" aria-label="RaphaAtlas home" class="flex items-center">
+  <img src="/raphaatlas-mark.svg" alt="RaphaAtlas Logo" height="40" width="40" class="h-10 w-10">
+  <span style="font-family: 'Archivo', 'Montserrat', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: -1px; color: white; margin-left: 12px;">RAPHAATLAS</span>
+</a>
+<nav class="hidden lg:flex items-center space-x-6">
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/nutrition">Nutrition</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/health">Health</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/calculators">Calculators</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/fitness">Fitness</a>
+<div class="relative group">
+<button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors py-2" style="font-family: 'Inter', sans-serif;">
+<span>More</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="absolute left-0 mt-2 w-48 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg">
+<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/about">About Us</a>
+<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all" href="/contact">Contact Us</a>
+</div>
+</div>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="text-on-primary hover:text-vitality-teal transition-colors"><span class="material-symbols-outlined">search</span></button>
+<button class="lg:hidden text-on-primary"><span class="material-symbols-outlined text-2xl">menu</span></button>
+</div>
+</div>
 </header>
-<nav class="wrap crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span>About</nav>
-<main class="article">
-  <h1>About RaphaAtlas</h1>
-  <p>RaphaAtlas is an evidence-based health publication and free calculator library. We pair practical tools with clearly written articles on fitness, nutrition, and medicine — reviewed by practicing physicians before they publish.</p>
-  <h2>Who we are</h2>
-  <p>RaphaAtlas is a project of <strong>Growth Partners Global LLC</strong>. Our goal is simple: health information that informs rather than sells, and tools that show their working instead of hiding it.</p>
-  <h2>How we work</h2>
-  <p>Every calculator uses a published, checkable formula. Every clinical claim in our articles is checked against current evidence by an MBBS physician on our review board. Where the science is uncertain, we say so.</p>
-  <div class="callout"><strong>Editorial independence.</strong> We do not publish sponsored medical claims. Where pages contain affiliate links, they are disclosed and never change our clinical guidance.</div>
-  <h2>Contact</h2>
-  <p>Reach us at <a href="mailto:dr.awais@growthpartnersgloballlc.com">dr.awais@growthpartnersgloballlc.com</a> or <a href="mailto:dr.ahmed@growthpartnersgloballlc.com">dr.ahmed@growthpartnersgloballlc.com</a>.</p>
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-gutter py-section-gap">
+<!-- Hero Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-gutter items-center mb-section-gap">
+<div class="col-span-1 lg:col-span-6 space-y-6">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary">
+                    About <br>
+<span style="font-family: 'Proxima Nova', 'Montserrat', sans-serif; font-size: 34px; font-weight: 900; letter-spacing: -1px; color: white;">RaphaAtlas</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    RaphaAtlas Rapha means: health and Atlas: a complete guide of, it covers nutriton, health, calculators, fitness and is a complete guide of nutrition, health, health calculators and fitness, a project of Growth Partners Global LLC.
+                </p>
+<div class="pt-4 flex gap-4">
+<button class="bg-vitality-teal text-on-primary px-8 py-3 rounded-full font-label-bold text-label-bold hover:bg-secondary transition-colors shadow-sm">
+                        My Training Philosophy
+                    </button>
+<button class="bg-surface-lowest text-primary border-2 border-primary px-8 py-3 rounded-full font-label-bold text-label-bold hover:bg-surface-cream transition-colors">
+                        Get in Touch
+                    </button>
+</div>
+</div>
+<div class="col-span-1 lg:col-span-6 relative">
+<div class="aspect-[4/3] rounded-xl overflow-hidden shadow-sm relative z-10 border border-border-subtle bg-surface-cream">
+<img class="w-full h-full object-cover" data-alt="A candid, high-quality photograph of a fit, smiling man in his mid-30s in a modern, brightly lit fitness studio. He is holding a kettlebell, looking directly at the camera with a warm, approachable expression. The lighting is crisp and natural, highlighting a high-contrast modernism aesthetic with deep blacks, bright whites, and subtle teal accents in the background equipment. The mood is joyful, energetic, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-ogxz6N_uuBQ2qes5nE4-0cXqy4aVH5cwxdURUQT2833h-EPczeP-kQGgHFBZbBeNC2d9wx5kVZSXkk3b2EQA3sW_QbJF-SSOhwgEqqHqaVTPHLWVJOFtvqo2zk6MYypRkT-5odnRZDyniOA2F2u6N0SjCmH_Eu0CJYlY_9NnNof3wsEVvKzqFaOZ2ovoH-Z5AKMhA9MmFl4X7XZyNtc3eIzjirPcVpYWo8zgl_G4gkw_hn_pVVFX">
+</div>
+<div class="absolute -bottom-6 -left-6 w-48 h-48 bg-vitality-teal opacity-10 rounded-full z-0 blur-2xl"></div>
+</div>
+</section>
+<!-- Bento Grid Mission & Philosophy -->
+<section class="mb-section-gap">
+<h2 class="font-headline-md text-headline-md text-primary mb-8 text-center">My Mission &amp; Method</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Mission Box -->
+<div class="col-span-1 md:col-span-2 bg-surface-cream p-8 md:p-12 rounded-xl border border-border-subtle relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 transition-opacity duration-300">
+<span class="material-symbols-outlined text-6xl text-vitality-teal" data-icon="explore" data-weight="fill">explore</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4 relative z-10">The Mission</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl relative z-10">
+                        To demystify nutrition and biomechanics. The fitness industry is full of noise, quick fixes, and aesthetic obsessions. My goal is to provide high-definition, data-backed tools that help you build a resilient, capable body designed for the real world. No gimmicks. Just science applied with joy.
+                    </p>
+</div>
+<!-- Stat/Highlight Box -->
+<div class="col-span-1 bg-vitality-teal text-on-primary p-8 md:p-12 rounded-xl flex flex-col justify-center items-center text-center shadow-sm">
+<span class="material-symbols-outlined text-5xl mb-4" data-icon="monitor_heart" data-weight="fill">monitor_heart</span>
+<span class="font-display-lg text-display-lg font-bold block">10+</span>
+<span class="font-label-bold text-label-bold uppercase tracking-widest opacity-90 mt-2">Years Exploring Biomechanics</span>
+</div>
+<!-- Philosophy 1 -->
+<div class="col-span-1 bg-surface-lowest border border-border-subtle p-8 rounded-xl hover:shadow-sm transition-shadow">
+<div class="w-12 h-12 bg-surface-cream rounded-full flex items-center justify-center mb-6 border border-border-subtle">
+<span class="material-symbols-outlined text-primary" data-icon="restaurant_menu">restaurant_menu</span>
+</div>
+<h4 class="font-label-bold text-label-bold text-primary mb-3">Nutrition as Fuel, Not Punishment</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">
+                        Food is information and energy. We focus on nutrient density and metabolic flexibility, ensuring you have the vitality to perform and the freedom to enjoy life.
+                    </p>
+</div>
+<!-- Philosophy 2 -->
+<div class="col-span-1 bg-surface-lowest border border-border-subtle p-8 rounded-xl hover:shadow-sm transition-shadow">
+<div class="w-12 h-12 bg-surface-cream rounded-full flex items-center justify-center mb-6 border border-border-subtle">
+<span class="material-symbols-outlined text-primary" data-icon="fitness_center">fitness_center</span>
+</div>
+<h4 class="font-label-bold text-label-bold text-primary mb-3">Functional Strength</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">
+                        Training should make life outside the gym easier. I prioritize compound movements, mobility, and progressive overload to build true, lasting strength.
+                    </p>
+</div>
+<!-- Philosophy 3 -->
+<div class="col-span-1 bg-surface-lowest border border-border-subtle p-8 rounded-xl hover:shadow-sm transition-shadow">
+<div class="w-12 h-12 bg-surface-cream rounded-full flex items-center justify-center mb-6 border border-border-subtle">
+<span class="material-symbols-outlined text-primary" data-icon="psychology">psychology</span>
+</div>
+<h4 class="font-label-bold text-label-bold text-primary mb-3">Data-Driven Joy</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">
+                        Metrics matter, but they serve the experience. We use data to track progress and adjust course, but the ultimate goal is how you feel, move, and live.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Certifications & Trust -->
+<section class="py-12 border-t border-border-subtle flex flex-col md:flex-row items-center justify-between gap-8 opacity-80 hover:opacity-100 transition-opacity">
+<div class="font-label-bold text-label-bold text-primary uppercase tracking-widest">
+                Trusted &amp; Certified
+            </div>
+<div class="flex flex-wrap justify-center gap-8 md:gap-16 grayscale">
+<!-- Imaginary Cert Logos - Using text for now to maintain pure aesthetic -->
+<div class="font-headline-md text-headline-md font-bold text-tertiary-fixed-dim">NSCA-CPT</div>
+<div class="font-headline-md text-headline-md font-bold text-tertiary-fixed-dim">Precision Nutrition</div>
+<div class="font-headline-md text-headline-md font-bold text-tertiary-fixed-dim">FMS L2</div>
+</div>
+</section>
 </main>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <a class="logo" href="/"><span class="dot"></span>RaphaAtlas</a>
-        <p>Evidence-based health, fitness, and nutrition — with free clinical calculators. A project of Growth Partners Global LLC.</p>
-        <p><a href="mailto:dr.awais@growthpartnersgloballlc.com">dr.awais@growthpartnersgloballlc.com</a><a href="mailto:dr.ahmed@growthpartnersgloballlc.com">dr.ahmed@growthpartnersgloballlc.com</a></p>
-      </div>
-      <div>
-        <h5>Calculators</h5>
-        <a href="/body-type-calculator">Body Type</a>
-        <a href="/macro-calculator">Macros</a>
-        <a href="/bac-calculator">BAC</a>
-        <a href="/conception-calculator">Conception</a>
-      </div>
-      <div>
-        <h5>Explore</h5>
-        <a href="/fitness">Fitness</a>
-        <a href="/nutrition">Nutrition</a>
-        <a href="/health">Health</a>
-        <a href="/calculators">All calculators</a>
-      </div>
-      <div>
-        <h5>Company</h5>
-        <a href="/about">About</a>
-        <a href="/medical-review-board">Medical review board</a>
-        <a href="/editorial-policy">Editorial policy</a>
-        <a href="/contact">Contact</a>
-        <a href="/privacy">Privacy</a>
-      </div>
-    </div>
-
-    <div class="foot-aff">
-      <h5>Recommended products</h5>
-      <div class="foot-aff-row">
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Digital Food Scale</a>
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Whey Protein</a>
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Resistance Bands</a>
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Smart Scale</a>
-      </div>
-      <p class="aff-disclosure" style="color:#8AA0A9">As an Amazon Associate, RaphaAtlas earns from qualifying purchases. Replace PRODUCT-ID and YOUR-AFFILIATE-TAG with your Amazon Associates tag.</p>
-    </div>
-
-    <p class="foot-legal">RaphaAtlas provides general educational information and estimates only. It is not a medical device and does not provide medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional for decisions about your health. &copy; <span id="yr"></span> RaphaAtlas — a project of Growth Partners Global LLC.</p>
-  </div>
+<!-- Footer -->
+<footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto">
+<div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center">
+<div class="mb-8 md:mb-0">
+<a href="/" class="block mb-2">
+  <img src="/raphaatlas-lockup.svg" alt="RaphaAtlas" height="90" width="144" class="h-[90px] w-auto">
+</a>
+</div>
+<div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8" style="font-family: 'Inter', sans-serif;">
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="/privacy">Privacy Policy</a>
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="/contact">Contact</a>
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="#">FAQ</a>
+</div>
+<div class="mt-8 md:mt-0 text-on-primary opacity-30 text-sm" style="font-family: 'Inter', sans-serif;">© 2024 RaphaAtlas. All rights reserved.</div>
+</div>
 </footer>
-<script src="/site.js" defer></script>
-</body>
-</html>
+<script>
+        // Simple nav shrink effect on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('py-2');
+                nav.classList.remove('py-base');
+                nav.classList.add('shadow-sm');
+            } else {
+                nav.classList.add('py-base');
+                nav.classList.remove('py-2');
+                nav.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+</body></html>

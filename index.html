@@ -1,186 +1,395 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RaphaAtlas — Evidence-Based Health, Fitness &amp; Nutrition</title>
-<meta name="description" content="Free evidence-based health calculators plus fitness, nutrition, and medical articles reviewed by practicing physicians. Clear, accurate, and easy to use.">
-<link rel="canonical" href="https://www.raphaatlas.com/">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="RaphaAtlas">
-<meta property="og:title" content="RaphaAtlas — Evidence-Based Health, Fitness &amp; Nutrition">
-<meta property="og:description" content="Free evidence-based health calculators plus fitness, nutrition, and medical articles reviewed by practicing physicians. Clear, accurate, and easy to use.">
-<meta property="og:url" content="https://www.raphaatlas.com/">
-<meta property="og:image" content="https://www.raphaatlas.com/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
-
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>High-Definition Wellness | rafaatlas.com</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@600;700;900&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-tertiary-container": "#838484",
+                        "on-primary-container": "#848484",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#1a1c1c",
+                        "on-primary-fixed": "#1b1b1b",
+                        "surface-container-low": "#f9f3eb",
+                        "background": "#fff8f0",
+                        "outline-variant": "#cfc4c5",
+                        "surface-container-high": "#ede7df",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#002023",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#474747",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "surface-container": "#f3ede5",
+                        "surface-container-highest": "#e7e2da",
+                        "vitality-teal": "#02838D",
+                        "secondary-fixed-dim": "#75d5e0",
+                        "on-background": "#1d1b17",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#92f1fc",
+                        "primary-fixed": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#004f55",
+                        "border-subtle": "#E0EDEF",
+                        "on-surface-variant": "#4c4546",
+                        "header-black": "#000000",
+                        "surface": "#fff8f0",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-surface": "#1d1b17",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#5e5e5e",
+                        "secondary": "#006971",
+                        "on-secondary-container": "#006d76",
+                        "inverse-on-surface": "#f6f0e8",
+                        "outline": "#7e7576",
+                        "secondary-container": "#8feff9",
+                        "surface-variant": "#e7e2da",
+                        "inverse-surface": "#32302b",
+                        "primary": "#000000",
+                        "surface-dim": "#dfd9d2",
+                        "on-primary": "#ffffff",
+                        "surface-cream": "#FBF5ED",
+                        "on-error": "#ffffff",
+                        "primary-container": "#1b1b1b",
+                        "inverse-primary": "#c6c6c6",
+                        "tertiary": "#000000",
+                        "surface-bright": "#fff8f0",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "section-gap": "80px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "nav-link": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "nav-link": ["15px", { "lineHeight": "24px", "fontWeight": "500" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "30px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "vitality-teal": "#02838D",
+                        "header-black": "#000000",
+                        "surface-cream": "#FBF5ED",
+                        "on-primary": "#ffffff",
+                        "primary": "#000000",
+                        "surface-container-lowest": "#ffffff",
+                        "border-subtle": "#E0EDEF",
+                        "on-surface": "#1d1b17",
+                    }
+                }
+            }
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@600;700;900&family=Archivo:wght@700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
-<body>
-<header class="site-header">
-  <div class="wrap bar">
-    <a class="logo" href="/"><span class="dot"></span>RaphaAtlas</a>
-    <button class="hamburger" aria-label="Menu" aria-expanded="false">&#9776;</button>
-    <nav class="nav" aria-label="Primary">
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Calculators <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/body-type-calculator">Body Type Calculator</a>
-          <a href="/macro-calculator">Macro Calculator</a>
-          <a href="/bac-calculator">BAC Calculator</a>
-          <a href="/conception-calculator">Conception Calculator</a>
-          <div class="sep"></div>
-          <a href="/calculators">All calculators</a>
-        </div>
-      </div>
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Fitness <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/fitness">All Fitness</a>
-          <a href="/fitness">Strength &amp; Training</a>
-          <a href="/fitness">Cardio &amp; Conditioning</a>
-          <a href="/fitness">Recovery</a>
-        </div>
-      </div>
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Nutrition <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/nutrition">All Nutrition</a>
-          <a href="/nutrition">Macros &amp; Diets</a>
-          <a href="/nutrition">Supplements</a>
-          <a href="/nutrition">Weight Management</a>
-        </div>
-      </div>
-      <div class="item" aria-open="false">
-        <button aria-haspopup="true" aria-expanded="false">Health <span class="caret"></span></button>
-        <div class="menu">
-          <a href="/health">All Health</a>
-          <a href="/health">Conditions</a>
-          <a href="/health">Biomarkers</a>
-          <a href="/health">Preventive Care</a>
-        </div>
-      </div>
-      <div class="item"><a href="/about">About</a></div>
-      <a class="btn nav-cta" href="/calculators">Calculators</a>
-    </nav>
-  </div>
+<body class="bg-surface-container-lowest text-on-surface font-body-md antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="bg-header-black border-b border-black docked full-width top-0 z-50 sticky transition-all duration-300">
+<div class="flex justify-between items-center px-4 md:px-8 py-2 w-full max-w-7xl mx-auto">
+<a href="/" aria-label="RaphaAtlas home" class="flex items-center">
+  <img src="/raphaatlas-mark.svg" alt="RaphaAtlas Logo" height="40" width="40" class="h-10 w-10">
+  <span style="font-family: 'Archivo', 'Montserrat', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: -1px; color: white; margin-left: 12px;">RAPHAATLAS</span>
+</a>
+<nav class="hidden lg:flex items-center space-x-6">
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/nutrition">Nutrition</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/health">Health</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/calculators">Calculators</a>
+<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/fitness">Fitness</a>
+<div class="relative group">
+<button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors py-2" style="font-family: 'Inter', sans-serif;">
+<span>More</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="absolute left-0 mt-2 w-48 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg">
+<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/about">About Us</a>
+<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all" href="/contact">Contact Us</a>
+</div>
+</div>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="text-on-primary hover:text-vitality-teal transition-colors"><span class="material-symbols-outlined">search</span></button>
+<button class="lg:hidden text-on-primary"><span class="material-symbols-outlined text-2xl">menu</span></button>
+</div>
+</div>
 </header>
-<section class="hero">
-  <div class="wrap">
-    <div>
-      <p class="eyebrow">Health you can trust</p>
-      <h1>Clear answers for your health, fitness, and nutrition.</h1>
-      <p>Free, accurate calculators alongside physician-reviewed articles — written to inform, not to sell. No clutter, no hype, no sign-up.</p>
-      <div class="actions">
-        <a class="btn" href="/calculators">Explore calculators</a>
-        <a class="btn ghost" href="/health">Read articles</a>
-      </div>
-    </div>
-    <div class="hero-media">
-      <!-- Replace with a real image: <img src="/images/home-hero.jpg" alt="..."> -->
-      <span class="ph">Add hero image &rarr; /images/home-hero.jpg</span>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Start with a calculator</h2>
-      <p>Transparent formulas, correct units, and a clean read on any device.</p>
-    </div>
-    <div class="grid">
-      <a class="card" href="/body-type-calculator"><div class="ic">01</div><h3>Body Type</h3><p>Find your somatotype and what it means for training and diet.</p><span class="arrow">Open &rarr;</span></a>
-      <a class="card" href="/macro-calculator"><div class="ic">02</div><h3>Macros</h3><p>Daily protein, carbohydrate, and fat targets for your goal.</p><span class="arrow">Open &rarr;</span></a>
-      <a class="card" href="/bac-calculator"><div class="ic">03</div><h3>BAC</h3><p>Estimate blood alcohol concentration with safety context.</p><span class="arrow">Open &rarr;</span></a>
-      <a class="card" href="/conception-calculator"><div class="ic">04</div><h3>Conception</h3><p>Estimate conception and due dates from your last period.</p><span class="arrow">Open &rarr;</span></a>
-    </div>
-  </div>
-</section>
-
-<section class="section alt">
-  <div class="wrap">
-    <div class="section-head"><h2>Read &amp; learn</h2><p>Physician-reviewed writing across three departments.</p></div>
-    <div class="grid cols-3">
-      <a class="card" href="/fitness"><div class="ic">&#9650;</div><h3>Fitness</h3><p>Strength, conditioning, and recovery — mechanisms over myths.</p><span class="arrow">Explore &rarr;</span></a>
-      <a class="card" href="/nutrition"><div class="ic">&#9679;</div><h3>Nutrition</h3><p>Macros, micronutrients, and eating patterns from the evidence.</p><span class="arrow">Explore &rarr;</span></a>
-      <a class="card" href="/health"><div class="ic">&#43;</div><h3>Health &amp; Medicine</h3><p>Conditions, biomarkers, and treatments written to inform.</p><span class="arrow">Explore &rarr;</span></a>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="section-head"><h2>Reviewed by practicing physicians</h2><p>Every clinical claim is checked before it publishes.</p></div>
-    <div class="trust">
-      <div class="t"><h4>Medically reviewed</h4><p>Health content is checked against current clinical evidence by MBBS physicians.</p></div>
-      <div class="t"><h4>Transparent methods</h4><p>Every calculator uses published, checkable formulas — never a black box.</p></div>
-      <div class="t"><h4>Built mobile-first</h4><p>Fast, single-purpose pages that read the same on a phone as on a desktop.</p></div>
-    </div>
-    <div class="reviewers">
-      <div class="r"><span class="av">MA</span><div><strong>Dr. Muhammad Awais Rabbani</strong><span>MBBS &middot; Medical Reviewer</span></div></div>
-      <div class="r"><span class="av">AH</span><div><strong>Dr. Ahmed Humayon</strong><span>MBBS &middot; Medical Reviewer</span></div></div>
-    </div>
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <a class="logo" href="/"><span class="dot"></span>RaphaAtlas</a>
-        <p>Evidence-based health, fitness, and nutrition — with free clinical calculators. A project of Growth Partners Global LLC.</p>
-        <p><a href="mailto:dr.awais@growthpartnersgloballlc.com">dr.awais@growthpartnersgloballlc.com</a><a href="mailto:dr.ahmed@growthpartnersgloballlc.com">dr.ahmed@growthpartnersgloballlc.com</a></p>
-      </div>
-      <div>
-        <h5>Calculators</h5>
-        <a href="/body-type-calculator">Body Type</a>
-        <a href="/macro-calculator">Macros</a>
-        <a href="/bac-calculator">BAC</a>
-        <a href="/conception-calculator">Conception</a>
-      </div>
-      <div>
-        <h5>Explore</h5>
-        <a href="/fitness">Fitness</a>
-        <a href="/nutrition">Nutrition</a>
-        <a href="/health">Health</a>
-        <a href="/calculators">All calculators</a>
-      </div>
-      <div>
-        <h5>Company</h5>
-        <a href="/about">About</a>
-        <a href="/medical-review-board">Medical review board</a>
-        <a href="/editorial-policy">Editorial policy</a>
-        <a href="/contact">Contact</a>
-        <a href="/privacy">Privacy</a>
-      </div>
-    </div>
-
-    <div class="foot-aff">
-      <h5>Recommended products</h5>
-      <div class="foot-aff-row">
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Digital Food Scale</a>
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Whey Protein</a>
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Resistance Bands</a>
-        <a href="https://www.amazon.com/dp/PRODUCT-ID?tag=YOUR-AFFILIATE-TAG" rel="sponsored nofollow" target="_blank">Smart Scale</a>
-      </div>
-      <p class="aff-disclosure" style="color:#8AA0A9">As an Amazon Associate, RaphaAtlas earns from qualifying purchases. Replace PRODUCT-ID and YOUR-AFFILIATE-TAG with your Amazon Associates tag.</p>
-    </div>
-
-    <p class="foot-legal">RaphaAtlas provides general educational information and estimates only. It is not a medical device and does not provide medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional for decisions about your health. &copy; <span id="yr"></span> RaphaAtlas — a project of Growth Partners Global LLC.</p>
-  </div>
-</footer>
-<script src="/site.js" defer></script>
-</body>
-</html>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
- {"@type":"WebSite","@id":"https://www.raphaatlas.com/#website","url":"https://www.raphaatlas.com/","name":"RaphaAtlas","publisher":{"@id":"https://www.raphaatlas.com/#org"}},
- {"@type":"Organization","@id":"https://www.raphaatlas.com/#org","name":"RaphaAtlas","url":"https://www.raphaatlas.com/","parentOrganization":{"@type":"Organization","name":"Growth Partners Global LLC"},"logo":"https://www.raphaatlas.com/logo.svg"}
-]}
+<!-- Main Content -->
+<main>
+<!-- Hero Section with Shader Background -->
+<section class="relative min-h-[80vh] flex items-center bg-header-black overflow-hidden border-b border-border-subtle">
+<!-- Animated Shader Background -->
+<div class="absolute inset-0 w-full h-full opacity-40 z-0">
+<canvas id="shader-canvas-ANIMATION_3" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_3');
+  function syncSize() {
+    const w = canvas.clientWidth  || window.innerWidth;
+    const h = canvas.clientHeight || window.innerHeight;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+varying vec2 v_texCoord;
+void main() {
+    vec2 uv = v_texCoord;
+    float dist = distance(uv, vec2(0.5));
+    float pulse = 0.5 + 0.5 * sin(u_time * 2.0);
+    vec3 color1 = vec3(1.0, 1.0, 1.0);
+    vec3 color2 = vec3(0.01, 0.51, 0.55); // vitality-teal vibe
+    float mask = smoothstep(0.4, 0.6, dist + pulse * 0.05);
+    vec3 finalColor = mix(color2, color1, mask);
+    float scanline = sin(uv.y * 800.0) * 0.02;
+    finalColor -= scanline;
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
 </script>
+</div>
+<div class="relative z-10 w-full max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-section-gap">
+<!-- Text Content -->
+<div class="space-y-6 text-on-primary text-center md:text-left drop-shadow-lg">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg font-black tracking-tight text-on-primary">
+                        High-Definition <br>
+<span class="text-vitality-teal">Wellness</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-primary opacity-90 max-w-xl mx-auto md:mx-0">
+                        Evidence-based insights, precise calculators, and joyful living. Build your optimal routine with clinical accuracy and high energy.
+                    </p>
+<div class="pt-4 flex flex-col sm:flex-row items-center sm:justify-start gap-4 justify-center">
+<a class="inline-flex items-center justify-center bg-vitality-teal text-on-primary font-label-bold text-label-bold rounded-full px-8 py-4 hover:bg-opacity-90 transition-transform hover:scale-105 shadow-lg w-full sm:w-auto" href="/nutrition">
+                            Start Your Journey
+                        </a>
+<a class="inline-flex items-center justify-center bg-surface-container-lowest text-primary font-label-bold text-label-bold rounded-full px-8 py-4 border-2 border-primary hover:bg-surface-cream transition-colors w-full sm:w-auto" href="/calculators">
+                            Explore Calculators
+                        </a>
+</div>
+</div>
+<!-- Hero Imagery -->
+<div class="relative h-[400px] md:h-[600px] w-full rounded-xl overflow-hidden border-4 border-vitality-teal bg-surface-container-highest transform md:rotate-2 hover:rotate-0 transition-transform duration-500 shadow-2xl">
+<img class="w-full h-full object-cover grayscale contrast-125 mix-blend-luminosity hover:grayscale-0 transition-all duration-700" data-alt="A vibrant, high-key brightly lit modern photography scene showing a diverse group of healthy individuals joyfully engaging in an active outdoor lifestyle. The composition features a mix of running, stretching, and laughing in a bright, modern architectural park setting. The lighting is crisp and clear, emphasizing a high-contrast aesthetic with pure whites, deep blacks, and subtle pops of bright teal clothing accents. The mood is energetic, authoritative yet highly approachable and uplifting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClaI6E8aOLahiD4rgora-90kd23XPJh4Vr10jrslCbj1rfyu1QazFTcef_gG7oXpC1w2FCnwj0Y_yThND3kgcELYnlRtVjiemZNhLMS2OfxbUO_IGF_cxFtP4-K41I52yjjt-z7LVoNvsYRxoDpJK_OMKDjQ6ZV6clB5-gzht8YZIapxaWBLKsS4fNiWyv5M9RypS9rQVsFv6rT8vRKIM4rBFphN-23QhO1ssciLiwDfo1z95bcJ3u">
+<!-- Decorative overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-header-black to-transparent opacity-50 mix-blend-multiply"></div>
+</div>
+</div>
+</section>
+<!-- Calculators Bento Grid -->
+<section class="py-section-gap px-gutter max-w-container-max mx-auto">
+<div class="mb-12 text-center md:text-left">
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg font-black tracking-tight mb-4">Precision Tools</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Remove the guesswork from your routine with our clinically aligned calculators.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Large Feature Tool -->
+<div class="md:col-span-2 bg-surface-cream rounded-xl p-8 border border-border-subtle relative overflow-hidden group hover:border-vitality-teal transition-colors">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-9xl">monitor_weight</span>
+</div>
+<div class="relative z-10 h-full flex flex-col justify-between">
+<div>
+<span class="inline-block bg-header-black text-on-primary text-xs font-bold px-3 py-1 mb-4 rounded-full">POPULAR</span>
+<h3 class="font-headline-md text-headline-md font-bold tracking-tight mb-2">Advanced Macro Calculator</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-md">Calculate your exact macronutrient needs based on your unique metabolism, activity level, and goals.</p>
+</div>
+<a class="inline-flex items-center text-vitality-teal font-label-bold text-label-bold group-hover:underline" href="/macro-calculator">
+                            Calculate Macros <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Secondary Tool 1 -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 hover:shadow-lg transition-shadow group flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 bg-surface-cream rounded-full flex items-center justify-center mb-4 text-vitality-teal group-hover:bg-vitality-teal group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">directions_run</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold tracking-tight mb-2 text-lg">Calorie Burn</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mb-4">Estimate energy expenditure across various activities.</p>
+</div>
+<a class="inline-flex items-center text-header-black font-label-bold text-label-bold border-b-2 border-transparent group-hover:border-vitality-teal transition-colors self-start pb-1" href="/calculators">
+                        Use Tool
+                    </a>
+</div>
+<!-- Secondary Tool 2 -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 hover:shadow-lg transition-shadow group flex flex-col justify-between md:col-start-3">
+<div>
+<div class="w-12 h-12 bg-surface-cream rounded-full flex items-center justify-center mb-4 text-vitality-teal group-hover:bg-vitality-teal group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold tracking-tight mb-2 text-lg">Hydration Needs</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mb-4">Optimize your water intake based on climate and exertion.</p>
+</div>
+<a class="inline-flex items-center text-header-black font-label-bold text-label-bold border-b-2 border-transparent group-hover:border-vitality-teal transition-colors self-start pb-1" href="/calculators">
+                        Use Tool
+                    </a>
+</div>
+</div>
+</section>
+<!-- Featured Editorial -->
+<section class="bg-surface-container-lowest py-section-gap border-t border-border-subtle">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg font-black tracking-tight mb-2">Latest Insights</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Evidence-based articles to fuel your journey.</p>
+</div>
+<a class="hidden md:inline-flex items-center text-header-black font-label-bold text-label-bold hover:text-vitality-teal transition-colors" href="/nutrition">
+                        View All Articles <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Article Card 1 -->
+<article class="group cursor-pointer">
+<div class="relative h-48 mb-4 overflow-hidden rounded border border-border-subtle">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0" data-alt="A clean, minimalist high-contrast still life photograph of healthy meal prep ingredients on a stark white background. Items include vibrant green spinach, bright orange salmon, and clean white quinoa arranged geometrically. The lighting is extremely bright and even, emphasizing texture and color purity against the black and white aesthetic of the surrounding UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDURTZMUMDnBhNOBsnpDGDXilNmdIRRh_o1xw1q3jxj-5hhSbi87SpthU7Hl0zlDKadMirCol3zb1ZkVaIssElbYrRqFBrmVD2wKnFNkW-h8gmDJw1b2O-lW0U8trYvwnEyFuU4ZfKrlfHOGr76yqJDUF8uvs-BlxLaxbvs3sJ3WA1SsJLqe1L-7mwZhLRcdkqB3cPqMkxtoQgSqGSKjvxTa6LwBLm2FrZwL6jcFZsmJy0JBl-WDGqk">
+</div>
+<div class="flex items-center space-x-2 text-xs font-label-bold text-label-bold text-on-surface-variant mb-2 uppercase tracking-wider">
+<span class="">Nutrition</span>
+<span class="">•</span>
+<span class="">5 Min Read</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold tracking-tight text-lg mb-2 group-hover:text-vitality-teal transition-colors line-clamp-2">Optimizing Protein Synthesis After Resistance Training</h3>
+</article>
+<!-- Article Card 2 -->
+<article class="group cursor-pointer">
+<div class="relative h-48 mb-4 overflow-hidden rounded border border-border-subtle">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0" data-alt="A striking black and white photograph of a runner's silhouette against an intensely bright, overexposed sky, creating a high-contrast minimalist composition. The runner's shoes have a subtle splash of vibrant teal color added in post-production. The image conveys energy, clinical precision, and modern athleticism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ3_qciP5n9sVQ-6kYMb-Aij6FO3dcuj9P1vqXpKEnq43XwHp5I1F-dMZj4nwveDJaYGe3tavjxUfhhkoof8JQhmvmPu_7SMaAtmx1cXnLDnwGMsyNOYi0gPhj7WEVWAQCKja2CWpyy46bE3AoFVme81S206fA9yprk5qRfS7sB7CjDBFYJWwYUz2LFNQF9CFYa1Bm1u8EASvrMzWaGIAAF8Hkui6wKOPS4-TU0QW7yHDyhs-mGhYn">
+</div>
+<div class="flex items-center space-x-2 text-xs font-label-bold text-label-bold text-on-surface-variant mb-2 uppercase tracking-wider">
+<span class="">Fitness</span>
+<span class="">•</span>
+<span class="">8 Min Read</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold tracking-tight text-lg mb-2 group-hover:text-vitality-teal transition-colors line-clamp-2">The Science of Zone 2 Cardio for Metabolic Flexibility</h3>
+</article>
+<!-- Article Card 3 -->
+<article class="group cursor-pointer hidden md:block">
+<div class="relative h-48 mb-4 overflow-hidden rounded border border-border-subtle">
+<div class="w-full h-full bg-surface-cream flex items-center justify-center group-hover:bg-vitality-teal transition-colors">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-on-primary">self_improvement</span>
+</div>
+</div>
+<div class="flex items-center space-x-2 text-xs font-label-bold text-label-bold text-on-surface-variant mb-2 uppercase tracking-wider">
+<span class="">Recovery</span>
+<span class="">•</span>
+<span class="">4 Min Read</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold tracking-tight text-lg mb-2 group-hover:text-vitality-teal transition-colors line-clamp-2">Active Recovery Strategies That Actually Work</h3>
+</article>
+<!-- Article Card 4 -->
+<article class="group cursor-pointer hidden lg:block">
+<div class="relative h-48 mb-4 overflow-hidden rounded border border-border-subtle">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0" data-alt="A modern, abstract macro photograph of water droplets on a sleek black surface, harshly lit to create high-contrast specular highlights. The reflections in the droplets have a slight cyan/teal tint. The image is highly textured, clinical, and fits a premium wellness brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-lziJPGTdkIadM-RjKo39vdYsWnn8jz_xCjUil-ioJPQbQ8E3ZAkW6ntJFIy2H-U-X8FXipZBQFO-HTZXNkL547aNRfkuuIVxnPU84N5yfnnkA9roy6cL4aXbHdbn3LhEv7kXrpt1XWk81tkSt1xMeiVhLD981IYLgrDBNZur556LevipDf8PgvIwDRR1PQLu2sFe_dxfiLjXNWDjBAIcu_83cOIN67t2b_VxF6oSPQyUPy5k0Epn">
+</div>
+<div class="flex items-center space-x-2 text-xs font-label-bold text-label-bold text-on-surface-variant mb-2 uppercase tracking-wider">
+<span class="">Lifestyle</span>
+<span class="">•</span>
+<span class="">6 Min Read</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold tracking-tight text-lg mb-2 group-hover:text-vitality-teal transition-colors line-clamp-2">Debunking Common Hydration Myths in 2024</h3>
+</article>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto">
+<div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center">
+<div class="mb-8 md:mb-0">
+<a href="/" class="block mb-2">
+  <img src="/raphaatlas-lockup.svg" alt="RaphaAtlas" height="90" width="144" class="h-[90px] w-auto">
+</a>
+</div>
+<div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8" style="font-family: 'Inter', sans-serif;">
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="/privacy">Privacy Policy</a>
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="/contact">Contact</a>
+<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="#">FAQ</a>
+</div>
+<div class="mt-8 md:mt-0 text-on-primary opacity-30 text-sm" style="font-family: 'Inter', sans-serif;">© 2024 RaphaAtlas. All rights reserved.</div>
+</div>
+</footer>
+</body></html>

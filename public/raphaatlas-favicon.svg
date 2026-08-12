@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64"
+     role="img" aria-label="RaphaAtlas">
+  <!-- Stripped for 16px legibility: ring + rod + serpent only. No continents, no leaves. -->
+  <path fill="none" stroke="#2F4A6D" stroke-width="4" stroke-linecap="round" d="M32,6 A26,26 0 0,0 32,58"/>
+  <path fill="none" stroke="#5C7F3E" stroke-width="4" stroke-linecap="round" d="M32,6 A26,26 0 0,1 32,58"/>
+  <path fill="#2F4A6D" d="M28,50 L32,60 L36,50 Z"/>
+  <path fill="none" stroke="#2F4A6D" stroke-width="4" stroke-linecap="round" d="M32,15 V52"/>
+  <circle fill="#2F4A6D" cx="32" cy="12" r="4"/>
+  <path fill="none" stroke="#5C7F3E" stroke-width="3.6" stroke-linecap="round"
+        d="M27,50 C39,44 39,37 28,32 C17,27 17,20 30,15"/>
+</svg>
