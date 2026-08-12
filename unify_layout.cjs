@@ -48,7 +48,7 @@ const headerHtml = `<header class="bg-header-black border-b border-black docked 
 <div class="flex justify-between items-center px-4 md:px-8 py-2 w-full max-w-7xl mx-auto">
 <a href="/" aria-label="RaphaAtlas home" class="flex items-center">
   <img src="/raphaatlas-mark.svg" alt="RaphaAtlas Logo" height="40" width="40" class="h-10 w-10">
-  <span style="font-family: 'Archivo', 'Montserrat', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: -1px; color: white; margin-left: 12px;">RAPHAATLAS</span>
+  <span style="font-family: 'Merriweather', 'Georgia', serif; font-size: 34px; font-weight: 900; letter-spacing: -1.5px; color: white; margin-left: 12px; transform: translateY(2px);">RaphaAtlas</span>
 </a>
 <nav class="hidden lg:flex items-center space-x-6">
 <a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/nutrition">Nutrition</a>
@@ -60,8 +60,11 @@ const headerHtml = `<header class="bg-header-black border-b border-black docked 
 <span>More</span>
 <span class="material-symbols-outlined text-sm">expand_more</span>
 </button>
-<div class="absolute left-0 mt-2 w-48 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg">
+<div class="absolute left-0 mt-2 w-56 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg">
 <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/about">About Us</a>
+<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/editorial-policy">Editorial Policy</a>
+<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/medical-review-board">Medical Review Board</a>
+<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/privacy">Privacy Policy</a>
 <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all" href="/contact">Contact Us</a>
 </div>
 </div>
@@ -76,15 +79,17 @@ const headerHtml = `<header class="bg-header-black border-b border-black docked 
 const footerHtml = `<footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto">
 <div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center">
 <div class="mb-8 md:mb-0">
-<a href="/" class="block mb-2">
-  <img src="/raphaatlas-lockup.svg" alt="RaphaAtlas" height="90" width="144" class="h-[90px] w-auto">
+<a href="/" class="flex items-center mb-2">
+  <img src="/raphaatlas-mark.svg" alt="RaphaAtlas" height="50" width="50" class="h-12 w-12">
+  <span style="font-family: 'Merriweather', 'Georgia', serif; font-size: 40px; font-weight: 900; letter-spacing: -1.5px; color: white; margin-left: 14px; transform: translateY(2px);">RaphaAtlas</span>
 </a>
 </div>
 <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8" style="font-family: 'Inter', sans-serif;">
-<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="/privacy">Privacy Policy</a>
-<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
-<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="/contact">Contact</a>
-<a class="text-on-primary opacity-30 hover:opacity-100 transition-opacity" href="#">FAQ</a>
+<a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/about">About Us</a>
+<a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/editorial-policy">Editorial Policy</a>
+<a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/medical-review-board">Medical Review Board</a>
+<a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/contact">Contact</a>
+<a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/privacy">Privacy Policy</a>
 </div>
 <div class="mt-8 md:mt-0 text-on-primary opacity-30 text-sm" style="font-family: 'Inter', sans-serif;">© 2024 RaphaAtlas. All rights reserved.</div>
 </div>
@@ -98,7 +103,8 @@ files.forEach(file => {
 
     // 1. Inject head links
     if (!content.includes('apple-touch-icon.png')) {
-        content = content.replace('</head>', headLinks + '\n</head>');
+        content = content.replace('<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
+</head>', headLinks + '\n</head>');
     }
 
     // 2. Replace Header

@@ -1,52 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Page not found — RaphaAtlas</title>
-<meta name="description" content="The page you were looking for could not be found.">
-<link rel="canonical" href="https://www.raphaatlas.com/404.html">
-<meta name="robots" content="noindex, follow">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="RaphaAtlas">
-<meta property="og:title" content="Page not found — RaphaAtlas">
-<meta property="og:description" content="The page you were looking for could not be found.">
-<meta property="og:url" content="https://www.raphaatlas.com/404.html">
-<meta property="og:image" content="https://www.raphaatlas.com/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "vitality-teal": "#02838D",
-                        "header-black": "#000000",
-                        "surface-cream": "#FBF5ED",
-                        "on-primary": "#ffffff",
-                        "primary": "#000000",
-                        "surface-container-lowest": "#ffffff",
-                        "border-subtle": "#E0EDEF",
-                        "on-surface": "#1d1b17",
-                    }
-                }
+const fs = require('fs');
+const path = require('path');
+
+function getFiles(dir, extArray, fileList = []) {
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+        if (file === 'node_modules' || file === '.git') continue;
+        const filePath = path.join(dir, file);
+        if (fs.statSync(filePath).isDirectory()) {
+            getFiles(filePath, extArray, fileList);
+        } else {
+            if (extArray.includes(path.extname(filePath))) {
+                fileList.push(filePath);
             }
         }
-    </script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@600;700;900&family=Archivo:wght@700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
-</head>
-<body>
-<header class="bg-header-black border-b border-black docked full-width top-0 z-50 sticky transition-all duration-300">
+    }
+    return fileList;
+}
+
+const fontLink = `<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">`;
+
+const headerHtml = `<header class="bg-header-black border-b border-black docked full-width top-0 z-50 sticky transition-all duration-300">
 <div class="flex justify-between items-center px-4 md:px-8 py-2 w-full max-w-7xl mx-auto">
 <a href="/" aria-label="RaphaAtlas home" class="flex items-center">
   <img src="/raphaatlas-mark.svg" alt="RaphaAtlas Logo" height="40" width="40" class="h-10 w-10">
@@ -76,15 +49,9 @@
 <button class="lg:hidden text-on-primary"><span class="material-symbols-outlined text-2xl">menu</span></button>
 </div>
 </div>
-</header>
-<section class="section">
-  <div class="wrap section-head">
-    <h2 style="font-size:44px">Page not found</h2>
-    <p>That page isn&#39;t here. Try the <a href="/calculators">calculators</a> or go back <a href="/">home</a>.</p>
-  </div>
-</section>
+</header>`;
 
-<footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto">
+const footerHtml = `<footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto">
 <div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center">
 <div class="mb-8 md:mb-0">
 <a href="/" class="flex items-center mb-2">
@@ -101,7 +68,32 @@
 </div>
 <div class="mt-8 md:mt-0 text-on-primary opacity-30 text-sm" style="font-family: 'Inter', sans-serif;">© 2024 RaphaAtlas. All rights reserved.</div>
 </div>
-</footer>
-<script src="/site.js" defer></script>
-</body>
-</html>
+</footer>`;
+
+const files = getFiles('.', ['.html', '.cjs']);
+
+files.forEach(file => {
+    if (file === 'update_header_footer.cjs') return;
+    let content = fs.readFileSync(file, 'utf8');
+
+    // 1. Inject head links for Merriweather font
+    if (!content.includes('family=Merriweather')) {
+        content = content.replace('</head>', fontLink + '\n</head>');
+    }
+
+    // 2. Replace Header
+    const headerRegex = /<header[\s\S]*?<\/header>/;
+    if (content.match(headerRegex)) {
+        content = content.replace(headerRegex, headerHtml);
+    }
+
+    // 3. Replace Footer
+    const footerRegex = /<footer[\s\S]*?<\/footer>/;
+    if (content.match(footerRegex)) {
+        content = content.replace(footerRegex, footerHtml);
+    }
+
+    fs.writeFileSync(file, content);
+});
+
+console.log('Update complete.');
