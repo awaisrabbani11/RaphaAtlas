@@ -916,61 +916,6 @@ document.getElementById('asof').value = todayUTC().toISOString().slice(0,10);
 </div>
 </footer>
   
-<script>
-  const methodSelect = document.getElementById('con_method');
-  const dateLabel = document.getElementById('con_date_label');
-  const cycleField = document.getElementById('con_cycle_field');
 
-  methodSelect.addEventListener('change', function() {
-    if (this.value === 'lmp') {
-      dateLabel.innerText = "First day of last period";
-      cycleField.style.display = 'block';
-    } else {
-      dateLabel.innerText = "Known due date";
-      cycleField.style.display = 'none';
-    }
-  });
-
-  document.getElementById('conceptForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const method = document.getElementById('con_method').value;
-    const dateInput = document.getElementById('con_date').value;
-    const cycleLength = parseInt(document.getElementById('con_cycle').value, 10);
-    
-    if (!dateInput) return;
-
-    const inputDate = new Date(dateInput);
-    inputDate.setMinutes(inputDate.getMinutes() + inputDate.getTimezoneOffset());
-
-    let dueDate, conceptDate;
-
-    if (method === 'lmp') {
-      const addedDays = 280 + (cycleLength - 28);
-      dueDate = new Date(inputDate.getTime());
-      dueDate.setDate(dueDate.getDate() + addedDays);
-
-      conceptDate = new Date(inputDate.getTime());
-      conceptDate.setDate(conceptDate.getDate() + (cycleLength - 14));
-    } else {
-      dueDate = new Date(inputDate.getTime());
-      conceptDate = new Date(dueDate.getTime());
-      conceptDate.setDate(conceptDate.getDate() - 266);
-    }
-
-    const fertileStart = new Date(conceptDate.getTime());
-    fertileStart.setDate(fertileStart.getDate() - 5);
-    const fertileEnd = new Date(conceptDate.getTime());
-    fertileEnd.setDate(fertileEnd.getDate() + 1);
-
-    const options = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
-    const shortOptions = { month: 'short', day: 'numeric' };
-    
-    document.getElementById('res_due').innerText = dueDate.toLocaleDateString(undefined, options);
-    document.getElementById('res_concept').innerText = conceptDate.toLocaleDateString(undefined, options);
-    document.getElementById('res_fertile').innerText = fertileStart.toLocaleDateString(undefined, shortOptions) + " — " + fertileEnd.toLocaleDateString(undefined, shortOptions);
-
-    document.getElementById('con_result').classList.remove('hidden');
-  });
-</script>
 
 </body></html>

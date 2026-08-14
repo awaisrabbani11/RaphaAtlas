@@ -944,49 +944,6 @@
 </div>
 </footer>
   
-<script>
-  document.getElementById('bacForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const gender = document.getElementById('bac_gender').value;
-    const weightLbs = parseFloat(document.getElementById('bac_weight').value);
-    const drinks = parseFloat(document.getElementById('bac_drinks').value);
-    const hours = parseFloat(document.getElementById('bac_hours').value);
 
-    const alcoholGrams = drinks * 14; 
-    const weightGrams = weightLbs * 453.592;
-    const r = (gender === 'male') ? 0.68 : 0.55;
-
-    let bac = ((alcoholGrams / (weightGrams * r)) * 100) - (0.015 * hours);
-    
-    if (bac < 0) bac = 0;
-
-    document.getElementById('bac_value').innerText = bac.toFixed(3) + "%";
-
-    const descEl = document.getElementById('bac_desc');
-    descEl.className = 'inline-block px-6 py-3 rounded-lg font-bold text-lg'; // reset
-
-    if (bac === 0) {
-      descEl.innerText = "Sober. Zero alcohol detected.";
-      descEl.classList.add('bg-green-100', 'text-green-800');
-    } else if (bac < 0.04) {
-      descEl.innerText = "Mild impairment. Lightheadedness and relaxation.";
-      descEl.classList.add('bg-green-100', 'text-green-800');
-    } else if (bac < 0.08) {
-      descEl.innerText = "Impairment. Lowered inhibitions, reasoning, and depth perception. Driving is unsafe.";
-      descEl.classList.add('bg-yellow-100', 'text-yellow-800');
-    } else if (bac < 0.20) {
-      descEl.innerText = "Legally intoxicated (>= 0.08%). Significant impairment of motor coordination and judgement. Do not drive.";
-      descEl.classList.add('bg-red-100', 'text-red-800');
-    } else if (bac < 0.30) {
-      descEl.innerText = "Severe intoxication. Confusion, nausea, and potential blackouts.";
-      descEl.classList.add('bg-red-100', 'text-red-800');
-    } else {
-      descEl.innerText = "Medical emergency. High risk of alcohol poisoning, loss of consciousness, and death.";
-      descEl.classList.add('bg-red-200', 'text-red-900');
-    }
-
-    document.getElementById('bac_result').classList.remove('hidden');
-  });
-</script>
 
 </body></html>
