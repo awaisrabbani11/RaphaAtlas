@@ -2,12 +2,11 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>RaphaAtlas — Evidence-Based Health Tools & Guides</title>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://i.pinimg.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=accessibility_new,alternate_email,arrow_forward,bolt,calculate,check_circle,child_care,close,directions_run,egg_alt,exercise,expand_more,explore,fitness_center,health_and_safety,help,local_bar,local_florist,mail,menu,monitor_heart,monitor_weight,nutrition,photo_camera,pill,play_arrow,psychology,restaurant_menu,rocket_launch,search,send,share,stethoscope,trending_up,verified,water_drop&amp;display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Montserrat:wght@600;700;900&amp;display=swap" rel="stylesheet">
-
-
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -22,16 +21,48 @@
                         "surface-container-lowest": "#ffffff",
                         "border-subtle": "#E0EDEF",
                         "on-surface": "#1d1b17",
+                        "on-surface-variant": "#54646E",
+                        "surface-lowest": "#ffffff",
+                        "surface-container-low": "#F9FBFB",
+                        "surface-container": "#F4F7F7",
+                        "surface-container-high": "#EDF2F3",
+                        "surface-container-highest": "#E6EDEE"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "section-gap": "80px",
+                        "margin-mobile": "20px"
+                    },
+                    "maxWidth": {
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter","-apple-system","BlinkMacSystemFont","Segoe UI","sans-serif"],
+                        "display-lg-mobile": ["Inter","-apple-system","BlinkMacSystemFont","Segoe UI","sans-serif"],
+                        "display-md": ["Inter","-apple-system","BlinkMacSystemFont","Segoe UI","sans-serif"],
+                        "headline-md": ["Inter","-apple-system","BlinkMacSystemFont","Segoe UI","sans-serif"],
+                        "body-lg": ["Inter","-apple-system","BlinkMacSystemFont","Segoe UI","sans-serif"],
+                        "body-md": ["Inter","-apple-system","BlinkMacSystemFont","Segoe UI","sans-serif"],
+                        "label-bold": ["Inter","-apple-system","BlinkMacSystemFont","Segoe UI","sans-serif"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["52px", { lineHeight: "1.06", letterSpacing: "-0.03em", fontWeight: "900" }],
+                        "display-lg-mobile": ["34px", { lineHeight: "1.1", letterSpacing: "-0.025em", fontWeight: "900" }],
+                        "display-md": ["40px", { lineHeight: "1.12", letterSpacing: "-0.025em", fontWeight: "800" }],
+                        "display-sm": ["32px", { lineHeight: "1.18", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "headline-md": ["24px", { lineHeight: "1.3", letterSpacing: "-0.015em", fontWeight: "700" }],
+                        "title-lg": ["20px", { lineHeight: "1.35", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "body-lg": ["18px", { lineHeight: "1.62" }],
+                        "body-md": ["16px", { lineHeight: "1.62" }],
+                        "label-bold": ["14px", { lineHeight: "1.2", letterSpacing: "0.02em", fontWeight: "700" }]
                     }
                 }
             }
         }
     </script>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Montserrat:wght@600;700;900&amp;family=Archivo:wght@700&amp;display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&amp;display=swap" rel="stylesheet">
   <meta name="description" content="Free clinical calculators and physician-reviewed guides on health, fitness, and nutrition. Built and reviewed by MBBS doctors.">
   <link rel="canonical" href="https://www.raphaatlas.com/">
   <meta property="og:type" content="website">
@@ -45,224 +76,470 @@
   <meta name="twitter:description" content="Free clinical calculators and physician-reviewed guides on health, fitness, and nutrition. Built and reviewed by MBBS doctors.">
   <meta name="twitter:image" content="https://www.raphaatlas.com/og-image.png">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <script type="application/ld+json" data-ra="page">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.raphaatlas.com/#organization","name":"RaphaAtlas","url":"https://www.raphaatlas.com/","logo":{"@type":"ImageObject","url":"https://www.raphaatlas.com/raphaatlas-lockup.svg"},"parentOrganization":{"@type":"Organization","name":"Growth Partners Global LLC"}},{"@type":"WebSite","@id":"https://www.raphaatlas.com/#website","url":"https://www.raphaatlas.com/","name":"RaphaAtlas","description":"Free clinical calculators and physician-reviewed guides on health, fitness, and nutrition. Built and reviewed by MBBS doctors.","publisher":{"@id":"https://www.raphaatlas.com/#organization"},"inLanguage":"en"}]}</script>
+  <script type="application/ld+json" data-ra="page">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.raphaatlas.com/#organization","name":"RaphaAtlas","url":"https://www.raphaatlas.com/","logo":{"@type":"ImageObject","url":"https://www.raphaatlas.com/raphaatlas-lockup.svg"},"parentOrganization":{"@type":"Organization","name":"Growth Partners Global LLC"}},{"@type":"WebSite","@id":"https://www.raphaatlas.com/#website","url":"https://www.raphaatlas.com/","name":"RaphaAtlas","description":"Free clinical calculators and physician-reviewed guides on health, fitness, and nutrition. Built and reviewed by MBBS doctors.","publisher":{"@id":"https://www.raphaatlas.com/#organization"},"inLanguage":"en"},{"@type":"ItemList","@id":"https://www.raphaatlas.com/#calculators","name":"RaphaAtlas health calculators","itemListOrder":"https://schema.org/ItemListOrderAscending","numberOfItems":4,"itemListElement":[{"@type":"ListItem","position":1,"name":"Macro Calculator","url":"https://www.raphaatlas.com/macro-calculator"},{"@type":"ListItem","position":2,"name":"Body Type Calculator","url":"https://www.raphaatlas.com/body-type-calculator"},{"@type":"ListItem","position":3,"name":"BAC Calculator","url":"https://www.raphaatlas.com/bac-calculator"},{"@type":"ListItem","position":4,"name":"Conception Calculator","url":"https://www.raphaatlas.com/conception-calculator"}]}]}</script>
+
+<style>
+/* ============================================================
+   RaphaAtlas homepage. Self-contained so it never depends on
+   Tailwind tokens that are not in the config above.
+   ============================================================ */
+.ra{
+  --ink:#0C1719;
+  --ink-2:#3E5257;
+  --ink-3:#6B8085;
+  --teal:#02838D;
+  --teal-deep:#016A73;
+  --teal-tint:#E8F4F5;
+  --line:#E2EAEB;
+  --paper:#FBF9F6;
+  --card:#FFFFFF;
+  --night:#0A1C1F;
+  --night-2:#0E2A2E;
+  --gold:#C4A05A;
+  --pad:clamp(20px,5vw,48px);
+  --maxw:1200px;
+  --ease:cubic-bezier(.22,.61,.36,1);      /* critically damped, no overshoot */
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  display:block;
+}
+.ra *{box-sizing:border-box}
+.ra-wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+/* Type: tracking is size specific, leading tracks size inversely */
+/* No font-weight on this base rule: `.ra h1` is specificity (0,1,1) and would
+   outrank the (0,1,0) size classes below, forcing every heading to one weight. */
+.ra h1,.ra h2,.ra h3{margin:0}
+.ra-h1{font-size:clamp(2.4rem,6vw,4.15rem);line-height:1.03;letter-spacing:-.038em;font-weight:900}
+.ra-h2{font-size:clamp(1.75rem,3.6vw,2.6rem);line-height:1.1;letter-spacing:-.03em;font-weight:800}
+.ra-h3{font-size:1.125rem;line-height:1.3;letter-spacing:-.015em;font-weight:700}
+.ra-lead{font-size:clamp(1.03rem,1.5vw,1.2rem);line-height:1.6;letter-spacing:0;color:var(--ink-2);margin:0}
+.ra-p{font-size:.965rem;line-height:1.62;color:var(--ink-2);margin:0}
+.ra-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+
+/* ---------------- Hero ---------------- */
+.ra-hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(115% 85% at 82% 6%,rgba(2,131,141,.34) 0%,rgba(2,131,141,0) 58%),
+    radial-gradient(95% 75% at 6% 96%,rgba(196,160,90,.14) 0%,rgba(196,160,90,0) 60%),
+    linear-gradient(168deg,var(--night-2) 0%,var(--night) 62%,#071417 100%);
+  color:#F2F6F6;
+  /* Kept deliberately tight so the first row of calculator cards clears
+     the fold on a 720px laptop viewport. */
+  padding:clamp(40px,5vw,68px) 0 clamp(44px,5.5vw,76px);
+}
+.ra-hero-inner{position:relative;z-index:1;max-width:940px}
+.ra-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 15px 7px 11px;border-radius:999px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%);
+  color:#DDEAEB;font-size:.775rem;font-weight:600;letter-spacing:.01em;
+}
+.ra-chip .material-symbols-outlined{font-size:17px;color:#5FD3DC}
+.ra-hero h1{margin:26px 0 0;color:#FFFFFF}
+.ra-hero .ra-lead{margin-top:20px;max-width:640px;color:#B9CDCF}
+.ra-hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+
+/* Buttons: feedback on pointer down, never only on release */
+.ra-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.94rem;font-weight:700;letter-spacing:-.005em;
+  padding:14px 26px;border-radius:999px;text-decoration:none;
+  transition:transform .12s var(--ease),background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);
+  will-change:transform;
+}
+.ra-btn:active{transform:scale(.972)}
+.ra-btn-primary{background:var(--teal);color:#fff}
+.ra-btn-primary:hover{background:#03949F}
+.ra-btn-ghost{background:rgba(255,255,255,.07);color:#EAF3F3;border:1px solid rgba(255,255,255,.2)}
+.ra-btn-ghost:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.34)}
+.ra-btn .material-symbols-outlined{font-size:18px}
+
+/* Hero quick launch: the four tools, named, above the fold */
+.ra-quick{margin-top:30px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12)}
+.ra-quick-label{
+  font-size:.7rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:#7F9A9E;margin:0 0 13px;
+}
+.ra-pills{display:flex;flex-wrap:wrap;gap:9px}
+.ra-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 17px 10px 13px;border-radius:999px;text-decoration:none;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);
+  color:#DCEAEB;font-size:.86rem;font-weight:600;letter-spacing:-.008em;
+  transition:transform .12s var(--ease),background-color .22s var(--ease),border-color .22s var(--ease),color .22s var(--ease);
+  will-change:transform;
+}
+.ra-pill:hover{background:rgba(2,131,141,.32);border-color:#3FBAC4;color:#fff}
+.ra-pill:active{transform:scale(.965)}
+.ra-pill .material-symbols-outlined{font-size:18px;color:#5FD3DC;transition:color .22s var(--ease)}
+.ra-pill:hover .material-symbols-outlined{color:#fff}
+
+/* ---------------- Calculators ---------------- */
+.ra-section{padding:clamp(56px,8vw,96px) 0}
+.ra-section-head{max-width:640px;margin-bottom:clamp(28px,4vw,44px)}
+.ra-section-head .ra-eyebrow{color:var(--teal)}
+.ra-section-head h2{margin:12px 0 14px}
+
+.ra-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(248px,1fr))}
+.ra-grid-3{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(272px,1fr))}
+
+.ra-card{
+  position:relative;overflow:hidden;isolation:isolate;
+  display:flex;flex-direction:column;
+  background:var(--card);border:1px solid var(--line);border-radius:18px;
+  padding:26px 24px 22px;text-decoration:none;color:inherit;
+  transition:transform .28s var(--ease),border-color .28s var(--ease),box-shadow .28s var(--ease);
+  will-change:transform;
+}
+/* Pointer tracked highlight: the surface reacts to where you actually are */
+.ra-card::before{
+  content:"";position:absolute;inset:0;z-index:-1;opacity:0;
+  background:radial-gradient(340px circle at var(--mx,50%) var(--my,50%),rgba(2,131,141,.10),transparent 68%);
+  transition:opacity .3s var(--ease);
+}
+@media (hover:hover){
+  .ra-card:hover{transform:translateY(-3px);border-color:#BFE0E3;box-shadow:0 18px 40px -26px rgba(12,23,25,.45)}
+  .ra-card:hover::before{opacity:1}
+}
+.ra-card:active{transform:scale(.988);transition-duration:.1s}
+.ra-icon{
+  width:46px;height:46px;border-radius:13px;display:grid;place-items:center;
+  background:var(--teal-tint);color:var(--teal-deep);margin-bottom:18px;
+  transition:background-color .28s var(--ease),color .28s var(--ease);
+}
+.ra-card:hover .ra-icon{background:var(--teal);color:#fff}
+.ra-icon .material-symbols-outlined{font-size:24px}
+.ra-card h3{margin-bottom:8px}
+.ra-card .ra-p{font-size:.9rem;margin-bottom:18px}
+.ra-card-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.ra-formula{
+  font-size:.685rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--ink-3);background:#F3F6F6;border:1px solid var(--line);
+  padding:5px 9px;border-radius:7px;white-space:nowrap;
+}
+.ra-go{display:inline-flex;align-items:center;gap:5px;font-size:.85rem;font-weight:700;color:var(--teal-deep)}
+.ra-go .material-symbols-outlined{font-size:17px;transition:transform .28s var(--ease)}
+.ra-card:hover .ra-go .material-symbols-outlined{transform:translateX(4px)}
+
+/* ---------------- Method band ---------------- */
+.ra-method{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ra-steps{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));counter-reset:s}
+.ra-step{padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--paper)}
+.ra-step-n{
+  width:30px;height:30px;border-radius:9px;display:grid;place-items:center;margin-bottom:16px;
+  background:var(--ink);color:#fff;font-size:.8rem;font-weight:800;font-variant-numeric:tabular-nums;
+}
+.ra-step h3{margin-bottom:7px}
+.ra-step .ra-p{font-size:.9rem}
+
+/* ---------------- Topic hubs: framed photography ----------------
+   One committed 4:5 crop for all three, so the row reads as a set rather
+   than three unrelated pictures. The frame is a hairline over the photo,
+   not a border around it, which keeps the image edge crisp at any radius. */
+.ra-topic{
+  position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;
+  aspect-ratio:4/5;border-radius:22px;padding:26px 24px;color:#F2F6F6;text-decoration:none;
+  background:var(--night);isolation:isolate;
+  transition:transform .34s var(--ease),box-shadow .34s var(--ease);will-change:transform;
+}
+.ra-topic:active{transform:scale(.99);transition-duration:.1s}
+@media (hover:hover){.ra-topic:hover{transform:translateY(-4px);box-shadow:0 26px 52px -30px rgba(12,23,25,.62)}}
+
+.ra-topic-img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;
+  transition:transform .7s var(--ease);will-change:transform;
+}
+@media (hover:hover){.ra-topic:hover .ra-topic-img{transform:scale(1.045)}}
+/* Scrim: weighted to the bottom third where the type sits, so the photo
+   stays bright at the top instead of being dimmed all over. */
+.ra-topic::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(to top,rgba(6,16,18,.92) 0%,rgba(6,16,18,.72) 26%,rgba(6,16,18,.22) 55%,rgba(6,16,18,.06) 100%);
+}
+/* Hairline frame, drawn inside the radius */
+.ra-topic::before{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:inherit;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);
+}
+.ra-topic h3{position:relative;z-index:1;font-size:1.4rem;letter-spacing:-.028em;margin-bottom:7px}
+.ra-topic p{position:relative;z-index:1;margin:0;font-size:.9rem;line-height:1.55;color:#C6D7D9}
+.ra-topic .ra-go{position:relative;z-index:1;margin-top:16px;color:#8FE0E7}
+
+/* ---------------- Trust ---------------- */
+.ra-trust{background:var(--card);border-top:1px solid var(--line)}
+.ra-trust-inner{display:grid;gap:clamp(28px,5vw,64px);grid-template-columns:minmax(0,1fr)}
+@media(min-width:900px){.ra-trust-inner{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:start}}
+.ra-trust-list{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:12px}
+.ra-trust-list li{display:flex;gap:12px;align-items:flex-start;font-size:.945rem;line-height:1.55;color:var(--ink-2)}
+.ra-trust-list .material-symbols-outlined{font-size:20px;color:var(--teal);flex-shrink:0;margin-top:1px}
+.ra-links{display:grid;gap:2px;border:1px solid var(--line);border-radius:18px;padding:8px;background:var(--paper)}
+.ra-link-row{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:16px 16px;border-radius:12px;text-decoration:none;color:var(--ink);
+  transition:background-color .2s var(--ease),transform .12s var(--ease);
+}
+.ra-link-row:hover{background:var(--teal-tint)}
+.ra-link-row:active{transform:scale(.99)}
+.ra-link-row strong{display:block;font-size:.95rem;font-weight:700;letter-spacing:-.012em}
+.ra-link-row span.d{display:block;font-size:.83rem;color:var(--ink-3);margin-top:3px;line-height:1.45}
+.ra-link-row .material-symbols-outlined{font-size:19px;color:var(--ink-3);flex-shrink:0}
+
+/* ---------------- Closing CTA + disclaimer ---------------- */
+.ra-close{
+  background:linear-gradient(158deg,var(--night-2),#071417);color:#F2F6F6;
+  padding:clamp(56px,8vw,88px) 0;text-align:center;
+}
+.ra-close h2{color:#fff;max-width:18ch;margin:0 auto 16px}
+.ra-close .ra-lead{color:#AFC5C7;max-width:52ch;margin:0 auto}
+.ra-close .ra-hero-cta{justify-content:center;margin-top:30px}
+.ra-note{
+  background:var(--paper);border-top:1px solid var(--line);
+  padding:26px 0;font-size:.82rem;line-height:1.6;color:var(--ink-3);
+}
+.ra-note a{color:var(--teal-deep);font-weight:600}
+
+/* ---------------- Reveal on scroll ----------------
+   Opt in only. The .ra-js class is added by script before observing, so a
+   script that never runs leaves every section plainly visible. */
+.ra.ra-js .ra-reveal{opacity:0;transform:translateY(18px);transition:opacity .62s var(--ease),transform .62s var(--ease)}
+.ra.ra-js .ra-reveal.ra-in{opacity:1;transform:none}
+
+/* ---------------- Focus, motion, transparency, contrast ---------------- */
+.ra a:focus-visible,.ra button:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:12px}
+.ra-hero a:focus-visible{outline-color:#5FD3DC}
+@media (prefers-reduced-motion:reduce){
+  .ra *,.ra *::before{transition-duration:.01ms !important;animation:none !important}
+  .ra-reveal{opacity:1;transform:none}
+  .ra-card:hover,.ra-topic:hover{transform:none}
+}
+@media (prefers-reduced-transparency:reduce){
+  .ra-chip{background:#12363B;backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+@media (prefers-contrast:more){
+  .ra{--line:#8FA5A8;--ink-2:#22383C;--ink-3:#3E5257}
+  .ra-chip{background:#0A1C1F;border-color:#8FE0E7;color:#fff}
+  .ra-proof span{color:#D6E5E6}
+}
+@media (max-width:520px){
+  .ra-hero-cta .ra-btn{width:100%;justify-content:center}
+}
+</style>
 </head>
 <body class="bg-surface-container-lowest text-on-surface font-body-md antialiased overflow-x-hidden">
 
 <header class="bg-header-black border-b border-black docked full-width top-0 z-50 sticky transition-all duration-300" id="main-header"><div class="flex justify-between items-center px-4 md:px-8 py-2 w-full max-w-7xl mx-auto">  <a href="/" aria-label="RaphaAtlas home" class="flex items-center">    <img src="/raphaatlas-mark.svg" alt="RaphaAtlas Logo" height="40" width="40" class="h-10 w-10">    <span style="font-family: 'Inter', sans-serif; font-size: 32px; font-weight: 900; letter-spacing: -1px; color: white; margin-left: 12px; transform: translateY(2px);">RaphaAtlas</span>  </a>  <nav class="hidden lg:flex items-center space-x-6">    <a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/nutrition">Nutrition</a>    <a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/health">Health</a>        <div class="relative group">      <button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors py-2" style="font-family: 'Inter', sans-serif;" aria-expanded="false">        <span>Calculators</span><span class="material-symbols-outlined text-sm">expand_more</span>      </button>      <div class="absolute left-0 mt-2 w-56 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg before:content-[''] before:absolute before:-top-4 before:left-0 before:right-0 before:h-4">        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/bac-calculator">BAC Calculator</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/body-type-calculator">Body Type Calculator</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/macro-calculator">Macro Calculator</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/conception-calculator">Conception Calculator</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all" href="/calculators">All Calculators</a>      </div>    </div>        <a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/fitness">Fitness</a>        <div class="relative group">      <button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors py-2" style="font-family: 'Inter', sans-serif;" aria-expanded="false">        <span>More</span><span class="material-symbols-outlined text-sm">expand_more</span>      </button>      <div class="absolute left-0 mt-2 w-56 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg before:content-[''] before:absolute before:-top-4 before:left-0 before:right-0 before:h-4">        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/about">About Us</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/editorial-policy">Editorial Policy</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/medical-review-board">Medical Review Board</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/privacy">Privacy Policy</a>        <a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all" href="/contact">Contact Us</a>      </div>    </div>  </nav>  <div class="flex items-center space-x-4">    <button class="lg:hidden text-on-primary" id="mobile-menu-btn" aria-label="Toggle mobile menu">      <span class="material-symbols-outlined text-2xl">menu</span>    </button>  </div></div><!-- Mobile Menu Slide-out --><div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-surface-container-lowest shadow-2xl z-[100] transform translate-x-full transition-transform duration-300 lg:hidden overflow-y-auto border-l border-border-subtle">  <div class="p-4 border-b border-border-subtle flex justify-end">    <button id="mobile-menu-close" class="text-on-surface hover:text-primary p-2">      <span class="material-symbols-outlined">close</span>    </button>  </div>  <nav class="p-4 flex flex-col space-y-2">    <a href="/nutrition" class="block py-2 text-primary font-bold border-b border-border-subtle">Nutrition</a>    <a href="/health" class="block py-2 text-primary font-bold border-b border-border-subtle">Health</a>        <div class="py-2 border-b border-border-subtle">      <button class="flex items-center justify-between w-full text-primary font-bold mb-2 mobile-dropdown-btn">        <span>Calculators</span>        <span class="material-symbols-outlined text-sm transition-transform duration-200">expand_more</span>      </button>      <div class="pl-4 space-y-2 mobile-dropdown-content overflow-hidden max-h-0 transition-all duration-300">        <a href="/bac-calculator" class="block text-on-surface-variant hover:text-primary py-1">BAC Calculator</a>        <a href="/body-type-calculator" class="block text-on-surface-variant hover:text-primary py-1">Body Type Calculator</a>        <a href="/macro-calculator" class="block text-on-surface-variant hover:text-primary py-1">Macro Calculator</a>        <a href="/conception-calculator" class="block text-on-surface-variant hover:text-primary py-1">Conception Calculator</a>        <a href="/calculators" class="block text-on-surface-variant hover:text-primary py-1">All Calculators</a>      </div>    </div>        <a href="/fitness" class="block py-2 text-primary font-bold border-b border-border-subtle">Fitness</a>        <div class="py-2 border-b border-border-subtle">      <button class="flex items-center justify-between w-full text-primary font-bold mb-2 mobile-dropdown-btn">        <span>More</span>        <span class="material-symbols-outlined text-sm transition-transform duration-200">expand_more</span>      </button>      <div class="pl-4 space-y-2 mobile-dropdown-content overflow-hidden max-h-0 transition-all duration-300">        <a href="/about" class="block text-on-surface-variant hover:text-primary py-1">About Us</a>        <a href="/editorial-policy" class="block text-on-surface-variant hover:text-primary py-1">Editorial Policy</a>        <a href="/medical-review-board" class="block text-on-surface-variant hover:text-primary py-1">Medical Review Board</a>        <a href="/privacy" class="block text-on-surface-variant hover:text-primary py-1">Privacy Policy</a>        <a href="/contact" class="block text-on-surface-variant hover:text-primary py-1">Contact Us</a>      </div>    </div>  </nav></div><!-- Mobile Menu Overlay --><div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-[90] hidden lg:hidden"></div><script>  (function() {    const btn = document.getElementById('mobile-menu-btn');    const closeBtn = document.getElementById('mobile-menu-close');    const menu = document.getElementById('mobile-menu');    const overlay = document.getElementById('mobile-overlay');    function openMenu() {      if(menu) menu.classList.remove('translate-x-full');      if(overlay) overlay.classList.remove('hidden');    }    function closeMenu() {      if(menu) menu.classList.add('translate-x-full');      if(overlay) overlay.classList.add('hidden');    }    if (btn) btn.addEventListener('click', openMenu);    if (closeBtn) closeBtn.addEventListener('click', closeMenu);    if (overlay) overlay.addEventListener('click', closeMenu);    /* Mobile dropdown toggle logic */    const dropdownBtns = document.querySelectorAll('.mobile-dropdown-btn');    dropdownBtns.forEach(btn => {      btn.addEventListener('click', () => {        const content = btn.nextElementSibling;        const icon = btn.querySelector('.material-symbols-outlined');        if (content.classList.contains('max-h-0')) {          content.classList.remove('max-h-0');          content.classList.add('max-h-screen');          icon.style.transform = 'rotate(180deg)';        } else {          content.classList.add('max-h-0');          content.classList.remove('max-h-screen');          icon.style.transform = 'rotate(0deg)';        }      });    });  })();</script></header>
-<!-- Main Content -->
-<main>
-<!-- Hero Section with Shader Background -->
-<section class="relative min-h-[80vh] flex items-center bg-[#2F4A6D] overflow-hidden border-b border-border-subtle">
-<!-- Animated Shader Background -->
-<div class="absolute inset-0 w-full h-full opacity-40 z-0">
-<canvas id="shader-canvas-ANIMATION_3" style="display:block;width:100%;height:100%"></canvas>
-<script>
-(function() {
-  const canvas = document.getElementById('shader-canvas-ANIMATION_3');
-  function syncSize() {
-    const w = canvas.clientWidth  || window.innerWidth;
-    const h = canvas.clientHeight || window.innerHeight;
-    if (canvas.width !== w || canvas.height !== h) {
-      canvas.width  = w;
-      canvas.height = h;
-    }
-  }
-  if (typeof ResizeObserver !== 'undefined') {
-    new ResizeObserver(syncSize).observe(canvas);
-  }
-  syncSize();
-  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-  if (!gl) return;
-  const vs = `attribute vec2 a_position;
-varying vec2 v_texCoord;
-void main() {
-  v_texCoord = a_position * 0.5 + 0.5;
-  gl_Position = vec4(a_position, 0.0, 1.0);
-}`;
-  const fs = `precision highp float;
-uniform float u_time;
-uniform vec2 u_resolution;
-varying vec2 v_texCoord;
-void main() {
-    vec2 uv = v_texCoord;
-    float dist = distance(uv, vec2(0.5));
-    float pulse = 0.5 + 0.5 * sin(u_time * 2.0);
-    vec3 color1 = vec3(1.0, 1.0, 1.0);
-    vec3 color2 = vec3(0.36, 0.50, 0.24); // #5C7F3E green vibe
-    float mask = smoothstep(0.4, 0.6, dist + pulse * 0.05);
-    vec3 finalColor = mix(color2, color1, mask);
-    float scanline = sin(uv.y * 800.0) * 0.02;
-    finalColor -= scanline;
-    gl_FragColor = vec4(finalColor, 1.0);
-}`;
-  function cs(type, src) {
-    const s = gl.createShader(type);
-    gl.shaderSource(s, src);
-    gl.compileShader(s);
-    return s;
-  }
-  const prog = gl.createProgram();
-  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
-  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
-  gl.linkProgram(prog);
-  gl.useProgram(prog);
-  const buf = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
-  const pos = gl.getAttribLocation(prog, 'a_position');
-  gl.enableVertexAttribArray(pos);
-  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
-  const uTime = gl.getUniformLocation(prog, 'u_time');
-  const uRes = gl.getUniformLocation(prog, 'u_resolution');
-  function render(t) {
-    if (typeof ResizeObserver === 'undefined') syncSize();
-    gl.viewport(0, 0, canvas.width, canvas.height);
-    if (uTime) gl.uniform1f(uTime, t * 0.001);
-    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    requestAnimationFrame(render);
-  }
-  render(0);
-})();
-</script>
-</div>
-<div class="relative z-10 w-full max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-section-gap">
-<!-- Text Content -->
-<div class="space-y-6 text-on-primary text-center md:text-left drop-shadow-lg">
-<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg font-black tracking-tight text-[#F5F4EF]">A Complete Guide To Health</h1>
 
-<div class="pt-4 flex flex-col sm:flex-row items-center sm:justify-start gap-4 justify-center">
-<a class="inline-flex items-center justify-center bg-[#C4A05A] text-[#F5F4EF] font-label-bold text-label-bold rounded-full px-8 py-4 hover:bg-opacity-90 transition-transform hover:scale-105 shadow-lg w-full sm:w-auto" href="/calculators">Explore Calculators</a>
-</div></div><!-- Hero Imagery -->
-<div class="relative h-[400px] md:h-[600px] w-full rounded-xl overflow-hidden border-4 border-vitality-teal bg-surface-container-highest transform md:rotate-2 hover:rotate-0 transition-transform duration-500 shadow-2xl">
-<img class="w-full h-full object-cover transition-all duration-700" data-alt="A vibrant, high-key brightly lit modern photography scene showing a diverse group of healthy individuals joyfully engaging in an active outdoor lifestyle. The composition features a mix of running, stretching, and laughing in a bright, modern architectural park setting. The lighting is crisp and clear, emphasizing a high-contrast aesthetic with pure whites, deep blacks, and subtle pops of bright teal clothing accents. The mood is energetic, authoritative yet highly approachable and uplifting." src="https://i.pinimg.com/736x/19/af/83/19af831efa10ca721994c5b8b890721e.jpg">
-<!-- Decorative overlay -->
-<div class="absolute inset-0 bg-gradient-to-t from-header-black to-transparent opacity-50 mix-blend-multiply"></div>
-</div>
-</div>
-</section>
-<!-- Calculators Bento Grid -->
-<section class="py-section-gap px-gutter max-w-container-max mx-auto">
-<div class="mb-12 text-center md:text-left">
-<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg font-black tracking-tight mb-4">Precision Tools</h2>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Remove the guesswork from your routine with our clinically aligned calculators.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- Large Feature Tool -->
-<div class="md:col-span-2 bg-surface-cream rounded-xl p-8 border border-border-subtle relative overflow-hidden group hover:border-vitality-teal transition-colors">
-<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-<span class="material-symbols-outlined text-9xl">monitor_weight</span>
-</div>
-<div class="relative z-10 h-full flex flex-col justify-between">
-<div>
-<span class="inline-block bg-header-black text-on-primary text-xs font-bold px-3 py-1 mb-4 rounded-full">POPULAR</span>
-<h3 class="font-headline-md text-headline-md font-bold tracking-tight mb-2">Advanced Macro Calculator</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-md">Calculate your exact macronutrient needs based on your unique metabolism, activity level, and goals.</p>
-</div>
-<a class="inline-flex items-center text-vitality-teal font-label-bold text-label-bold group-hover:underline" href="/macro-calculator">
-                            Calculate Macros <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
-</a>
-</div>
-</div>
-<!-- Secondary Tool 1 -->
-<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 hover:shadow-lg transition-shadow group flex flex-col justify-between">
-<div>
-<div class="w-12 h-12 bg-surface-cream rounded-full flex items-center justify-center mb-4 text-vitality-teal group-hover:bg-vitality-teal group-hover:text-on-primary transition-colors">
-<span class="material-symbols-outlined">directions_run</span>
-</div>
-<h3 class="font-headline-md text-headline-md font-bold tracking-tight mb-2 text-lg">Calorie Burn</h3>
-<p class="font-body-md text-body-md text-on-surface-variant text-sm mb-4">Estimate energy expenditure across various activities.</p>
-</div>
-<a class="inline-flex items-center text-header-black font-label-bold text-label-bold border-b-2 border-transparent group-hover:border-vitality-teal transition-colors self-start pb-1" href="/calculators">
-                        Use Tool
-                    </a>
-</div>
-<!-- Secondary Tool 2 -->
-<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 hover:shadow-lg transition-shadow group flex flex-col justify-between md:col-start-3">
-<div>
-<div class="w-12 h-12 bg-surface-cream rounded-full flex items-center justify-center mb-4 text-vitality-teal group-hover:bg-vitality-teal group-hover:text-on-primary transition-colors">
-<span class="material-symbols-outlined">water_drop</span>
-</div>
-<h3 class="font-headline-md text-headline-md font-bold tracking-tight mb-2 text-lg">Hydration Needs</h3>
-<p class="font-body-md text-body-md text-on-surface-variant text-sm mb-4">Optimize your water intake based on climate and exertion.</p>
-</div>
-<a class="inline-flex items-center text-header-black font-label-bold text-label-bold border-b-2 border-transparent group-hover:border-vitality-teal transition-colors self-start pb-1" href="/calculators">
-                        Use Tool
-                    </a>
-</div>
-</div>
-</section>
-<!-- Featured Editorial -->
-<section class="bg-surface-container-lowest py-section-gap border-t border-border-subtle">
-<div class="max-w-container-max mx-auto px-gutter">
-<div class="flex justify-between items-end mb-12">
-<div>
-<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg font-black tracking-tight mb-2">Latest Insights</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Evidence-based articles to fuel your journey.</p>
-</div>
-<a class="hidden md:inline-flex items-center text-header-black font-label-bold text-label-bold hover:text-vitality-teal transition-colors" href="/nutrition">
-                        View All Articles <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
-</a>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-<!-- Article Card 1 -->
-<article class="group cursor-pointer">
-<div class="relative h-48 mb-4 overflow-hidden rounded border border-border-subtle">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 " data-alt="A clean, minimalist high-contrast still life photograph of healthy meal prep ingredients on a stark white background. Items include vibrant green spinach, bright orange salmon, and clean white quinoa arranged geometrically. The lighting is extremely bright and even, emphasizing texture and color purity against the black and white aesthetic of the surrounding UI." style="object-position: center 15%;" src="https://i.pinimg.com/736x/79/02/79/790279d5949b299caa9a3d1e662c12d8.jpg">
-</div>
-<div class="flex items-center space-x-2 text-xs font-label-bold text-label-bold text-on-surface-variant mb-2 uppercase tracking-wider">
-<span class="">Nutrition</span>
-<span class="">•</span>
-<span class="">5 Min Read</span>
-</div>
-<h3 class="font-headline-md text-headline-md font-bold tracking-tight text-lg mb-2 group-hover:text-vitality-teal transition-colors line-clamp-2">Optimizing Protein Synthesis After Resistance Training</h3>
-</article>
-<!-- Article Card 2 -->
-<article class="group cursor-pointer">
-<div class="relative h-48 mb-4 overflow-hidden rounded border border-border-subtle">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 " data-alt="A striking black and white photograph of a runner's silhouette against an intensely bright, overexposed sky, creating a high-contrast minimalist composition. The runner's shoes have a subtle splash of vibrant teal color added in post-production. The image conveys energy, clinical precision, and modern athleticism." src="https://i.pinimg.com/736x/ae/da/61/aeda6115b36af677302f9a07c1cfb2ce.jpg">
-</div>
-<div class="flex items-center space-x-2 text-xs font-label-bold text-label-bold text-on-surface-variant mb-2 uppercase tracking-wider">
-<span class="">Fitness</span>
-<span class="">•</span>
-<span class="">8 Min Read</span>
-</div>
-<h3 class="font-headline-md text-headline-md font-bold tracking-tight text-lg mb-2 group-hover:text-vitality-teal transition-colors line-clamp-2">The Science of Zone 2 Cardio for Metabolic Flexibility</h3>
-</article>
-<!-- Article Card 3 -->
-<article class="group cursor-pointer hidden md:block">
-<div class="relative h-48 mb-4 overflow-hidden rounded border border-border-subtle">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 " src="https://i.pinimg.com/736x/1f/61/a6/1f61a603f91af7b720df580313e380d7.jpg" alt="Active Recovery Strategies">
-</div>
-<div class="flex items-center space-x-2 text-xs font-label-bold text-label-bold text-on-surface-variant mb-2 uppercase tracking-wider">
-<span class="">Recovery</span>
-<span class="">•</span>
-<span class="">4 Min Read</span>
-</div>
-<h3 class="font-headline-md text-headline-md font-bold tracking-tight text-lg mb-2 group-hover:text-vitality-teal transition-colors line-clamp-2">Active Recovery Strategies That Actually Work</h3>
-</article>
-<!-- Article Card 4 -->
-<article class="group cursor-pointer hidden lg:block">
-<div class="relative h-48 mb-4 overflow-hidden rounded border border-border-subtle">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 " data-alt="A modern, abstract macro photograph of water droplets on a sleek black surface, harshly lit to create high-contrast specular highlights. The reflections in the droplets have a slight cyan/teal tint. The image is highly textured, clinical, and fits a premium wellness brand aesthetic." src="https://i.pinimg.com/736x/d5/40/7c/d5407c6e33eda8b7f5c4ab81d8fcf850.jpg">
-</div>
-<div class="flex items-center space-x-2 text-xs font-label-bold text-label-bold text-on-surface-variant mb-2 uppercase tracking-wider">
-<span class="">Lifestyle</span>
-<span class="">•</span>
-<span class="">6 Min Read</span>
-</div>
-<h3 class="font-headline-md text-headline-md font-bold tracking-tight text-lg mb-2 group-hover:text-vitality-teal transition-colors line-clamp-2">Debunking Common Hydration Myths in 2024</h3>
-</article>
-</div>
-</div>
-</section>
+<!-- Main Content -->
+<main class="ra">
+
+  <!-- ============ Hero ============ -->
+  <section class="ra-hero">
+    <div class="ra-wrap ra-hero-inner">
+      <p class="ra-chip"><span class="material-symbols-outlined" aria-hidden="true">verified</span> Built and reviewed by MBBS doctors</p>
+      <h1 class="ra-h1">Health calculators that show their work.</h1>
+      <p class="ra-lead">Four free tools that name the published formula behind every result, so you can see how your number was reached instead of trusting a black box.</p>
+      <div class="ra-hero-cta">
+        <a class="ra-btn ra-btn-primary" href="/calculators">Browse all calculators <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+        <a class="ra-btn ra-btn-ghost" href="/medical-review-board">Meet the review board</a>
+      </div>
+      <nav class="ra-quick" aria-label="Calculators">
+        <p class="ra-quick-label">Go straight to a tool</p>
+        <div class="ra-pills">
+          <a class="ra-pill" href="/macro-calculator"><span class="material-symbols-outlined" aria-hidden="true">restaurant_menu</span> Macro Calculator</a>
+          <a class="ra-pill" href="/body-type-calculator"><span class="material-symbols-outlined" aria-hidden="true">accessibility_new</span> Body Type Calculator</a>
+          <a class="ra-pill" href="/bac-calculator"><span class="material-symbols-outlined" aria-hidden="true">local_bar</span> BAC Calculator</a>
+          <a class="ra-pill" href="/conception-calculator"><span class="material-symbols-outlined" aria-hidden="true">child_care</span> Conception Calculator</a>
+        </div>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ============ Calculators ============ -->
+  <section class="ra-section" id="calculators">
+    <div class="ra-wrap">
+      <div class="ra-section-head ra-reveal">
+        <p class="ra-eyebrow">The tools</p>
+        <h2 class="ra-h2">Pick the number you need.</h2>
+        <p class="ra-p">Each one runs in your browser, explains the equation it used, and tells you what the result does and does not mean.</p>
+      </div>
+
+      <div class="ra-grid">
+        <a class="ra-card ra-reveal" href="/macro-calculator">
+          <span class="ra-icon"><span class="material-symbols-outlined" aria-hidden="true">restaurant_menu</span></span>
+          <h3 class="ra-h3">Macro Calculator</h3>
+          <p class="ra-p">Daily protein, carbohydrate, and fat targets for your body, activity level, and goal.</p>
+          <span class="ra-card-foot">
+            <span class="ra-formula">Mifflin-St Jeor</span>
+            <span class="ra-go">Calculate <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+          </span>
+        </a>
+
+        <a class="ra-card ra-reveal" href="/body-type-calculator">
+          <span class="ra-icon"><span class="material-symbols-outlined" aria-hidden="true">accessibility_new</span></span>
+          <h3 class="ra-h3">Body Type Calculator</h3>
+          <p class="ra-p">Whether you are an ectomorph, mesomorph, or endomorph, and how to train and eat for it.</p>
+          <span class="ra-card-foot">
+            <span class="ra-formula">Waist to hip ratio</span>
+            <span class="ra-go">Calculate <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+          </span>
+        </a>
+
+        <a class="ra-card ra-reveal" href="/bac-calculator">
+          <span class="ra-icon"><span class="material-symbols-outlined" aria-hidden="true">local_bar</span></span>
+          <h3 class="ra-h3">BAC Calculator</h3>
+          <p class="ra-p">Estimated blood alcohol from your drinks, weight, sex, and time, with plain safety context.</p>
+          <span class="ra-card-foot">
+            <span class="ra-formula">Widmark</span>
+            <span class="ra-go">Calculate <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+          </span>
+        </a>
+
+        <a class="ra-card ra-reveal" href="/conception-calculator">
+          <span class="ra-icon"><span class="material-symbols-outlined" aria-hidden="true">child_care</span></span>
+          <h3 class="ra-h3">Conception Calculator</h3>
+          <p class="ra-p">Your likely conception window and due date from your last period or a date you already know.</p>
+          <span class="ra-card-foot">
+            <span class="ra-formula">Naegele's rule</span>
+            <span class="ra-go">Calculate <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+          </span>
+        </a>
+      </div>
+
+      <p style="margin-top:12px">
+        <!-- padding, not margin, so the tap target clears 44px on touch -->
+        <a class="ra-go" href="/calculators" style="font-size:.9rem;padding:11px 4px">See all health calculators <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ Method ============ -->
+  <section class="ra-section ra-method">
+    <div class="ra-wrap">
+      <div class="ra-section-head ra-reveal">
+        <p class="ra-eyebrow">Why the number is trustworthy</p>
+        <h2 class="ra-h2">No black box, no guessing.</h2>
+        <p class="ra-p">Most health calculators hand you a figure and hide the maths. Ours names the equation, shows the inputs it used, and says where the estimate stops being reliable.</p>
+      </div>
+      <div class="ra-steps">
+        <div class="ra-step ra-reveal">
+          <span class="ra-step-n">1</span>
+          <h3 class="ra-h3">A published equation</h3>
+          <p class="ra-p">Every tool runs a formula from the clinical literature, named on the page: Mifflin-St Jeor, Harris-Benedict, Katch-McArdle, Widmark, Naegele.</p>
+        </div>
+        <div class="ra-step ra-reveal">
+          <span class="ra-step-n">2</span>
+          <h3 class="ra-h3">Checked against its source</h3>
+          <p class="ra-p">Each formula is verified against the paper it comes from before release, and our health and medical articles are reviewed by an MBBS physician on the board.</p>
+        </div>
+        <div class="ra-step ra-reveal">
+          <span class="ra-step-n">3</span>
+          <h3 class="ra-h3">The limits are stated</h3>
+          <p class="ra-p">Each result comes with the cases it does not cover, so you know when to stop reading a screen and talk to a clinician.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Topic hubs ============ -->
+  <section class="ra-section">
+    <div class="ra-wrap">
+      <div class="ra-section-head ra-reveal">
+        <p class="ra-eyebrow">Read next</p>
+        <h2 class="ra-h2">Guides that explain the result.</h2>
+        <p class="ra-p">A number is a starting point. These sections cover what to change once you have it.</p>
+      </div>
+      <div class="ra-grid-3">
+        <a class="ra-topic ra-reveal" href="/nutrition">
+          <img class="ra-topic-img" src="https://i.pinimg.com/736x/79/02/79/790279d5949b299caa9a3d1e662c12d8.jpg"
+               alt="Fresh spinach, salmon and quinoa arranged on a bright white surface"
+               width="736" height="1362" loading="lazy" decoding="async" style="object-position:center 42%">
+          <h3>Nutrition</h3>
+          <p>What to eat once you have your macro targets, and how to keep them realistic.</p>
+          <span class="ra-go">Nutrition guides <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+        </a>
+        <a class="ra-topic ra-reveal" href="/health">
+          <img class="ra-topic-img" src="https://i.pinimg.com/736x/d5/40/7c/d5407c6e33eda8b7f5c4ab81d8fcf850.jpg"
+               alt="Macro photograph of water droplets catching cool blue light on a dark surface"
+               width="736" height="1308" loading="lazy" decoding="async" style="object-position:center 38%">
+          <h3>Health</h3>
+          <p>Clinical topics written plainly, without the alarm that most health pages open with.</p>
+          <span class="ra-go">Health guides <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+        </a>
+        <a class="ra-topic ra-reveal" href="/fitness">
+          <img class="ra-topic-img" src="https://i.pinimg.com/736x/ae/da/61/aeda6115b36af677302f9a07c1cfb2ce.jpg"
+               alt="Silhouette of a runner mid stride against a bright open sky"
+               width="675" height="1200" loading="lazy" decoding="async" style="object-position:center 30%">
+          <h3>Fitness</h3>
+          <p>Training that matches your body type and the energy budget your calculator gave you.</p>
+          <span class="ra-go">Fitness guides <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Trust ============ -->
+  <section class="ra-section ra-trust">
+    <div class="ra-wrap ra-trust-inner">
+      <div class="ra-reveal">
+        <p class="ra-eyebrow" style="color:var(--teal)">Who is behind this</p>
+        <h2 class="ra-h2" style="margin:12px 0 14px">Doctors write it. Doctors check it.</h2>
+        <p class="ra-p">RaphaAtlas is built by qualified MBBS doctors and published by Growth Partners Global LLC. We say who reviewed a page, when, and what standard it was held to.</p>
+        <ul class="ra-trust-list">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span> Every calculator uses a published formula, verified against its source before release, and names the method on the tool.</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span> Health and medical articles are reviewed by an MBBS physician on our review board before publishing.</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span> Calculations run in your browser. Your inputs are not sent to us or stored.</li>
+        </ul>
+      </div>
+      <div class="ra-links ra-reveal">
+        <a class="ra-link-row" href="/medical-review-board">
+          <span><strong>Medical Review Board</strong><span class="d">The doctors who sign off on what we publish.</span></span>
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        </a>
+        <a class="ra-link-row" href="/editorial-policy">
+          <span><strong>Editorial Policy</strong><span class="d">How we source, review, correct, and date every page.</span></span>
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        </a>
+        <a class="ra-link-row" href="/about">
+          <span><strong>About RaphaAtlas</strong><span class="d">Why we built the tools and who they are for.</span></span>
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        </a>
+        <a class="ra-link-row" href="/contact">
+          <span><strong>Contact Us</strong><span class="d">Report an error or ask us to cover something.</span></span>
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Closing CTA ============ -->
+  <section class="ra-close">
+    <div class="ra-wrap">
+      <h2 class="ra-h2">Start with one number.</h2>
+      <p class="ra-lead">Pick the calculator that answers what you are actually asking today. It takes about a minute and costs nothing.</p>
+      <div class="ra-hero-cta">
+        <a class="ra-btn ra-btn-primary" href="/calculators">Browse all calculators <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+        <a class="ra-btn ra-btn-ghost" href="/macro-calculator">Try the Macro Calculator</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Medical disclaimer ============ -->
+  <section class="ra-note">
+    <div class="ra-wrap">
+      <p style="margin:0"><strong>Medical disclaimer.</strong> RaphaAtlas tools and guides are for general information and education. They are estimates, not a diagnosis, and they do not replace advice from your own doctor. Never delay or ignore medical advice because of something you read here. Read our <a href="/editorial-policy">editorial policy</a>.</p>
+    </div>
+  </section>
+
 </main>
 <!-- Footer -->
 <footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto">
 <div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center">
 <div class="mb-8 md:mb-0">
-<a href="/" class="flex items-center mb-2"><img src="/raphaatlas-lockup.svg" alt="RaphaAtlas" height="90" style="height:90px; width:auto;"></a>
+<a href="/" class="flex items-center mb-2"><img src="/raphaatlas-lockup.svg" alt="RaphaAtlas" width="144" height="90" style="height:90px; width:auto;"></a>
 </div>
 <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8" style="font-family: 'Inter', sans-serif;">
 <a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/about">About Us</a>
@@ -271,8 +548,52 @@ void main() {
 <a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/contact">Contact</a>
 <a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/privacy">Privacy Policy</a>
 </div>
-<div class="mt-8 md:mt-0 text-on-primary opacity-30 text-sm" style="font-family: 'Inter', sans-serif;">© 2026 RaphaAtlas. All rights reserved.</div>
+<div class="mt-8 md:mt-0 text-on-primary opacity-50 text-sm" style="font-family: 'Inter', sans-serif;">© 2026 RaphaAtlas. All rights reserved.</div>
 </div>
 </footer>
+
+<script>
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Reveal on scroll. The .ra-js class is what makes the CSS hide anything,
+     and it is only ever added here, so if this script does not run the page
+     still renders in full. Reduced motion skips the whole mechanism. */
+  var items = document.querySelectorAll('.ra-reveal');
+  var main = document.querySelector('.ra');
+  if (!reduced && 'IntersectionObserver' in window && main) {
+    main.classList.add('ra-js');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('ra-in');
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    items.forEach(function (el, i) {
+      el.style.transitionDelay = (Math.min(i % 4, 3) * 55) + 'ms';
+      io.observe(el);
+    });
+    /* Safety net. IntersectionObserver does not fire in a hidden or
+       prerendered tab, and a homepage must never be able to stay blank.
+       Whatever has not revealed itself in 1.5s gets shown regardless. */
+    setTimeout(function () {
+      items.forEach(function (el) { el.classList.add('ra-in'); });
+    }, 1500);
+  }
+
+  /* Pointer tracked highlight on the calculator cards. Hover capable pointers
+     only, so touch devices never pay for it. */
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.ra-card').forEach(function (card) {
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+  }
+})();
+</script>
 
 </body></html>

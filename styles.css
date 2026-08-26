@@ -28,6 +28,11 @@ img{max-width:100%;height:auto;display:block}
 a{color:var(--brand-deep);text-decoration:none}
 a:hover{text-decoration:underline}
 h1,h2,h3,h4{font-family:var(--head);letter-spacing:-.02em;line-height:1.15;margin:0 0 .5em}
+/* Tailwind's preflight injects `h1..h6{font-weight:inherit}` as a runtime <style>
+   that lands after this file, so at equal specificity it won and every heading
+   rendered at 400. The `html` prefix takes this to (0,0,2) to outrank it, while
+   still losing to any .font-* utility (0,1,0) that a page sets deliberately. */
+html h1,html h2,html h3,html h4{font-weight:800}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 .btn{display:inline-block;font-family:var(--head);font-weight:600;font-size:15px;padding:12px 22px;border-radius:999px;background:var(--brand);color:#fff;border:none;cursor:pointer}
 .btn:hover{background:var(--brand-deep);text-decoration:none}

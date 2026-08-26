@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "raphaatlas", "runtimeExecutable": "npx", "runtimeArgs": ["serve", "-l", "3000"], "port": 3000 }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "border-l-4",
+        "createdAt": "2026-08-26T14:58:32.938Z",
+        "reason": "user confirmed: instruction was to keep header and footer unchanged; border-l-4 is in the pre-existing shared header dropdown, byte-identical across all 14 pages"
+      },
+      {
+        "rule": "overused-font",
+        "value": "font-family: 'inter",
+        "createdAt": "2026-08-26T14:58:33.025Z",
+        "reason": "user confirmed: keep header and footer same; these three hits are inline styles in the locked shared header/footer. The homepage's own Inter (font-family:'Inter, no space) is deliberately NOT covered and stays flagged."
+      }
+    ]
+  }
+}
