@@ -4,6 +4,7 @@
 <title>Conception Calculator | RaphaAtlas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://i.pinimg.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=accessibility_new,alternate_email,arrow_forward,bolt,calculate,check_circle,child_care,close,directions_run,egg_alt,exercise,expand_more,explore,fitness_center,health_and_safety,help,local_bar,local_florist,mail,menu,monitor_heart,monitor_weight,nutrition,photo_camera,pill,play_arrow,psychology,restaurant_menu,rocket_launch,search,send,share,stethoscope,trending_up,verified,water_drop&amp;display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
@@ -365,6 +366,47 @@ svg.wheel{width:100%;max-width:340px;height:auto;display:block}
 <div class="max-w-3xl mx-auto mt-12">
 
 <h1 class="font-display-md text-display-md font-bold text-primary mb-8 text-center">Pregnancy Conception Calculator</h1>
+
+<style id="ra-figure-style">
+.ra-figure{
+  --ra-fig-w:640px;
+  max-width:min(100%,var(--ra-fig-w));
+  margin:2rem auto 3rem;
+  border-radius:20px;
+  overflow:hidden;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.07);
+  box-shadow:0 1px 2px rgba(16,24,32,.06),0 12px 32px -8px rgba(16,24,32,.14);
+}
+.ra-figure img{display:block;width:100%;height:auto}
+.ra-figure figcaption{
+  padding:.75rem 1.125rem .875rem;
+  background:rgba(248,249,250,.72);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border-top:1px solid rgba(0,0,0,.06);
+  font-weight:600;
+  font-size:13px;
+  line-height:1.5;
+  letter-spacing:.01em;
+  color:#5b6672;
+  text-align:left;
+}
+@media (prefers-reduced-transparency:reduce){
+  .ra-figure figcaption{background:#f5f6f7;backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+@media (prefers-contrast:more){
+  .ra-figure{border-color:rgba(0,0,0,.45)}
+  .ra-figure figcaption{background:#fff;color:#14181d}
+}
+</style>
+
+<figure class="ra-figure">
+  <img src="https://i.pinimg.com/736x/47/b1/b8/47b1b81caf43d9bdb3b454177f1c8539.jpg"
+       width="736" height="920" loading="lazy" decoding="async"
+       alt="Illustrated chart showing how a known ovulation date gives the estimated conception date, since fertilisation usually happens within 12 to 24 hours of ovulation, and how adding 266 days or 38 weeks gives the estimated due date, with tips on tracking ovulation and confirming with an early scan.">
+  <figcaption>How a known ovulation date maps to an estimated conception date and due date: ovulation date plus 266 days, roughly 38 weeks. Most babies arrive one to two weeks either side of that estimate.</figcaption>
+</figure>
 <h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Introductions</h2>
 <p class="mb-4 font-body-md text-on-surface">Most people expect a Pregnancy Conception Calculator to hand over one exact date, yet biology resists that request. What it truly returns is an estimate, a narrow date range where conception most plausibly occurred inside.</p>
 <p class="mb-4 font-body-md text-on-surface">A developing baby cannot announce the day it began, so competent practice works backward. We read your last period date, an ultrasound date, or an IVF transfer date toward the true date of conception instead.</p>
