@@ -10,9 +10,10 @@
 - [Conception Calculator](https://www.raphaatlas.com/conception-calculator): Estimate conception and due dates.
 
 ## Content
-- [Fitness](https://www.raphaatlas.com/fitness): Strength, conditioning, recovery.
-- [Nutrition](https://www.raphaatlas.com/nutrition): Macros, micronutrients, eating patterns.
-- [Health](https://www.raphaatlas.com/health): Conditions, biomarkers, preventive care.
+- [Fitness](https://www.raphaatlas.com/fitness): Strength, conditioning, recovery, progressive overload, weekly programming.
+- [Nutrition](https://www.raphaatlas.com/nutrition): Macros, micronutrients, eating patterns compared, supplements, label reading.
+- [Health](https://www.raphaatlas.com/health): Biomarkers, screening intervals, reading lab results, red-flag symptoms.
+- [Lifestyle](https://www.raphaatlas.com/lifestyle): Sleep, alcohol, stress, smoking, sitting and steps, daylight, social connection.
 
 ## Trust
 - [Medical Review Board](https://www.raphaatlas.com/medical-review-board): Reviewing physicians (MBBS).

@@ -180,6 +180,76 @@ html h1,html h2,html h3,html h4{font-weight:800}
 .foot-aff-row a{margin:0}
 .foot-legal{border-top:1px solid #2A3942;margin-top:24px;padding-top:20px;font-size:12.5px;color:#8AA0A9;max-width:92ch}
 
+/* ---------------- Editorial content ----------------
+   Shared by the topic hubs (health, fitness, nutrition, lifestyle) and the
+   policy pages. Lives here rather than in per-page <style> blocks so the
+   seven pages that use it stay byte-identical in presentation. */
+
+/* Byline: reviewer + last-updated. The E-E-A-T signal Google reads on YMYL
+   pages, so it sits directly under the h1 on every content page. */
+.ra-meta{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;
+  font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line);
+  padding-bottom:16px;margin:0 0 8px}
+.ra-meta strong{color:var(--ink);font-weight:600}
+
+/* Lede paragraph — sets the topic in one breath before the first h2. */
+.article .lede{font-size:20px;line-height:1.65;color:var(--ink-soft)}
+
+/* Callout. Reuses the blockquote rule's shape but carries a label. */
+.ra-note{border-left:4px solid var(--brand);background:var(--brand-tint);
+  padding:16px 20px;border-radius:0 10px 10px 0;margin:26px 0}
+.ra-note p{margin:0;font-size:16.5px;line-height:1.65}
+.ra-note p+p{margin-top:10px}
+.ra-note .lbl{display:block;font-family:var(--head);font-weight:800;
+  font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--brand-deep);margin-bottom:6px}
+.ra-note.warn{border-left-color:var(--amber);background:#FDF6E7}
+.ra-note.warn .lbl{color:var(--amber)}
+
+/* Tables scroll inside their own box; the page body never scrolls sideways. */
+.ra-tw{overflow-x:auto;margin:24px 0;border:1px solid var(--line);border-radius:10px}
+.ra-table{border-collapse:collapse;width:100%;min-width:520px;font-size:15.5px}
+.ra-table th,.ra-table td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+.ra-table th{background:var(--surface);font-family:var(--head);font-weight:700;font-size:14px}
+.ra-table tr:last-child td{border-bottom:0}
+
+/* FAQ uses native <details> — no script, works before hydration, and the
+   text stays in the DOM for crawlers even while collapsed. */
+.ra-faq{margin:22px 0}
+.ra-faq details{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;background:var(--card)}
+.ra-faq summary{cursor:pointer;padding:16px 20px;font-family:var(--head);
+  font-weight:700;font-size:17px;list-style:none;display:flex;
+  justify-content:space-between;align-items:center;gap:16px}
+.ra-faq summary::-webkit-details-marker{display:none}
+.ra-faq summary::after{content:"+";color:var(--brand-deep);font-size:22px;font-weight:700;line-height:1}
+.ra-faq details[open] summary::after{content:"\2013"}
+.ra-faq details[open] summary{border-bottom:1px solid var(--line)}
+.ra-faq .body{padding:16px 20px}
+.ra-faq .body p{margin:0;font-size:16.5px}
+.ra-faq .body p+p{margin-top:12px}
+
+/* Compact calculator cross-links inside a prose column. */
+.ra-tools{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:26px 0}
+@media(max-width:600px){.ra-tools{grid-template-columns:1fr}}
+.ra-tool{border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+  display:block;color:var(--ink);background:var(--card);transition:border-color .16s ease,transform .16s ease}
+.ra-tool:hover{border-color:var(--brand);transform:translateY(-2px);text-decoration:none}
+.ra-tool b{display:block;font-family:var(--head);font-size:16px;margin-bottom:3px}
+.ra-tool span{font-size:14px;color:var(--ink-soft);line-height:1.5}
+
+/* Sibling-hub links at the foot of each topic page. */
+.ra-next{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0}
+.ra-next a{border:1px solid var(--line);border-radius:999px;padding:9px 18px;
+  font-size:14.5px;font-weight:600;color:var(--ink);background:var(--surface)}
+.ra-next a:hover{border-color:var(--brand);color:var(--brand-deep);text-decoration:none}
+
+/* Sources list — small, numbered, and visibly separate from body prose. */
+.ra-src{margin-top:38px;padding-top:22px;border-top:1px solid var(--line)}
+.ra-src h2{font-size:20px!important;margin:0 0 10px!important}
+.ra-src ol{padding-left:20px;margin:0}
+.ra-src li{font-size:14.5px!important;line-height:1.6!important;color:var(--ink-soft);margin-bottom:7px}
+
 /* ---------------- a11y ---------------- */
 a:focus-visible,button:focus-visible,.card:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:6px}
+.ra-faq summary:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:8px}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}

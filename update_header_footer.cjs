@@ -375,6 +375,7 @@ ${chromeCss}
       </div></div>
     </div>
     <div class="rah-item"><a class="rah-link" href="/fitness">Fitness</a></div>
+    <div class="rah-item"><a class="rah-link" href="/lifestyle">Lifestyle</a></div>
     <div class="rah-item">
       <button class="rah-btn" type="button" aria-expanded="false"><span>About</span>${CHEVRON}</button>
       <div class="rah-menu rah-menu-r"><div class="rah-menu-in">
@@ -416,6 +417,7 @@ ${chromeCss}
       </div>
     </div>
     <a class="rah-dlink" href="/fitness">Fitness</a>
+    <a class="rah-dlink" href="/lifestyle">Lifestyle</a>
     <div>
       <button class="rah-dbtn" type="button" aria-expanded="false"><span>About</span>${CHEVRON}</button>
       <div class="rah-dpanel">
@@ -733,6 +735,7 @@ const footerHtml = `<footer class="raf">
       <a href="/nutrition">Nutrition</a>
       <a href="/health">Health</a>
       <a href="/fitness">Fitness</a>
+      <a href="/lifestyle">Lifestyle</a>
     </div>
 
     <div class="raf-col">

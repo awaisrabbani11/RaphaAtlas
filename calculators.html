@@ -5,6 +5,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=accessibility_new,alternate_email,arrow_forward,bolt,calculate,check_circle,child_care,close,directions_run,egg_alt,exercise,expand_more,explore,fitness_center,health_and_safety,help,local_bar,local_florist,mail,menu,monitor_heart,monitor_weight,nutrition,photo_camera,pill,play_arrow,psychology,restaurant_menu,rocket_launch,search,send,share,stethoscope,trending_up,verified,water_drop&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
         .material-symbols-outlined {
@@ -72,21 +73,23 @@
 
 <link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="description" content="Free health calculators for macros, body type, blood alcohol, and conception dates. Formula-transparent and physician-reviewed.">
+<meta name="description" content="Four free clinical calculators — macros, body type, blood alcohol, and conception — each naming the published formula it uses and stating its limits honestly.">
   <link rel="canonical" href="https://www.raphaatlas.com/calculators">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RaphaAtlas">
   <meta property="og:title" content="Health Calculators — Free Clinical Tools | RaphaAtlas">
-  <meta property="og:description" content="Free health calculators for macros, body type, blood alcohol, and conception dates. Formula-transparent and physician-reviewed.">
+  <meta property="og:description" content="Four free clinical calculators — macros, body type, blood alcohol, and conception — each naming the published formula it uses and stating its limits honestly.">
   <meta property="og:url" content="https://www.raphaatlas.com/calculators">
   <meta property="og:image" content="https://www.raphaatlas.com/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Health Calculators — Free Clinical Tools | RaphaAtlas">
-  <meta name="twitter:description" content="Free health calculators for macros, body type, blood alcohol, and conception dates. Formula-transparent and physician-reviewed.">
+  <meta name="twitter:description" content="Four free clinical calculators — macros, body type, blood alcohol, and conception — each naming the published formula it uses and stating its limits honestly.">
   <meta name="twitter:image" content="https://www.raphaatlas.com/og-image.png">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <script type="application/ld+json" data-ra="page">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.raphaatlas.com/"},{"@type":"ListItem","position":2,"name":"Health Calculators","item":"https://www.raphaatlas.com/calculators"}]}</script>
 <meta name="theme-color" content="#0A1C1F">
+
+  <script type="application/ld+json" data-ra="faq">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are these calculators free, and do I need an account?","acceptedAnswer":{"@type":"Answer","text":"All of them are free and none requires an account or sign-in. They run in your browser, so the figures you enter are used to produce your result and are not submitted anywhere."}},{"@type":"Question","name":"Why do different websites give me different calorie numbers?","acceptedAnswer":{"@type":"Answer","text":"Because they use different equations and different activity multipliers. Mifflin-St Jeor, Harris-Benedict, and Katch-McArdle each estimate resting metabolic rate differently. Activity multipliers vary even more between sites, since moderately active has no standard definition. Pick one method and judge it by results over weeks."}},{"@type":"Question","name":"Which calorie formula should I choose?","acceptedAnswer":{"@type":"Answer","text":"Mifflin-St Jeor is the sensible default and generally the most accurate for the general population. Katch-McArdle can be better if you know your body fat percentage from a reliable measurement, because it works from lean mass. Harris-Benedict is the oldest of the three and tends to overestimate."}},{"@type":"Question","name":"Can I use the BAC calculator to check if I can drive?","acceptedAnswer":{"@type":"Answer","text":"No. It is an educational estimate with substantial error in both directions, and it cannot account for your metabolism, medication, food intake, or the actual strength of what you drank. No calculator is a defence and none is a substitute for not driving after drinking."}},{"@type":"Question","name":"How accurate is a due date from the conception calculator?","acceptedAnswer":{"@type":"Answer","text":"It is a reasonable estimate when cycles are regular, but only a small percentage of births occur on the calculated date; most fall within a couple of weeks either side. First-trimester ultrasound gives a more accurate date and is what maternity care relies on."}}]}</script>
 </head>
 <body class="bg-surface-lowest text-on-surface font-body-md min-h-screen flex flex-col antialiased">
 <header class="rah" id="main-header">
@@ -429,6 +432,7 @@ body{overflow-x:hidden;overflow-x:clip}
       </div></div>
     </div>
     <div class="rah-item"><a class="rah-link" href="/fitness">Fitness</a></div>
+    <div class="rah-item"><a class="rah-link" href="/lifestyle">Lifestyle</a></div>
     <div class="rah-item">
       <button class="rah-btn" type="button" aria-expanded="false"><span>About</span><svg class="rah-chev" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div class="rah-menu rah-menu-r"><div class="rah-menu-in">
@@ -470,6 +474,7 @@ body{overflow-x:hidden;overflow-x:clip}
       </div>
     </div>
     <a class="rah-dlink" href="/fitness">Fitness</a>
+    <a class="rah-dlink" href="/lifestyle">Lifestyle</a>
     <div>
       <button class="rah-dbtn" type="button" aria-expanded="false"><span>About</span><svg class="rah-chev" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div class="rah-dpanel">
@@ -819,6 +824,88 @@ body{overflow-x:hidden;overflow-x:clip}
 </div>
 </a>
 </div>
+
+<div class="article" style="margin-top:56px">
+
+  <p class="ra-meta">
+    <span>Methods verified against source publications</span>
+    <span>Updated <time datetime="2026-08-30">30 August 2026</time></span>
+    <span><a href="/editorial-policy">How we build calculators</a></span>
+  </p>
+
+  <h2>Which tool answers which question</h2>
+
+  <p>Each calculator here solves one specific problem and states the formula it uses. None of them is a diagnostic instrument, and none replaces a clinician who can see your history. Used for what they are — structured estimates that save you arithmetic — they are genuinely useful.</p>
+
+  <div class="ra-tw">
+  <table class="ra-table">
+    <thead><tr><th>Calculator</th><th>Answers</th><th>Method</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><a href="/macro-calculator"><strong>Macro Calculator</strong></a></td>
+        <td>How many calories, and how much protein, carbohydrate and fat, should I eat per day?</td>
+        <td>Mifflin-St Jeor by default, with Harris-Benedict and Katch-McArdle available. Resting energy expenditure is multiplied by an activity factor to give total daily expenditure, then adjusted for your goal.</td>
+      </tr>
+      <tr>
+        <td><a href="/body-type-calculator"><strong>Body Type Calculator</strong></a></td>
+        <td>Which somatotype does my frame most resemble — ectomorph, mesomorph, or endomorph?</td>
+        <td>Classification from bone structure and body measurements, following the somatotype tradition originated by Sheldon and later put on an anthropometric footing by Heath and Carter.</td>
+      </tr>
+      <tr>
+        <td><a href="/bac-calculator"><strong>BAC Calculator</strong></a></td>
+        <td>Roughly what blood alcohol concentration would these drinks produce over this time?</td>
+        <td>The Widmark formula, which divides alcohol consumed by body weight and a sex-based distribution constant, then subtracts elimination over elapsed time.</td>
+      </tr>
+      <tr>
+        <td><a href="/conception-calculator"><strong>Conception Calculator</strong></a></td>
+        <td>When did conception most likely occur, and when is the due date?</td>
+        <td>Naegele's rule applied to your last menstrual period, adjusted for cycle length, or worked backwards from a known due date.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>What a calculator can and cannot tell you</h2>
+
+  <p>Every formula on this page was derived from a population, and populations have variance. Mifflin-St Jeor predicts resting metabolic rate within about ten percent for most people — which means a meaningful minority sit outside that band, and a small number sit well outside it. That is not a flaw in the equation; it is what a population regression is.</p>
+
+  <p>The practical consequence is that a calculator output is a <strong>starting hypothesis, not a measurement</strong>. Take the number, apply it consistently for two to three weeks, observe what actually happens, and adjust from the observation. Someone whose weight holds steady on a calculated 300-calorie deficit has learned something more accurate about their own metabolism than any equation could have told them.</p>
+
+  <div class="ra-note warn">
+    <span class="lbl">The BAC calculator in particular</span>
+    <p>The Widmark formula ignores food in the stomach, individual differences in the enzymes that metabolise alcohol, medication, liver function, and the fact that drink strengths and home pours vary enormously. Real-world error is large in both directions. Never use this or any estimator to decide whether you are safe to drive. If you have been drinking, do not drive.</p>
+  </div>
+
+  <p>Two more limits worth stating plainly. Somatotype describes a body's current shape; it does not set a ceiling on what training and nutrition can change, and the older literature claiming it predicts athletic destiny does not hold up. And conception dating from a last menstrual period assumes ovulation around day 14, which is an average rather than a rule — ultrasound dating in the first trimester is considerably more accurate, which is exactly why clinics use it.</p>
+
+  <h2>How we build and check these tools</h2>
+
+  <p>Every calculator here implements a published formula, and we verify the implementation against the source publication before release rather than against another website. Each tool names its method on the page so the arithmetic is auditable. Where a formula has known limitations — and all of these do — we state them alongside the result rather than in small print. Our full <a href="/editorial-policy">editorial policy</a> covers sourcing, physician review, and how to report an error.</p>
+
+  <h2>Common questions</h2>
+
+  <div class="ra-faq">
+    <details><summary>Are these calculators free, and do I need an account?</summary><div class="body"><p>All of them are free and none requires an account or sign-in. They run in your browser, so the figures you enter are used to produce your result and are not submitted anywhere.</p></div></details>
+    <details><summary>Why do different websites give me different calorie numbers?</summary><div class="body"><p>Because they use different equations and different activity multipliers. Mifflin-St Jeor, Harris-Benedict, and Katch-McArdle each estimate resting metabolic rate differently, and Katch-McArdle additionally needs a body fat percentage. Activity multipliers vary even more between sites, since "moderately active" has no standard definition. Pick one method, use it consistently, and judge it by results over weeks.</p></div></details>
+    <details><summary>Which calorie formula should I choose?</summary><div class="body"><p>Mifflin-St Jeor is the sensible default and generally the most accurate for the general population. Katch-McArdle can be better if you know your body fat percentage from a reliable measurement, because it works from lean mass — but a guessed body fat figure makes it worse, not better. Harris-Benedict is the oldest of the three and tends to overestimate.</p></div></details>
+    <details><summary>Can I use the BAC calculator to check if I can drive?</summary><div class="body"><p>No. It is an educational estimate with substantial error in both directions, and it cannot account for your metabolism, medication, food intake, or the actual strength of what you drank. No calculator is a defence and none is a substitute for not driving after drinking.</p></div></details>
+    <details><summary>How accurate is a due date from the conception calculator?</summary><div class="body"><p>It is a reasonable estimate when cycles are regular, but only a small percentage of births occur on the calculated date — most fall within a couple of weeks either side. Irregular cycles or uncertainty about the last period widen the range considerably. First-trimester ultrasound gives a more accurate date and is what maternity care relies on.</p></div></details>
+  </div>
+
+  <div class="ra-note">
+    <span class="lbl">Medical disclaimer</span>
+    <p>These tools provide general estimates for education, not diagnosis or treatment. They cannot account for medical conditions, medications, pregnancy, or individual variation. Discuss anything that affects your care with a qualified clinician.</p>
+  </div>
+
+  <div class="ra-next">
+    <a href="/health">Health →</a>
+    <a href="/nutrition">Nutrition →</a>
+    <a href="/fitness">Fitness →</a>
+    <a href="/lifestyle">Lifestyle →</a>
+  </div>
+
+</div>
+
 </main>
 <!-- Footer -->
 <footer class="raf">
@@ -847,6 +934,7 @@ body{overflow-x:hidden;overflow-x:clip}
       <a href="/nutrition">Nutrition</a>
       <a href="/health">Health</a>
       <a href="/fitness">Fitness</a>
+      <a href="/lifestyle">Lifestyle</a>
     </div>
 
     <div class="raf-col">
