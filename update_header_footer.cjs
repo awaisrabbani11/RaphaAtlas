@@ -1,99 +1,789 @@
+/* Regenerates the site chrome (header + footer) in every .html file.
+   These blocks are byte-identical across pages, so this file is the source
+   of truth. Edit here, run `node update_header_footer.cjs`, commit.
+
+   Built to two bars:
+     - Apple Design (WWDC "Designing Fluid Interfaces", "The Details of UI
+       Typography"): response on pointer-down, 1:1 gesture tracking,
+       interruptible springs, velocity handoff, momentum projection,
+       translucent materials, size-specific tracking, the three reduced-*
+       media queries.
+     - 10K Websites quality floor: measured contrast, semantic landmarks and
+       a skip link, :focus-visible in the accent, 44px coarse touch targets,
+       overflow-x clip on html AND body, theme-color, nothing snaps.
+
+   The CSS lives inline inside the header block on purpose: every page is
+   self-contained (see the .ra block in index.html) and this avoids adding a
+   render-blocking stylesheet request to a static site with no build step. */
+
 const fs = require('fs');
 const path = require('path');
 
-function getFiles(dir, extArray, fileList = []) {
-    const files = fs.readdirSync(dir);
-    for (const file of files) {
+function getFiles(dir, fileList = []) {
+    for (const file of fs.readdirSync(dir)) {
         if (file === 'node_modules' || file === '.git') continue;
         const filePath = path.join(dir, file);
-        if (fs.statSync(filePath).isDirectory()) {
-            getFiles(filePath, extArray, fileList);
-        } else {
-            if (extArray.includes(path.extname(filePath))) {
-                fileList.push(filePath);
-            }
-        }
+        if (fs.statSync(filePath).isDirectory()) getFiles(filePath, fileList);
+        else if (path.extname(filePath) === '.html') fileList.push(filePath);
     }
     return fileList;
 }
 
-const fontLink = `<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">`;
+/* Inline SVG, not the Material icon font: the icon font arrives late and the
+   glyph names ("menu", "expand_more") render as literal text until it does. */
+const CHEVRON = `<svg class="rah-chev" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
-const headerHtml = `<header class="bg-header-black border-b border-black docked full-width top-0 z-50 sticky transition-all duration-300">
-<div class="flex justify-between items-center px-4 md:px-8 py-2 w-full max-w-7xl mx-auto">
-<a href="/" aria-label="RaphaAtlas home" class="flex items-center">
-  <img src="/raphaatlas-mark.svg" alt="RaphaAtlas Logo" height="40" width="40" class="h-10 w-10">
-  <span style="font-family: 'Merriweather', 'Georgia', serif; font-size: 34px; font-weight: 900; letter-spacing: -1.5px; color: white; margin-left: 12px; transform: translateY(2px);">RaphaAtlas</span>
-</a>
-<nav class="hidden lg:flex items-center space-x-6">
-<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/nutrition">Nutrition</a>
-<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/health">Health</a>
-<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/calculators">Calculators</a>
-<a class="text-on-primary font-bold hover:text-vitality-teal transition-colors" style="font-family: 'Inter', sans-serif;" href="/fitness">Fitness</a>
-<div class="relative group">
-<button class="flex items-center space-x-1 text-on-primary font-bold hover:text-vitality-teal transition-colors py-2" style="font-family: 'Inter', sans-serif;">
-<span>More</span>
-<span class="material-symbols-outlined text-sm">expand_more</span>
-</button>
-<div class="absolute left-0 mt-2 w-56 bg-surface-container-lowest border border-header-black hidden group-hover:block z-50 shadow-lg">
-<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/about">About Us</a>
-<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/editorial-policy">Editorial Policy</a>
-<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/medical-review-board">Medical Review Board</a>
-<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all border-b border-border-subtle" href="/privacy">Privacy Policy</a>
-<a class="block px-4 py-3 text-on-surface hover:bg-surface-cream hover:border-l-4 border-vitality-teal transition-all" href="/contact">Contact Us</a>
+const chromeCss = `<style id="ra-chrome-css">
+/* ============================================================
+   RaphaAtlas site chrome — header + footer.
+   Namespaced .rah- / .raf- so nothing collides with Tailwind
+   utilities or the .ra homepage block.
+   ============================================================ */
+
+/* The fixed drawer sits at translateX(100%) when closed, which extends the
+   scrollable area. \`hidden\` alone still lets script scroll the page sideways,
+   so \`clip\` follows it as the real fix, on both html and body. */
+html{overflow-x:hidden;overflow-x:clip}
+body{overflow-x:hidden;overflow-x:clip}
+
+.rah,.raf{
+  --n:#0A1C1F;--n-deep:#07171A;
+  --teal:#02838D;--teal-lite:#5FD3DC;--teal-tint:#E8F4F5;--teal-deep:#016A73;
+  /* Two easing tokens, used everywhere. Nothing in the chrome snaps. */
+  --ease:cubic-bezier(.22,.61,.36,1);      /* critically damped, no overshoot */
+  --ease-in:cubic-bezier(.64,.39,.78,.35); /* its mirror, for reversals */
+  --gut:clamp(1rem,4vw,2rem);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+.rah *,.raf *{box-sizing:border-box}
+
+/* ---------------- The wordmark ----------------
+   Apple's system face: SF Pro on Apple hardware, Segoe UI Variable on
+   Windows, Roboto on Android. Each already ships optical sizing and
+   tracking tables, which is exactly why it beats a webfont here.
+
+   Tracking is size-specific, never one value for all sizes: large type reads
+   too loose as it grows, so it tightens, and the small drawer cut stays
+   nearer zero. Sizes are in rem so the reader's own text-size setting
+   scales them. */
+.ra-wordmark{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",
+              "Helvetica Neue","Segoe UI Variable Display","Segoe UI",
+              system-ui,Inter,sans-serif;
+  font-weight:700;line-height:1;color:#fff;
+  font-optical-sizing:auto;-webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;white-space:nowrap;
+}
+
+/* ---------------- Header ---------------- */
+/* .rah carries no background, blur or filter of its own on purpose:
+   backdrop-filter makes an element the containing block for its
+   position:fixed descendants, which would trap the drawer inside the bar.
+   The glass lives on .rah-glass, a sibling of the drawer. */
+.rah{position:sticky;top:0;z-index:60}
+.rah-glass{position:relative;background:var(--n)}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .rah-glass{
+    background:rgba(10,28,31,.78);
+    backdrop-filter:saturate(180%) blur(20px);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);
+  }
+}
+/* Scroll edge effect, not a permanent hairline: the separation only exists
+   once content is actually travelling underneath the glass. */
+.rah-glass::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(95,211,220,.34) 22%,rgba(255,255,255,.14) 60%,transparent);
+  opacity:0;transition:opacity .3s var(--ease);
+}
+.rah.is-scrolled .rah-glass::after{opacity:1}
+.rah.is-scrolled .rah-glass{box-shadow:0 10px 30px -22px rgba(0,0,0,.85)}
+
+.rah-bar{
+  position:relative;max-width:75rem;margin:0 auto;min-height:4rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1.25rem;
+  padding-left:max(var(--gut),env(safe-area-inset-left));
+  padding-right:max(var(--gut),env(safe-area-inset-right));
+}
+@media (max-width:640px){.rah-bar{min-height:3.5rem}}
+
+/* Skip link: visible the moment it is focused, never before. */
+.rah-skip{
+  position:absolute;left:var(--gut);top:.5rem;z-index:5;
+  transform:translateY(-160%);opacity:0;
+  background:#fff;color:#0C1719;font-size:.875rem;font-weight:600;
+  padding:.6rem 1rem;border-radius:.625rem;text-decoration:none;
+  transition:transform .2s var(--ease),opacity .2s var(--ease);
+}
+.rah-skip:focus-visible{transform:translateY(0);opacity:1}
+
+.rah-logo{
+  display:inline-flex;align-items:center;gap:.625rem;text-decoration:none;flex:0 0 auto;
+  transition:transform .12s var(--ease);
+}
+.rah-logo:active{transform:scale(.975)}
+.rah-logo img{width:2.125rem;height:2.125rem;display:block}
+.rah-logo .ra-wordmark{font-size:1.4375rem;letter-spacing:-.038em}
+@media (max-width:640px){
+  .rah-logo img{width:1.875rem;height:1.875rem}
+  .rah-logo .ra-wordmark{font-size:1.25rem;letter-spacing:-.032em}
+}
+
+.rah-nav{display:flex;align-items:center;gap:.125rem}
+@media (max-width:1023px){.rah-nav{display:none}}
+.rah-item{position:relative}
+/* Vibrancy over a translucent surface: brighter and slightly heavier than a
+   flat gray would be, so the label survives whatever scrolls underneath.
+   Measured 5.78:1 against the glass composited over white content. */
+.rah-link,.rah-btn{
+  position:relative;font:inherit;font-size:.90625rem;font-weight:600;letter-spacing:0;
+  color:#C6D6D8;background:none;border:0;cursor:pointer;text-decoration:none;
+  display:inline-flex;align-items:center;gap:.375rem;padding:.5625rem .8125rem;border-radius:.625rem;
+  transition:color .18s var(--ease),background-color .18s var(--ease),transform .1s var(--ease);
+}
+.rah-link:hover,.rah-btn:hover,
+.rah-item:hover .rah-btn,.rah-item:focus-within .rah-btn{color:#fff;background:rgba(255,255,255,.08)}
+/* Feedback lives on the press, not the release. */
+.rah-link:active,.rah-btn:active{transform:scale(.96)}
+.rah-link[aria-current="page"]{color:#fff}
+.rah-link[aria-current="page"]::after{
+  content:"";position:absolute;left:.8125rem;right:.8125rem;bottom:.1875rem;
+  height:2px;border-radius:2px;background:var(--teal-lite);
+}
+.rah-chev{width:11px;height:8px;opacity:.65;transition:transform .2s var(--ease),opacity .2s var(--ease)}
+.rah-item:hover .rah-chev,.rah-item:focus-within .rah-chev{transform:rotate(180deg);opacity:1}
+
+/* Anchored to its trigger, not floating in from nowhere: the panel scales up
+   out of the button's own top corner, so the spatial relationship is legible. */
+.rah-menu{
+  position:absolute;top:100%;left:0;min-width:14.875rem;padding-top:.625rem;
+  transform-origin:top left;
+  opacity:0;visibility:hidden;transform:translateY(4px) scale(.97);
+  transition:opacity .18s var(--ease),transform .18s var(--ease),visibility .18s;
+}
+/* :focus-within, not hover alone — the old markup was unreachable by keyboard. */
+.rah-item:hover .rah-menu,.rah-item:focus-within .rah-menu{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+/* Last dropdown in the row: left-aligned it hangs ~80px past the viewport. */
+.rah-menu-r{left:auto;right:0;transform-origin:top right}
+.rah-menu-in{
+  background:#fff;border:1px solid #E2EAEB;border-radius:.875rem;padding:.4375rem;
+  box-shadow:0 22px 48px -22px rgba(7,23,26,.5),0 2px 6px rgba(7,23,26,.07);
+}
+.rah-menu a{
+  display:block;padding:.625rem .75rem;border-radius:.5625rem;text-decoration:none;
+  font-size:.90625rem;font-weight:500;letter-spacing:0;color:#0C1719;
+  transition:background-color .15s var(--ease),color .15s var(--ease),transform .1s var(--ease);
+}
+.rah-menu a:hover{background:var(--teal-tint);color:var(--teal-deep)}
+.rah-menu a:active{transform:scale(.98)}
+.rah-menu a[aria-current="page"]{background:var(--teal-tint);color:var(--teal-deep);font-weight:600}
+.rah-menu .rah-sep{height:1px;background:#E2EAEB;margin:.375rem .5rem}
+
+.rah-burger{
+  display:none;width:2.625rem;height:2.625rem;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);
+  border-radius:.6875rem;color:#fff;cursor:pointer;
+  transition:background-color .18s var(--ease),transform .1s var(--ease);
+}
+.rah-burger:hover{background:rgba(255,255,255,.12)}
+.rah-burger:active{transform:scale(.94)}
+@media (max-width:1023px){.rah-burger{display:inline-flex}}
+
+/* ---------------- Mobile drawer ----------------
+   Enters from the right and leaves to the right, always the same path.
+   JS owns the transform while it is in motion (see the spring below); this
+   rule is the resting closed state and the no-JS state. */
+.rah-drawer{
+  position:fixed;top:0;right:0;bottom:0;z-index:100;width:min(86vw,21.25rem);
+  background:var(--n);border-left:1px solid rgba(255,255,255,.10);
+  display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  /* Vertical scrolling stays native; horizontal is ours to track 1:1. */
+  touch-action:pan-y;
+  padding-top:env(safe-area-inset-top);
+  padding-bottom:calc(1.75rem + env(safe-area-inset-bottom));
+  transform:translateX(100%);visibility:hidden;
+  will-change:transform;
+}
+.rah-drawer.is-armed{visibility:visible}
+.rah-drawer-top{
+  display:flex;align-items:center;justify-content:space-between;
+  min-height:4rem;padding:0 1.125rem;border-bottom:1px solid rgba(255,255,255,.10);flex:0 0 auto;
+}
+.rah-drawer-top .ra-wordmark{font-size:1.1875rem;letter-spacing:-.028em}
+.rah-close{
+  width:2.375rem;height:2.375rem;display:inline-flex;align-items:center;justify-content:center;
+  background:none;border:0;border-radius:.625rem;color:#C6D6D8;cursor:pointer;
+  transition:background-color .18s var(--ease),color .18s var(--ease),transform .1s var(--ease);
+}
+.rah-close:hover{background:rgba(255,255,255,.09);color:#fff}
+.rah-close:active{transform:scale(.92)}
+.rah-drawer nav{padding:.625rem 1.125rem}
+.rah-drawer nav > *{border-bottom:1px solid rgba(255,255,255,.08)}
+.rah-drawer nav > *:last-child{border-bottom:0}
+.rah-dlink,.rah-dbtn{
+  display:flex;align-items:center;justify-content:space-between;width:100%;
+  font:inherit;font-size:1.03125rem;font-weight:600;letter-spacing:-.012em;color:#EAF3F3;
+  background:none;border:0;cursor:pointer;text-decoration:none;padding:.9375rem .125rem;
+  transition:color .16s var(--ease),transform .1s var(--ease);
+}
+.rah-dlink:active,.rah-dbtn:active{transform:scale(.985)}
+.rah-dlink[aria-current="page"]{color:var(--teal-lite)}
+.rah-dbtn .rah-chev{width:12px;height:9px}
+.rah-dbtn[aria-expanded="true"] .rah-chev{transform:rotate(180deg)}
+.rah-dpanel{max-height:0;overflow:hidden;transition:max-height .3s var(--ease)}
+.rah-dbtn[aria-expanded="true"] + .rah-dpanel{max-height:22.5rem}
+.rah-dpanel a{
+  display:block;padding:.6875rem .125rem .6875rem .875rem;text-decoration:none;
+  font-size:.9375rem;color:#93ACB0;border-left:2px solid rgba(255,255,255,.12);
+  transition:color .16s var(--ease),border-color .16s var(--ease),transform .1s var(--ease);
+}
+.rah-dpanel a:last-child{margin-bottom:.5rem}
+.rah-dpanel a:hover{color:#fff;border-left-color:var(--teal-lite)}
+.rah-dpanel a:active{transform:scale(.985)}
+.rah-dpanel a[aria-current="page"]{color:var(--teal-lite);border-left-color:var(--teal-lite)}
+/* The grab handle: says out loud that this panel can be pushed away. */
+.rah-grip{
+  position:absolute;left:.4375rem;top:50%;width:4px;height:2.75rem;margin-top:-1.375rem;
+  border-radius:4px;background:rgba(255,255,255,.20);pointer-events:none;
+}
+
+.rah-overlay{
+  position:fixed;inset:0;z-index:90;background:rgba(4,14,16,.55);
+  opacity:0;visibility:hidden;
+}
+.rah-overlay.is-armed{visibility:visible}
+
+/* ---------------- Footer ---------------- */
+.raf{
+  background:var(--n-deep);color:#A9BFC2;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.raf-in{
+  max-width:75rem;margin:0 auto;
+  padding-top:clamp(2.75rem,6vw,4.25rem);
+  padding-left:max(var(--gut),env(safe-area-inset-left));
+  padding-right:max(var(--gut),env(safe-area-inset-right));
+}
+.raf-top{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:clamp(1.625rem,4vw,2.75rem)}
+@media (max-width:900px){
+  .raf-top{grid-template-columns:1fr 1fr;gap:2rem}
+  .raf-brand{grid-column:1/-1}
+}
+@media (max-width:520px){.raf-top{grid-template-columns:1fr;gap:1.75rem}}
+
+.raf-logo{
+  display:inline-flex;align-items:center;gap:.6875rem;text-decoration:none;
+  transition:transform .12s var(--ease);
+}
+.raf-logo:active{transform:scale(.98)}
+.raf-logo img{width:2.5rem;height:2.5rem;display:block}
+.raf-logo .ra-wordmark{font-size:1.6875rem;letter-spacing:-.042em}
+.raf-brand p{margin:1rem 0 0;max-width:36ch;font-size:.875rem;line-height:1.62;color:#7E979B}
+/* Was #5F7C80, which measured 4.08:1 and failed the 4.5:1 floor for small
+   text. Hierarchy below the description now comes from size, not from a
+   contrast the reader has to work for. */
+.raf-brand .raf-parent{margin-top:.75rem;font-size:.78125rem;color:#7E979B}
+
+.raf h3{
+  font-size:.71875rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:#8AA3A7;margin:0 0 .625rem;
+}
+.raf-col a{
+  display:block;padding:.375rem 0;text-decoration:none;
+  font-size:.90625rem;letter-spacing:0;color:#A9BFC2;
+  transition:color .16s var(--ease),transform .1s var(--ease);
+}
+.raf-col a:hover{color:#fff}
+.raf-col a:active{transform:scale(.98)}
+
+.raf-note{
+  margin-top:clamp(2rem,4vw,2.75rem);padding-top:1.375rem;
+  border-top:1px solid rgba(255,255,255,.08);
+  font-size:.78125rem;line-height:1.6;color:#8AA3A7;max-width:92ch;
+}
+.raf-note a{color:#B6CDD1;text-decoration:underline;text-underline-offset:2px}
+.raf-note a:hover{color:#fff}
+.raf-bottom{
+  display:flex;flex-wrap:wrap;gap:.5rem 1.375rem;justify-content:space-between;align-items:baseline;
+  padding:1.125rem 0 1.625rem;font-size:.78125rem;color:#8AA3A7;
+}
+
+/* ---------------- a11y ---------------- */
+.rah a:focus-visible,.rah button:focus-visible,
+.raf a:focus-visible{outline:2px solid var(--teal-lite);outline-offset:3px;border-radius:.5rem}
+
+/* Coarse pointers get real 44px targets without the layout moving.
+   display is re-declared with its alignment, never swapped bare. */
+@media (pointer:coarse){
+  .raf-col a,.raf-note a{min-height:2.75rem;display:flex;align-items:center}
+  .rah-menu a{min-height:2.75rem;display:flex;align-items:center}
+  .rah-close{width:2.75rem;height:2.75rem}
+}
+
+/* Reduced motion is not "no feedback": positional motion goes, the quick
+   opacity and color changes that aid comprehension stay. */
+@media (prefers-reduced-motion:reduce){
+  .rah *,.rah *::before,.rah *::after,
+  .raf *,.raf *::before,.raf *::after{
+    transition-property:opacity,background-color,color!important;
+    transition-duration:.15s!important;
+    animation:none!important;
+  }
+  .rah-menu{transform:none!important}
+  .rah-skip:focus-visible{transform:none}
+}
+/* Frosty instead of see-through when the reader has asked for less. */
+@media (prefers-reduced-transparency:reduce){
+  .rah-glass{background:var(--n);backdrop-filter:none;-webkit-backdrop-filter:none}
+  .rah-overlay{background:rgba(4,14,16,.92)}
+}
+/* Near-solid surfaces with defined borders. */
+@media (prefers-contrast:more){
+  .rah-glass{background:#030E10;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid #8FE0E7}
+  .rah-link,.rah-btn{color:#fff}
+  .rah-menu-in{border-color:#0C1719;border-width:2px}
+  .rah-drawer{background:#030E10;border-left-color:#8FE0E7}
+  .raf{background:#030E10}
+  .raf-col a,.raf-note,.raf h3,.raf-brand p,.raf-bottom,.raf-brand .raf-parent{color:#E7F1F2}
+}
+</style>`;
+
+const headerHtml = `<header class="rah" id="main-header">
+${chromeCss}
+<div class="rah-glass">
+<div class="rah-bar">
+  <a class="rah-skip" href="#main">Skip to content</a>
+
+  <a class="rah-logo" href="/" aria-label="RaphaAtlas home">
+    <img src="/raphaatlas-mark.svg" alt="" width="34" height="34">
+    <span class="ra-wordmark">RaphaAtlas</span>
+  </a>
+
+  <nav class="rah-nav" aria-label="Primary">
+    <div class="rah-item"><a class="rah-link" href="/nutrition">Nutrition</a></div>
+    <div class="rah-item"><a class="rah-link" href="/health">Health</a></div>
+    <div class="rah-item">
+      <button class="rah-btn" type="button" aria-expanded="false"><span>Calculators</span>${CHEVRON}</button>
+      <div class="rah-menu"><div class="rah-menu-in">
+        <a href="/bac-calculator">BAC Calculator</a>
+        <a href="/body-type-calculator">Body Type Calculator</a>
+        <a href="/macro-calculator">Macro Calculator</a>
+        <a href="/conception-calculator">Conception Calculator</a>
+        <div class="rah-sep"></div>
+        <a href="/calculators">All Calculators</a>
+      </div></div>
+    </div>
+    <div class="rah-item"><a class="rah-link" href="/fitness">Fitness</a></div>
+    <div class="rah-item">
+      <button class="rah-btn" type="button" aria-expanded="false"><span>About</span>${CHEVRON}</button>
+      <div class="rah-menu rah-menu-r"><div class="rah-menu-in">
+        <a href="/about">About Us</a>
+        <a href="/editorial-policy">Editorial Policy</a>
+        <a href="/medical-review-board">Medical Review Board</a>
+        <div class="rah-sep"></div>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/contact">Contact Us</a>
+      </div></div>
+    </div>
+  </nav>
+
+  <button class="rah-burger" id="rah-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="rah-drawer">
+    <svg width="19" height="14" viewBox="0 0 19 14" aria-hidden="true"><path d="M1 1h17M1 7h17M1 13h17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
 </div>
 </div>
-</nav>
-<div class="flex items-center space-x-4">
-<button class="text-on-primary hover:text-vitality-teal transition-colors"><span class="material-symbols-outlined">search</span></button>
-<button class="lg:hidden text-on-primary"><span class="material-symbols-outlined text-2xl">menu</span></button>
+
+<div class="rah-drawer" id="rah-drawer" aria-label="Menu">
+  <span class="rah-grip" aria-hidden="true"></span>
+  <div class="rah-drawer-top">
+    <span class="ra-wordmark">RaphaAtlas</span>
+    <button class="rah-close" id="rah-close" type="button" aria-label="Close menu">
+      <svg width="15" height="15" viewBox="0 0 15 15" aria-hidden="true"><path d="M1 1l13 13M14 1L1 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <nav aria-label="Mobile">
+    <a class="rah-dlink" href="/nutrition">Nutrition</a>
+    <a class="rah-dlink" href="/health">Health</a>
+    <div>
+      <button class="rah-dbtn" type="button" aria-expanded="false"><span>Calculators</span>${CHEVRON}</button>
+      <div class="rah-dpanel">
+        <a href="/bac-calculator">BAC Calculator</a>
+        <a href="/body-type-calculator">Body Type Calculator</a>
+        <a href="/macro-calculator">Macro Calculator</a>
+        <a href="/conception-calculator">Conception Calculator</a>
+        <a href="/calculators">All Calculators</a>
+      </div>
+    </div>
+    <a class="rah-dlink" href="/fitness">Fitness</a>
+    <div>
+      <button class="rah-dbtn" type="button" aria-expanded="false"><span>About</span>${CHEVRON}</button>
+      <div class="rah-dpanel">
+        <a href="/about">About Us</a>
+        <a href="/editorial-policy">Editorial Policy</a>
+        <a href="/medical-review-board">Medical Review Board</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/contact">Contact Us</a>
+      </div>
+    </div>
+  </nav>
 </div>
-</div>
+<div class="rah-overlay" id="rah-overlay"></div>
+
+<script>
+(function () {
+  var header  = document.getElementById('main-header');
+  var burger  = document.getElementById('rah-burger');
+  var drawer  = document.getElementById('rah-drawer');
+  var overlay = document.getElementById('rah-overlay');
+  var closeBtn= document.getElementById('rah-close');
+  var reduce  = matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* ---------- Scroll edge effect ----------
+     The divider under the glass exists only while content is under it. */
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      header.classList.toggle('is-scrolled', window.scrollY > 4);
+      ticking = false;
+    });
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- A spring, in Apple's two parameters ----------
+     Damping ratio (1 = critically damped, no overshoot) and response (how
+     quickly it reaches the target, in seconds). Integrated numerically
+     rather than solved in closed form precisely so it is interruptible:
+     retargeting mid-flight keeps the current position AND the current
+     velocity, so a reversal has no brick wall in it. */
+  function Spring(onUpdate) {
+    var x = 0, v = 0, target = 0, w = 15.7, z = 1, raf = null, done = null;
+    function step(dt) {
+      /* Fixed substeps keep the integration stable when a frame runs long. */
+      var n = Math.max(1, Math.min(8, Math.ceil(dt / (1 / 240)))), h = dt / n;
+      for (var i = 0; i < n; i++) {
+        v += (-w * w * (x - target) - 2 * z * w * v) * h;
+        x += v * h;
+      }
+    }
+    var last = 0;
+    function frame(t) {
+      var dt = Math.min((t - last) / 1000, 1 / 30);
+      last = t;
+      step(dt);
+      if (Math.abs(x - target) < 0.3 && Math.abs(v) < 12) {
+        x = target; v = 0; raf = null; onUpdate(x);
+        if (done) { var d = done; done = null; d(); }
+        return;
+      }
+      onUpdate(x);
+      raf = requestAnimationFrame(frame);
+    }
+    return {
+      get value() { return x; },
+      set value(n) { x = n; },
+      get velocity() { return v; },
+      set velocity(n) { v = n; },
+      stop: function () { if (raf) cancelAnimationFrame(raf); raf = null; },
+      settle: function (to, opts) {
+        opts = opts || {};
+        target = to;
+        z = opts.damping == null ? 1 : opts.damping;
+        w = 2 * Math.PI / (opts.response == null ? 0.4 : opts.response);
+        done = opts.onDone || null;
+        if (opts.velocity != null) v = opts.velocity;
+        /* requestAnimationFrame does not fire on a hidden page, so animating
+           one would leave the panel stranded off screen. Jump instead: the
+           same path reduced motion takes. */
+        if (reduce.matches || document.hidden) {
+          this.stop(); x = to; v = 0; onUpdate(x);
+          if (done) { var d = done; done = null; d(); }
+          return;
+        }
+        if (!raf) { last = performance.now(); raf = requestAnimationFrame(frame); }
+      }
+    };
+  }
+
+  /* ---------- Drawer ---------- */
+  var W = function () { return drawer.offsetWidth; };
+  var isOpen = false, lastFocus = null;
+
+  var spring = Spring(function (x) {
+    drawer.style.transform = 'translateX(' + x + 'px)';
+    /* Continuous feedback: the scrim tracks the panel the whole way, it is
+       not a separate animation that fires at the end. */
+    var p = 1 - Math.min(1, Math.max(0, x / W()));
+    overlay.style.opacity = String(p);
+  });
+
+  function arm(on) {
+    drawer.classList.toggle('is-armed', on);
+    overlay.classList.toggle('is-armed', on);
+  }
+
+  function openDrawer() {
+    if (isOpen) return;
+    isOpen = true;
+    lastFocus = document.activeElement;
+    arm(true);
+    burger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    /* Always start from the live on-screen value, never from the logical
+       one, or an interrupted close jumps before it moves. */
+    spring.settle(0, { damping: 1, response: 0.4 });
+  }
+
+  function closeDrawer(velocity) {
+    if (!isOpen) return;
+    isOpen = false;
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    /* Bounce only when the gesture itself carried momentum. */
+    var flicked = velocity != null && Math.abs(velocity) > 200;
+    spring.settle(W(), {
+      damping: flicked ? 0.85 : 1,
+      response: 0.3,
+      velocity: velocity == null ? undefined : velocity,
+      onDone: function () {
+        if (isOpen) return;
+        arm(false);
+        drawer.style.transform = '';
+        overlay.style.opacity = '';
+      }
+    });
+    if (lastFocus === burger || !lastFocus) burger.focus();
+  }
+
+  burger.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', function () { closeDrawer(); });
+  overlay.addEventListener('click', function () { closeDrawer(); });
+  addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && isOpen) closeDrawer();
+  });
+
+  /* ---------- Swipe to dismiss ----------
+     Tracks the finger 1:1 from wherever it was grabbed, resists past the
+     open edge instead of stopping dead, and on release projects where the
+     flick was going rather than snapping from where it stopped. */
+  var drag = null;
+
+  function rubberband(overshoot, dim, c) {
+    return (overshoot * dim * c) / (dim + c * Math.abs(overshoot));
+  }
+  /* Apple's projection function from the Designing Fluid Interfaces sample,
+     the same exponential decay scrolling uses. Not v^2/2a. */
+  function project(velocity, decelerationRate) {
+    return (velocity / 1000) * decelerationRate / (1 - decelerationRate);
+  }
+
+  drawer.addEventListener('pointerdown', function (e) {
+    if (!isOpen || e.pointerType === 'mouse' && e.button !== 0) return;
+    spring.stop();
+    drag = {
+      id: e.pointerId,
+      startX: e.clientX,
+      /* Respect where they grabbed it: the panel must not jump to the finger. */
+      base: spring.value,
+      moved: false,
+      hist: [{ x: e.clientX, t: performance.now() }]
+    };
+  });
+
+  drawer.addEventListener('pointermove', function (e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    var dx = e.clientX - drag.startX;
+    /* ~10px of hysteresis before we commit to calling this a drag. */
+    if (!drag.moved) {
+      if (Math.abs(dx) < 10) return;
+      drag.moved = true;
+      /* Keeps tracking when the finger leaves the panel. Throws if the
+         pointer is already gone, which is not a reason to drop the drag. */
+      try { drawer.setPointerCapture(drag.id); } catch (err) {}
+    }
+    var x = drag.base + dx;
+    /* Past the open edge there is nothing more, so resist progressively
+       rather than freezing. */
+    if (x < 0) x = -rubberband(-x, W(), 0.55);
+    spring.stop();
+    spring.value = x;
+    drawer.style.transform = 'translateX(' + x + 'px)';
+    overlay.style.opacity = String(1 - Math.min(1, Math.max(0, x / W())));
+
+    drag.hist.push({ x: e.clientX, t: performance.now() });
+    if (drag.hist.length > 5) drag.hist.shift();
+  });
+
+  function endDrag(e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    var d = drag; drag = null;
+    if (!d.moved) return;                 /* a tap, not a drag: let it click */
+
+    /* Velocity from a short history, not from the single last event, which
+       is noisy enough to misread a slow release as a flick. */
+    var first = d.hist[0], last = d.hist[d.hist.length - 1];
+    var dt = Math.max(1, last.t - first.t);
+    var vel = (last.x - first.x) / dt * 1000;        /* px/s */
+
+    var projected = spring.value + project(vel, 0.998);
+    if (projected > W() / 2) closeDrawer(vel);
+    else spring.settle(0, { damping: Math.abs(vel) > 200 ? 0.85 : 1, response: 0.3, velocity: vel });
+  }
+  drawer.addEventListener('pointerup', endDrag);
+  drawer.addEventListener('pointercancel', endDrag);
+  /* A drag must never also fire the link it started on. The flag is raised
+     on pointerup (before endDrag clears the drag) and cleared on the next
+     pointerdown, so there is no timing race with click dispatch. */
+  var dragged = false;
+  drawer.addEventListener('pointerdown', function () { dragged = false; }, true);
+  drawer.addEventListener('pointerup', function () {
+    if (drag && drag.moved) dragged = true;
+  }, true);
+  drawer.addEventListener('click', function (e) {
+    if (dragged) { e.preventDefault(); e.stopPropagation(); }
+  }, true);
+
+  /* Reduced motion, honoured live and in both directions. */
+  reduce.addEventListener('change', function () {
+    spring.stop();
+    var x = isOpen ? 0 : W();
+    spring.value = x; spring.velocity = 0;
+    drawer.style.transform = isOpen ? 'translateX(0px)' : '';
+    overlay.style.opacity = isOpen ? '1' : '';
+    arm(isOpen);
+  });
+
+  /* ---------- Drawer accordions ----------
+     aria-expanded drives the CSS, so the state lives in exactly one place. */
+  Array.prototype.forEach.call(document.querySelectorAll('.rah-dbtn'), function (btn) {
+    btn.addEventListener('click', function () {
+      btn.setAttribute('aria-expanded', btn.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+    });
+  });
+
+  /* ---------- Desktop dropdowns ----------
+     They open on hover via CSS; this keeps aria-expanded honest for screen
+     readers and makes them work on tap. */
+  Array.prototype.forEach.call(document.querySelectorAll('.rah-item'), function (item) {
+    var btn = item.querySelector('.rah-btn');
+    if (!btn) return;
+    var sync = function (open) { btn.setAttribute('aria-expanded', String(open)); };
+    item.addEventListener('mouseenter', function () { sync(true); });
+    item.addEventListener('mouseleave', function () { sync(false); });
+    item.addEventListener('focusin', function () { sync(true); });
+    item.addEventListener('focusout', function () {
+      if (!item.contains(document.activeElement)) sync(false);
+    });
+  });
+
+  /* ---------- Wayfinding ----------
+     Trailing slash and .html both normalise to the same key, so /health,
+     /health/ and /health.html all match. */
+  var here = location.pathname.replace(/\\.html$/, '').replace(/\\/$/, '') || '/';
+  Array.prototype.forEach.call(
+    document.querySelectorAll('.rah-link,.rah-dlink,.rah-menu a,.rah-dpanel a'),
+    function (a) { if (a.getAttribute('href') === here) a.setAttribute('aria-current', 'page'); }
+  );
+
+  /* ---------- Skip link ----------
+     404 and health have no main landmark yet, so resolve the target at
+     runtime instead of shipping a link that lands nowhere. */
+  var skip = document.querySelector('.rah-skip');
+  if (skip) skip.addEventListener('click', function (e) {
+    var t = document.getElementById('main') || document.querySelector('main, h1');
+    if (!t) return;
+    e.preventDefault();
+    if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '-1');
+    t.focus();
+    t.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'start' });
+  });
+
+  var year = document.getElementById('raf-year');
+  if (year) year.textContent = new Date().getFullYear();
+})();
+</script>
 </header>`;
 
-const footerHtml = `<footer class="bg-header-black text-on-primary w-full py-12 px-4 md:px-8 flex flex-col md:flex-row justify-between mt-auto">
-<div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center">
-<div class="mb-8 md:mb-0">
-<a href="/" class="flex items-center mb-2">
-  <img src="/raphaatlas-mark.svg" alt="RaphaAtlas" height="50" width="50" class="h-12 w-12">
-  <span style="font-family: 'Merriweather', 'Georgia', serif; font-size: 40px; font-weight: 900; letter-spacing: -1.5px; color: white; margin-left: 14px; transform: translateY(2px);">RaphaAtlas</span>
-</a>
-</div>
-<div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8" style="font-family: 'Inter', sans-serif;">
-<a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/about">About Us</a>
-<a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/editorial-policy">Editorial Policy</a>
-<a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/medical-review-board">Medical Review Board</a>
-<a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/contact">Contact</a>
-<a class="text-on-primary opacity-50 hover:opacity-100 transition-opacity" href="/privacy">Privacy Policy</a>
-</div>
-<div class="mt-8 md:mt-0 text-on-primary opacity-30 text-sm" style="font-family: 'Inter', sans-serif;">© 2024 RaphaAtlas. All rights reserved.</div>
+const footerHtml = `<footer class="raf">
+<div class="raf-in">
+  <div class="raf-top">
+    <div class="raf-brand">
+      <a class="raf-logo" href="/" aria-label="RaphaAtlas home">
+        <img src="/raphaatlas-mark.svg" alt="" width="40" height="40">
+        <span class="ra-wordmark">RaphaAtlas</span>
+      </a>
+      <p>Free clinical calculators and physician-reviewed guides on health, fitness, and nutrition.</p>
+      <p class="raf-parent">A Growth Partners Global LLC company.</p>
+    </div>
+
+    <div class="raf-col">
+      <h3>Calculators</h3>
+      <a href="/bac-calculator">BAC Calculator</a>
+      <a href="/body-type-calculator">Body Type Calculator</a>
+      <a href="/macro-calculator">Macro Calculator</a>
+      <a href="/conception-calculator">Conception Calculator</a>
+      <a href="/calculators">All Calculators</a>
+    </div>
+
+    <div class="raf-col">
+      <h3>Explore</h3>
+      <a href="/nutrition">Nutrition</a>
+      <a href="/health">Health</a>
+      <a href="/fitness">Fitness</a>
+    </div>
+
+    <div class="raf-col">
+      <h3>Company</h3>
+      <a href="/about">About Us</a>
+      <a href="/editorial-policy">Editorial Policy</a>
+      <a href="/medical-review-board">Medical Review Board</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy Policy</a>
+    </div>
+  </div>
+
+  <p class="raf-note"><strong>Medical disclaimer.</strong> RaphaAtlas tools and guides are for general information and education. They are estimates, not a diagnosis, and they do not replace advice from your own doctor. Read our <a href="/editorial-policy">editorial policy</a>.</p>
+
+  <div class="raf-bottom">
+    <span>&copy; <span id="raf-year">2026</span> RaphaAtlas. All rights reserved.</span>
+    <span>Built and reviewed by MBBS doctors.</span>
+  </div>
 </div>
 </footer>`;
 
-const files = getFiles('.', ['.html', '.cjs']);
+/* Mobile browser chrome should match the header, not flash white behind it. */
+const themeColor = `<meta name="theme-color" content="#0A1C1F">`;
 
-files.forEach(file => {
-    if (file === 'update_header_footer.cjs') return;
-    let content = fs.readFileSync(file, 'utf8');
+let changed = 0;
+for (const file of getFiles('.')) {
+    const before = fs.readFileSync(file, 'utf8');
 
-    // 1. Inject head links for Merriweather font
-    if (!content.includes('family=Merriweather')) {
-        content = content.replace('</head>', fontLink + '\n</head>');
+    /* Chrome first: this wipes the previously generated header, so no text
+       the old chrome contained can influence the landmark pass below. */
+    let after = before
+        .replace(/<header[\s\S]*?<\/header>/, () => headerHtml)
+        .replace(/<footer[\s\S]*?<\/footer>/, () => footerHtml);
+
+    if (!/name="theme-color"/.test(after)) {
+        after = after.replace('</head>', themeColor + '\n</head>');
     }
 
-    // 2. Replace Header
-    const headerRegex = /<header[\s\S]*?<\/header>/;
-    if (content.match(headerRegex)) {
-        content = content.replace(headerRegex, headerHtml);
-    }
+    /* Give the skip link a real landing point where the landmark exists.
+       Matches real tags only (a space or `>` must follow the name), and
+       scans every one rather than stopping at the first, so a `<main` that
+       happens to appear in prose can never consume the single edit. That is
+       not hypothetical: a comment in this file's own header script did
+       exactly that, silently leaving every page without the id. */
+    let tagged = false;
+    after = after.replace(/<main(\s[^>]*)?>/g, (tag, attrs) => {
+        if (tagged || /\bid\s*=/.test(attrs || '')) return tag;
+        tagged = true;
+        return `<main id="main" tabindex="-1"${attrs || ''}>`;
+    });
 
-    // 3. Replace Footer
-    const footerRegex = /<footer[\s\S]*?<\/footer>/;
-    if (content.match(footerRegex)) {
-        content = content.replace(footerRegex, footerHtml);
-    }
-
-    fs.writeFileSync(file, content);
-});
-
-console.log('Update complete.');
+    if (after !== before) { fs.writeFileSync(file, after); changed++; }
+}
+console.log(`Chrome updated in ${changed} file(s).`);
