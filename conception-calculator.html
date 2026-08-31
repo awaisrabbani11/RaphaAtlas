@@ -2,17 +2,14 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Conception Calculator | RaphaAtlas</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://i.pinimg.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=accessibility_new,alternate_email,arrow_forward,bolt,calculate,check_circle,child_care,close,directions_run,egg_alt,exercise,expand_more,explore,fitness_center,health_and_safety,help,local_bar,local_florist,mail,menu,monitor_heart,monitor_weight,nutrition,photo_camera,pill,play_arrow,psychology,restaurant_menu,rocket_launch,search,send,share,stethoscope,trending_up,verified,water_drop&amp;display=swap" rel="stylesheet">
+<!-- Inter is self-hosted in tailwind.css; preload flattens the
+     document -> tailwind.css -> woff2 chain by one hop. No Google Fonts
+     request: it only duplicated Inter and pulled Material Symbols icons
+     this page never renders. (Fraunces / Spline Sans Mono in --disp and
+     --mono were never in that URL either — they already fall back.) -->
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin.woff2" crossorigin>
 <link rel="stylesheet" href="/tailwind.css">
-<style>
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24
-}
-</style>
-
 
 
 <link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
@@ -447,8 +444,12 @@ body{overflow-x:hidden;overflow-x:clip}
   function onScroll() {
     if (ticking) return;
     ticking = true;
+    /* Read scrollY here, not inside the rAF. Inside the frame callback the
+       class toggle has already dirtied style, so the read forces a synchronous
+       layout. Read first, write later — the frame does writes only. */
+    var y = window.scrollY;
     requestAnimationFrame(function () {
-      header.classList.toggle('is-scrolled', window.scrollY > 4);
+      header.classList.toggle('is-scrolled', y > 4);
       ticking = false;
     });
   }
@@ -714,7 +715,9 @@ body{overflow-x:hidden;overflow-x:clip}
   --paper:#e8ede8;
   --ink:#16302b;
   --ink-soft:#4c5c56;
-  --ink-faint:#7c8a84;
+  /* was #7c8a84 — only 3.6:1 on --surface white. #66736d is 4.95:1, keeps
+     the sage hue, and still reads a clear step lighter than --ink-soft (7.1:1). */
+  --ink-faint:#66736d;
   --surface:#ffffff;
   --surface-2:#f4f7f3;
   --line:#d3ddd2;
@@ -850,7 +853,11 @@ svg.wheel{width:100%;max-width:340px;height:auto;display:block}
 .note{background:var(--surface-2);border:1px solid var(--line-soft);border-radius:var(--radius-sm);padding:16px 18px;margin-top:14px}
 .note h4{font-family:var(--body);font-weight:600;font-size:.92rem;margin:0 0 6px;color:var(--ink)}
 .note p{margin:0;font-size:.86rem;color:var(--ink-soft)}
-.note.redate{border-left:3px solid var(--gold)}
+/* Gold marks the ACOG re-dating advisory (--gold is this page's ovulation
+   colour), so the cue stays — but as an inset bar, not a border-left. A 3px
+   left border against 1px sides mitres into a diagonal wedge on the 11px
+   radius; an inset shadow is clipped to the padding box and follows the curve. */
+.note.redate{box-shadow:inset 3px 0 0 var(--gold)}
 
 .plural-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.84rem}
 .plural-table th,.plural-table td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line-soft)}
@@ -920,7 +927,7 @@ svg.wheel{width:100%;max-width:340px;height:auto;display:block}
     <section class="card result-card" aria-label="Results" aria-live="polite">
       <div class="wheel-shell" id="wheelShell">
         <div class="wheel-empty" id="wheelEmpty">
-          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="#7c8a84" stroke-width="2"><circle cx="36" cy="36" r="28"></circle><path d="M36 14v22l14 8"></path></svg>
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="#66736d" stroke-width="2"><circle cx="36" cy="36" r="28"></circle><path d="M36 14v22l14 8"></path></svg>
           <p>Your pregnancy wheel appears here once you calculate.</p>
         </div>
       </div>
@@ -1179,7 +1186,7 @@ const CTA_BASE = "https://raphaatlas.com";
 document.querySelectorAll('#cta a').forEach(a=>{a.href = CTA_BASE + a.dataset.slug;});
 
 const EMPTY_WHEEL = `<div class="wheel-empty" id="wheelEmpty">
-  <svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="#7c8a84" stroke-width="2"><circle cx="36" cy="36" r="28"/><path d="M36 14v22l14 8"/></svg>
+  <svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="#66736d" stroke-width="2"><circle cx="36" cy="36" r="28"/><path d="M36 14v22l14 8"/></svg>
   <p>Your pregnancy wheel appears here once you calculate.</p></div>`;
 
 /* ============ UTC-noon date engine (DST-safe) ============ */

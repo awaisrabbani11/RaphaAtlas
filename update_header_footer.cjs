@@ -447,8 +447,12 @@ ${chromeCss}
   function onScroll() {
     if (ticking) return;
     ticking = true;
+    /* Read scrollY here, not inside the rAF. Inside the frame callback the
+       class toggle has already dirtied style, so the read forces a synchronous
+       layout. Read first, write later — the frame does writes only. */
+    var y = window.scrollY;
     requestAnimationFrame(function () {
-      header.classList.toggle('is-scrolled', window.scrollY > 4);
+      header.classList.toggle('is-scrolled', y > 4);
       ticking = false;
     });
   }

@@ -2,17 +2,13 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Macro Calculator | RaphaAtlas</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://i.pinimg.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=accessibility_new,alternate_email,arrow_forward,bolt,calculate,check_circle,child_care,close,directions_run,egg_alt,exercise,expand_more,explore,fitness_center,health_and_safety,help,local_bar,local_florist,mail,menu,monitor_heart,monitor_weight,nutrition,photo_camera,pill,play_arrow,psychology,restaurant_menu,rocket_launch,search,send,share,stethoscope,trending_up,verified,water_drop&amp;display=swap" rel="stylesheet">
+<!-- Inter is self-hosted in tailwind.css; preload flattens the
+     document -> tailwind.css -> woff2 chain by one hop. No Google Fonts
+     request: it only duplicated Inter and pulled Material Symbols icons
+     this page never renders. -->
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin.woff2" crossorigin>
 <link rel="stylesheet" href="/tailwind.css">
-<style>
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24
-}
-</style>
-
 
 
 <link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
@@ -447,8 +443,12 @@ body{overflow-x:hidden;overflow-x:clip}
   function onScroll() {
     if (ticking) return;
     ticking = true;
+    /* Read scrollY here, not inside the rAF. Inside the frame callback the
+       class toggle has already dirtied style, so the read forces a synchronous
+       layout. Read first, write later — the frame does writes only. */
+    var y = window.scrollY;
     requestAnimationFrame(function () {
-      header.classList.toggle('is-scrolled', window.scrollY > 4);
+      header.classList.toggle('is-scrolled', y > 4);
       ticking = false;
     });
   }
@@ -718,7 +718,10 @@ body{overflow-x:hidden;overflow-x:clip}
   #ra-macro-root *{box-sizing:border-box;margin:0;padding:0}
   #ra-macro-root{
     --bg:#0f1419; --panel:#161c24; --panel-2:#1d2530; --line:#2a3542;
-    --ink:#eef2f6; --muted:#9aa7b6; --faint:#66748399;
+    /* --faint was #66748399 — the 0x99 alpha composited to #46515d over
+       --panel, only 2.11:1. Solid #7d8b9c is 4.93:1 on --panel (#161c24)
+       and higher on --bg, so it clears 4.5:1 wherever it lands. */
+    --ink:#eef2f6; --muted:#9aa7b6; --faint:#7d8b9c;
     --pro:#ff6b6b; --carb:#ffb020; --fat:#37d29a; --accent:#5ec8ff;
     --radius:14px;
     --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -804,10 +807,14 @@ body{overflow-x:hidden;overflow-x:clip}
 
   #ra-macro-root .rc-macros{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
   @media(max-width:460px){#ra-macro-root .rc-macros{grid-template-columns:1fr}}
-  #ra-macro-root .rc-mcard{background:var(--panel-2); border:1px solid var(--line); border-radius:12px; padding:14px; border-top:3px solid var(--line)}
-  #ra-macro-root .rc-mcard.pro{border-top-color:var(--pro)}
-  #ra-macro-root .rc-mcard.carb{border-top-color:var(--carb)}
-  #ra-macro-root .rc-mcard.fat{border-top-color:var(--fat)}
+  /* The macro accent is an inset bar, not a border-top. A 3px top border
+     against 1px sides mitres into a ragged diagonal where it meets the 12px
+     radius; an inset shadow is clipped to the padding box, so it follows the
+     curve cleanly. Colours still match the donut arcs. */
+  #ra-macro-root .rc-mcard{background:var(--panel-2); border:1px solid var(--line); border-radius:12px; padding:14px; box-shadow:inset 0 3px 0 var(--line)}
+  #ra-macro-root .rc-mcard.pro{box-shadow:inset 0 3px 0 var(--pro)}
+  #ra-macro-root .rc-mcard.carb{box-shadow:inset 0 3px 0 var(--carb)}
+  #ra-macro-root .rc-mcard.fat{box-shadow:inset 0 3px 0 var(--fat)}
   #ra-macro-root .rc-mname{font:600 12px var(--mono); letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
   #ra-macro-root .rc-mgram{font:700 30px/1.1 var(--mono); margin-top:8px}
   #ra-macro-root .rc-mmeta{font-size:12px; color:var(--muted); margin-top:4px; font-family:var(--mono)}
@@ -1368,27 +1375,27 @@ body{overflow-x:hidden;overflow-x:clip}
        alt="Three pie charts comparing macronutrient splits: weight loss at 35 to 50 percent protein, 25 to 45 percent carbohydrate and 20 to 35 percent fat; maintenance at 25 to 40 percent protein, 35 to 55 percent carbohydrate and 25 to 40 percent fat; muscle gain at 35 percent protein, 45 percent carbohydrate and 20 percent fat.">
   <figcaption>Typical macro splits for the three common goals. Treat them as starting ranges — the targets the calculator returns for your body and activity take priority over any generic ratio.</figcaption>
 </figure>
-<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">What Are Macronutrients (Macros)?</h3>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">What Are Macronutrients (Macros)?</h2>
 <p class="mb-6 font-body-md text-on-surface">Forget the tired notion that macronutrients exist only to be tallied inside an app. Macros are the chemical compounds your human body demands in large quantities, separating them sharply from micronutrients measured in tiny milligrams. Three distinct types dominate every single plate: proteins, carbohydrates, and fats. Each one delivers bulk energy differently, yet humans also need water, air, and trace dietary minerals like calcium, sodium, and chloride ions for survival. I always tell clients that calories merely measure fuel, but macros decide what that fuel actually builds. Protein supplies raw materials for growth and repair; carbs and fat handle generating energy across your bodily functions. Your daily calorie intake quietly hides three completely separate stories. A gram of protein or carbohydrates yields 4 calories per gram, while fat packs 9 calories per gram, quietly reshaping how your structures rebuild themselves. Nutrition rarely respects the modern vitamin obsession at all. Vitamin A, copper, iron, and iodine genuinely matter, but arrive in milligrams, not grams. Macronutrients stay the essential nutrients consumed in the largest quantities each day.</p>
-<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Protein</h2>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">Protein</h3>
 <p class="mb-4 font-body-md text-on-surface">Skip the shake-first mentality entirely for now. Proteins are organic compounds built from amino acids, and only certain essential amino acids must come through consumption. Your body quietly assembles the rest, funding muscles and bones.</p>
 <p class="mb-4 font-body-md text-on-surface">Animal sources clearly still dominate the conversation, yet plant-based eaters thrive perfectly fine. Meat, dairy, fish, eggs, and chicken sit beside beans, legumes, nuts, seeds, and soy. Both camps supply real building blocks for tissue.</p>
 <p class="mb-4 font-body-md text-on-surface">Not every single protein earns equal respect here. Complete proteins carry all amino acids; incomplete proteins miss some. Whey protein, lean beef, pork, and skinless poultry rank among healthier proteins worth prioritizing during resistance training.</p>
 <p class="mb-4 font-body-md text-on-surface">Collagen production, protein hormones, and insulin all depend quite heavily on steady intake. I personally target 20 to 40 grams per meal to protect lean muscle mass and genuinely build muscle without any pointless excess.</p>
 <p class="mb-4 font-body-md text-on-surface">Watch the unhealthier proteins quietly hiding inside everyday modern convenience. Fried meats, processed meats, deli meats, sausages, fast-food burgers, high sugar yogurts, and processed protein bars trade well-being for speed. Moderation, not elimination, quietly wins.</p>
-<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Carbohydrates (Carbs)</h2>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">Carbohydrates (Carbs)</h3>
 <p class="mb-4 font-body-md text-on-surface">Carbs are never really the villain diet culture loudly insists upon today. Carbohydrates are saccharides ranging from monosaccharides and disaccharides to oligosaccharides and polysaccharides, each shaping blood sugar levels and satiety in wildly different ways.</p>
 <p class="mb-4 font-body-md text-on-surface">Simple carbohydrates spike fast; complex carbohydrates burn far more slowly. Glucose stays the body's preferred energy source, yet cellulose and dietary fibers pass through untouched, quietly steadying digestion and improving stool regularity over enough time.</p>
 <p class="mb-4 font-body-md text-on-surface">Fiber honestly splits into two camps entirely. Soluble fiber softens cholesterol levels; insoluble fiber adds real bulk. Both hide inside whole grains, vegetables, and fruits, unlike the stripped sugars and starches loading most processed foods.</p>
 <p class="mb-4 font-body-md text-on-surface">I genuinely distrust the reflexive low-carb dogma today. Carbs deliver 4 calories per gram and should occupy 45% to 65% of intake for most people. Sugar, starch, and fiber together form the wider carbohydrate family.</p>
 <p class="mb-4 font-body-md text-on-surface">Digestion consistently rewards variety over rigid restriction always. Starches from whole grains behave nothing like refined sugars. Prioritizing intact dietary fibers steadily improves blood sugar levels, sustains real energy, and keeps satiety working between meals.</p>
-<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Fat</h2>
+<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">Fat</h3>
 <p class="mb-4 font-body-md text-on-surface">Dietary fat spent several long decades being wrongly demonized. Fats are molecules of carbon and hydrogen atoms forming triglycerides, phospholipids, and cholesterol, serving both structural functions and metabolic functions your body cannot manufacture entirely alone.</p>
 <p class="mb-4 font-body-md text-on-surface">Not all fat behaves quite identically here. Saturated fats differ from unsaturated fats, which split into monounsaturated fats and polyunsaturated fats. The healthy fats everyone chases include omega-3 fatty acids, quietly supporting durable cellular health.</p>
 <p class="mb-4 font-body-md text-on-surface">Trans fats honestly deserve every bit of their reputation. The Dietary Guidelines for Americans, 2015-2020, capped saturated fats near 10% of calories. I treat that ceiling as sensible, not gospel, adjusting around individual reality instead.</p>
 <p class="mb-4 font-body-md text-on-surface">Fat is energy dense for good reason. At 9 calories per gram it drives energy storage and enables absorption of fat soluble vitamins: vitamin A, vitamin D, vitamin E, and vitamin K, quietly protecting health.</p>
 <p class="mb-4 font-body-md text-on-surface">Balance genuinely beats extremes here quite consistently. Most people function drawing 20-35% of calories from fat, keeping trans fats minimal and treating 6% of total fats guidance loosely. Context, not fear, should govern every choice.</p>
-<h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">How Does the Macro Calculator Work?</h3>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">How Does the Macro Calculator Work?</h2>
 <p class="mb-6 font-body-md text-on-surface">Most people assume a macro calculator reads their body directly. It doesn't. It runs predictive equations against estimates, translating your numbers into daily calories and a rough percentage breakdown nobody should ever treat as gospel. Everything starts with your basal metabolic rate, the energy your body burns at rest. The tool leans on the Mifflin-St Jeor equation, a formula the American Council on Exercise popularized for the everyday average person. There's a quieter second path. If you know your body fat percentage, the Katch-McArdle formula and Cunningham equation compute resting metabolic rate from lean body mass instead, which practitioners find sharper than MacroFactor BMR formulas. From that BMR, the machine layers an activity multiplier, folding in exercise and the thermic effect of food. What emerges is your TDEE, or Total Daily Energy Expenditure, the figure driving every downstream macronutrient percentages. Here's what the interface hides: no registered dietitian nutritionist built your exact profile. The activity factor is a bucket, not a fingerprint. Treat outputs as a starting hypothesis, then verify against scale movement over weeks.</p>
 <h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">How to Use the Macro Calculator</h2>
 <p class="mb-4 font-body-md text-on-surface">Skip the instinct to guess. The inputs demand honesty: gender or sex, age, weight, and height, entered in either imperial or metric units, whichever drop-down menu you actually think in without mentally converting numbers midway.</p>
@@ -1492,6 +1499,7 @@ body{overflow-x:hidden;overflow-x:clip}
 <p class="mb-4 font-body-md text-on-surface">Source quality decides the outcome. Whole grains and legumes carry fiber intact; processed foods strip it out for shelf life, which is precisely why two equal-carb meals can leave you feeling opposite.</p>
 <p class="mb-4 font-body-md text-on-surface">Now widen the lens to the whole diet. Protein supplements fill gaps, but real food supplies the necessary elements and vitamins that isolated powders cannot replicate at any real scale.</p>
 <p class="mb-4 font-body-md text-on-surface">Micronutrient density is the quiet tiebreaker. A serving might carry only 100 milligrams of a key mineral, yet across a day those trace amounts compound into the difference between adequate and merely sufficient eating.</p>
+<h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Frequently Asked Questions</h2>
 <h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">How Do I Calculate My Macronutrient Needs?</h3>
 <p class="mb-6 font-body-md text-on-surface">Stop hunting one magic number. Your macronutrient needs start from daily caloric needs, then bend around your type of diet, weight goals, and health goals. Set each percentage, watch results, and adjust percentages deliberately as your body honestly responds.</p>
 <h3 class="font-bold text-primary mt-10 mb-4 text-title-lg">How Do You Calculate The Macros In Your Food?</h3>
