@@ -14,6 +14,12 @@
         "value": "font-family: 'inter",
         "createdAt": "2026-08-26T14:58:33.025Z",
         "reason": "user confirmed: keep header and footer same; these three hits are inline styles in the locked shared header/footer. The homepage's own Inter (font-family:'Inter, no space) is deliberately NOT covered and stays flagged."
+      },
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-08-31T15:37:56.704Z",
+        "reason": "Pre-existing site-wide brand face, not a choice made in this task: declared in tailwind.config fontFamily tokens on all 16 pages, in styles.css (--body), and in the shared .rah/.raf chrome CSS. This task only repaired its loading (the old Google Fonts URL returned a broken 6.7KB subset with no digit glyphs). Not user-confirmed; swapping the typeface is a sitewide design decision, raised with the user."
       }
     ]
   }

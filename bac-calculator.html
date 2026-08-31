@@ -4,69 +4,108 @@
 <title>BAC Calculator - RaphaAtlas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://i.pinimg.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=accessibility_new,alternate_email,arrow_forward,bolt,calculate,check_circle,child_care,close,directions_run,egg_alt,exercise,expand_more,explore,fitness_center,health_and_safety,help,local_bar,local_florist,mail,menu,monitor_heart,monitor_weight,nutrition,photo_camera,pill,play_arrow,psychology,restaurant_menu,rocket_launch,search,send,share,stethoscope,trending_up,verified,water_drop&amp;display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<style>
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&amp;display=swap" rel="stylesheet">
+
+
+<style id="ra-tw">
+/* ============================================================
+   Static replacement for cdn.tailwindcss.com.
+
+   The CDN build shipped a 409 KB runtime JIT compiler that parsed the DOM
+   on every page load to synthesise the 43 utilities this page actually
+   uses. That was the single largest render-blocking resource on the page
+   (~1.6 s on mobile) and the source of the `cdn.tailwindcss.com` redirect
+   Search Console flagged. This is the same output, precomputed.
+
+   Three parts, in cascade order, matching what the CDN emitted:
+     1. Preflight — the subset this page's layout genuinely depends on.
+     2. The 43 utilities present in the markup, resolved against the old
+        tailwind.config theme (kept verbatim in the comments below).
+     3. The one `forms` plugin declaration the calculator controls rely on.
+
+   Adding a utility to the markup now means adding its rule here. That is
+   the trade for not running a build step on a 16-page static site.
+   ============================================================ */
+
+/* ---------- 1. Preflight (subset) ---------- */
+*,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}
+html{line-height:1.5;-webkit-text-size-adjust:100%;tab-size:4}
+body{margin:0;line-height:inherit}
+/* Tailwind strips heading sizes so utilities own them. The page relies on
+   this: without it every h1-h3 falls back to UA sizes and the layout moves. */
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}
+p,figure,figcaption,blockquote,dl,dd,hr,pre{margin:0}
+ul,ol{list-style:none;margin:0;padding:0}
+a{color:inherit;text-decoration:inherit}
+img,svg,video,canvas,audio,iframe,embed,object{display:block;vertical-align:middle}
+img,video{max-width:100%;height:auto}
+button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;font-weight:inherit;line-height:inherit;color:inherit;margin:0;padding:0}
+button,select{text-transform:none}
+button,[type=button],[type=submit]{-webkit-appearance:button;background-color:transparent;background-image:none;cursor:pointer}
+:disabled{cursor:default}
+table{text-indent:0;border-color:inherit;border-collapse:collapse}
+fieldset,legend{margin:0;padding:0}
+
+/* ---------- 2. Utilities used by this page ---------- */
+/* theme.colors: primary #000 · on-surface #1d1b17 · on-surface-variant #54646E
+   surface-lowest #fff · surface-cream #FBF5ED · border-subtle #E0EDEF
+   theme.spacing: gutter 24px · section-gap 80px · margin-mobile 20px
+   theme.maxWidth: container-max 1200px */
+.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.min-h-screen{min-height:100vh}
+.flex{display:flex}
+.flex-col{flex-direction:column}
+.flex-grow{flex-grow:1}
+.w-full{width:100%}
+.min-w-full{min-width:100%}
+.mx-auto{margin-left:auto;margin-right:auto}
+.max-w-none{max-width:none}
+.max-w-3xl{max-width:48rem}
+.max-w-container-max{max-width:1200px}
+.text-center{text-align:center}
+.text-left{text-align:left}
+.overflow-x-auto{overflow-x:auto}
+.border{border-width:1px}
+.border-collapse{border-collapse:collapse}
+.font-bold{font-weight:700}
+
+.bg-surface-lowest{background-color:#fff}
+.bg-surface-cream{background-color:#FBF5ED}
+.border-border-subtle{border-color:#E0EDEF}
+.text-primary{color:#000}
+.text-on-surface{color:#1d1b17}
+.text-on-surface-variant{color:#54646E}
+
+/* font-* maps to theme.fontFamily, which is one Inter stack for every token,
+   so these three collapse to a single rule. Note this sets family ONLY —
+   the size tokens are the separate text-* scale. */
+.font-body-md,.font-display-lg,.font-headline-md{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.text-display-lg-mobile{font-size:34px;line-height:1.1;letter-spacing:-.025em;font-weight:900}
+
+.mt-2{margin-top:.5rem}
+.mt-8{margin-top:2rem}
+.mt-12{margin-top:3rem}
+.mb-2{margin-bottom:.5rem}
+.mb-4{margin-bottom:1rem}
+.mb-6{margin-bottom:1.5rem}
+.mb-12{margin-bottom:3rem}
+.my-8{margin-top:2rem;margin-bottom:2rem}
+.px-4{padding-left:1rem;padding-right:1rem}
+.py-2{padding-top:.5rem;padding-bottom:.5rem}
+.py-12{padding-top:3rem;padding-bottom:3rem}
+.px-margin-mobile{padding-left:20px;padding-right:20px}
+
+@media (min-width:768px){
+  .md\:px-gutter{padding-left:24px;padding-right:24px}
+  .md\:py-section-gap{padding-top:80px;padding-bottom:80px}
+  .md\:text-display-lg{font-size:52px;line-height:1.06;letter-spacing:-.03em;font-weight:900}
 }
+
+/* ---------- 3. `forms` plugin ---------- */
+/* Every other declaration the plugin contributed was already overridden by
+   #ra-bac-style; appearance is the only one that reached the page. */
+input[type=number],select{-webkit-appearance:none;appearance:none}
 </style>
-
-
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "vitality-teal": "#02838D",
-                        "header-black": "#000000",
-                        "surface-cream": "#FBF5ED",
-                        "on-primary": "#ffffff",
-                        "primary": "#000000",
-                        "surface-container-lowest": "#ffffff",
-                        "border-subtle": "#E0EDEF",
-                        "on-surface": "#1d1b17",
-                        "on-surface-variant": "#54646E",
-                        "surface-lowest": "#ffffff",
-                        "surface-container-low": "#F9FBFB",
-                        "surface-container": "#F4F7F7",
-                        "surface-container-high": "#EDF2F3",
-                        "surface-container-highest": "#E6EDEE"
-                    },
-                    "spacing": {
-                        "gutter": "24px",
-                        "section-gap": "80px",
-                        "margin-mobile": "20px"
-                    },
-                    "maxWidth": {
-                        "container-max": "1200px"
-                    },
-                    "fontFamily": {
-                        "display-lg": ["Inter","-apple-system","BlinkMacSystemFont","Segoe UI","sans-serif"],
-                        "display-lg-mobile": ["Inter","-apple-system","BlinkMacSystemFont","Segoe UI","sans-serif"],
-                        "display-md": ["Inter","-apple-system","BlinkMacSystemFont","Segoe UI","sans-serif"],
-                        "headline-md": ["Inter","-apple-system","BlinkMacSystemFont","Segoe UI","sans-serif"],
-                        "body-lg": ["Inter","-apple-system","BlinkMacSystemFont","Segoe UI","sans-serif"],
-                        "body-md": ["Inter","-apple-system","BlinkMacSystemFont","Segoe UI","sans-serif"],
-                        "label-bold": ["Inter","-apple-system","BlinkMacSystemFont","Segoe UI","sans-serif"]
-                    },
-                    "fontSize": {
-                        "display-lg": ["52px", { lineHeight: "1.06", letterSpacing: "-0.03em", fontWeight: "900" }],
-                        "display-lg-mobile": ["34px", { lineHeight: "1.1", letterSpacing: "-0.025em", fontWeight: "900" }],
-                        "display-md": ["40px", { lineHeight: "1.12", letterSpacing: "-0.025em", fontWeight: "800" }],
-                        "display-sm": ["32px", { lineHeight: "1.18", letterSpacing: "-0.02em", fontWeight: "800" }],
-                        "headline-md": ["24px", { lineHeight: "1.3", letterSpacing: "-0.015em", fontWeight: "700" }],
-                        "title-lg": ["20px", { lineHeight: "1.35", letterSpacing: "-0.01em", fontWeight: "700" }],
-                        "body-lg": ["18px", { lineHeight: "1.62" }],
-                        "body-md": ["16px", { lineHeight: "1.62" }],
-                        "label-bold": ["14px", { lineHeight: "1.2", letterSpacing: "0.02em", fontWeight: "700" }]
-                    }
-                }
-            }
-        }
-    </script>
 
 <link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -628,7 +667,12 @@ body{overflow-x:hidden;overflow-x:clip}
   }
 
   /* ---------- Drawer ---------- */
-  var W = function () { return drawer.offsetWidth; };
+  /* offsetWidth forces layout. Reading it inside the spring callback — which
+     has just written a transform — thrashes layout on every animation frame,
+     so measure once per open and on resize instead. */
+  var drawerW = 0;
+  var W = function () { return drawerW || (drawerW = drawer.offsetWidth); };
+  addEventListener('resize', function () { drawerW = 0; }, { passive: true });
   var isOpen = false, lastFocus = null;
 
   var spring = Spring(function (x) {
@@ -844,6 +888,8 @@ body{overflow-x:hidden;overflow-x:clip}
   border:1px solid rgba(0,0,0,.07);
   box-shadow:0 1px 2px rgba(16,24,32,.06),0 12px 32px -8px rgba(16,24,32,.14);
 }
+/* <picture> is an inline box; without this its baseline gap shows under the image. */
+.ra-figure picture{display:block}
 .ra-figure img{display:block;width:100%;height:auto}
 .ra-figure figcaption{
   padding:.75rem 1.125rem .875rem;
@@ -868,9 +914,14 @@ body{overflow-x:hidden;overflow-x:clip}
 </style>
 
 <figure class="ra-figure" style="--ra-fig-w:520px">
-  <img src="https://i.pinimg.com/736x/45/8d/13/458d13ba78b9c8bea0b4cabcef3870c8.jpg"
+  <!-- This is the LCP element. Self-hosted so it costs no extra DNS+TLS
+       handshake, and served as AVIF/WebP instead of the 70 KB JPEG. -->
+  <picture>
+    <source type="image/avif" srcset="/assets/img/bac-chart.avif">
+    <img src="/assets/img/bac-chart.webp"
        width="520" height="620" loading="eager" fetchpriority="high" decoding="async"
        alt="Two reference tables giving approximate blood alcohol percentage one hour after drinking, one for women and one for men, across 1 to 10 drinks and body weights from 100 to 240 pounds, colour coded green for possibly influenced, yellow for impaired and red for legally intoxicated.">
+  </picture>
   <figcaption>Approximate BAC one hour after drinking, by body weight and number of drinks. A reference only — food, medication, and individual metabolism move these numbers in both directions.</figcaption>
 </figure>
 <div class="mb-12">
@@ -884,7 +935,11 @@ body{overflow-x:hidden;overflow-x:clip}
   --ra-muted:#5b6672;
   --ra-line:#e2e6ea;
   --ra-accent:#1f6feb;
-  --ra-green:#1a9e5f;
+  /* Was #1a9e5f, which is 3.44:1 against the white text of the "under the
+     limit" verdict — below the 4.5:1 floor. #15804c measures 4.97:1. Neither
+     Lighthouse nor axe caught this because the verdict only turns green after
+     the reader enters drinks. */
+  --ra-green:#15804c;
   --ra-amber:#d99100;
   --ra-red:#b3261e;
   --ra-crit:#7c1a12;
@@ -944,7 +999,11 @@ body{overflow-x:hidden;overflow-x:clip}
 .ra-bac .ra-stage-desc{font-size:.82rem;color:var(--ra-muted);margin:0}
 
 .ra-bac .ra-meter{position:relative;height:16px;border-radius:8px;background:var(--ra-surface);margin:16px 0 6px;overflow:hidden;border:1px solid var(--ra-line)}
-.ra-bac .ra-meter-fill{position:absolute;left:0;top:0;bottom:0;width:0;transition:width .25s ease,background .25s ease;border-radius:8px}
+/* Scales rather than resizes: render() runs on every keystroke, so a width
+   transition re-laid-out the meter on ~15 frames per character typed.
+   transform is composited. The round left cap comes from .ra-meter's own
+   overflow:hidden, so the fill carries no radius of its own. */
+.ra-bac .ra-meter-fill{position:absolute;left:0;top:0;bottom:0;width:100%;transform:scaleX(0);transform-origin:left center;transition:transform .25s ease,background-color .25s ease}
 .ra-bac .ra-meter-mark{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ra-ink)}
 .ra-bac .ra-meter-mark::after{content:attr(data-label);position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-size:.6rem;white-space:nowrap;color:var(--ra-ink);font-weight:600}
 .ra-bac .ra-scale{display:flex;justify-content:space-between;font-size:.62rem;color:var(--ra-muted);font-variant-numeric:tabular-nums}
@@ -1118,7 +1177,13 @@ body{overflow-x:hidden;overflow-x:clip}
     if(b<0.20)return getVar('--ra-red');
     return getVar('--ra-crit');
   }
-  function getVar(v){return getComputedStyle(root).getPropertyValue(v).trim()}
+  /* getComputedStyle forces a style recalc, and render() ran it several times
+     per keystroke. These tokens are static, so resolve each one once. */
+  var varCache={};
+  function getVar(v){
+    if(!(v in varCache))varCache[v]=getComputedStyle(root).getPropertyValue(v).trim();
+    return varCache[v];
+  }
 
   function render(){
     var wRaw=+$('raW').value||0, wKg=$('raWU').value==='lb'?wRaw*0.453592:wRaw;
@@ -1132,7 +1197,7 @@ body{overflow-x:hidden;overflow-x:clip}
     $('raStage').textContent=st[0]; $('raDesc').textContent=st[1];
 
     var pct=Math.min(bac/0.30,1)*100, col=zoneColor(bac);
-    var fill=$('raFill'); fill.style.width=pct+'%'; fill.style.background=col;
+    var fill=$('raFill'); fill.style.transform='scaleX('+(pct/100)+')'; fill.style.background=col;
     var mk=$('raMark'); mk.style.left=Math.min(limit/0.30,1)*100+'%';
     mk.setAttribute('data-label',limit>0?limit.toFixed(2):'0');
     mk.style.display=limit>0?'block':'none';
@@ -1268,7 +1333,9 @@ body{overflow-x:hidden;overflow-x:clip}
 <p class="mb-6">This is also why a breathalyzer and a calculator openly disagree: one samples breath, the other simulates it, and both are approximate by nature. No formula finds your personal sweet spot of pleasurable effects, and none can predict how the estimate will work against your live chemistry. Drivers especially should read the result as a rough model, not a verdict.</p>
 <h2 class="font-headline-md text-primary mt-12 mb-4">The Stages, From First Sip to Medical Crisis</h2>
 <p class="mb-6">Your number only means something once you know what each band does to a human being. The table below is the rough universal progression; treat the edges as blurry, because tolerance smears them, but the sequence itself does not change. Individual biology decides where you land, not bravado.</p>
-<div class="overflow-x-auto my-8"><table class="min-w-full text-left border-collapse">
+<!-- Scrolls sideways on narrow screens, so it needs to be reachable and
+     scrollable by keyboard, and announced as a region when focused. -->
+<div class="overflow-x-auto my-8" tabindex="0" role="region" aria-label="Blood alcohol concentration stages by BAC band"><table class="min-w-full text-left border-collapse">
 <thead><tr class="bg-surface-cream"><th class="px-4 py-2 border border-border-subtle font-bold text-primary">BAC band</th><th class="px-4 py-2 border border-border-subtle font-bold text-primary">What is happening</th><th class="px-4 py-2 border border-border-subtle font-bold text-primary">How it shows up</th></tr></thead><tbody>
 <tr><td class="px-4 py-2 border border-border-subtle">0.00%-0.02% ( .00, .01, .02 )</td><td class="px-4 py-2 border border-border-subtle">only measurable alcohol, no obvious side effects</td><td class="px-4 py-2 border border-border-subtle">a faint warmth, nothing more</td></tr>
 <tr><td class="px-4 py-2 border border-border-subtle">0.02%-0.04% (band .01%-.06%)</td><td class="px-4 py-2 border border-border-subtle">joyousness, reduced shyness</td><td class="px-4 py-2 border border-border-subtle">relaxed, mildly happy, early reduced sensitivity to pain</td></tr>
