@@ -1,104 +1,12 @@
 const fs = require('fs');
 
 const tailwindConfig = `
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="stylesheet" href="/tailwind.css">
 <link href="https://fonts.googleapis.com" rel="preconnect">
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "tertiary-fixed-dim": "#c6c6c7",
-                      "on-tertiary-container": "#838484",
-                      "on-primary-container": "#848484",
-                      "on-tertiary-fixed-variant": "#454747",
-                      "on-error-container": "#93000a",
-                      "tertiary-container": "#1a1c1c",
-                      "on-primary-fixed": "#1b1b1b",
-                      "surface-container-low": "#f9f3eb",
-                      "background": "#fff8f0",
-                      "outline-variant": "#cfc4c5",
-                      "surface-container-high": "#ede7df",
-                      "error-container": "#ffdad6",
-                      "on-secondary-fixed": "#002023",
-                      "error": "#ba1a1a",
-                      "on-primary-fixed-variant": "#474747",
-                      "primary-fixed-dim": "#c6c6c6",
-                      "surface-container": "#f3ede5",
-                      "surface-container-highest": "#e7e2da",
-                      "vitality-teal": "#02838D",
-                      "secondary-fixed-dim": "#75d5e0",
-                      "on-background": "#1d1b17",
-                      "surface-container-lowest": "#ffffff",
-                      "secondary-fixed": "#92f1fc",
-                      "primary-fixed": "#e2e2e2",
-                      "on-secondary-fixed-variant": "#004f55",
-                      "border-subtle": "#E0EDEF",
-                      "on-surface-variant": "#4c4546",
-                      "header-black": "#000000",
-                      "surface": "#fff8f0",
-                      "on-tertiary-fixed": "#1a1c1c",
-                      "on-surface": "#1d1b17",
-                      "on-tertiary": "#ffffff",
-                      "surface-tint": "#5e5e5e",
-                      "secondary": "#006971",
-                      "on-secondary-container": "#006d76",
-                      "inverse-on-surface": "#f6f0e8",
-                      "outline": "#7e7576",
-                      "secondary-container": "#8feff9",
-                      "surface-variant": "#e7e2da",
-                      "inverse-surface": "#32302b",
-                      "primary": "#000000",
-                      "surface-dim": "#dfd9d2",
-                      "on-primary": "#ffffff",
-                      "surface-cream": "#FBF5ED",
-                      "on-error": "#ffffff",
-                      "primary-container": "#1b1b1b",
-                      "inverse-primary": "#c6c6c6",
-                      "tertiary": "#000000",
-                      "surface-bright": "#fff8f0",
-                      "on-secondary": "#ffffff",
-                      "tertiary-fixed": "#e2e2e2"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.125rem",
-                      "lg": "0.25rem",
-                      "xl": "0.5rem",
-                      "full": "0.75rem"
-              },
-              "spacing": {
-                      "margin-mobile": "16px",
-                      "gutter": "24px",
-                      "container-max": "1280px",
-                      "section-gap": "80px",
-                      "base": "8px"
-              },
-              "fontFamily": {
-                      "display-lg": ["Montserrat"],
-                      "headline-md": ["Montserrat"],
-                      "body-md": ["Inter"],
-                      "display-lg-mobile": ["Montserrat"],
-                      "nav-link": ["Inter"],
-                      "label-bold": ["Inter"],
-                      "body-lg": ["Inter"]
-              },
-              "fontSize": {
-                      "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                      "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
-                      "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
-                      "display-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
-                      "nav-link": ["15px", { "lineHeight": "24px", "fontWeight": "500" }],
-                      "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
-                      "body-lg": ["18px", { "lineHeight": "30px", "fontWeight": "400" }]
-              }
-      },
-          },
-        }
-</script>
+
 <style>
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24
@@ -155,26 +63,7 @@ const makePage = (title, metaDesc, content, scripts) => `<!DOCTYPE html>
 <title>${title} - RaphaAtlas</title>
 <meta name="description" content="${metaDesc}">
 ${tailwindConfig}
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "vitality-teal": "#02838D",
-                        "header-black": "#000000",
-                        "surface-cream": "#FBF5ED",
-                        "on-primary": "#ffffff",
-                        "primary": "#000000",
-                        "surface-container-lowest": "#ffffff",
-                        "border-subtle": "#E0EDEF",
-                        "on-surface": "#1d1b17",
-                    }
-                }
-            }
-        }
-    </script>
+
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@600;700;900&family=Archivo:wght@700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">

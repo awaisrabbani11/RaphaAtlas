@@ -5,11 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "npx serve -l 3000",
-    "build": "echo 'Static site - no build step needed'",
+    "build:css": "tailwindcss -c tailwind.config.cjs -i src/tailwind.css -o tailwind.css --minify",
+    "build": "npm run build:css",
+    "check:css": "node check_tailwind.cjs",
     "start": "npx serve -l 3000"
   },
   "dependencies": {
     "cheerio": "^1.2.0",
     "serve": "^14.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.11",
+    "tailwindcss": "^3.4.19"
   }
 }

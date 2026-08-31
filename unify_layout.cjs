@@ -17,28 +17,7 @@ function getFiles(dir, extArray, fileList = []) {
     return fileList;
 }
 
-const tailwindConfig = `<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "vitality-teal": "#02838D",
-                        "header-black": "#000000",
-                        "surface-cream": "#FBF5ED",
-                        "on-primary": "#ffffff",
-                        "primary": "#000000",
-                        "surface-container-lowest": "#ffffff",
-                        "border-subtle": "#E0EDEF",
-                        "on-surface": "#1d1b17",
-                    }
-                }
-            }
-        }
-    </script>`;
-
-const headLinks = `<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-${tailwindConfig}
+const headLinks = `<link rel="stylesheet" href="/tailwind.css">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@600;700;900&family=Archivo:wght@700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">

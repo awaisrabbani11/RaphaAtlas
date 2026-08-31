@@ -116,26 +116,8 @@ const html = `<!DOCTYPE html>
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24
 }
 </style>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "vitality-teal": "#02838D",
-                        "header-black": "#000000",
-                        "surface-cream": "#FBF5ED",
-                        "on-primary": "#ffffff",
-                        "primary": "#000000",
-                        "surface-container-lowest": "#ffffff",
-                        "border-subtle": "#E0EDEF",
-                        "on-surface": "#1d1b17",
-                    }
-                }
-            }
-        }
-    </script>
+<link rel="stylesheet" href="/tailwind.css">
+
 <link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
