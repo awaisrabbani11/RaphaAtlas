@@ -20,6 +20,15 @@
         "value": "inter",
         "createdAt": "2026-08-31T15:37:56.704Z",
         "reason": "Pre-existing site-wide brand face, not a choice made in this task: declared in tailwind.config fontFamily tokens on all 16 pages, in styles.css (--body), and in the shared .rah/.raf chrome CSS. This task only repaired its loading (the old Google Fonts URL returned a broken 6.7KB subset with no digit glyphs). Not user-confirmed; swapping the typeface is a sitewide design decision, raised with the user."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "medical-review-board.html"
+        ],
+        "createdAt": "2026-09-06T19:16:46.271Z",
+        "reason": "Claude: measured every bordered/background container on the page in-browser. All hits are shared site chrome (.rah-glass, .rah-menu-in 7px+10px child=17px, .rah-drawer-top), never <main>. Each flagged wrapper's text children carry their own >=10px padding or use min-height centering, so nothing lands flush - the rule's own condition is unmet. Page content passes (.callout 16/18px). Session edit was two id attributes; chrome is identical on all 15 pages and did not trip on body-type-calculator.html."
       }
     ]
   }

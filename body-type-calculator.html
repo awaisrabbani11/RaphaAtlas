@@ -1,28 +1,140 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Body Type Calculator — RaphaAtlas</title>
+<title>Body Type Calculator: How Close Are You to the Next Shape?</title>
 <link rel="preconnect" href="https://i.pinimg.com" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="/raphaatlas-favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/tailwind.css">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="description" content="Free body type calculator using bust, waist, and hip measurements. Identify your body shape with WHO-aligned waist-to-hip thresholds.">
+<meta name="description" content="Our body type calculator returns your body shape and how many inches separate you from the next one, so you know if a half-inch tape error would flip it.">
   <link rel="canonical" href="https://www.raphaatlas.com/body-type-calculator">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RaphaAtlas">
-  <meta property="og:title" content="Body Type Calculator — Find Your Body Shape | RaphaAtlas">
-  <meta property="og:description" content="Free body type calculator using bust, waist, and hip measurements. Identify your body shape with WHO-aligned waist-to-hip thresholds.">
+  <meta property="og:title" content="Body Type Calculator: How Close Are You to the Next Shape?">
+  <meta property="og:description" content="Our body type calculator returns your body shape and how many inches separate you from the next one, so you know if a half-inch tape error would flip it.">
   <meta property="og:url" content="https://www.raphaatlas.com/body-type-calculator">
-  <meta property="og:image" content="https://www.raphaatlas.com/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Body Type Calculator — Find Your Body Shape | RaphaAtlas">
-  <meta name="twitter:description" content="Free body type calculator using bust, waist, and hip measurements. Identify your body shape with WHO-aligned waist-to-hip thresholds.">
-  <meta name="twitter:image" content="https://www.raphaatlas.com/og-image.png">
+  <!-- og:image intentionally absent: Stage 5 §6 asset 9 (og-body-type-calculator.png,
+       1200x630) has not been produced. The previous tag pointed at /og-image.png,
+       which 404s — a broken card is worse than a summary card. Restore
+       og:image + twitter:card="summary_large_image" the day the asset ships. -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Body Type Calculator: How Close Are You to the Next Shape?">
+  <meta name="twitter:description" content="Our body type calculator returns your body shape and how many inches separate you from the next one, so you know if a half-inch tape error would flip it.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <script type="application/ld+json" data-ra="page">{"@context":"https://schema.org","@type":["WebApplication","MedicalWebPage"],"name":"Body Type Calculator","url":"https://www.raphaatlas.com/body-type-calculator","description":"Free body type calculator using bust, waist, and hip measurements. Identify your body shape with WHO-aligned waist-to-hip thresholds.","applicationCategory":"HealthApplication","operatingSystem":"Any (web browser)","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"inLanguage":"en","publisher":{"@id":"https://www.raphaatlas.com/#organization"},"reviewedBy":{"@type":"Person","name":"Dr. Muhammad Awais Rabbani, MBBS","jobTitle":"Medical Reviewer","url":"https://www.raphaatlas.com/medical-review-board"},"lastReviewed":"2026-08-12"}</script>
-  <script type="application/ld+json" data-ra="page">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.raphaatlas.com/"},{"@type":"ListItem","position":2,"name":"Body Type Calculator","item":"https://www.raphaatlas.com/body-type-calculator"}]}</script>
+  <!-- Stage 5 §5 graph. Two deliberate deviations from the spec as written:
+       1. URLs use www.raphaatlas.com and the flat /body-type-calculator slug,
+          not raphaatlas.com/tools/... — the spec's namespace does not exist on
+          this site and the @id values must match index.html's #organization
+          and #website nodes to resolve.
+       2. §5.2 fallback is in force: no sameAs URLs exist for either doctor
+          (BL2 unresolved), so hasCredential and sameAs are both omitted. The
+          MBBS credential is carried in visible text on the byline card and on
+          /medical-review-board only. Restore both blocks together, never
+          hasCredential alone. -->
+  <script type="application/ld+json" data-ra="page">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.raphaatlas.com/#organization",
+      "name": "RaphaAtlas",
+      "url": "https://www.raphaatlas.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.raphaatlas.com/raphaatlas-lockup.svg"
+      },
+      "parentOrganization": { "@type": "Organization", "name": "Growth Partners Global LLC" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.raphaatlas.com/#website",
+      "url": "https://www.raphaatlas.com/",
+      "name": "RaphaAtlas",
+      "publisher": { "@id": "https://www.raphaatlas.com/#organization" },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.raphaatlas.com/body-type-calculator#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.raphaatlas.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://www.raphaatlas.com/calculators" },
+        { "@type": "ListItem", "position": 3, "name": "Body Type Calculator" }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.raphaatlas.com/medical-review-board#muhammad-awais-rabbani",
+      "name": "Muhammad Awais Rabbani",
+      "honorificPrefix": "Dr.",
+      "url": "https://www.raphaatlas.com/medical-review-board#muhammad-awais-rabbani",
+      "jobTitle": "Medical Writer"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.raphaatlas.com/medical-review-board#ahmed-humayon",
+      "name": "Ahmed Humayon",
+      "honorificPrefix": "Dr.",
+      "url": "https://www.raphaatlas.com/medical-review-board#ahmed-humayon",
+      "jobTitle": "Medical Reviewer"
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.raphaatlas.com/body-type-calculator#calculator",
+      "name": "Body Type Calculator",
+      "url": "https://www.raphaatlas.com/body-type-calculator",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "featureList": [
+        "Classifies female shape as hourglass, top hourglass, bottom hourglass, spoon, pear, rectangle or inverted triangle",
+        "Classifies male shape as trapezoid, inverted triangle, rectangle, triangle or oval",
+        "Reports the numeric distance in inches to the nearest alternative shape",
+        "Names the measurement that would have to change, and by how much, to reclassify the result",
+        "Flags results that a half-inch measurement error would change",
+        "Calculates waist-to-hip ratio and waist-to-bust ratio",
+        "Accepts inches or centimetres",
+        "Runs entirely in the browser with no data sent to a server"
+      ],
+      "publisher": { "@id": "https://www.raphaatlas.com/#organization" }
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://www.raphaatlas.com/body-type-calculator#webpage",
+      "url": "https://www.raphaatlas.com/body-type-calculator",
+      "name": "Body Type Calculator: Find Your Body Shape From Bust, Waist and Hip Measurements",
+      "description": "Enter your bust, waist and hip measurements and this calculator returns one of five body shapes — hourglass, pear, apple, rectangle or inverted triangle — plus how close you are to the next shape.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://www.raphaatlas.com/#website" },
+      "breadcrumb": { "@id": "https://www.raphaatlas.com/body-type-calculator#breadcrumb" },
+      "mainEntity": { "@id": "https://www.raphaatlas.com/body-type-calculator#calculator" },
+      "author": { "@id": "https://www.raphaatlas.com/medical-review-board#muhammad-awais-rabbani" },
+      "reviewedBy": { "@id": "https://www.raphaatlas.com/medical-review-board#ahmed-humayon" },
+      "datePublished": "2026-08-12",
+      "dateModified": "2026-09-07",
+      "lastReviewed": "2026-08-12",
+      "citation": [
+        {
+          "@type": "ScholarlyArticle",
+          "name": "Comparison of body shape between USA and Korean women",
+          "author": "Lee, J.Y., Istook, C.L., Nam, Y.J. and Park, S.M.",
+          "datePublished": "2007",
+          "isPartOf": {
+            "@type": "Periodical",
+            "name": "International Journal of Clothing Science and Technology"
+          },
+          "url": "https://doi.org/10.1108/09556220710819555"
+        }
+      ]
+    }
+  ]
+}
+  </script>
 <meta name="theme-color" content="#0A1C1F">
 </head>
 <body>
@@ -700,7 +812,30 @@ body{overflow-x:hidden;overflow-x:clip}
 </script>
 </header>
 <main id="main" tabindex="-1" class="w-full max-w-4xl mx-auto px-4 md:px-8 py-12" style="font-family: 'Inter', sans-serif;">
-<h1 class="text-4xl font-black mb-8">Body Type Calculator</h1>
+<h1 class="text-4xl font-black mb-4">Body Type Calculator: Find Your Body Shape From Bust, Waist and Hip Measurements</h1>
+
+<!-- Byline card. Stage 5 §6.1: the review line is SCOPED — it names the two
+     sections a physician actually read, not the whole page. The page is an
+     apparel taxonomy with a health-signal section inside it; claiming
+     whole-page medical review would overstate it. Credential lives here in
+     visible text because §5.2 keeps it out of the structured data until
+     sameAs URLs exist. -->
+<style id="ra-byline-style">
+.ra-byline{
+  display:flex;flex-wrap:wrap;gap:.35rem 1.25rem;align-items:baseline;
+  margin:0 0 2rem;padding:.9rem 1.1rem;
+  border:1px solid #e4e7ec;border-left:3px solid #02838D;border-radius:12px;
+  background:#fbfcfc;font-size:.875rem;line-height:1.6;color:#5c6470;
+}
+.ra-byline a{color:#016A73;text-decoration:underline;text-underline-offset:2px}
+.ra-byline a:hover{color:#02838D}
+.ra-byline .ra-byline-scope{flex:1 1 100%;margin:0}
+</style>
+<div class="ra-byline">
+  <span>Written by <a href="/medical-review-board#muhammad-awais-rabbani">Dr. Muhammad Awais Rabbani, MBBS</a></span>
+  <span>Last updated 7 September 2026</span>
+  <p class="ra-byline-scope"><a href="/medical-review-board#ahmed-humayon">Dr. Ahmed Humayon, MBBS</a> reviewed the waist-to-hip ratio and health-signal sections of this page. The shape categories themselves are an apparel taxonomy, not a clinical classification. <a href="/editorial-policy">How we review medical content</a>.</p>
+</div>
 
 <style id="ra-figure-style">
 .ra-figure{
@@ -735,13 +870,6 @@ body{overflow-x:hidden;overflow-x:clip}
   .ra-figure figcaption{background:#fff;color:#14181d}
 }
 </style>
-
-<figure class="ra-figure" style="--ra-fig-w:736px">
-  <img src="https://i.pinimg.com/736x/e9/b1/33/e9b1338afc8debb113c345c5ebac4dd0.jpg"
-       width="736" height="414" loading="eager" fetchpriority="high" decoding="async"
-       alt="Healthy body fat percentage chart for males and females across ages 20 to 39, 40 to 59 and 60 plus, listing essential fat, athletic, fitness, average and obese ranges, with notes on why body fat percentage matters and a reminder to consult a healthcare professional.">
-  <figcaption>Body fat ranges by sex and age, from the American Council on Exercise. A category, not an identity — the bands overlap far more than the colour blocks suggest.</figcaption>
-</figure>
 
 <!-- ============================================================================
   RaphaAtlas Body Type Calculator  —  single-file, zero-dependency widget
@@ -846,6 +974,16 @@ body{overflow-x:hidden;overflow-x:clip}
 #ra-btc .ra-whrnote{font-size:.8rem;margin:.1rem 0 0}
 #ra-btc .ra-whrnote.ok{color:var(--ra-ok)}
 #ra-btc .ra-whrnote.warn{color:var(--ra-warn)}
+/* The margin block is the differentiator, so it gets the visual weight of a
+   result rather than of a footnote. */
+#ra-btc .ra-margin{
+  margin:.2rem 0 .8rem;padding:.6rem .75rem;border-radius:10px;
+  background:rgba(2,131,141,.07);border-left:3px solid var(--ra-accent);
+  font-size:.85rem;line-height:1.5;
+}
+#ra-btc .ra-margin.is-borderline{background:rgba(178,106,0,.09);border-left-color:var(--ra-warn)}
+#ra-btc .ra-margin b{font-weight:700}
+#ra-btc .ra-margin .ra-flip{display:block;margin-top:.3rem;color:var(--ra-warn);font-weight:600}
 #ra-btc a.ra-cta{
   display:inline-block;margin-top:.9rem;padding:.55rem .95rem;border-radius:9px;
   background:var(--ra-accent);color:var(--ra-accent-ink);text-decoration:none;
@@ -894,6 +1032,7 @@ body{overflow-x:hidden;overflow-x:clip}
       <span><span class="ra-muted">Waist-to-hip</span><b id="ra-whr">—</b></span>
       <span><span class="ra-muted">Waist-to-bust</span><b id="ra-wbr">—</b></span>
     </div>
+    <p class="ra-margin" id="ra-margin"></p>
     <p class="ra-whrnote" id="ra-whrnote"></p>
     <a class="ra-cta" id="ra-cta" href="#">See styling tips for this shape →</a>
   </div>
@@ -1038,6 +1177,87 @@ body{overflow-x:hidden;overflow-x:clip}
     return "Trapezoid";
   }
 
+  // ---- Margin to the next shape -------------------------------------------
+  // The page's differentiator: not just which shape, but how far from the
+  // next one. Rather than deriving the boundaries analytically from the rule
+  // tables above — which would restate every threshold in a second place and
+  // drift the moment one is tuned — each measurement is perturbed against the
+  // SAME classifier that produced the result. The answer cannot disagree with
+  // the classification because it is the classification, asked again.
+  //
+  // ponytail: linear 0.1 in scan out to 6 in, not a bisection. The classifier
+  // is not monotonic in any single field (the Spoon rule keys off high-hip
+  // ÷ waist, so raising the waist can cross a boundary and then cross back),
+  // and bisection would step over those. ~240 evaluations, sub-millisecond.
+  // Move to a coarse-then-fine pass only if a field is ever added.
+  var MARGIN_MAX_IN = 6;      // stop looking past this; nothing useful beyond
+  var BORDERLINE_IN = 0.5;    // the "half-inch tape error" claim in the meta
+
+  function copyMeasures(m){
+    var o = {};
+    for(var k in m){ if(Object.prototype.hasOwnProperty.call(m,k)) o[k] = m[k]; }
+    return o;
+  }
+
+  function marginToNextShape(m, sex, current){
+    var classify = sex === "female" ? classifyFemale : classifyMale;
+    var best = null;
+    FIELDS[sex].forEach(function(f){
+      if(m[f.k] == null) return;
+      for(var step = 1; step <= MARGIN_MAX_IN * 10; step++){
+        var d = step / 10;
+        // Anything further out than the current best cannot beat it.
+        if(best && d >= best.delta) return;
+        for(var s = 0; s < 2; s++){
+          var signed = s === 0 ? d : -d;
+          var probe = copyMeasures(m);
+          probe[f.k] = m[f.k] + signed;
+          if(probe[f.k] <= 0) continue;
+          var shape = classify(probe);
+          if(shape !== current){
+            best = { delta:d, up:signed > 0, key:f.k, field:f.label, to:shape };
+            return;
+          }
+        }
+      }
+    });
+    return best;
+  }
+
+  function fmtDelta(inches){
+    return state.unit === "cm"
+      ? (inches * CM_PER_IN).toFixed(1) + " cm"
+      : inches.toFixed(1) + " in";
+  }
+
+  // innerHTML is safe here and only here: every interpolated value comes from
+  // a closed literal set — shape names returned by classify*(), field labels
+  // from FIELDS, and digits from toFixed(). No user-entered string reaches
+  // this markup. If you ever interpolate raw input, switch to textContent.
+  function renderMargin(m, sex, current){
+    var el = $("#ra-margin");
+    var best = marginToNextShape(m, sex, current);
+    el.classList.remove("is-borderline");
+    if(!best){
+      el.innerHTML = "No other shape sits within " + fmtDelta(MARGIN_MAX_IN) +
+        " of these measurements. This result is not a borderline one.";
+      return;
+    }
+    var html = "Nearest other shape: <b>" + best.to + "</b>, " +
+      fmtDelta(best.delta) + " away. Your " + best.field.toLowerCase() +
+      " would have to " + (best.up ? "rise" : "drop") + " " + fmtDelta(best.delta) +
+      " to land there.";
+    if(best.delta <= BORDERLINE_IN){
+      el.classList.add("is-borderline");
+      // The threshold is half an inch, but say it in whatever unit the reader
+      // is working in — "0.5 cm away … a half-inch error" reads as a mistake.
+      html += '<span class="ra-flip">This one is borderline — a ' +
+        fmtDelta(BORDERLINE_IN) + ' tape error would change it. ' +
+        'Measure twice before you trust the label.</span>';
+    }
+    el.innerHTML = html;
+  }
+
   // ---- Silhouette ---------------------------------------------------------
   function drawFigure(m, sex){
     var head=$("#ra-fig-head"), path=$("#ra-fig-path");
@@ -1091,6 +1311,8 @@ body{overflow-x:hidden;overflow-x:clip}
     $("#ra-whr").textContent   = whr ? whr.toFixed(2) : "—";
     $("#ra-wbr").textContent   = wbr ? wbr.toFixed(2) : "—";
 
+    renderMargin(m, state.sex, shape);
+
     var note=whrNote(state.sex, whr);
     var noteEl=$("#ra-whrnote"); noteEl.textContent=note.txt; noteEl.className="ra-whrnote "+note.cls;
 
@@ -1141,6 +1363,17 @@ body{overflow-x:hidden;overflow-x:clip}
 })();
 </script>
 </div>
+
+<!-- Stage 5 §6: no image renders above 600px and nothing on this page is
+     eager-loaded, so the LCP element stays the H1 text. This figure was
+     above the calculator with loading="eager" fetchpriority="high"; it is
+     now below the fold and lazy. -->
+<figure class="ra-figure" style="--ra-fig-w:736px">
+  <img src="https://i.pinimg.com/736x/e9/b1/33/e9b1338afc8debb113c345c5ebac4dd0.jpg"
+       width="736" height="414" loading="lazy" decoding="async"
+       alt="Healthy body fat percentage chart for males and females across ages 20 to 39, 40 to 59 and 60 plus, listing essential fat, athletic, fitness, average and obese ranges, with notes on why body fat percentage matters and a reminder to consult a healthcare professional.">
+  <figcaption>Body fat ranges by sex and age, from the American Council on Exercise. A category, not an identity — the bands overlap far more than the colour blocks suggest.</figcaption>
+</figure>
 
 <h2 id="introduction" class="text-2xl font-bold mt-10 mb-4">Introduction</h2>
 <p class="mb-4 text-gray-800">A body shape calculator applies a formula to your four measurements, comparing ratios against standard body shape categories to reveal where your proportions land. It works across female mode and male mode with equal precision.</p>
@@ -1650,6 +1883,17 @@ body{overflow-x:hidden;overflow-x:clip}
 <p class="mb-4 text-gray-800">It's the measurement most people skip. Taken 3-4 inches below natural waist, the high hip captures your curve or hip shelf—that's what lets a 3-measurement calculator distinguish similar shapes and stay more accurate.</p>
 <h2 id="what-body-shape-is-most-common-" class="text-2xl font-bold mt-10 mb-4">What Body Shape Is Most Common?</h2>
 <p class="mb-4 text-gray-800">There's no universal answer. The most common result shows similar bust waist hips, though it's relatively specific—rectangle dominates broadly, while hips wider than bust stay common particularly among women.</p>
+
+<!-- Stage 5 §5.1: citation[] must mirror what the page actually references.
+     Lee et al. is the one source whose URL is verified, and it is the source
+     of the five-shape taxonomy this page classifies against, so it is cited
+     here in visible text and in the graph — together, or not at all. The
+     WHO 2011 and CDC NHANES entries stay out of both until the health-signal
+     section that would reference them is written. -->
+<h2 id="references" class="text-2xl font-bold mt-10 mb-4">Reference</h2>
+<p class="mb-4 text-gray-800">The five-shape taxonomy this calculator classifies against — hourglass, pear, apple, rectangle and inverted triangle — comes from the body-shape classification work of Lee, J.Y., Istook, C.L., Nam, Y.J. and Park, S.M., <em>Comparison of body shape between USA and Korean women</em>, International Journal of Clothing Science and Technology (2007), <a class="underline" href="https://doi.org/10.1108/09556220710819555" rel="noopener">doi:10.1108/09556220710819555</a>. The thresholds are drawn from apparel-sizing research, not from clinical guidance, which is why this page treats the shape label and the waist-to-hip ratio as two separate readings.</p>
+
+<p class="mb-4 text-gray-800">If measurements are your way in, <a class="underline" href="/calculators">our other health calculators</a> work the same way — numbers in, a result you can check, and the reasoning left visible.</p>
 
 </main>
 <footer class="raf">
