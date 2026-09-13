@@ -1,0 +1,6 @@
+# Shell scripts must keep LF endings. This repo is developed on Windows with
+# core.autocrlf=true, which would otherwise check them out with CRLF — and a
+# shell script with CRLF fails at the shebang ("bad interpreter: /bin/sh^M").
+# The pre-commit hook in .githooks/ is the one that actually bites.
+*.sh            text eol=lf
+.githooks/*     text eol=lf

@@ -1,10 +1,38 @@
 #!/usr/bin/env node
 /**
  * RaphaAtlas — deterministic SEO patcher
- * Run from repo root:  node seo_fix.cjs
- * Idempotent: safe to run repeatedly.
+ * Run from repo root:  RAPHAATLAS_ALLOW_REWRITE=1 node seo_fix.cjs
+ *
+ * NOT idempotent against the current tree, despite the note this header used
+ * to carry. See DIAGNOSTIC_REPORT.md §9. Two ways it destroys hand-authored
+ * work as of 2026-09-13:
+ *
+ *   1. stripManagedJsonLd() deletes EVERY <script type="application/ld+json">
+ *      carrying a data-ra= attribute, unconditionally, before any @type check.
+ *      It re-emits only the blocks it knows about, so anything added by hand
+ *      under that attribute — e.g. the AboutPage + Person graph on
+ *      medical-review-board.html — is silently lost.
+ *   2. Its PAGES map is frozen at 14 entries and does not know /lifestyle
+ *      (created 2026-08-30), so every page missing from that map is skipped.
+ *
+ * The sitemap.xml generator that used to live at the foot of this file has
+ * been removed: sitemap.xml is hand-maintained, carries per-page lastmod
+ * dates derived from real file history, and hand-tuned priorities. The
+ * generator stamped one identical date across all entries and collapsed
+ * priorities to three values.
+ *
+ * The guard below exists because this script has previously been run by
+ * accident. Set the variable only when you have read the above and diffed
+ * the result before committing.
  */
 const fs = require('fs');
+
+if (!process.env.RAPHAATLAS_ALLOW_REWRITE) {
+  console.error('seo_fix.cjs: refusing to run without RAPHAATLAS_ALLOW_REWRITE=1.');
+  console.error('This script rewrites <head> and deletes data-ra JSON-LD in every page.');
+  console.error('Read the header comment and DIAGNOSTIC_REPORT.md §9 first.');
+  process.exit(1);
+}
 
 const SITE = 'https://www.raphaatlas.com';
 const YEAR = new Date().getFullYear();
@@ -287,15 +315,11 @@ if (fs.existsSync('llms.txt')) {
   report.push('PATCHED llms.txt: removed trailing slashes');
 }
 
-// sitemap.xml — regenerate with lastmod
-const today = new Date().toISOString().slice(0, 10);
-const priority = { '/': '1.0', '/calculators': '0.9' };
-const entries = Object.values(PAGES).map(p => {
-  const pr = priority[p.slug] || (p.slug.includes('calculator') ? '0.9' : '0.6');
-  return `  <url><loc>${SITE + p.slug}</loc><lastmod>${today}</lastmod><priority>${pr}</priority></url>`;
-});
-fs.writeFileSync('sitemap.xml',
-  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.join('\n')}\n</urlset>\n`);
-report.push('REGENERATED sitemap.xml with lastmod');
+// sitemap.xml is deliberately NOT generated here any more — see the header
+// comment. It is hand-maintained: per-page lastmod reflecting real file
+// history, hand-tuned priorities, and /lifestyle, which this file's PAGES map
+// has never known about. Regenerating it from PAGES dropped a live URL from
+// the index and flattened every lastmod to a single date.
+report.push('SKIPPED sitemap.xml (hand-maintained — see header comment)');
 
 console.log(report.join('\n'));

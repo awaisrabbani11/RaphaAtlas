@@ -8,6 +8,8 @@
     "build:css": "tailwindcss -c tailwind.config.cjs -i src/tailwind.css -o tailwind.css --minify",
     "build": "npm run build:css",
     "check:css": "node check_tailwind.cjs",
+    "check:integrity": "node check_integrity.cjs",
+    "check": "npm run check:css && npm run check:integrity",
     "start": "npx serve -l 3000"
   },
   "dependencies": {

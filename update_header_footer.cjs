@@ -19,6 +19,16 @@
 const fs = require('fs');
 const path = require('path');
 
+/* Guarded: this replaces the header and footer block in EVERY .html file in
+   one pass. Run with:  RAPHAATLAS_ALLOW_REWRITE=1 node update_header_footer.cjs
+   then verify with:    node check_integrity.cjs
+   before committing. See DIAGNOSTIC_REPORT.md §9. */
+if (!process.env.RAPHAATLAS_ALLOW_REWRITE) {
+  console.error('update_header_footer.cjs: refusing to run without RAPHAATLAS_ALLOW_REWRITE=1.');
+  console.error('It rewrites the chrome in every .html file. Read DIAGNOSTIC_REPORT.md §9 first.');
+  process.exit(1);
+}
+
 function getFiles(dir, fileList = []) {
     for (const file of fs.readdirSync(dir)) {
         if (file === 'node_modules' || file === '.git') continue;

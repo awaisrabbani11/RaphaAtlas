@@ -1,0 +1,19 @@
+#!/bin/sh
+# RaphaAtlas pre-commit gate.
+#
+# Runs the structural integrity check before every commit. It exists because
+# three scripts in this repo rewrite every .html file with regex, and a broken
+# <head> or a deleted JSON-LD block deploys silently — a browser repairs the
+# markup, so the page still looks fine while Googlebot sees something else.
+#
+# Enable (once per clone):  git config core.hooksPath .githooks
+# Bypass for one commit:    git commit --no-verify
+#
+# See DIAGNOSTIC_REPORT.md §9.
+
+if ! node check_integrity.cjs; then
+  echo ""
+  echo "pre-commit: integrity check failed — commit aborted."
+  echo "Fix the problems above, or bypass deliberately with: git commit --no-verify"
+  exit 1
+fi

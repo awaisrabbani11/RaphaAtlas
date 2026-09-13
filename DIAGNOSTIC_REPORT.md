@@ -636,13 +636,150 @@ index. This is no longer a hygiene item; it is a live threat to the Tier 2 work.
 fix is Tier 3 item 11: delete the sitemap-writing block (lines 290–299), since the file is now
 hand-maintained.
 
+---
+
+## 10. Remediation Log — Tier 3 (applied 2026-09-13)
+
+Tier 1 + Tier 2 were committed and pushed by the site owner (`fd87fc4`) and verified live
+before this tier began: the placeholder text and the fabricated certifications are confirmed
+absent from production, and `/privacy` grew 35,761 → 40,967 bytes on the live host. That
+deploy landing on 2026-09-13 is what makes the Tier 2 `lastmod` dates truthful.
+
+### Item 11 — the three rewrite scripts, neutralised ✅
+
+A refusal guard now sits at the top of `seo_fix.cjs`, `unify_layout.cjs` and
+`update_header_footer.cjs`. Each exits non-zero unless `RAPHAATLAS_ALLOW_REWRITE=1` is set,
+and points at this report. Verified: all three refuse by default and leave the tree untouched.
+
+**The sitemap generator has been deleted from `seo_fix.cjs`** (the former lines 290–299) and
+replaced with a comment explaining why. The file's own header, which claimed *"Idempotent: safe
+to run repeatedly,"* has been corrected — it is not, and has not been for some time.
+
+**Root cause of the "deleted JSON-LD" failure named in the original brief — found.**
+`stripManagedJsonLd()` at `seo_fix.cjs:108` contains:
+
+```js
+if (/data-ra=/.test(attrs)) return '';
+```
+
+Every `<script type="application/ld+json">` carrying a `data-ra=` attribute is deleted
+**unconditionally, before any `@type` check**, and only the blocks the script itself knows how
+to emit are restored. The `AboutPage` + two `Person` nodes added to
+`medical-review-board.html` in Tier 1 carry `data-ra="reviewers"` and would have been wiped
+without trace. This is the mechanism behind the historical JSON-LD losses, and it is now
+documented in the file itself.
+
+**Incidental finding: `unify_layout.cjs` has never been runnable in its committed state.** It
+fails `node --check` with `SyntaxError: Invalid or unexpected token` at an unterminated
+single-quoted string spanning lines 85–86 (a `'...'` literal containing a raw newline).
+Confirmed against `HEAD`, so this predates the session. It therefore cannot have contributed to
+the deindexing and cannot cause future damage. The guard was left in place for whenever the
+syntax is repaired. **Recommendation: delete the file** — it is dead code that duplicates
+`update_header_footer.cjs`, and its presence implies a working tool that does not exist.
+
+### Item 12 — integrity gate ✅
+
+New `check_integrity.cjs` (runs in ~1s over all 16 files), wired up as:
+
+```
+npm run check:integrity     # structure only
+npm run check               # check:css && check:integrity
+```
+
+Plus a version-controlled `.githooks/pre-commit` that runs it before every commit;
+`core.hooksPath` is set to `.githooks`. Bypass deliberately with `git commit --no-verify`.
+
+It checks, per file: parse5 parse with zero errors; exactly one `<html>/<head>/<body>/<title>`;
+non-empty title; balanced `<script>` tags; valid JSON in every JSON-LD block; no
+zero-width/NBSP characters (reporting line number and whether the character sits inside a tag);
+and exactly one `<main>` holding text above a floor. Across the repo it reconciles the sitemap
+both ways — every `<loc>` resolves to a file, and every indexable page is listed.
+
+**Fuzz-tested rather than assumed.** Nine corruptions were injected into a scratch copy and all
+nine were caught: orphaned `<script>`, U+200B inside a tag, malformed JSON-LD, `<main>`
+emptied, `<main>` deleted, duplicate `<head>`, duplicate `<title>`, a sitemap `<loc>` pointing
+at no file, and a page dropped from the sitemap. The pre-commit hook was verified to actually
+abort a real `git commit`.
+
+> **One design note worth recording.** The first version measured the text floor against
+> `<body>` and **missed a page whose entire `<main>` had been deleted** — the shared nav and
+> footer contribute ~1,120 characters to every page, so any `<body>` floor low enough to avoid
+> false positives still passes a fully gutted page. The check now measures inside `<main>`.
+> Chrome is not content. This was caught only because the failure modes were actually
+> injected; a checker that is never shown a broken file proves nothing.
+
+### Item 10 — images self-hosted ✅, but read the content findings below
+
+All **9 unique images** (10 `<img>` references) moved from `i.pinimg.com` to
+`/assets/img/`, with descriptive filenames. The 4 now-pointless
+`<link rel="preconnect" href="https://i.pinimg.com">` hints were removed, and the privacy
+policy's third-party disclosure updated — Pinterest no longer receives visitors' IP addresses,
+leaving Google Fonts as the only external request the site makes. **Zero external image hosts
+remain.** All 15 local asset references verified to resolve; images confirmed loading in-browser
+at full natural dimensions.
+
+**However — self-hosting fixes availability and privacy. It does not confer any rights, and it
+makes RaphaAtlas the direct host rather than a hotlinker.** Each image was opened and
+inspected, and three are content problems that outlive the hosting change:
+
+| Image | Finding |
+|---|---|
+| `macro-split-chart.jpg` | **Carries another company's branding** — "DIET by DESIGN — Eat Smart. Live Better." with their logo, on the macro-calculator money page. A third party's marketing asset presented as RaphaAtlas content. **Replace before anything else here.** |
+| `conception-ovulation-chart.jpg` | Content is sound, but the image contains a visible typo — *"fertilization usually occurs **withis within** 24 hours after ovulation"* — baked into the pixels, on a physician-reviewed page. Not correctable by editing the page. |
+| `health-anatomy-illustration.jpg` | An AI-generated Van Gogh *Starry Night* pastiche of human anatomy, used as the **Health** category image on the homepage. Decorative art, not a medical illustration, and derivative of a recognisable style. Off-register for a site whose whole claim is clinical rigour. |
+| `body-fat-percentage-chart.jpg` | Accurate, and credits its source (American Council on Exercise) — but still a third party's infographic design. |
+
+The remaining five are ordinary stock-style photographs.
+
+Note also that `about.html`'s hero image (Tier 1, item 6) was found to depict something entirely
+different from its stored description. Treat every one of these images as unverified until
+checked — the descriptions in this repo have not been reliable.
+
+**Recommendation:** commission or licence replacements for the four charts/illustrations,
+starting with the branded one. Charts are also the easiest to simply rebuild — the underlying
+figures are public, and a self-made chart carries no rights question and can match the site's
+design.
+
+### Item 13 — nav de-duplication: recommended AGAINST, not done ❌
+
+Measured before deciding. The mobile drawer contributes **227 characters** of duplicated
+navigation text per page, against main-content volumes of 2,323 (the thinnest real page) to
+32,171 characters — between 0.7% and 9.8%, and under 10% even at worst. When this item was
+written, `/health` carried 430 characters of unique text and the duplication genuinely mattered.
+It no longer does.
+
+Against that marginal gain: the drawer is a *functional* component (22 references to
+`rah-burger` / `rah-drawer` / `rah-overlay`, JS-driven, with focus management and a skip link).
+There are only two ways to change it, and neither is worth doing:
+
+1. **Hide it with CSS while leaving it in the DOM** — achieves nothing for the stated goal,
+   since text extraction and Google both still read DOM-present content.
+2. **Render one nav and transform it responsively** — a real refactor of an accessible,
+   JS-driven component across 16 files. That is precisely the kind of bulk markup rewrite that
+   produced this repo's historical corruption, traded for a sub-2% boilerplate reduction.
+
+A separate desktop nav and mobile drawer is also standard, correct practice, and boilerplate
+detection is something search engines handle trivially. **This item should be closed as
+won't-do, not carried forward.**
+
 ### Known issues left standing (out of approved scope)
 
-- **`clipped-overflow-container`** on `html` and `body` — flagged on every page by the design
-  hook. Pre-existing global chrome CSS, present before this session; fixing it is a site-wide
-  design change.
+All of the below were confirmed pre-existing by running the design detector against the
+pre-edit `HEAD` tree and diffing the results, not assumed.
+
+- **`clipped-overflow-container`** on `html` and `body` — flagged on every page. Comes from
+  `html{overflow-x:hidden;overflow-x:clip}` in the chrome CSS, which exists deliberately so the
+  closed mobile drawer (parked at `translateX(100%)`) cannot be scrolled to sideways. Fixing it
+  properly means rethinking how the drawer is parked, site-wide.
+- **`cramped-padding`** on `.rah-glass` and `.rah-drawer-top` — two per page, every page.
+  Header-chrome elements whose children sit flush against a bottom border with no inset.
+  Genuine but minor; the source of truth is the chrome template inside
+  `update_header_footer.cjs`, so correcting it is a site-wide design change that would also
+  require running a now-guarded script.
 - **Sub-12px text** in `macro-calculator.html` (11px and 11.5px inline styles at lines 759, 825,
-  858) and `bac-calculator.html`. Pre-existing accessibility issue, not introduced here.
-- **13 hotlinked Pinterest images** remain (Tier 3 item 10). They load today but are
-  third-party-controlled. Note that the `about.html` case proved these images do not necessarily
-  match their intended descriptions — the others are worth eyeballing.
+  858) and `bac-calculator.html`. Pre-existing accessibility issue.
+- **`404.html` has no `<main>` landmark** — every other page does. Noted while building the
+  integrity check, which exempts it. Worth adding for semantics and accessibility.
+- **`rounded-DEFAULT`** was used in `contact.html` and is not valid Tailwind — it never
+  generated a rule. Fixed there, but it is worth grepping future markup for: the class name
+  looks plausible and fails silently.

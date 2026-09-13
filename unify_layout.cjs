@@ -1,5 +1,19 @@
+/* Rewrites layout markup across every .html file in the tree.
+   Run with:  RAPHAATLAS_ALLOW_REWRITE=1 node unify_layout.cjs
+
+   Guarded because bulk regex surgery over all pages is how this repo has
+   previously produced corrupted <head> blocks and orphaned <script> tags.
+   Before committing anything this produces, run the integrity check:
+     node check_integrity.cjs
+   See DIAGNOSTIC_REPORT.md §9. */
 const fs = require('fs');
 const path = require('path');
+
+if (!process.env.RAPHAATLAS_ALLOW_REWRITE) {
+  console.error('unify_layout.cjs: refusing to run without RAPHAATLAS_ALLOW_REWRITE=1.');
+  console.error('It rewrites layout markup in every .html file. Read DIAGNOSTIC_REPORT.md §9 first.');
+  process.exit(1);
+}
 
 function getFiles(dir, extArray, fileList = []) {
     const files = fs.readdirSync(dir);
