@@ -29,6 +29,24 @@
         ],
         "createdAt": "2026-09-06T19:16:46.271Z",
         "reason": "Claude: measured every bordered/background container on the page in-browser. All hits are shared site chrome (.rah-glass, .rah-menu-in 7px+10px child=17px, .rah-drawer-top), never <main>. Each flagged wrapper's text children carry their own >=10px padding or use min-height centering, so nothing lands flush - the rule's own condition is unmet. Page content passes (.callout 16/18px). Session edit was two id attributes; chrome is identical on all 15 pages and did not trip on body-type-calculator.html."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "privacy.html"
+        ],
+        "createdAt": "2026-09-13T18:04:18.123Z",
+        "reason": "Claude: .ra-note is a pre-existing RaphaAtlas component (styles.css:199) already used on 9 pages incl. editorial-policy.html before this session; reused verbatim here for consistency. Restyling it is a site-wide design change outside the approved content-fix scope."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "medical-review-board.html"
+        ],
+        "createdAt": "2026-09-13T18:04:18.413Z",
+        "reason": "Claude: .ra-note is a pre-existing RaphaAtlas component (styles.css:199) already used on 9 pages incl. editorial-policy.html before this session; reused verbatim here for consistency. Restyling it is a site-wide design change outside the approved content-fix scope."
       }
     ]
   }
