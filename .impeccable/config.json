@@ -80,6 +80,15 @@
         "value": "fraunces",
         "createdAt": "2026-09-18T16:00:08.523Z",
         "reason": "Fraunces is declared in --disp but never loaded: no @font-face, no font request, document.fonts holds only Inter. Measured a Georgia stack vs a Fraunces-first stack at 80px - both 382px, identical, so Georgia renders. The author documents this in a head comment: 'Fraunces / Spline Sans Mono in --disp and --mono were never in that URL either - they already fall back.'"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "conception-calculator.html"
+        ],
+        "createdAt": "2026-09-18T16:06:28.518Z",
+        "reason": "detector matched CSS COMMENT text, not CSS: the reported value is the literal string 'an inset shadow is clipped to the padding box and follows the curve. */' from line 868. That comment documents the author REJECTING a side-tab: '.note.redate' uses box-shadow:inset 3px 0 0 var(--gold), no border. No side border over 2px exists in the file. Scoped to this file only so the real .ra-note/.article blockquote instances elsewhere stay flagged pending the user's decision."
       }
     ]
   }
