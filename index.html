@@ -4,7 +4,8 @@
 <title>RaphaAtlas — Evidence-Based Health Tools & Guides</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=accessibility_new,alternate_email,arrow_forward,bolt,calculate,check_circle,child_care,close,directions_run,egg_alt,exercise,expand_more,explore,fitness_center,health_and_safety,help,local_bar,local_florist,mail,menu,monitor_heart,monitor_weight,nutrition,photo_camera,pill,play_arrow,psychology,restaurant_menu,rocket_launch,search,send,share,stethoscope,trending_up,verified,water_drop&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=accessibility_new,alternate_email,arrow_forward,bolt,calculate,check_circle,child_care,close,directions_run,egg_alt,exercise,expand_more,explore,fitness_center,health_and_safety,help,local_bar,local_florist,mail,menu,monitor_heart,monitor_weight,nutrition,photo_camera,pill,play_arrow,psychology,restaurant_menu,rocket_launch,search,send,share,stethoscope,trending_up,verified,water_drop&amp;display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/tailwind.css">
 
 <link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
@@ -13,15 +14,30 @@
   <link rel="canonical" href="https://www.raphaatlas.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RaphaAtlas">
+  <meta property="og:locale" content="en_US">
   <meta property="og:title" content="RaphaAtlas — Evidence-Based Health Tools & Guides">
   <meta property="og:description" content="Free clinical calculators and physician-reviewed guides on health, fitness, and nutrition. Built and reviewed by MBBS doctors.">
   <meta property="og:url" content="https://www.raphaatlas.com/">
   <meta property="og:image" content="https://www.raphaatlas.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="RaphaAtlas — evidence-based health tools and guides">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RaphaAtlas — Evidence-Based Health Tools & Guides">
   <meta name="twitter:description" content="Free clinical calculators and physician-reviewed guides on health, fitness, and nutrition. Built and reviewed by MBBS doctors.">
   <meta name="twitter:image" content="https://www.raphaatlas.com/og-image.png">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <!-- Search Console verification.
+       Prefer the DNS TXT method in Search Console: it verifies the whole
+       domain property (www + apex + every subdomain, http and https) in one
+       go, and it cannot be lost by a deploy that rewrites this file. Use the
+       tag below only as a fallback for a URL-prefix property — paste the token
+       Search Console gives you and uncomment it. Verification is per-account,
+       so it has to be done from the account that will own the property.
+  <meta name="google-site-verification" content="PASTE_TOKEN_HERE">
+  -->
+  <!-- Bing Webmaster Tools can import the Search Console property directly
+       once the above is verified; it needs no second tag. -->
   <script type="application/ld+json" data-ra="page">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.raphaatlas.com/#organization","name":"RaphaAtlas","url":"https://www.raphaatlas.com/","logo":{"@type":"ImageObject","url":"https://www.raphaatlas.com/raphaatlas-lockup.svg"},"parentOrganization":{"@type":"Organization","name":"Growth Partners Global LLC"}},{"@type":"WebSite","@id":"https://www.raphaatlas.com/#website","url":"https://www.raphaatlas.com/","name":"RaphaAtlas","description":"Free clinical calculators and physician-reviewed guides on health, fitness, and nutrition. Built and reviewed by MBBS doctors.","publisher":{"@id":"https://www.raphaatlas.com/#organization"},"inLanguage":"en"},{"@type":"ItemList","@id":"https://www.raphaatlas.com/#calculators","name":"RaphaAtlas health calculators","itemListOrder":"https://schema.org/ItemListOrderAscending","numberOfItems":4,"itemListElement":[{"@type":"ListItem","position":1,"name":"Macro Calculator","url":"https://www.raphaatlas.com/macro-calculator"},{"@type":"ListItem","position":2,"name":"Body Type Calculator","url":"https://www.raphaatlas.com/body-type-calculator"},{"@type":"ListItem","position":3,"name":"BAC Calculator","url":"https://www.raphaatlas.com/bac-calculator"},{"@type":"ListItem","position":4,"name":"Conception Calculator","url":"https://www.raphaatlas.com/conception-calculator"}]}]}</script>
 
 <style>
@@ -32,7 +48,11 @@
 .ra{
   --ink:#0C1719;
   --ink-2:#3E5257;
-  --ink-3:#6B8085;
+  /* Darkened from #6B8085, which measured 3.83:1 on the card ground and
+     3.96:1 on paper — under the 4.5:1 AA floor for the 11-13px secondary text
+     this token is used for. #5E7479 is the nearest value that clears it on
+     card, paper and white (4.55 / 4.70 / 4.94). */
+  --ink-3:#5E7479;
   --teal:#02838D;
   --teal-deep:#016A73;
   --teal-tint:#E8F4F5;
@@ -127,7 +147,9 @@
 /* ---------------- Calculators ---------------- */
 .ra-section{padding:clamp(56px,8vw,96px) 0}
 .ra-section-head{max-width:640px;margin-bottom:clamp(28px,4vw,44px)}
-.ra-section-head .ra-eyebrow{color:var(--teal)}
+/* --teal is 4.31:1 on paper, just under AA for this 12px eyebrow; the deeper
+   brand token already in the palette clears it at 6.04:1. */
+.ra-section-head .ra-eyebrow{color:var(--teal-deep)}
 .ra-section-head h2{margin:12px 0 14px}
 
 .ra-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(248px,1fr))}
@@ -1073,25 +1095,19 @@ body{overflow-x:hidden;overflow-x:clip}
       </div>
       <div class="ra-grid-3">
         <a class="ra-topic ra-reveal" href="/nutrition">
-          <img class="ra-topic-img" src="/assets/img/fitness-hydration.jpg"
-               alt="A woman in athletic wear drinking from a water bottle against a clear blue sky"
-               width="736" height="1362" loading="lazy" decoding="async" style="object-position:center 42%">
+          <picture style="display:contents"><source type="image/avif" srcset="/assets/img/fitness-hydration-400w.avif 400w, /assets/img/fitness-hydration.avif 736w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw"><source type="image/webp" srcset="/assets/img/fitness-hydration-400w.webp 400w, /assets/img/fitness-hydration.webp 736w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw"><img src="/assets/img/fitness-hydration.jpg" width="736" height="1362" class="ra-topic-img" alt="A woman in athletic wear drinking from a water bottle against a clear blue sky" loading="lazy" decoding="async" style="object-position:center 42%"></picture>
           <h3>Nutrition</h3>
           <p>What to eat once you have your macro targets, and how to keep them realistic.</p>
           <span class="ra-go">Nutrition guides <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
         </a>
         <a class="ra-topic ra-reveal" href="/health">
-          <img class="ra-topic-img" src="/assets/img/health-anatomy-illustration.jpg"
-               alt="Illustration of human anatomy — brain, heart and digestive organs — in a swirling Van Gogh-style painted background"
-               width="736" height="1308" loading="lazy" decoding="async" style="object-position:center 38%">
+          <picture style="display:contents"><source type="image/avif" srcset="/assets/img/health-anatomy-illustration-400w.avif 400w, /assets/img/health-anatomy-illustration.avif 736w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw"><source type="image/webp" srcset="/assets/img/health-anatomy-illustration-400w.webp 400w, /assets/img/health-anatomy-illustration.webp 736w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw"><img src="/assets/img/health-anatomy-illustration.jpg" width="736" height="1308" class="ra-topic-img" alt="Illustration of human anatomy — brain, heart and digestive organs — in a swirling Van Gogh-style painted background" loading="lazy" decoding="async" style="object-position:center 38%"></picture>
           <h3>Health</h3>
           <p>Clinical topics written plainly, without the alarm that most health pages open with.</p>
           <span class="ra-go">Health guides <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
         </a>
         <a class="ra-topic ra-reveal" href="/fitness">
-          <img class="ra-topic-img" src="/assets/img/health-medical-scans.jpg"
-               alt="A collage of medical scans showing MRI cross-sections of a brain alongside skeletal X-rays"
-               width="675" height="1200" loading="lazy" decoding="async" style="object-position:center 30%">
+          <picture style="display:contents"><source type="image/avif" srcset="/assets/img/health-medical-scans-400w.avif 400w, /assets/img/health-medical-scans.avif 675w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw"><source type="image/webp" srcset="/assets/img/health-medical-scans-400w.webp 400w, /assets/img/health-medical-scans.webp 675w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw"><img src="/assets/img/health-medical-scans.jpg" width="675" height="1200" class="ra-topic-img" alt="A collage of medical scans showing MRI cross-sections of a brain alongside skeletal X-rays" loading="lazy" decoding="async" style="object-position:center 30%"></picture>
           <h3>Fitness</h3>
           <p>Training that matches your body type and the energy budget your calculator gave you.</p>
           <span class="ra-go">Fitness guides <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>

@@ -4,8 +4,19 @@
 <title>Fitness — Strength, Cardio &amp; Recovery Explained | RaphaAtlas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=accessibility_new,alternate_email,arrow_forward,bolt,calculate,check_circle,child_care,close,directions_run,egg_alt,exercise,expand_more,explore,fitness_center,health_and_safety,help,local_bar,local_florist,mail,menu,monitor_heart,monitor_weight,nutrition,photo_camera,pill,play_arrow,psychology,restaurant_menu,rocket_launch,search,send,share,stethoscope,trending_up,verified,water_drop&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=accessibility_new,alternate_email,arrow_forward,bolt,calculate,check_circle,child_care,close,directions_run,egg_alt,exercise,expand_more,explore,fitness_center,health_and_safety,help,local_bar,local_florist,mail,menu,monitor_heart,monitor_weight,nutrition,photo_camera,pill,play_arrow,psychology,restaurant_menu,rocket_launch,search,send,share,stethoscope,trending_up,verified,water_drop&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- LCP candidate: the hero image is eager, but inside a <picture> the parser
+     reaches it late. A typed preload is skipped by browsers that cannot decode
+     AVIF, so this costs nothing where it would not be used.
+     imagesrcset/imagesizes must mirror the <source> exactly — a bare href here
+     would preload the 736w file and then the srcset would pick 400w on a phone,
+     downloading the hero twice. -->
+<link rel="preload" as="image" type="image/avif"
+      imagesrcset="/assets/img/fitness-hydration-400w.avif 400w, /assets/img/fitness-hydration.avif 736w"
+      imagesizes="(min-width: 1024px) 552px, 100vw"
+      href="/assets/img/fitness-hydration.avif" fetchpriority="high">
 <link rel="stylesheet" href="/tailwind.css">
 
 <link rel="icon" type="image/svg+xml" href="/raphaatlas-favicon.svg">
@@ -14,10 +25,14 @@
   <link rel="canonical" href="https://www.raphaatlas.com/fitness">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RaphaAtlas">
+  <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Fitness — Strength, Cardio & Recovery Explained | RaphaAtlas">
   <meta property="og:description" content="How much training the guidelines actually ask for, how to structure a week around a real schedule, what progressive overload means in practice, and the mistakes that waste the most time.">
   <meta property="og:url" content="https://www.raphaatlas.com/fitness">
   <meta property="og:image" content="https://www.raphaatlas.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="RaphaAtlas — evidence-based health tools and guides">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Fitness — Strength, Cardio & Recovery Explained | RaphaAtlas">
   <meta name="twitter:description" content="How much training the guidelines actually ask for, how to structure a week around a real schedule, what progressive overload means in practice, and the mistakes that waste the most time.">
@@ -717,7 +732,7 @@ body{overflow-x:hidden;overflow-x:clip}
 </div>
 </div>
 <div class="flex-1 w-full relative h-[400px] lg:h-[500px]">
-<img alt="A woman in athletic wear drinking from a water bottle against a clear blue sky" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-none border border-border-subtle" width="736" height="500" loading="eager" src="/assets/img/fitness-hydration.jpg">
+<picture style="display:contents"><source type="image/avif" srcset="/assets/img/fitness-hydration-400w.avif 400w, /assets/img/fitness-hydration.avif 736w" sizes="(min-width: 1024px) 552px, 100vw"><source type="image/webp" srcset="/assets/img/fitness-hydration-400w.webp 400w, /assets/img/fitness-hydration.webp 736w" sizes="(min-width: 1024px) 552px, 100vw"><img src="/assets/img/fitness-hydration.jpg" width="736" height="1362" alt="A woman in athletic wear drinking from a water bottle against a clear blue sky" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-none border border-border-subtle" loading="eager" decoding="async"></picture>
 <div class="absolute -bottom-6 -left-6 bg-surface-cream p-6 border border-primary rounded-xl z-10 w-64 hidden md:block">
 <div class="flex items-center gap-3 mb-2">
 <span class="material-symbols-outlined text-vitality-teal" style="font-variation-settings: 'FILL' 1;">trending_up</span>

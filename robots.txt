@@ -1,19 +1,40 @@
-User-agent: *
-Allow: /
+# RaphaAtlas — https://www.raphaatlas.com
+# Everything published here is meant to be crawled and indexed. There is no
+# private area, no faceted navigation and no session parameters, so there is
+# nothing to disallow; an empty Disallow is the explicit way to say that.
 
+User-agent: *
+Disallow:
+
+# Answer engines are allowed deliberately, not by omission. The site's value is
+# the physician-reviewed content being cited, so being quoted with attribution
+# is the goal rather than something to defend against.
 User-agent: GPTBot
-Allow: /
+Disallow:
 
 User-agent: OAI-SearchBot
-Allow: /
+Disallow:
+
+User-agent: ChatGPT-User
+Disallow:
 
 User-agent: ClaudeBot
-Allow: /
+Disallow:
+
+User-agent: Claude-User
+Disallow:
 
 User-agent: PerplexityBot
-Allow: /
+Disallow:
 
 User-agent: Google-Extended
-Allow: /
+Disallow:
 
+User-agent: Applebot-Extended
+Disallow:
+
+User-agent: CCBot
+Disallow:
+
+# The sitemap index; it names one child sitemap per section.
 Sitemap: https://www.raphaatlas.com/sitemap.xml

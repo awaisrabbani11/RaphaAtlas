@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Conception Calculator | RaphaAtlas</title>
+<title>Conception Calculator: Estimate Your Due Date | RaphaAtlas</title>
 <!-- Inter is self-hosted in tailwind.css; preload flattens the
      document -> tailwind.css -> woff2 chain by one hop. No Google Fonts
      request: it only duplicated Inter and pulled Material Symbols icons
@@ -17,16 +17,20 @@
   <link rel="canonical" href="https://www.raphaatlas.com/conception-calculator">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RaphaAtlas">
-  <meta property="og:title" content="Conception Calculator — Estimate Conception & Due Date | RaphaAtlas">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Conception Calculator: Estimate Your Due Date | RaphaAtlas">
   <meta property="og:description" content="Free conception calculator. Estimate your likely conception date and due date from LMP, ultrasound, or IVF transfer using Naegele dating.">
   <meta property="og:url" content="https://www.raphaatlas.com/conception-calculator">
   <meta property="og:image" content="https://www.raphaatlas.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="RaphaAtlas — evidence-based health tools and guides">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Conception Calculator — Estimate Conception & Due Date | RaphaAtlas">
+  <meta name="twitter:title" content="Conception Calculator: Estimate Your Due Date | RaphaAtlas">
   <meta name="twitter:description" content="Free conception calculator. Estimate your likely conception date and due date from LMP, ultrasound, or IVF transfer using Naegele dating.">
   <meta name="twitter:image" content="https://www.raphaatlas.com/og-image.png">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <script type="application/ld+json" data-ra="page">{"@context":"https://schema.org","@type":["WebApplication","MedicalWebPage"],"name":"Conception Calculator","url":"https://www.raphaatlas.com/conception-calculator","description":"Free conception calculator. Estimate your likely conception date and due date from LMP, ultrasound, or IVF transfer using Naegele dating.","applicationCategory":"HealthApplication","operatingSystem":"Any (web browser)","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"inLanguage":"en","publisher":{"@id":"https://www.raphaatlas.com/#organization"},"reviewedBy":{"@type":"Person","@id":"https://www.raphaatlas.com/medical-review-board#muhammad-awais-rabbani","name":"Dr. Muhammad Awais Rabbani","honorificSuffix":"MBBS","jobTitle":"Medical reviewer","url":"https://www.raphaatlas.com/medical-review-board#muhammad-awais-rabbani"},"lastReviewed":"2026-08-12","datePublished":"2026-08-11","dateModified":"2026-09-13","publisher":{"@id":"https://www.raphaatlas.com/#organization"}}</script>
+  <script type="application/ld+json" data-ra="page">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.raphaatlas.com/#organization","name":"RaphaAtlas","url":"https://www.raphaatlas.com/","logo":{"@type":"ImageObject","url":"https://www.raphaatlas.com/raphaatlas-lockup.svg"},"parentOrganization":{"@type":"Organization","name":"Growth Partners Global LLC"}},{"@type":["WebApplication","MedicalWebPage"],"name":"Conception Calculator","url":"https://www.raphaatlas.com/conception-calculator","description":"Free conception calculator. Estimate your likely conception date and due date from LMP, ultrasound, or IVF transfer using Naegele dating.","applicationCategory":"HealthApplication","operatingSystem":"Any (web browser)","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"inLanguage":"en","publisher":{"@id":"https://www.raphaatlas.com/#organization"},"reviewedBy":{"@type":"Person","@id":"https://www.raphaatlas.com/medical-review-board#muhammad-awais-rabbani","name":"Dr. Muhammad Awais Rabbani","honorificSuffix":"MBBS","jobTitle":"Medical reviewer","url":"https://www.raphaatlas.com/medical-review-board#muhammad-awais-rabbani"},"lastReviewed":"2026-08-12","datePublished":"2026-08-11","dateModified":"2026-09-13","featureList":["Five dating methods: last menstrual period, ultrasound, IVF transfer, known conception date, or a given due date","IVF day 3, day 5 and day 6 transfers handled separately","Estimated conception date, due date and fertile window from any one input","Typical delivery timing for singletons through quintuplets","Trimester breakdown and a visual pregnancy wheel"]}]}</script>
   <script type="application/ld+json" data-ra="page">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.raphaatlas.com/"},{"@type":"ListItem","position":2,"name":"Conception Calculator","item":"https://www.raphaatlas.com/conception-calculator"}]}</script>
 <meta name="theme-color" content="#0A1C1F">
 </head>
@@ -837,7 +841,13 @@ svg.wheel{width:100%;max-width:340px;height:auto;display:block}
 .section{margin-top:22px}
 .timeline{position:relative;margin:26px 4px 8px}
 .tl-track{position:absolute;left:0;right:0;top:19px;height:3px;background:var(--line);border-radius:2px}
-.tl-fill{position:absolute;left:0;top:19px;height:3px;background:var(--teal);border-radius:2px;transition:width .6s ease}
+/* Driven by transform, not width: a width transition relayouts the element on
+   every frame of the 0.6s run, which starts immediately after the Calculate
+   interaction. scaleX from the left edge is compositor-only. The bar is 3px
+   tall with no children, so scaling the 2px radius is imperceptible. */
+.tl-fill{position:absolute;left:0;top:19px;height:3px;width:100%;background:var(--teal);border-radius:2px;
+  transform:scaleX(0);transform-origin:left center;transition:transform .6s ease;will-change:transform}
+@media (prefers-reduced-motion:reduce){.tl-fill{transition:none}}
 .tl-marks{display:flex;justify-content:space-between;position:relative}
 .tl-mark{flex:1;text-align:center;position:relative}
 .tl-mark .node{width:11px;height:11px;border-radius:50%;background:var(--surface);border:2.5px solid var(--sage);margin:14px auto 8px;position:relative;z-index:2}
@@ -940,7 +950,7 @@ svg.wheel{width:100%;max-width:340px;height:auto;display:block}
     <p class="card-sub" id="tlSub">Where you are across the 40-week gestational calendar.</p>
     <div class="timeline">
       <div class="tl-track"></div>
-      <div class="tl-fill" id="tlFill" style="width:0%"></div>
+      <div class="tl-fill" id="tlFill" style="transform:scaleX(0)"></div>
       <div class="tl-marks" id="tlMarks"></div>
     </div>
   </section>
@@ -971,10 +981,14 @@ svg.wheel{width:100%;max-width:340px;height:auto;display:block}
     </div>
 
     <div class="cta" id="cta">
-      <a href="" data-slug="/ovulation-calculator">Ovulation calculator →</a>
-      <a href="" data-slug="/due-date-calculator">Due date calculator →</a>
-      <a href="" data-slug="/pregnancy-week-by-week">Week-by-week guide →</a>
-      <a href="" data-slug="/hcg-calculator">hCG calculator →</a>
+      <!-- These pointed at /ovulation-calculator, /due-date-calculator,
+           /pregnancy-week-by-week and /hcg-calculator, none of which exist —
+           four 404s fired from the result panel of a money page. Repointed at
+           live pages; restore the originals as those calculators ship. -->
+      <a href="/calculators">All calculators →</a>
+      <a href="/health">Health guides →</a>
+      <a href="/nutrition">Nutrition in pregnancy →</a>
+      <a href="/macro-calculator">Macro calculator →</a>
     </div>
   </section>
 
@@ -1033,9 +1047,7 @@ svg.wheel{width:100%;max-width:340px;height:auto;display:block}
 </style>
 
 <figure class="ra-figure">
-  <img src="/assets/img/conception-ovulation-chart.jpg"
-       width="736" height="920" loading="lazy" decoding="async"
-       alt="Illustrated chart showing how a known ovulation date gives the estimated conception date, since fertilisation usually happens within 12 to 24 hours of ovulation, and how adding 266 days or 38 weeks gives the estimated due date, with tips on tracking ovulation and confirming with an early scan.">
+  <picture style="display:contents"><source type="image/avif" srcset="/assets/img/conception-ovulation-chart-400w.avif 400w, /assets/img/conception-ovulation-chart.avif 736w" sizes="(min-width: 800px) 639px, 100vw"><source type="image/webp" srcset="/assets/img/conception-ovulation-chart-400w.webp 400w, /assets/img/conception-ovulation-chart.webp 736w" sizes="(min-width: 800px) 639px, 100vw"><img src="/assets/img/conception-ovulation-chart.jpg" width="736" height="920" loading="lazy" decoding="async" alt="Illustrated chart showing how a known ovulation date gives the estimated conception date, since fertilisation usually happens within 12 to 24 hours of ovulation, and how adding 266 days or 38 weeks gives the estimated due date, with tips on tracking ovulation and confirming with an early scan."></picture>
   <figcaption>How a known ovulation date maps to an estimated conception date and due date: ovulation date plus 266 days, roughly 38 weeks. Most babies arrive one to two weeks either side of that estimate.</figcaption>
 </figure>
 <h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">Introductions</h2>
@@ -1185,9 +1197,10 @@ svg.wheel{width:100%;max-width:340px;height:auto;display:block}
 
 </main>
 <script>
-/* ============ config: wire result CTAs to your real site slugs ============ */
-const CTA_BASE = "https://raphaatlas.com";
-document.querySelectorAll('#cta a').forEach(a=>{a.href = CTA_BASE + a.dataset.slug;});
+/* The result CTAs are now plain root-relative hrefs in the markup. The script
+   that used to build them from CTA_BASE + data-slug is gone: it hard-coded the
+   apex domain (an extra redirect hop to www) and, with the slugs removed, would
+   have written href="undefined". */
 
 const EMPTY_WHEEL = `<div class="wheel-empty" id="wheelEmpty">
   <svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="#66736d" stroke-width="2"><circle cx="36" cy="36" r="28"/><path d="M36 14v22l14 8"/></svg>
@@ -1405,7 +1418,7 @@ function drawTimeline(r){
   ];
   const nowW = gaDays/7;
   const pct = Math.max(0,Math.min(100, (nowW/40)*100));
-  document.getElementById('tlFill').style.width = pct+'%';
+  document.getElementById('tlFill').style.transform = 'scaleX('+(pct/100)+')';
   document.getElementById('tlMarks').innerHTML = marks.map(m=>{
     const date = addDays(lmp, m.w*7);
     const done = nowW >= m.w;

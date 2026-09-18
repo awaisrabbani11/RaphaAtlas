@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Macro Calculator | RaphaAtlas</title>
+<title>Macro Calculator: Protein, Carb &amp; Fat Targets | RaphaAtlas</title>
 <!-- Inter is self-hosted in tailwind.css; preload flattens the
      document -> tailwind.css -> woff2 chain by one hop. No Google Fonts
      request: it only duplicated Inter and pulled Material Symbols icons
@@ -16,16 +16,20 @@
   <link rel="canonical" href="https://www.raphaatlas.com/macro-calculator">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RaphaAtlas">
-  <meta property="og:title" content="Macro Calculator — Daily Protein, Carb & Fat Targets | RaphaAtlas">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Macro Calculator: Protein, Carb &amp; Fat Targets | RaphaAtlas">
   <meta property="og:description" content="Free macro calculator using Mifflin-St Jeor, Harris-Benedict, or Katch-McArdle. Get daily protein, carbohydrate, and fat targets for your goal.">
   <meta property="og:url" content="https://www.raphaatlas.com/macro-calculator">
   <meta property="og:image" content="https://www.raphaatlas.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="RaphaAtlas — evidence-based health tools and guides">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Macro Calculator — Daily Protein, Carb & Fat Targets | RaphaAtlas">
+  <meta name="twitter:title" content="Macro Calculator: Protein, Carb &amp; Fat Targets | RaphaAtlas">
   <meta name="twitter:description" content="Free macro calculator using Mifflin-St Jeor, Harris-Benedict, or Katch-McArdle. Get daily protein, carbohydrate, and fat targets for your goal.">
   <meta name="twitter:image" content="https://www.raphaatlas.com/og-image.png">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <script type="application/ld+json" data-ra="page">{"@context":"https://schema.org","@type":["WebApplication","MedicalWebPage"],"name":"Macro Calculator","url":"https://www.raphaatlas.com/macro-calculator","description":"Free macro calculator using Mifflin-St Jeor, Harris-Benedict, or Katch-McArdle. Get daily protein, carbohydrate, and fat targets for your goal.","applicationCategory":"HealthApplication","operatingSystem":"Any (web browser)","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"inLanguage":"en","publisher":{"@id":"https://www.raphaatlas.com/#organization"},"reviewedBy":{"@type":"Person","@id":"https://www.raphaatlas.com/medical-review-board#muhammad-awais-rabbani","name":"Dr. Muhammad Awais Rabbani","honorificSuffix":"MBBS","jobTitle":"Medical reviewer","url":"https://www.raphaatlas.com/medical-review-board#muhammad-awais-rabbani"},"lastReviewed":"2026-08-12","datePublished":"2026-08-11","dateModified":"2026-09-13","publisher":{"@id":"https://www.raphaatlas.com/#organization"}}</script>
+  <script type="application/ld+json" data-ra="page">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.raphaatlas.com/#organization","name":"RaphaAtlas","url":"https://www.raphaatlas.com/","logo":{"@type":"ImageObject","url":"https://www.raphaatlas.com/raphaatlas-lockup.svg"},"parentOrganization":{"@type":"Organization","name":"Growth Partners Global LLC"}},{"@type":["WebApplication","MedicalWebPage"],"name":"Macro Calculator","url":"https://www.raphaatlas.com/macro-calculator","description":"Free macro calculator using Mifflin-St Jeor, Harris-Benedict, or Katch-McArdle. Get daily protein, carbohydrate, and fat targets for your goal.","applicationCategory":"HealthApplication","operatingSystem":"Any (web browser)","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"inLanguage":"en","publisher":{"@id":"https://www.raphaatlas.com/#organization"},"reviewedBy":{"@type":"Person","@id":"https://www.raphaatlas.com/medical-review-board#muhammad-awais-rabbani","name":"Dr. Muhammad Awais Rabbani","honorificSuffix":"MBBS","jobTitle":"Medical reviewer","url":"https://www.raphaatlas.com/medical-review-board#muhammad-awais-rabbani"},"lastReviewed":"2026-08-12","datePublished":"2026-08-11","dateModified":"2026-09-13","featureList":["Three published BMR methods: Mifflin-St Jeor, revised Harris-Benedict, and Katch-McArdle","Automatic method selection based on which inputs you supply","Five activity levels from sedentary to extreme","Metric and imperial units for height and weight","Separate targets for fat loss, maintenance and muscle gain","Protein set from body mass rather than a fixed percentage of calories"]}]}</script>
   <script type="application/ld+json" data-ra="page">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.raphaatlas.com/"},{"@type":"ListItem","position":2,"name":"Macro Calculator","item":"https://www.raphaatlas.com/macro-calculator"}]}</script>
 <meta name="theme-color" content="#0A1C1F">
 </head>
@@ -1374,9 +1378,7 @@ body{overflow-x:hidden;overflow-x:clip}
 </style>
 
 <figure class="ra-figure">
-  <img src="/assets/img/macro-split-chart.jpg"
-       width="736" height="726" loading="lazy" decoding="async"
-       alt="Three pie charts comparing macronutrient splits: weight loss at 35 to 50 percent protein, 25 to 45 percent carbohydrate and 20 to 35 percent fat; maintenance at 25 to 40 percent protein, 35 to 55 percent carbohydrate and 25 to 40 percent fat; muscle gain at 35 percent protein, 45 percent carbohydrate and 20 percent fat.">
+  <picture style="display:contents"><source type="image/avif" srcset="/assets/img/macro-split-chart-400w.avif 400w, /assets/img/macro-split-chart.avif 736w" sizes="(min-width: 800px) 639px, 100vw"><source type="image/webp" srcset="/assets/img/macro-split-chart-400w.webp 400w, /assets/img/macro-split-chart.webp 736w" sizes="(min-width: 800px) 639px, 100vw"><img src="/assets/img/macro-split-chart.jpg" width="736" height="726" loading="lazy" decoding="async" alt="Three pie charts comparing macronutrient splits: weight loss at 35 to 50 percent protein, 25 to 45 percent carbohydrate and 20 to 35 percent fat; maintenance at 25 to 40 percent protein, 35 to 55 percent carbohydrate and 25 to 40 percent fat; muscle gain at 35 percent protein, 45 percent carbohydrate and 20 percent fat."></picture>
   <figcaption>Typical macro splits for the three common goals. Treat them as starting ranges — the targets the calculator returns for your body and activity take priority over any generic ratio.</figcaption>
 </figure>
 <h2 class="font-bold text-primary mt-10 mb-4 text-display-sm">What Are Macronutrients (Macros)?</h2>
@@ -1526,6 +1528,18 @@ body{overflow-x:hidden;overflow-x:clip}
 
 
 
+
+<section data-ra="related" class="mt-16 pt-8 border-t border-border-subtle">
+  <h2 class="font-headline-md text-primary mb-2">Related calculators</h2>
+  <p class="mb-5 font-body-md text-on-surface-variant">Same approach — you put the numbers in, the page shows the formula it used.</p>
+  <div class="flex flex-wrap gap-3">
+    <a class="inline-flex items-center gap-1 border border-border-subtle bg-surface-cream text-primary font-label-bold text-label-bold px-5 py-2 rounded-full hover:border-vitality-teal hover:text-vitality-teal transition-colors" href="/body-type-calculator" title="body shape from your measurements">Body Type Calculator &rarr;</a>
+    <a class="inline-flex items-center gap-1 border border-border-subtle bg-surface-cream text-primary font-label-bold text-label-bold px-5 py-2 rounded-full hover:border-vitality-teal hover:text-vitality-teal transition-colors" href="/bac-calculator" title="blood alcohol from drinks and weight">BAC Calculator &rarr;</a>
+    <a class="inline-flex items-center gap-1 border border-border-subtle bg-surface-cream text-primary font-label-bold text-label-bold px-5 py-2 rounded-full hover:border-vitality-teal hover:text-vitality-teal transition-colors" href="/conception-calculator" title="conception and due dates">Conception Calculator &rarr;</a>
+    <a class="inline-flex items-center gap-1 border border-border-subtle bg-surface-cream text-primary font-label-bold text-label-bold px-5 py-2 rounded-full hover:border-vitality-teal hover:text-vitality-teal transition-colors" href="/nutrition">Nutrition guides &rarr;</a>
+    <a class="inline-flex items-center gap-1 border border-border-subtle bg-surface-cream text-primary font-label-bold text-label-bold px-5 py-2 rounded-full hover:border-vitality-teal hover:text-vitality-teal transition-colors" href="/calculators">All calculators &rarr;</a>
+  </div>
+</section>
 </main>
 <script type="application/ld+json">
 {

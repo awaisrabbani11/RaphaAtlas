@@ -124,13 +124,30 @@ for (const file of htmlFiles) {
 }
 
 // --- sitemap reconciliation, both directions
+/* sitemap.xml is a <sitemapindex>, so the page URLs live one level down in the
+   per-section children it names. Walk the index to collect them, and check that
+   every child it advertises actually exists — an index pointing at a missing
+   sitemap fails silently in Search Console. */
 const sitemapPath = path.join(ROOT, 'sitemap.xml');
 if (!fs.existsSync(sitemapPath)) {
   fail('sitemap.xml', 'missing');
 } else {
-  const xml = fs.readFileSync(sitemapPath, 'utf8');
-  const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(x => x[1]);
-  if (!locs.length) fail('sitemap.xml', 'contains no <loc> entries');
+  const indexXml = fs.readFileSync(sitemapPath, 'utf8');
+  if (!/<sitemapindex\b/.test(indexXml)) fail('sitemap.xml', 'expected a <sitemapindex> (run: node build_sitemap.cjs)');
+
+  const children = [...indexXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(x => x[1].replace(/^https?:\/\/[^/]+\//, ''));
+  if (!children.length) fail('sitemap.xml', 'index names no child sitemaps');
+
+  const locs = [];
+  for (const child of children) {
+    const childPath = path.join(ROOT, child);
+    if (!fs.existsSync(childPath)) { fail('sitemap.xml', `index points at ${child}, which does not exist`); continue; }
+    const childXml = fs.readFileSync(childPath, 'utf8');
+    const childLocs = [...childXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(x => x[1]);
+    if (!childLocs.length) fail(child, 'contains no <loc> entries');
+    locs.push(...childLocs);
+  }
+  if (!locs.length) fail('sitemap.xml', 'no page URLs found across child sitemaps');
 
   const mapped = new Set();
   for (const loc of locs) {
